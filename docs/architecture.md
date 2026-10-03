@@ -6,7 +6,9 @@
 
 ## 1. 拟议运行方式
 
-候选后端为 Node.js / TypeScript + Fastify；候选持久层为 PostgreSQL，可选择 Tiger Data 托管 PostgreSQL。Tiger Data、普通 PostgreSQL与原构想中的 Supabase 的最终取舍待团队验证。候选实时方案为 SSE，客户端写操作通过普通 HTTP；若部署条件不支持长连接，再评估其他传输方案。
+候选后端为 Node.js / TypeScript + Fastify；持久层为 PostgreSQL，用户当前优先考虑 Tiger Data。先由 DevOps 核实 Shared Free 条件和连接，再由 Backend 验证迁移与持久化；没有证据时不视为服务已创建。其他 PostgreSQL 托管仅为后备评估，业务数据保留单一事实来源。候选实时方案为 SSE，客户端写操作通过普通 HTTP；若部署条件不支持长连接，再评估其他传输方案。
+
+用户已确定 Google OAuth 登录及 livingforma.tech 部署目标。DevOps 拥有 `packages/auth/` 中 provider、回调校验和 session/退出模块；Backend 在 `apps/api/src/` 挂载模块，在 `packages/db/` 维护 Google subject 到内部用户的映射及空间成员授权；Frontend 仅消费 session 状态并提供登录控件。身份已确定，具体认证库和接口仍待 LF-100 定稿。参见 [角色归属](ROLE-OWNERSHIP.md) 和 [Google 登录](operations/google-oauth.md)。
 
 ```mermaid
 flowchart LR
@@ -126,7 +128,7 @@ type SpaceSnapshot = {
 
 | 路径 | 权限 | 作用 |
 | --- | --- | --- |
-| `POST /v1/spaces` | Owner 身份待定 | 创建空间与稳定 URL；返回 Owner 会话、空间 ID，不把 Owner 权限编码进共享 URL |
+| `POST /v1/spaces` | Google 登录的内部用户 | 创建空间与稳定 URL、建立 Owner 成员关系；不把 Owner 权限编码进共享 URL |
 | `POST /v1/spaces/:spaceId/proposals` | Owner | 以需求、当前定义版本生成初始定义或增量提案；模型输出尚未生效 |
 | `GET /v1/spaces/:spaceId/proposals/:proposalId` | Owner | 查询提案与高层进度：规划、校验、待发布、失败；不返回模型内部推理 |
 | `POST /v1/spaces/:spaceId/proposals/:proposalId/publish` | Owner | 按预期版本原子发布已通过校验的提案 |
@@ -210,6 +212,8 @@ Planner 返回后端可验证的语义操作，例如 `addField`、`renameFieldL
 | 表 | 关键字段 / 目的 |
 | --- | --- |
 | `spaces` | `id`、owner 引用、status、current_definition_version、state_version、next_event_seq |
+| `users` / `auth_identities` | 内部 user_id；provider + 经过验证的 Google subject 唯一映射，邮箱不作稳定身份键 |
+| `space_members` | space_id、user_id、role；由 Backend 校验成员的具体操作权限 |
 | `definition_versions` | `(space_id, version)`、AppSpec JSONB、entity schema JSONB、动作配置、变更摘要；已发布版本不可变 |
 | `records` | `(space_id, id)`、entity_id、values JSONB、record_version、created_at、updated_at |
 | `proposals` | space_id、base_version、候选定义、migration plan、验证结果、状态；不存内部推理 |
@@ -221,7 +225,7 @@ Planner 返回后端可验证的语义操作，例如 `addField`、`renameFieldL
 
 每次状态或定义发布都在一个数据库事务中完成：检查权限和版本、更新相关数据、递增空间事件序号、插入事件、记录幂等结果，然后提交。提交后 SSE 发送器才唤醒。数据库行锁串行化同一空间的事件序号；不能仅用非事务消息广播作为唯一结果。
 
-所有业务查询按服务端解析的 spaceId 和角色做隔离；不信任客户端传来的 ownerId。身份/session、Participant 的访问方式、CSRF 策略和 PostgreSQL RLS 是否启用仍需确定。共享 URL 不携带可发布定义的 Owner 秘密。
+所有业务查询按服务端解析的 spaceId 和角色做隔离；不信任客户端传来的 ownerId。Google OAuth 为既定登录方式，session 库、Participant 是否允许匿名只读、CSRF 策略和 PostgreSQL RLS 是否启用仍需确定。Google 登录只确认身份，不能自动赋予任意空间的 Owner 权限。共享 URL 不携带可发布定义的 Owner 秘密。
 
 ### Tiger Data 的可选价值
 
@@ -230,6 +234,8 @@ Planner 返回后端可验证的语义操作，例如 `addField`、`renameFieldL
 如果采用 Tiger Data，可以额外把变形、调用耗时、工具复用和业务操作的统计事件写入 `evolution_events` hypertable，并使用 continuous aggregates 生成按分钟的趋势。它是分析层，不是共享状态重放的唯一来源；`stream_events` 仍按普通表的 `(space_id, seq)` 唯一键保证游标一致性。时序表的主键/唯一索引需包含时间分区键，不能直接照搬普通流事件表的约束。
 
 演示以真实采集的少量数据说明用途，不虚构性能或压缩率。Continuous aggregate 如需包含最新数据，必须核实所用 TimescaleDB 版本和实时聚合设置。不得因试用到期自动启用收费实例。
+
+Snowflake 由 Backend 负责可选的脱敏变化/工具事件分析；只有确有用户可见洞察并核实 API/额度后才接入，不阻塞在线业务主链路，也不与 Tiger Data 同步维护两套权威业务记录。Gemini 与 ElevenLabs 的服务端适配属于 Agent 角色；所有服务分工见 [集成职责](integrations.md)。
 
 ## 6. SSE、版本与断线恢复
 
@@ -316,8 +322,8 @@ Owner 才能发布定义、注册/启用工具和修改 endpoint 允许目录。
 ## 10. 待确认问题
 
 - 前后端框架、同源部署方式和长连接支持；Fastify/SSE 仅为候选。
-- PostgreSQL 供应商、免费实例实际额度和连接限制；是否使用 Tiger Data 扩展。
-- Owner 身份、Participant 访问策略与可见数据边界。
+- Tiger Data Shared Free 的实际额度和连接限制；是否使用 TimescaleDB 扩展；不满足条件时的 PostgreSQL 后备方案。
+- Google OAuth 认证库、session 契约、Participant 访问策略与可见数据边界。
 - 最小字段/组件/动作目录，以及字段/记录/定义大小上限。
 - Planner 的 JSON schema、提案自动发布与用户可见确认交互。
 - 受控能力的具体测试/真实服务、endpoint 目录与调用额度。

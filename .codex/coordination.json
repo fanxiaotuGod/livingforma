@@ -1,0 +1,292 @@
+{
+  "version": 1,
+  "tasks": [
+    {
+      "id": "LF-100",
+      "role": "coordinator",
+      "title": "Bootstrap workspace and accept shared contracts",
+      "paths": [
+        "apps/",
+        "packages/",
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "tsconfig.json",
+        "tsconfig.base.json",
+        "eslint.config.mjs",
+        ".gitignore",
+        ".nvmrc",
+        ".codex/",
+        "AGENTS.md",
+        "README.md",
+        "docs/architecture.md",
+        "docs/ROLE-OWNERSHIP.md",
+        "docs/WORKFLOW.md",
+        "docs/PRD.md",
+        "docs/product/",
+        "docs/integrations.md",
+        "docs/memory/shared/",
+        "docs/memory/roles/coordinator/",
+        "docs/memory/handoffs/coordinator/"
+      ],
+      "depends_on": [],
+      "acceptance": [
+        "Runnable workspace with reproducible package scripts and shared types",
+        "AppSpec/state/actions/auth-session contracts recorded as accepted",
+        "Google OAuth/session library chosen and callback contract handed to DevOps",
+        "Reading and habit example schemas and migration rules agreed"
+      ],
+      "notes": "Future development task; this workflow turn does not implement or complete it. Own shared manifests/lockfile; other roles hand dependency requests to coordinator."
+    },
+    {
+      "id": "LF-110",
+      "role": "frontend",
+      "title": "General app UI, renderer and login UI",
+      "paths": [
+        "apps/web/src/",
+        "apps/web/public/",
+        "docs/frontend/",
+        "docs/memory/roles/frontend/",
+        "docs/memory/handoffs/frontend/"
+      ],
+      "depends_on": [
+        "LF-100"
+      ],
+      "acceptance": [
+        "Same renderer handles reading and habit fixtures",
+        "Google login/logout controls consume agreed session contract",
+        "Data binding preserves record and field identity through UI changes",
+        "Loading, unsupported, permission and offline states work"
+      ],
+      "notes": "Can use agreed fixtures while Backend/Auth implementations progress; do not fabricate live integration results. Voice UI is optional after text works."
+    },
+    {
+      "id": "LF-120",
+      "role": "backend",
+      "title": "Persistent data, APIs, user mapping and space authorization",
+      "paths": [
+        "apps/api/src/",
+        "packages/db/",
+        "docs/backend/",
+        "docs/memory/roles/backend/",
+        "docs/memory/handoffs/backend/",
+        "packages/integrations/snowflake/"
+      ],
+      "depends_on": [
+        "LF-100"
+      ],
+      "acceptance": [
+        "Postgres migrations and restart persistence verified",
+        "Trusted auth-session fixtures map Google subject to stable internal users and enforce space membership; real Google roundtrip is tested after LF-140 in LF-150/160",
+        "Atomic version publication and schema evolution preserve old records",
+        "Two clients converge via events/snapshot and unauthorized requests fail"
+      ],
+      "notes": "Tiger Data is preferred, subject to verified free terms and DevOps connection provisioning. Local Postgres can validate code first. Auth package is owned by DevOps; backend mounts its interface and applies authorization."
+    },
+    {
+      "id": "LF-130",
+      "role": "agent",
+      "title": "Pi/Gemini planner and controlled capability generation",
+      "paths": [
+        "packages/agent/",
+        "packages/integrations/gemini/",
+        "packages/integrations/elevenlabs/",
+        "docs/agent/",
+        "docs/memory/roles/agent/",
+        "docs/memory/handoffs/agent/"
+      ],
+      "depends_on": [
+        "LF-100"
+      ],
+      "acceptance": [
+        "Two app categories and one patch produced as validated structured proposals",
+        "One approved read-only HTTP ToolSpec can be registered and reused",
+        "Invalid output and free-quota exhaustion handled without paid fallback",
+        "Any implemented ElevenLabs path has actual API evidence and text fallback"
+      ],
+      "notes": "Prioritize text planning; voice is an enhancement. Never expose keys to frontend or execute generated code. Coordinate dependencies through coordinator."
+    },
+    {
+      "id": "LF-140",
+      "role": "devops",
+      "title": "Google OAuth module, provider configuration and deployment preparation",
+      "paths": [
+        "packages/auth/",
+        "infra/",
+        ".github/",
+        "scripts/deploy/",
+        ".env.example",
+        "docs/operations/",
+        "docs/memory/roles/devops/",
+        "docs/memory/handoffs/devops/"
+      ],
+      "depends_on": [
+        "LF-100"
+      ],
+      "acceptance": [
+        "Google provider/client, exact callback and server session/logout module configured and tested",
+        "Frontend login and Backend user mapping handoffs documented",
+        "Hosting, Tiger Data free plan and API quota boundaries verified",
+        "Deployment and rollback commands prepared for livingforma.tech"
+      ],
+      "notes": "No paid resources, plan changes or overage without user approval. OAuth code belongs here; database tables/migrations belong to Backend. Do not invent callback paths before auth library is fixed."
+    },
+    {
+      "id": "LF-145",
+      "role": "coordinator",
+      "title": "Coordinate parallel role tasks and maintain shared decisions",
+      "paths": [
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        ".codex/",
+        "AGENTS.md",
+        "README.md",
+        "docs/PRD.md",
+        "docs/architecture.md",
+        "docs/ROLE-OWNERSHIP.md",
+        "docs/WORKFLOW.md",
+        "docs/product/",
+        "docs/integrations.md",
+        "docs/memory/shared/",
+        "docs/memory/roles/coordinator/",
+        "docs/memory/handoffs/coordinator/",
+        "packages/contracts/",
+        "apps/web/package.json",
+        "apps/web/next.config.ts",
+        "apps/web/tsconfig.json",
+        "apps/web/next-env.d.ts",
+        "apps/api/package.json",
+        "apps/api/tsconfig.json"
+      ],
+      "depends_on": [
+        "LF-100"
+      ],
+      "acceptance": [
+        "Worker results and dependency requests collected",
+        "Shared decisions/task board reflect verified progress",
+        "Interfaces handed off before integration"
+      ],
+      "notes": "Keep this task active while workers run, maintaining only shared/config paths. Do not edit worker application paths. Finish after LF110/120/130/140 handoffs so LF150 can integrate. Shared contracts and app package configuration can be adjusted here before integration; module-local manifests remain with module owners, with central lockfile updates coordinated."
+    },
+    {
+      "id": "LF-150",
+      "role": "coordinator",
+      "title": "Integrate and verify complete MVP",
+      "paths": [
+        "apps/",
+        "packages/",
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "tsconfig.json",
+        "tsconfig.base.json",
+        ".codex/",
+        "AGENTS.md",
+        "README.md",
+        "docs/architecture.md",
+        "docs/PRD.md",
+        "docs/product/",
+        "docs/ROLE-OWNERSHIP.md",
+        "docs/WORKFLOW.md",
+        "docs/integrations.md",
+        "docs/memory/shared/",
+        "docs/memory/roles/coordinator/",
+        "docs/memory/handoffs/coordinator/"
+      ],
+      "depends_on": [
+        "LF-110",
+        "LF-120",
+        "LF-130",
+        "LF-140",
+        "LF-145"
+      ],
+      "acceptance": [
+        "Google login to generated app and persistence work end to end",
+        "Reading app evolves with old data and stable URL",
+        "Habit app uses same runtime and clients synchronize",
+        "Optional providers are accurately marked connected or deferred"
+      ],
+      "notes": "Claim broad integration paths only after role tasks release; remaining dependencies/errors are not silently ignored."
+    },
+    {
+      "id": "LF-155",
+      "role": "coordinator",
+      "title": "Maintain task catalog and coordinate QA/deployment rework",
+      "paths": [
+        ".codex/",
+        "AGENTS.md",
+        "README.md",
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "packages/contracts/",
+        "apps/web/package.json",
+        "apps/web/next.config.ts",
+        "apps/web/tsconfig.json",
+        "apps/api/package.json",
+        "apps/api/tsconfig.json",
+        "docs/PRD.md",
+        "docs/architecture.md",
+        "docs/ROLE-OWNERSHIP.md",
+        "docs/WORKFLOW.md",
+        "docs/product/",
+        "docs/integrations.md",
+        "docs/memory/shared/",
+        "docs/memory/roles/coordinator/",
+        "docs/memory/handoffs/coordinator/"
+      ],
+      "depends_on": [],
+      "acceptance": [
+        "QA/deployment findings routed into scoped rework tasks",
+        "Acceptance requirements updated explicitly and current results reviewed"
+      ],
+      "notes": "Ongoing maintenance slot: intentionally no dependencies, so changing an upstream acceptance requirement cannot invalidate the coordinator claim needed to publish that change. Normally used after integration; appears after implementation/integration tasks in next order. Release with a handoff when idle rather than finish. Do not edit worker application files here. On defects, release affected QA/deploy tasks, add a scoped fix task, update downstream dependencies and explicitly sync-catalog; never keep stale acceptance marked complete."
+    },
+    {
+      "id": "LF-160",
+      "role": "qa",
+      "title": "Independent MVP acceptance verification",
+      "paths": [
+        "tests/e2e/",
+        "docs/qa/",
+        "docs/memory/roles/qa/",
+        "docs/memory/handoffs/qa/"
+      ],
+      "depends_on": [
+        "LF-150"
+      ],
+      "acceptance": [
+        "Google login/logout and space authorization checked independently",
+        "Two app categories, data preservation, two-client sync and failure recovery pass",
+        "Only real provider integrations count toward claims",
+        "Publish reproducible evidence and blocking defects"
+      ],
+      "notes": "Read all relevant code; write only test/evidence files. Return product fixes to owner; do not finish this task while acceptance blockers remain."
+    },
+    {
+      "id": "LF-170",
+      "role": "devops",
+      "title": "Deploy validated app at livingforma.tech",
+      "paths": [
+        "infra/",
+        ".github/",
+        "scripts/deploy/",
+        ".env.example",
+        "docs/operations/",
+        "docs/memory/roles/devops/",
+        "docs/memory/handoffs/devops/"
+      ],
+      "depends_on": [
+        "LF-160"
+      ],
+      "acceptance": [
+        "Provider URL then livingforma.tech HTTPS are reachable",
+        "Production Google callback/login/logout verified",
+        "Persistent data, free-quota stop behavior and rollback verified",
+        "Actual deployed version and URL recorded"
+      ],
+      "notes": "User requested this deployment target. Prepare concrete resources and proceed only within verified free allowances; any new charges still require confirmation. No DNS placeholder records."
+    }
+  ]
+}

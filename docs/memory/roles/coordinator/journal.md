@@ -31,3 +31,17 @@ permalink: livingforma/roles/coordinator/journal
 - Checks: check-workflow.py 和 git diff --check 通过；核实远端是 fanxiaotuGod/livingforma、默认分支 main。另分派只读提交审计，提交前核对暂存区。
 - Publication: 提交与推送结果以 Git commit 和远端 main 的一致性检查为准，不把用户授权本身记为推送成功。
 - Next: 后续开发从主对话明确分工，按需启动子 agent；尚未实现 App。
+
+## 2026-10-03 14:57 · America/Vancouver · LF-006 角色与自动认领
+- Status: implemented，等待最终检查收尾；范围仅为开发工作流与下一轮交接。
+- Requirements: Google OAuth 由 DevOps 主责；目标 livingforma.tech；Tiger Data 为首选主库候选；Gemini/ElevenLabs 由 Agent 负责，Snowflake 为 Backend 可选分析。
+- Changes: 新增 ROLE-OWNERSHIP、服务职责、OAuth 交接、10 项任务目录、Git common directory SQLite 原子认领；独立聊天按角色自动领取并检查路径。更新五角色配置、PRD 与各角色记忆。
+- Delegation: 并行完成协调脚本、产品/前端文档和 DevOps/OAuth 研究；另做目录/返工流程只读审查，修复验收变更、旧 worktree 覆盖及目录发布者缺少认领检查。
+- Evidence: .local/coordination-smoke-report.json（2026-10-03T21:57:00Z）在临时 Git 仓库验证实际 10 任务目录：依赖门禁、四角色并行、整合/QA/部署路由、目录修订、后继重新验收、独立维护与关闭会话。初次测试断言误用 pending 名称；按真实 available 状态修正后通过，未修改产品验收。
+- Boundaries: 认领是协作协议，不是 OS 权限锁；同仓库 worktree 共享认领，不同 clone/机器不共享；MCP 不自动共享聊天历史。账户级状态保存到忽略的 .local/service-status.json，未保存密钥。
+- Next: 完成脚本测试、文档/配置检查与记忆重建；下一开发 chat 从 LF-100 开始应用实现。本次没有创建云资源、配置 OAuth、调用付费 API 或部署网站。
+
+### 2026-10-03 14:58 · LF-006 最终验证与交接
+- Status: verified（工作流）。实现 agent 的 30 项测试通过；coordinator 的实际目录临时仓库模拟、配置/链接/忽略检查通过。
+- Live protocol: 真实目录已初始化；仅认领 LF-155 更新最终公共证据，随后释放并关闭会话。全部应用任务仍待开发，LF-100 为下一步。
+- Publication: 沿用用户已明确授权的工作流 commit/push；本机账户信息、索引、运行配置和测试报告排除。最终发布状态以 Git 历史和远端核验为准。

@@ -65,3 +65,9 @@ permalink: livingforma/roles/backend/journal
 - coordinator / frontend 需确认新 permissions 字段名字和嵌套路径，并清理旧版本别名。
 - 完整字段验证、FilterExpression、AllowedActionSpec、权限撤销时效和真实身份仍未定稿。
 - 第一条 HTTP 能力建议 GET，但真实端点、服务授权和免费额度仍待确认。
+
+## 2026-10-03 · America/Vancouver · Google/Tiger Data 职责交接（coordinator 更新）
+- 用户明确 Google OAuth 登录，DevOps 主责 provider/session；Backend 接收已验证身份并维护内部用户/Google subject 映射、空间授权及表迁移。
+- Tiger Data 为优先 PostgreSQL 候选，须先核实免费方案；Snowflake 为可选事件分析，不作第二业务主库。
+- architecture.md 已同步身份、数据表与服务归属；实现从认领工具的 LF-120 接续。该任务可以使用可信 auth fixture 测映射，真实 Google roundtrip 留在 LF-150/160 集成验收。
+- 本条仅交接产品与文件职责，不表示登录、数据库或云资源已实现。

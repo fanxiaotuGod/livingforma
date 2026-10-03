@@ -9,6 +9,17 @@ import tomllib
 root = Path(__file__).resolve().parents[1]
 errors = []
 roles = {"frontend", "backend", "agent", "devops", "qa"}
+sys.path.insert(0, str(root / "scripts"))
+from coordination import CoordinationError, read_catalog
+
+try:
+    tasks = read_catalog(root)
+    assert roles | {"coordinator"} == {task["role"] for task in tasks}
+    for task in tasks:
+        assert f"docs/memory/roles/{task['role']}/" in task["paths"]
+        assert f"docs/memory/handoffs/{task['role']}/" in task["paths"]
+except (AssertionError, CoordinationError) as e:
+    errors.append(f"Task catalog: {e}")
 config_path = root / ".codex/config.toml"
 try:
     config = tomllib.loads(config_path.read_text())
@@ -20,6 +31,7 @@ try:
         layer = root / ".codex" / config["agents"][role]["config_file"]
         instructions = tomllib.loads(layer.read_text())["developer_instructions"]
         assert isinstance(instructions, str) and f"roles/{role}/memory.md" in instructions
+        assert "scripts/coordination.py" in instructions
     server = config["mcp_servers"]["livingforma_memory"]
     assert Path(server["cwd"]) == root
     assert Path(server["args"][0]).is_file()
@@ -50,11 +62,11 @@ for p in root.glob("scripts/*.sh"):
     result = subprocess.run(["bash", "-n", str(p)], capture_output=True, text=True)
     if result.returncode:
         errors.append(f"Shell syntax {p.name}: {result.stderr}")
-for ignored in (".local/test.db", ".codex/config.toml", ".env"):
+for ignored in (".local/test.db", ".local/service-status.json", ".codex/config.toml", ".env"):
     result = subprocess.run(["git", "check-ignore", "-q", ignored], cwd=root)
     if result.returncode:
         errors.append(f"Not ignored: {ignored}")
 if errors:
     print("\n".join(errors))
     sys.exit(1)
-print("PASS: roles, ownership memory files, local links, Codex config, shell syntax, and ignored local data.")
+print("PASS: roles, task catalog, ownership memory files, local links, Codex config, shell syntax, and ignored local data.")

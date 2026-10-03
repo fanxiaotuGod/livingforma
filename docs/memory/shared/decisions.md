@@ -36,3 +36,18 @@ permalink: livingforma/shared/decisions
 
 来源：用户明确选择“读书记录 + 习惯打卡”。
 结论：两类 App 由同一套运行时生成；读书空间先创建记录，再加评分字段和排序，证明旧数据保留。样例不改变产品的通用生成定位。
+
+## D-007 · 2026-10-03 · 自动任务与文件认领
+
+来源：用户希望不同独立对话通过共享记忆自行判断文件职责。
+结论：Markdown/MCP 保存上下文与交接，Git common directory 下的 SQLite 记录实时认领；agent 从预先分工的任务目录自动领取依赖已满足的工作。父子路径冲突、同角色的第二个活跃任务拒绝；无自动过期抢锁。coordinator 对新任务扩充目录，用户不必逐个指明文件。机制为协作协议，不能阻止绕过脚本的写入。
+
+## D-008 · 2026-10-03 · Google 登录与生产域名
+
+来源：用户明确指定 DevOps 负责 Google OAuth，网站部署到 livingforma.tech。
+结论：DevOps 主责 provider、packages/auth、session/退出与部署；Backend 维护用户映射/数据迁移及空间授权；Frontend 实现登录 UI。OAuth client 与 Gemini key 分离。当前准备后续开发，尚未实现或上线；收费前确认仍有效。
+
+## D-009 · 2026-10-03 · 服务归属
+
+来源：用户提供已打开的服务页面；coordinator 结合产品主链路安排。
+结论：Backend 优先评估 Tiger Data Shared Free 为单一业务主库，负责可选 Snowflake 脱敏事件分析；Agent 负责 Gemini 规划和 ElevenLabs 服务端语音，Frontend 提供语音控件，DevOps 管私密配置与用量。账号存在不等于 API 已集成，试用不是长期免费承诺。

@@ -13,11 +13,11 @@ description = "Own APIs, persistent state, schema evolution, authorization, vers
 config_file = "agents/backend.toml"
 
 [agents.agent]
-description = "Own Pi/Gemini planning, constrained AppSpec and ToolSpec generation, and reusable capability execution."
+description = "Own Pi/Gemini planning, ElevenLabs server adapters, constrained AppSpec/ToolSpec generation, and capability reuse."
 config_file = "agents/agent.toml"
 
 [agents.devops]
-description = "Own local tooling, CI, free-first hosting, deployment, DNS, secrets plumbing, and rollback."
+description = "Own Google OAuth/session integration, local tooling, CI, free-first deployment to livingforma.tech, DNS, secrets, and rollback."
 config_file = "agents/devops.toml"
 
 [agents.qa]

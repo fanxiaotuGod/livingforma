@@ -29,3 +29,11 @@ permalink: livingforma/shared/setup-verification
 本轮验证了独立 MCP 客户端和 Codex 可识别的配置。当前聊天不保证热加载新增 MCP 工具；在此仓库新开 Codex chat 或重连 MCP 后，新的 agent 才会使用这些配置。
 
 操作入口：[工作流](../../WORKFLOW.md)。
+## 2026-10-03 14:58 · 自动认领与新角色职责
+
+- `scripts/test-coordination.py`：实现 agent 最终运行 30 项测试全部通过，覆盖多进程争抢、父子路径冲突、角色/会话所有权、worktree 共用、独立 clone 隔离、崩溃恢复、目录摘要/CAS、活跃目录所有者校验、验收变化及后继证据失效。
+- coordinator 在临时 Git 仓库中用实际 10 任务目录独立验证依赖门禁、四角色并行认领、整合/QA/部署顺序、LF-155 维护时发布新验收、返工及关闭。报告 `.local/coordination-smoke-report.json`，时间 2026-10-03T21:57:00Z。仅模拟调度，不是应用验收。
+- `check-workflow.py` 与 `git diff --check` 通过；公开文档/脚本凭据模式检查无命中，账户状态与索引保持忽略。
+- 真实仓库已初始化目录 revision 1；产品任务均未完成。coordinator 仅认领 LF-155 做本轮证据收尾，交接后释放并关闭，不把维护记为产品完成。
+- DevOps 主责 Google OAuth/session 与 livingforma.tech；Backend 主责用户映射/权限/Tiger Data，Agent 主责 Gemini/ElevenLabs，Snowflake 为可选分析。账号可访问不等于 API/应用已实现。
+- 当前仍未部署网站、配置 OAuth 客户端或创建云服务；免费额度优先、收费前确认。

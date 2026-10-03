@@ -4,7 +4,7 @@
 
 ## 目标
 
-用一套受限组件运行时呈现不同类别的轻量 App，让 Owner 的自然语言请求创建初版，再增量修改布局、字段和交互。已有记录、空间 URL 和在线用户会话跨版本保留。读书、习惯、预算、任务、轻量 CRM、签到或投票是同一运行时的配置实例，而不是为每个类别手写页面。
+Google OAuth 登录是进入本轮业务空间的前置条件。登录后，用一套受限组件运行时呈现不同类别的轻量 App，让 Owner 的自然语言请求创建初版，再增量修改布局、字段和交互。已有记录、空间 URL 和在线用户会话跨版本保留。读书、习惯、预算、任务、轻量 CRM、签到或投票是同一运行时的配置实例，而不是为每个类别手写页面。
 
 通用性有明确边界：前端只渲染已注册组件与受支持的动作，不解析模型输出的任意 JSX、HTML、脚本或 CSS。前端也不执行 ToolSpec；外部工具由服务端受控运行。
 
@@ -26,9 +26,9 @@ Owner 首次请求产生 entitySchema + AppSpec 初版；后续请求产生基�
 
 ## 3. 页面状态与多人同步
 
-页面可分成空间外壳（分享/权限/状态）、Owner 指令区、运行时画布和精简进度区。Participant 看不到发布定义或工具配置入口。候选快照的 role 和 permissions 来自服务端当前会话，只用于决定显示什么；真正权限在每次请求和 SSE 访问时由服务端重新验证。业务动作控件必须同时被 AppSpec 引用且列在 permissions.actionIds 中，工具控件亦须与 permissions.toolRefs 相交。权限缺失默认为不可执行。
+页面可分成 Google 登录/会话状态、空间外壳（分享/权限/状态）、Owner 指令区、运行时画布和精简进度区。Frontend 负责登录/登出按钮与 signed-out、redirecting、resolving-session、signed-in、expired/error 等可见状态；OAuth provider 配置、回调与服务端会话由 DevOps 的 packages/auth 负责。Participant 看不到发布定义或工具配置入口。候选快照的 role 和 permissions 来自服务端当前会话，只用于决定显示什么；真正权限在每次请求和 SSE 访问时由服务端重新验证。业务动作控件必须同时被 AppSpec 引用且列在 permissions.actionIds 中，工具控件亦须与 permissions.toolRefs 相交。权限缺失默认为不可执行。
 
-候选启动流程：GET 空间 snapshot → 渲染 definition.appSpec 与 records → 以 snapshot.eventCursor 订阅 events?after=游标 → 收到定义发布或记录变化事件后串行拉取权威快照并原子替换。断线显示可见状态并重连；重连先拉 snapshot，再从其 eventCursor 订阅。身份/权限失效时撤去 Owner 控件并重新获取访问状态；带 role/permissions 的快照不可按 spaceId 跨用户共享缓存。业务 mutation 由后端确认后再视为成功；可有局部乐观反馈，但失败必须回滚并保留用户输入。
+候选启动流程：先解析 Google 登录后的服务端会话，未登录时呈现登录入口；已登录后 GET 空间 snapshot → 渲染 definition.appSpec 与 records → 以 snapshot.eventCursor 订阅 events?after=游标 → 收到定义发布或记录变化事件后串行拉取权威快照并原子替换。断线显示可见状态并重连；重连先拉 snapshot，再从其 eventCursor 订阅。身份/权限失效时撤去 Owner 控件、关闭该用户的实时连接并重新获取访问状态；登出时清除用户范围的界面/快照缓存。带 role/permissions 的快照不可按 spaceId 跨用户共享缓存。业务 mutation 由后端确认后再视为成功；可有局部乐观反馈，但失败必须回滚并保留用户输入。
 
 Owner 提交自然语言请求时显示“理解需求 / 校验变更 / 发布界面”等高层阶段。界面在发布前仍显示旧版本；收到成功响应才转入新版本。不要向用户展示模型内部推理或未验证的中间规格。
 
@@ -48,11 +48,12 @@ Planner 或校验器返回 unsupported / needs-clarification 时，旧 App 原�
 
 | 需求 | 当前候选接口 / 字段 | 前端依赖 |
 | --- | --- | --- |
-| 加载空间 | GET /v1/spaces/:spaceId/snapshot；spaceId、role、permissions{canProposeDefinition、canPublishDefinition、canRegisterTools、canEnableTools、actionIds、toolRefs}、definition{definitionVersion、entitySchema{schemaVersion}、appSpec、actions、toolRefs}、stateVersion、eventCursor、records | 一致的定义与业务状态；有效角色/权限来自当前会话，身份实现仍待确认 |
+| 登录/会话 | Google OAuth 入口与服务端会话由 packages/auth 提供；具体前端调用/重定向契约尚待 DevOps 与 Backend 确定 | 前端只负责状态和控件，不处理服务端凭据或独自判断空间角色 |
+| 加载空间 | GET /v1/spaces/:spaceId/snapshot；spaceId、role、permissions{canProposeDefinition、canPublishDefinition、canRegisterTools、canEnableTools、actionIds、toolRefs}、definition{definitionVersion、entitySchema{schemaVersion}、appSpec、actions、toolRefs}、stateVersion、eventCursor、records | 一致的定义与业务状态；有效角色/权限来自当前会话，由 Backend 映射 |
 | 生成提案 | POST /v1/spaces/:spaceId/proposals；requestId、baseDefinitionVersion、intent | 版本冲突处理、旧版本回退、用户可读的 unsupported 反馈 |
 | 发布变更 | POST /v1/spaces/:spaceId/proposals/:proposalId/publish；服务端复核提案绑定的 baseDefinitionVersion | 成功后获取完整快照；409 冲突时不覆盖当前界面 |
 | 业务动作 | POST /v1/spaces/:spaceId/actions；requestId、definitionVersion、actionId、可选 recordId、更新时 expectedRecordVersion、input | 服务端验证权限/字段/冲突并返回新记录及版本 |
 | 实时事件 | GET /v1/spaces/:spaceId/events?after=eventCursor；事件含 ID、definitionVersion、schemaVersion、stateVersion | 重放和顺序处理；游标失效或序号不连续时重新拉快照 |
 | 能力状态 | ToolSpec 创建、校验、注册、执行的高层状态；无密钥或内部推理 | 只展示 Owner 需要的进度，不让浏览器执行外部工具 |
 
-共享类型、字段迁移规则、身份会话、实际数据库与 SSE 支持需要跨角色锁定。前端开发顺序建议为：静态 Renderer 与四种候选组件 → 两种不同类别的固定有效定义验证 → 表单动作与持久状态 → 版本切换/动画 → 实时订阅与恢复 → Owner 指令和错误反馈。两种类别应由同一 Renderer 呈现，避免先写领域专用页面再伪装成生成器。
+共享类型、字段迁移规则、身份会话、Tiger Data 免费方案与 SSE 支持需要跨角色锁定。Frontend 文件范围为 apps/web/src/ 与 apps/web/public/，其中 Google 登录组件归 apps/web/src/components/auth；DevOps 独占 packages/auth 核心会话模块，Backend 负责 API 路由挂载、用户映射与权限。Agent 负责 Gemini 规划器及 ElevenLabs 服务端适配器；若增加语音，Frontend 只增加麦克风/音频播放控件，不在浏览器保存第三方密钥。前端开发顺序建议为：静态 Renderer 与四种候选组件 → 两种不同类别的固定有效定义验证 → 表单动作与持久状态 → 版本切换/动画 → 实时订阅与恢复 → Owner 指令和错误反馈。两种类别应由同一 Renderer 呈现，避免先写领域专用页面再伪装成生成器。

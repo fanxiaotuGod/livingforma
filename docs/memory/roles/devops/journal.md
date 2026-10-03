@@ -43,3 +43,13 @@ permalink: livingforma/roles/devops/journal
 - 索引可晚于已知路径读取。测试现采用 1 秒间隔、最多 10 次的有限检索等待；即时未命中不代表写入失败，不重复创建笔记，先核对路径、等待或重新索引。
 - 阅读 wrapper 中的 `FASTMCP_CHECK_FOR_UPDATES=off` 与 `FASTMCP_SHOW_SERVER_BANNER=false`，依赖更新检查也已关闭。
 - 本次只更新自己的记忆/日志与 `docs/research/local-memory.md`，没有再运行测试；coordinator 负责收齐文档后统一重新索引。云服务、收费、产品部署与域名验证状态未变化。
+
+## 2026-10-03 14:41 America/Vancouver · LF-014 Google OAuth / 部署交接准备
+
+- **confirmed requirement / proposed implementation**：用户指定 DevOps 负责 Google OAuth 完整接入和部署到 `livingforma.tech`。coordinator 明确当前只准备下一开发 chat；应用、登录、部署均未实现，本次不配置账户或创建资源。
+- **verified by coordinator，DevOps 未自行访问账户页**：域名管理页显示已注册（2026-10-03 至 2027-10-03），自动续费关闭；DNS/HTTPS/应用可访问性未验证。此证据取代此前“注册未独立核对”的当前摘要，保留历史条目。
+- coordinator 只读核对 Tiger 创建页：选中收费 0.5 CPU，另有 Shared Free；账户额度/报价留在忽略的本机记录；未验证已创建实例。官方当前计费文档区分 30 天/$1000 试用与最多两个 beta free services；免费实例实际限制还需核对，收费前确认约束持续有效。
+- 调研 Google 官方 OIDC、Web server、Web client setup 与 ID token 验证：OAuth 客户端不等于 Gemini key；使用已验证 `sub` 映射内部用户，库验证签名/issuer/audience/expiry 和登录 state/nonce，使用私密服务端会话。回调路径等认证库选定后再登记，不虚构可用接口。
+- 写入 `docs/operations/deployment.md`、新建 `docs/operations/google-oauth.md`，更新自己的 `memory.md` 与本日志。DevOps 拟拥有 `packages/auth/**` 和发布/infra 目录；Backend 拥有 `packages/db/**` 用户映射/迁移与 `apps/api/src/authz/**` 业务授权；Frontend 拥有登录 UI，coordinator 定稿跨目录 adapter/契约。
+- 验证范围为文档审阅与差异检查；没有代码、登录测试、云部署、DNS 修改、费用、提交或推送。coordinator 接收交接后更新共享任务与重新索引。
+- 下一步：实际开发阶段先锁定认证库/会话接口，核对 Tiger Shared Free；再实现 Google 登录、空间授权和双用户验收，最后记录真实域名上线证据。

@@ -33,3 +33,10 @@ permalink: livingforma/roles/frontend/journal
 - Changes：更新 docs/PRD.md、docs/product/open-questions.md 和本角色 memory.md。读书验收明确为已有记录后加评分、按评分排序、旧值保留；习惯的具体字段与记录粒度仍待确定。保持通用 App 产品边界。
 - Evidence/checks：对照用户本轮明确选择及先前契约对齐文档；此前前端/后端候选命名与只读 GET 首个工具的文档对齐已完成，接口仍待 coordinator 接受。只做文档工作，未运行应用测试。
 - Status：文档更新完成；未实现应用、未提交或推送。
+
+## 2026-10-03 14:40 America/Vancouver · 下一轮职责与登录需求
+
+- Task：在开始新开发 chat 前，将 Google OAuth、角色文件边界、Tiger Data 优先候选与免费限制写入产品/前端文档。
+- Changes：更新 docs/PRD.md、docs/product/open-questions.md、docs/frontend/runtime-plan.md 与本角色 memory.md；域名注册日期/到期日按已核实浏览器记录更新。保持读书+习惯演示、通用 App 边界、免费优先和未实现状态。
+- Evidence/checks：对照 coordinator 提供的用户决定、域名注册核查与文件所有权清单；本轮仅检查文档，不存在 OAuth、Tiger Data、部署或应用测试成功的证据。
+- Status：文档更新完成；实现与共享接口验收待下一轮。未提交或推送。

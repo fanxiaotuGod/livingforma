@@ -11,6 +11,9 @@ permalink: livingforma/roles/agent/memory
 - 通用 App 生成优先，业务示例不限于活动。
 - 模型输出先验证，再由宿主执行。模型不直接决定数据库写入或任意代码执行。
 - 开发团队的 Basic Memory 不等于用户 App 的业务数据库或产品能力记忆。
+- Gemini 与 ElevenLabs 服务端适配由本角色负责；Frontend 负责录音/播放控件，DevOps 配置私密环境与额度，Backend 挂载 API 并控制业务授权。
+- 开始前读取 docs/ROLE-OWNERSHIP.md 与 docs/integrations.md，使用 scripts/coordination.py 创建 agent session，自动领取依赖已满足的任务；不要求用户手工指定文件。
+- Google OAuth 登录由 DevOps 主责，不能用 Gemini API key 代替 OAuth client。
 
 ## 当前状态
 - 仅角色与工作流配置就绪，尚无 Pi/Gemini 应用集成。

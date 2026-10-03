@@ -29,7 +29,10 @@ permalink: livingforma/roles/backend/memory
 
 ## 持续约束
 
-- Node.js / TypeScript / Fastify + PostgreSQL / Tiger Data 与 SSE 都是实现候选，未经用户最终锁定。
+- Node.js / TypeScript / Fastify 与 SSE 是实现候选；主库优先 Tiger Data/PostgreSQL，须先核实 Shared Free 条件，不是已创建的服务。
+- Google OAuth 登录已确定，DevOps 拥有 packages/auth/provider/session，Backend 拥有用户/Google subject 映射、数据迁移、API 挂载和空间授权。Google 登录不等于任何空间的 Owner。
+- 代码归属 apps/api/src/、packages/db/；Snowflake 的脱敏事件分析可选，不做在线第二主库。全部归属见 docs/ROLE-OWNERSHIP.md。
+- 开始实现先用 scripts/coordination.py 为 backend 创建 session 并自动领取 LF-120 等可执行任务；依赖未满足时不越界修改。
 - 业务值绑定稳定字段 ID；改标签/布局不更换字段键。移除展示不物理删除历史值。
 - definitionVersion、schemaVersion、stateVersion 与 eventCursor 分工不同，不混为一个版本。
 - 候选快照中定义嵌套在 `definition`，schemaVersion 位于 `definition.entitySchema`，stateVersion/eventCursor/role/permissions 在顶层；拒绝另起 specVersion/stateRevision 别名。最终共享类型待 coordinator 接受。
@@ -42,7 +45,7 @@ permalink: livingforma/roles/backend/memory
 ## 待办
 
 1. 团队确认前后端接口，尤其完整 FieldSpec、FilterExpression、AllowedActionSpec 与 HTTP 错误契约。
-2. 确认 Owner/Participant 身份、数据库供应商/免费额度及部署长连接支持。
+2. 对齐 Google session/用户映射 adapter、Participant 策略、Tiger Data 免费额度和部署长连接支持。
 3. 实现持久空间、版本化定义、业务记录与安全演化；优先通用生成主链路。
 4. 实现持久 SSE 事件和 snapshot 恢复，验证两个浏览器、并发冲突与幂等重试。
 5. 选择并授权一个免费只读 HTTP 测试/真实服务，再实现工具验证、注册、执行和复用。
