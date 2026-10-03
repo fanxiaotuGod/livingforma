@@ -1,0 +1,3 @@
+# Local development tool only; not an application dependency.
+# v0.23.2 explicitly pins a prerelease FastMCP dependency; no global --pre needed.
+basic-memory==0.23.2

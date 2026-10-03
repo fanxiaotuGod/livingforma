@@ -1,0 +1,17 @@
+# Local tool environments, indexes, caches, and machine-specific Codex config
+.local/
+.codex/config.toml
+__pycache__/
+.DS_Store
+
+# Credentials never belong in code or agent memory
+.env
+.env.*
+!.env.example
+*.pem
+
+# Future application build output
+node_modules/
+.next/
+dist/
+coverage/

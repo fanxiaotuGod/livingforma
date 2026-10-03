@@ -1,0 +1,37 @@
+# LivingForma project configuration template.
+# Generate .codex/config.toml with python3 scripts/setup-workflow.py.
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 3
+
+[agents.frontend]
+description = "Own the general AppSpec UI renderer, component registry, Motion transitions, and accessibility."
+config_file = "agents/frontend.toml"
+
+[agents.backend]
+description = "Own APIs, persistent state, schema evolution, authorization, versions, and realtime synchronization."
+config_file = "agents/backend.toml"
+
+[agents.agent]
+description = "Own Pi/Gemini planning, constrained AppSpec and ToolSpec generation, and reusable capability execution."
+config_file = "agents/agent.toml"
+
+[agents.devops]
+description = "Own local tooling, CI, free-first hosting, deployment, DNS, secrets plumbing, and rollback."
+config_file = "agents/devops.toml"
+
+[agents.qa]
+description = "Independently verify acceptance scenarios, integrations, configuration, regressions, and evidence."
+config_file = "agents/qa.toml"
+
+[mcp_servers.livingforma_memory]
+command = "/bin/bash"
+args = ["__LIVINGFORMA_ROOT__/scripts/memory-server.sh"]
+cwd = "__LIVINGFORMA_ROOT__"
+startup_timeout_sec = 60
+tool_timeout_sec = 60
+enabled = true
+# A failed memory server must not prevent direct Markdown recovery.
+required = false
+# Keep ordinary note tools; project is managed only by local setup.
+enabled_tools = ["read_note", "search_notes", "write_note", "edit_note", "build_context", "recent_activity", "list_directory"]
