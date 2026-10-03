@@ -1,0 +1,43 @@
+# Prepared release for the verified existing provider accounts. Not deployed.
+# Render account terms approval and a no-payment-method workspace are required.
+# Reverify provider allowances before transferring this to any other account.
+services:
+  - type: web
+    name: livingforma
+    runtime: docker
+    plan: free
+    region: virginia
+    dockerfilePath: ./infra/Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    autoDeployTrigger: "off"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: APP_ORIGIN
+        value: https://livingforma.tech
+      - key: ENABLE_LOCAL_DEMO
+        value: "false"
+      - key: DATABASE_URL
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: AGENT_MODE
+        value: gemini
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash-lite
+      - key: GEMINI_FREE_TIER_VERIFIED
+        value: "true"
+      - key: GEMINI_DAILY_REQUEST_LIMIT
+        value: "30"
+      - key: ELEVENLABS_API_KEY
+        sync: false
+      - key: ELEVENLABS_ALLOWANCE_VERIFIED
+        value: "true"
+      # Same Neon ledgers, including the non-resetting media verification
+      # period verified-2026-10-03 (60 STT seconds / 1000 TTS characters).
+      # No DATA_DIR, GEMINI_BUDGET_FILE, or invented media environment limits.

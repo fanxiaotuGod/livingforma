@@ -1,0 +1,14 @@
+{
+  "name": "@livingforma/db",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "@livingforma/contracts": "workspace:*",
+    "pg": "^8.16.0",
+    "@electric-sql/pglite": "0.5.8"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.15.0"
+  }
+}

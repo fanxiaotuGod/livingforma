@@ -1,0 +1,18 @@
+import { config } from 'dotenv';
+import { fileURLToPath } from 'node:url';
+import { dirname, resolve } from 'node:path';
+import { createDatabase, createProviderBudgetStore, createMediaBudgetStore } from '@livingforma/db';
+import * as agent from '@livingforma/agent';
+import { buildApp, type Planner, type ToolPlanner } from './app';
+import type { ToolAdapter, ProviderBudgetStore, MediaAdapter, MediaBudgetStore } from '@livingforma/contracts';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'../../..');
+config({path:resolve(root,'.env'),quiet:true});
+const production=process.env.NODE_ENV==='production';
+if(production&&!process.env.DATABASE_URL&&!process.env.DATA_DIR)throw new Error('Production requires DATABASE_URL or a persistent DATA_DIR.');
+if(production&&!process.env.APP_ORIGIN)throw new Error('Production requires APP_ORIGIN.');
+const db=await createDatabase({url:process.env.DATABASE_URL,dataDir:process.env.DATA_DIR??resolve(root,'.local/app-data/pglite')});
+const provider=agent as unknown as {planProposal?:Planner;proposeTool?:ToolPlanner;configureBudgetStore?:(store:ProviderBudgetStore)=>void;createMediaAdapter?:(options:{budgetStore:MediaBudgetStore})=>MediaAdapter;toolAdapter?:ToolAdapter;createToolAdapter?:()=>ToolAdapter};
+provider.configureBudgetStore?.(createProviderBudgetStore(db));
+const {app}=await buildApp({db,origin:process.env.APP_ORIGIN??'http://localhost:5173',localDemo:process.env.ENABLE_LOCAL_DEMO==='true',googleClientId:process.env.GOOGLE_CLIENT_ID,googleClientSecret:process.env.GOOGLE_CLIENT_SECRET,planner:provider.planProposal,toolPlanner:provider.proposeTool,plannerMode:process.env.AGENT_MODE==='gemini'?'gemini':'local',tools:provider.toolAdapter??provider.createToolAdapter?.(),media:provider.createMediaAdapter?.({budgetStore:createMediaBudgetStore(db)}),staticDir:resolve(root,'apps/web/dist'),logger:true});
+for(const signal of ['SIGINT','SIGTERM'] as const)process.once(signal,()=>{void app.close().then(()=>process.exit(0));});
+await app.listen({port:Number(process.env.PORT||3001),host:process.env.HOST||(production?'0.0.0.0':'127.0.0.1')});

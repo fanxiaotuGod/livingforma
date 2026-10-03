@@ -1,0 +1,31 @@
+import { randomUUID } from 'node:crypto';
+import { mkdtemp,rm,writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import assert from 'node:assert/strict';
+import { createDatabase } from '../../db/src/index';
+import { buildApp } from '../../../apps/api/src/app';
+import { planProposal, proposeTool, createToolAdapter } from '../src/index';
+process.env.NODE_ENV='test';process.env.ENABLE_LOCAL_DEMO='true';
+const dir=await mkdtemp(join(tmpdir(),'livingforma-tool-evidence-'));
+const events:string[]=[];
+const db=await createDatabase({dataDir:dir});
+const tools=createToolAdapter({onPiEvent:event=>events.push(event)});
+const {app}=await buildApp({db,origin:'http://localhost:5173',localDemo:true,planner:planProposal,plannerMode:'local',toolPlanner:proposeTool,tools});
+try{
+ const login=await app.inject({method:'POST',url:'/auth/local',headers:{origin:'http://localhost:5173'},payload:{persona:'owner'}});assert.equal(login.statusCode,200);
+ const headers={origin:'http://localhost:5173',cookie:login.headers['set-cookie']!.toString().split(';')[0],'x-csrf-token':login.json().csrfToken};
+ const post=async(url:string,payload:unknown)=>{const response=await app.inject({method:'POST',url,headers,payload:payload as never});assert.ok(response.statusCode>=200&&response.statusCode<300,`${response.statusCode} ${response.body}`);return response.json();};
+ const created=await post('/api/spaces',{title:'Tool lifecycle evidence',slug:'tool-cycle',prompt:'Create a reading tracker'});
+ await post('/api/spaces/tool-cycle/actions',{requestId:randomUUID(),definitionVersion:1,actionId:'add',values:{title:'A persistent book',author:'Example Author'}});
+ const pending=await post('/api/spaces/tool-cycle/proposals',{requestId:randomUUID(),baseDefinitionVersion:1,prompt:'Add book search from Open Library'});assert.equal(pending.requiresToolApproval,true);assert.equal(pending.snapshot.definition.definitionVersion,1);
+ const spec=pending.proposal.toolProposals[0];
+ const denied=await app.inject({method:'POST',url:'/api/spaces/tool-cycle/tools/openlibrary_search/invoke',headers,payload:{requestId:randomUUID(),toolVersion:1,input:{q:'Pride and Prejudice'}}});assert.equal(denied.statusCode,403);
+ const registered=await post('/api/spaces/tool-cycle/tools',{spec,enable:true});assert.equal(registered.tool.enabled,true);
+ const published=await post('/api/spaces/tool-cycle/proposals',{requestId:randomUUID(),baseDefinitionVersion:1,prompt:'Add book search from Open Library'});assert.equal(published.snapshot.definition.definitionVersion,2);assert.equal(published.snapshot.records.length,1);
+ const invoke=()=>post('/api/spaces/tool-cycle/tools/openlibrary_search/invoke',{requestId:randomUUID(),toolVersion:1,input:{q:'Pride and Prejudice'}});
+ const first=await invoke(),second=await invoke();assert.equal(first.reused,false);assert.equal(second.reused,true);assert.equal(second.result.books.length,5);
+ const audits=(await db.query<{count:number}>('SELECT count(*)::int as count FROM lf_tool_runs')).rows[0].count;assert.equal(audits,2);
+ const evidence={at:new Date().toISOString(),identity:'explicit local test Owner, not Google OAuth',plannerSource:'local-rules',database:'disk PGlite PostgreSQL',transport:'real HTTPS Open Library fixed public endpoint',pendingApproval:true,preEnableStatus:denied.statusCode,definitionVersions:[1,2],preservedRecords:1,enabledToolId:spec.toolId,firstReused:first.reused,secondReused:second.reused,bookCount:second.result.books.length,audits,piEvents:events};
+ console.log(JSON.stringify(evidence,null,2));if(process.argv[2])await writeFile(process.argv[2],JSON.stringify(evidence,null,2)+'\n');
+}finally{await app.close();await rm(dir,{recursive:true,force:true});}
