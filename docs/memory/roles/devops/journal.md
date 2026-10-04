@@ -132,3 +132,14 @@ permalink: livingforma/roles/devops/journal
 - 更新operations、ownmemory/journal和唯一LF170MD/JSON；下一步scoped链接/secret/diff验证后finish并close，不全局Gitstage/commit/push。
 
 - **Final verification**：6个ownscope文档/JSON、9条本地链接、whitespace/diff、4个已知私密配置精确匹配检查通过（0泄漏匹配），.env0600、证据/视频Gitignored；JSON releasegates全真，35.67s视频小于3min。没有重复应用tests或provider请求。结束capture/Network观察，清临时敏感buffers、关闭新增轮换tab，保留canonical deliverable及Renderhandoff。LF170验收已达成，执行finish/close。
+
+## 2026-10-04 02:07 America/Vancouver · LF-228 exact release and ordinary form blocker
+
+- 新DevOpssession `0840cd91-59a7-4061-b9fd-3535933b8093` 通过catalog25 next原子领取LF228，依赖已完成；编辑前check所有ownscope，保留Root shared/coordinator未提交收尾，不Gitstage/commit/push。
+- CI37190026028独立success核对；只部署精确22f78d2，Render `dep-db1176id0e5s73dke66g` 01:51:38→01:52:46 PDT Live，build真实server497.93KB/worker3.27KB。Free/Hobby/no card，AutoDeployOff/privateenv/plan/DNS不变，无费用/新provider资源。Render截图超时，未假称保存；DOM状态/commit/build logs已读。
+- Canonical/platform strictHTTPS各4/4；Neon read-only pre/post确认migration1–4→1–6，两个原spaces完整JSON及provider/media ledgers一致。Root独立TLS确认实际bundle index-BhE_gvLH.js/hash匹配最终build。原Readingv4/2/Habitv6/1及匿名权限保留。
+- 真实正式Owner logoutPOST200→anon，无orb/edit；普通Google同账号选择回callback→Owner成功。正常UI新建ServingStudio space-ee2617ac，再提交唯一Pi/Gemini生成请求。实际job sourceRevision1、repairCount0、两QuickJS fixtures及Owner浏览器startup check通过。Tools实际source/contract/test UI可见，无外部connector/recordaccess；后端source仍私有。
+- 实际Publish成功09:01:29Z，definitionv1与scale_ingredient@1注册，Root同一匿名IAB持续SSE收到页面且0records；anonymous snapshot200/noaction/noedit/notools，code-tools与privatejob GET401。
+- **blocked ordinary Calculate**：preview及published form有效输入Flour/150/4/6，AX click和普通鼠标click均无结果/无tool POST/Save disabled。DOM实际type=submit，generatedJS form submit listener；iframe与响应CSP sandbox仅allow-scripts。实际工具invocationCount0，非工具失败/新模型失败。Root安排LF237/LF238正常兼容修复，既有candidate/工具/ledger保留，无源码补丁注入、allowforms放宽或高级研究。
+- 只读真实Gemini29→30/30（2026-10-04UTC），media仍STT5/TTS695原period；未reset/refund/repair/第二次model调用。225业务调用、Save/reload/phone/同SHAreplacement尚未通过，LF228必须incomplete release，不能finish。保留ChromeOwner/Renderhandoff与Tools/publishedblocked截图；后续CIgreen compatibleforwardfix重新新session领取。
+- 修改ownmemory/journal/deployment当前状态并写唯一handoffMD/JSON。下一步scoped链接/secret/diff检查后release/close，Root可增加依赖；不发布shared未提交文件。

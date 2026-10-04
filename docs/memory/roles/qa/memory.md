@@ -8,6 +8,8 @@ timezone: America/Vancouver
 
 # QA 角色记忆
 
+**当前 LF-238：普通生成表单修复已独立 verified，2026-10-04 02:23。** 原线上 Serving Studio HTML/CSS/JS、scale_ingredient@1 spec/source/tests原样复制为显式离线候选，独立Chrome→实际Host/PGlite/SSE/MessageChannel/QuickJS **7/7通过/pageerrors0**。真实click150/4/6→225仅1toolPOST，Save1recordPOST；匿名SSE看到保存值。Enter160/4/6→240为非原fixtures输入、1POST；reload保留source/record/URL，390px Owner/anon无溢出；迟到toolresponse换Participant被丢弃。普通constraint/disabled/typebutton/textarea/submitter通过，无导航、无sandbox/CSP扩权。脚本strictTS/diff/link检查通过，浏览器/端口/临时DB清理。见 [报告](../../../qa/generated-forms/acceptance.md) / [handoff](../../handoffs/qa/LF-238-22c6712b-c2bc-4afd-b400-cbaabf2062ce.md)。只写ownscope、没有provider/Neon/生产写入或新modelcall。已发布22f78d2的正式225/save尚待DevOps部署hostpatch后验证；不能用本地身份代替Google。下文LF223的Free冷启动阻断是历史，已由LF229后续6/6证据解除，不是本轮当前阻断。
+
 **当前 LF-223：本地普通生成验收 verified，2026-10-04。** 独立 Chrome→实际Host/PGlite/SSE/iframe/QuickJS 8/8、HTTP工具/物理重启11/11、既有普通generated/bridge/progress28/28、QA脚本strict TypeScript/diffcheck通过。详见 [报告](../../../qa/generated-sites/acceptance.md) 和 [handoff](../../handoffs/qa/LF-223-78389b52-ff39-48a0-9ffc-2ade937f3f37.md)。生成源码/工具/轮廓明确为离线fixtures，真正的Host/数据库/Guest执行和浏览器交互不是API拦截mock；不证明真实Gemini或新版上线。当前生产仍为eedd1d4历史门槛，Root负责新真实模型/部署验收。高级绕过研究暂停，只审阅旧防御证据、执行普通功能/隐私/权限/stale/invalid-source回归。
 
 发布限制：LF-229 constrained free Docker 的冷初始化/fixture/invocation 仍超时；Backend 的本地 runtime6/API10 通过不能替代此实际资源门槛。性能报告已读、阻断已写入 QA handoff。三类页面双宽交互及晚到账号响应均实际通过，剩余真实模型兼容性、免费容器修复与公网发布由对应任务验收。

@@ -6,7 +6,16 @@ permalink: livingforma/roles/devops/memory
 
 # DevOps 当前记忆
 
-更新：2026-10-03 18:10 America/Vancouver。当前摘要；历史证据保留在journal与唯一handoff。
+更新：2026-10-04 02:07 America/Vancouver。当前摘要；历史证据保留在journal与唯一handoff。
+
+- **LF228 deployed / acceptance incomplete**：精确 reviewed `22f78d2d977049c0c8193705ca6194fed58c3a25`，CI37190026028 success、Root308tests/typecheck/build，Render `dep-db1176id0e5s73dke66g` Live1m07s。Free/AutoDeployOff/配置和secret不变。两originHTTPS各4/4；真实Google logout200→anon→同账号GoogleOwner成功。
+- Neon只读确认migration1–6；部署前后原Reading v4/2records、Habit v6/1record及完整spaceJSON/provider/media ledgers相等。新增唯一正式测试空间 [Serving Studio](https://livingforma.tech/s/space-ee2617ac)，没有修改原用户记录。
+- **真实生成和发布已验**：唯一hosted Pi/Gemini请求，job `2b23beb6-8a4d-47e9-a081-ac13a339016c`，sourceRevision1/repairCount0/publishedVersion1；新工具 `scale_ingredient@1` 两QuickJS fixtures通过，工具source私有、匿名code-tools/job GET401；Root原匿名窗口无刷新接收definition SSE。工具invocationCount0。
+- **普通表单阻断**：generatedJS监听form submit；Flour/150/4/6输入有效但AX/普通鼠标点击均无计算结果、无tool POST，Save disabled。iframe/CSP sandbox仅allow-scripts且form-action none。Root安排正常表单兼容修复和QA，保留candidate/工具；高级研究暂停。未完成225/save/reload/mobile/同SHA替换演练，不能finish LF228。
+- 2026-10-04UTC Gemini **30/30**（本次29→30），STT5/60s/TTS695/1000chars原period不变。禁止重生成、repair、reset、付费fallback；等待自然UTC日切。现有生成页后续普通工具/记录验证无需模型。
+- 当前不可用7efaa91/eedd1d4旧binary回滚generated definition；选择reviewed兼容forward fix或同SHA替换，不恢复DB/预算。LF228 session `0840cd91-59a7-4061-b9fd-3535933b8093` 将incomplete release并close，待新gates/CIgreen用新DevOpssession领取。详见[LF228实际交接](../../handoffs/devops/LF-228-0840cd91-59a7-4061-b9fd-3535933b8093.md)。
+
+以下为LF170已完成的历史摘要，其版本/额度/功能范围已由上方当前状态取代：
 
 - **LF170 completed/verified**：正式 https://livingforma.tech 和 https://livingforma.onrender.com 均严格HTTPS4/4smoke通过。当前精确runtime eedd1d450b45ff36062bbc7281040fddb0d462ca，Render dep-db0q9nvavr4c738sqtqg，61sLive；bundle index-Bt_tUXM1.js。CI37166475387success，root112tests/typecheck/build，QA211真实Chrome16/16。
 - Render Free/Hobby/no card/no新增费用，Virginia0.1CPU512MB；service srv-db0pi4lg1s2s73f4vnbg。用户自行完成账户并明确批准既有5项secret存server-privateenv；publicGit无需权限扩张，AutoDeployOff。primary另一个chat的60modules/general-generator未提交内容没有部署。所有后续发布须精确reviewedSHA。

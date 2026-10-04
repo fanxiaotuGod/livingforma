@@ -1,0 +1,142 @@
+{
+  "at": "2026-10-04T09:23:02.647Z",
+  "scope": "Independent installed Chrome, real host/PGlite/SSE/opaque frame/MessageChannel and actual QuickJS. The hosted AI candidate is copied unchanged and replayed by an explicit offline SiteGenerator; local identity is a test fixture. No new model, Google, Neon or production mutation.",
+  "originalSource": {
+    "publicURL": "https://livingforma.tech/s/space-ee2617ac",
+    "release": "22f78d2d977049c0c8193705ca6194fed58c3a25",
+    "sourceRevision": 1,
+    "hashes": {
+      "html": "922b6596b8722e6d021fd343f221ece8b8180b261fa189cb4e84449fa5924a2b",
+      "css": "a0b4d200ce6c58f45953881ad98b978ccd732e31fc91fe3d2112278c1465c8ac",
+      "js": "28bd7bb15c8de6d148d20e1354a4515d9c3d98485f24d5be486fa7cf198a55e2"
+    }
+  },
+  "checks": [
+    {
+      "name": "Ordinary click and input Enter deliver one local event with the actual submitter and no navigation",
+      "status": "passed",
+      "details": {
+        "events": [
+          {
+            "form": "main",
+            "submitter": "primary",
+            "bubbles": true,
+            "cancelable": true
+          },
+          {
+            "form": "main",
+            "submitter": "primary",
+            "bubbles": true,
+            "cancelable": true
+          },
+          {
+            "form": "main",
+            "submitter": "outside",
+            "bubbles": true,
+            "cancelable": true
+          }
+        ],
+        "navigationRequests": 0,
+        "fixture": "Auth-free explicitly authored local DOM fixture"
+      }
+    },
+    {
+      "name": "Required values, disabled/button controls, cancelled click and textarea retain ordinary behavior",
+      "status": "passed",
+      "details": {
+        "blockedActivations": 7,
+        "textarea": "Newline retained",
+        "singleInputSubmitter": null,
+        "navigationRequests": 0
+      }
+    },
+    {
+      "name": "Unmodified actual hosted candidate passes local real host/QuickJS fixtures and read-only browser preview",
+      "status": "passed",
+      "details": {
+        "originalBrowserSourceSHA256": {
+          "html": "922b6596b8722e6d021fd343f221ece8b8180b261fa189cb4e84449fa5924a2b",
+          "css": "a0b4d200ce6c58f45953881ad98b978ccd732e31fc91fe3d2112278c1465c8ac",
+          "js": "28bd7bb15c8de6d148d20e1354a4515d9c3d98485f24d5be486fa7cf198a55e2"
+        },
+        "originalToolSourceSHA256": "431bd4f4a1f6a83ddb3d2043d88a819de637e4d6027d4e9a3018779e6381bd2d",
+        "actualFixtureResults": [
+          {
+            "ok": true,
+            "name": "Standard scale up",
+            "message": "Fixture output matched."
+          },
+          {
+            "ok": true,
+            "name": "Scale up small",
+            "message": "Fixture output matched."
+          }
+        ]
+      }
+    },
+    {
+      "name": "Actual candidate required/min constraints block requests and disabled Save cannot act",
+      "status": "passed",
+      "details": {
+        "toolPOSTs": 0,
+        "recordPOSTs": 0
+      }
+    },
+    {
+      "name": "Real Calculate click invokes exactly one QuickJS tool and Save persists225 without another submit",
+      "status": "passed",
+      "details": {
+        "toolPOSTs": 1,
+        "recordPOSTs": 1,
+        "record": {
+          "id": "rec_71c14ab7-6bdb-440b-a345-93985743b36e",
+          "values": {
+            "scaled": 225,
+            "target": 6,
+            "original": 4,
+            "quantity": 150,
+            "ingredient": "Flour"
+          },
+          "version": 1,
+          "createdAt": "2026-10-04T09:23:00.888Z",
+          "updatedAt": "2026-10-04T09:23:00.888Z"
+        }
+      }
+    },
+    {
+      "name": "Real input Enter invokes once for a fresh input, and reload retains source records and URL",
+      "status": "passed",
+      "details": {
+        "input": {
+          "quantity": 160,
+          "originalServings": 4,
+          "targetServings": 6
+        },
+        "actualResult": 240,
+        "toolPOSTs": 1,
+        "retainedRecords": 1
+      }
+    },
+    {
+      "name": "Identity change discards a completed tool response delayed only in local transport",
+      "status": "passed",
+      "details": {
+        "serverInvocation": "Completed QuickJS before account change",
+        "delayedTransport": "Explicit offline fixture",
+        "lateResult": "Discarded",
+        "participantToolPOSTs": 0
+      }
+    }
+  ],
+  "offlineReplayCalls": 1,
+  "protectedPOSTs": [
+    "/api/spaces/qa-serving-studio/generations",
+    "/api/spaces/qa-serving-studio/generations/6545c016-dac0-40dd-92d4-4609bd150bc5/preview",
+    "/api/spaces/qa-serving-studio/generations/6545c016-dac0-40dd-92d4-4609bd150bc5/publish",
+    "/api/spaces/qa-serving-studio/code-tools/scale_ingredient/invoke",
+    "/api/spaces/qa-serving-studio/actions",
+    "/api/spaces/qa-serving-studio/code-tools/scale_ingredient/invoke",
+    "/api/spaces/qa-serving-studio/code-tools/scale_ingredient/invoke"
+  ],
+  "pageerrors": []
+}

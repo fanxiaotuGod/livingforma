@@ -6,6 +6,10 @@ permalink: livingforma/shared/interfaces
 
 # 公共接口状态
 
+## Generated form compatibility · 2026-10-04 02:11 America/Vancouver
+
+已接受LF237/238的正常DOM适配：可信bootstrap支持submit按钮、Enter和局部requestSubmit派发可取消submit，保留原生约束校验/submitter，禁止重复派发或原生网络提交。iframe/CSP仍sandbox allow-scripts、form-action none，LFbridge/auth/权限契约和browserartifact/tool版本不变。真实Serving Studio原候选保留，LF237普通浏览器8/8、全库312tests/typecheck/build通过；LF238原候选7/7已实际执行，正式修复发布仍待CI。预算2026-10-04UTC30/30，不能再生页面/模型repair或重置。
+
 ## Accepted generation/tool v1 · 2026-10-03 23:40 America/Vancouver
 
 以 `packages/contracts/src/generated.ts`、`generated-tools.ts` 为精确契约，见 [generated-tools](../../product/generated-tools.md)。以下为实施契约，尚非真实模型/生产验收。

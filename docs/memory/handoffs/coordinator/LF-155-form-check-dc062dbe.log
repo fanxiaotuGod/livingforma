@@ -1,0 +1,159 @@
+$ pnpm typecheck && pnpm test && pnpm build
+$ tsc --noEmit
+$ vitest run
+
+ RUN  v3.2.7 /Users/fanhaocheng/project/livingforma
+
+(node:652) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:658) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ packages/db/src/media-budget.test.ts (4 tests) 5744ms
+ ✓ packages/db/src/budget.test.ts (4 tests) 5858ms
+(node:665) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:664) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:664) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:656) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:664) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:664) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:655) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:664) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:664) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:664) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:664) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:664) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ ✓ apps/api/src/generated-tool-runtime.test.ts (10 tests) 7766ms
+   ✓ executes new arithmetic logic and reports actual fixture comparisons  897ms
+   ✓ resolves async public-record and connector fixtures in the isolated runtime  641ms
+   ✓ validates input/output and terminates unfinished work within the deadline  5166ms
+   ✓ admits one worker across adapter instances, rejects busy work immediately and releases capacity after completion  321ms
+   ✓ releases the single worker capacity after cancellation while an ordinary broker read is pending  419ms
+(node:664) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:655) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:658) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ ✓ packages/auth/src/auth.test.ts (17 tests) 1080ms
+   ✓ OIDC cryptographic validation with a local provider fixture > rejects an invalid nonce without exposing provider detail  306ms
+(node:658) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:664) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:664) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ ✓ apps/api/src/presentation.test.ts (10 tests) 9146ms
+   ✓ owner module presentation edits > restores saved dimensions, configuration, replay and records after a real disk database restart  2703ms
+(node:664) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:664) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ ✓ apps/api/src/media.test.ts (14 tests) 8592ms
+   ✓ ephemeral authenticated media sessions > periodically aborts a hanging provider after cross-instance login revocation  1070ms
+   ✓ ephemeral authenticated media sessions > aborts in-flight work when the device session expires  1061ms
+ ✓ apps/api/src/api.test.ts (16 tests) 9333ms
+   ✓ persistent application API > restores records, event log, registry and session after a real disk database restart  2223ms
+ ✓ packages/agent/src/tool-generator.test.ts (11 tests) 2714ms
+   ✓ generated backend tools through real Pi and an offline transport > authors distinct source and runs its fixtures in real QuickJS: Weight a collection of values  313ms
+   ✓ generated backend tools through real Pi and an offline transport > authors distinct source and runs its fixtures in real QuickJS: Normalize words with an accurate count  428ms
+   ✓ generated backend tools through real Pi and an offline transport > authors distinct source and runs its fixtures in real QuickJS: Aggregate public points above a threshold  349ms
+   ✓ generated backend tools through real Pi and an offline transport > authors distinct source and runs its fixtures in real QuickJS: Transform existing book search metadata  356ms
+   ✓ generated backend tools through real Pi and an offline transport > generates page, original backend source and exact binding together, then reuses the registered version  572ms
+   ✓ generated backend tools through real Pi and an offline transport > returns a shape-valid broken tool for the host single repair using concrete diagnostics  679ms
+ ✓ apps/web/src/lib/session-client.test.ts (12 tests) 201ms
+(node:655) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ ✓ packages/contracts/src/generated.test.ts (9 tests) 20ms
+ ✓ packages/agent/src/site-generator.test.ts (25 tests) 196ms
+ ✓ packages/agent/src/media.test.ts (11 tests) 45ms
+ ✓ packages/contracts/src/generated-tools.test.ts (6 tests) 65ms
+ ✓ packages/agent/src/agent.test.ts (12 tests) 97ms
+ ✓ packages/agent/src/module-composer.test.ts (56 tests) 117ms
+ ✓ packages/contracts/src/contracts.test.ts (7 tests) 17ms
+ ✓ packages/contracts/src/modules.test.ts (4 tests) 10ms
+ ✓ apps/web/src/generated/bridge.test.ts (11 tests) 14ms
+ ✓ apps/web/src/generated/progress.test.ts (5 tests) 4ms
+ ✓ packages/db/src/connection.test.ts (1 test) 19ms
+ ✓ packages/agent/src/provider-schema.test.ts (13 tests) 55ms
+ ✓ apps/web/src/generated/human-input.test.ts (4 tests) 5ms
+(node:655) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ ✓ apps/web/src/lib/media.test.ts (5 tests) 21ms
+(node:656) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:652) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:656) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ ✓ apps/api/src/generated.test.ts (12 tests) 11617ms
+   ✓ durable isolated generation (offline fixtures) > replays durable SSE and closes the stream when its session is revoked  597ms
+   ✓ recovers disk jobs/history/assets and marks interrupted work failed without another provider call  3062ms
+ ✓ apps/web/src/generated/GenerationStudio.test.tsx (3 tests) 4ms
+(node:655) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:652) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:655) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:652) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:655) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:652) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:655) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+(node:652) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ ✓ apps/api/src/generated-browser.test.ts (11 tests) 9390ms
+   ✓ runs normal DOM interaction and bridge in an opaque frame with Trusted Types  1332ms
+   ✓ dispatches one local form submit for click, nested button content and Enter using the native form owner  1198ms
+   ✓ preserves required/min/pattern validation and novalidate controls without native navigation  920ms
+   ✓ does not submit disabled controls, type button, textarea, cancelled activations or multiple-input implicit forms  619ms
+   ✓ supports local requestSubmit and avoids a second submit when activation handlers already dispatch one  551ms
+   ✓ blocks outbound image/script/fetch and self-navigation under served parent and child CSP  472ms
+(node:655) [FSTDEP023] FastifyDeprecation: disableRequestLogging option is deprecated. Use the logController option with disableRequestLogging or isLogDisabled override instead. The disableRequestLogging top-level option will be removed in `fastify@6`.
+ ✓ apps/api/src/revocation.test.ts (9 tests) 16171ms
+   ✓ authorization after delayed external work > rejects proposal completion after logout without publishing or returning private output  6806ms
+   ✓ authorization after delayed external work > rejects create completion after logout without publishing or returning private output  1797ms
+   ✓ authorization after delayed external work > rejects tool-proposal completion after logout without publishing or returning private output  1273ms
+   ✓ authorization after delayed external work > rejects registration completion after logout without publishing or returning private output  1290ms
+   ✓ authorization after delayed external work > rejects an expired session while planning and preserves the last definition  1125ms
+   ✓ authorization after delayed external work > coalesces concurrent retries, rejects conflicting payloads before external work, and commits one audit/result  937ms
+   ✓ authorization after delayed external work > lets logout finish during external GET, then withholds its late result and success audit  1005ms
+   ✓ authorization after delayed external work > rechecks durable replay when a retry finishes its registry read after the first flight committed  1071ms
+   ✓ authorization after delayed external work > withholds a query if the owner disables the tool before it completes  865ms
+ ✓ apps/api/src/generated-tools.test.ts (10 tests) 16581ms
+   ✓ requires Owner and Origin/CSRF, checks fixtures, preserves immutable versions and replays bounded results  1955ms
+   ✓ brokers only declared public fields from the current space  592ms
+   ✓ proposes and tests new tools without enabling them and reuses enabled exact versions  716ms
+   ✓ tests code candidates outside transactions, persists real outline/tool reports and publishes registry plus definition atomically  651ms
+   ✓ shares one repair between tool fixture failures and browser diagnostics  608ms
+   ✓ does not commit a late result after logout, nor repeat pending or interrupted invocations  1942ms
+   ✓ persists registry and replay on disk and marks interrupted reservations honestly after restart  1703ms
+   ✓ uses only enabled catalog connectors and validates exact legacy bindings before and after asynchronous calls  1415ms
+   ✓ aborts a tool when its HTTP client disconnects after sending the request body  1217ms
+   ✓ returns honest busy status, never executes a rejected request ID, and accepts a deliberate fresh request after capacity frees  388ms
+
+ Test Files  28 passed (28)
+      Tests  312 passed (312)
+   Start at  02:18:19
+   Duration  17.50s (transform 1.72s, setup 0ms, collect 10.86s, tests 104.88s, environment 3ms, prepare 2.04s)
+
+$ pnpm --filter @livingforma/web build && pnpm --filter @livingforma/api build
+$ vite build
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 539 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                      0.43 kB │ gzip:   0.31 kB
+dist/assets/geist-latin-400-normal-B40WzpMT.woff2   12.96 kB
+dist/assets/geist-latin-500-normal-CTWBw9NS.woff2   13.30 kB
+dist/assets/geist-latin-600-normal-CSETrqM2.woff2   13.37 kB
+dist/assets/geist-latin-400-normal-akEymXtG.woff    16.76 kB
+dist/assets/geist-latin-500-normal-BDXIbFrL.woff    17.10 kB
+dist/assets/geist-latin-600-normal-DsPlZH-9.woff    17.15 kB
+dist/assets/index-D72csVWK.css                      81.42 kB │ gzip:  16.57 kB
+dist/assets/index-BhE_gvLH.js                      794.52 kB │ gzip: 241.39 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.05s
+$ tsup src/server.ts src/generated-tool-worker.ts
+CLI Building entry: src/generated-tool-worker.ts, src/server.ts
+CLI Using tsconfig: ../../tsconfig.json
+CLI tsup v8.5.1
+CLI Using tsup config: /Users/fanhaocheng/project/livingforma/apps/api/tsup.config.ts
+CLI Target: node22
+ESM Build start
+ESM dist/generated-tool-worker.js     3.27 KB
+ESM dist/server.js                    502.10 KB
+ESM dist/generated-tool-worker.js.map 5.63 KB
+ESM dist/server.js.map                867.70 KB
+ESM ⚡️ Build success in 47ms

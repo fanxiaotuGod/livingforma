@@ -1,0 +1,182 @@
+{
+  "source": "gemini",
+  "appSpec": {
+    "skin": "sand",
+    "title": "Serving Studio",
+    "layout": "flow",
+    "actions": [
+      {
+        "id": "calculate_scale",
+        "type": "tool.invoke",
+        "label": "Calculate Scale"
+      },
+      {
+        "id": "save_recipe",
+        "type": "record.create",
+        "label": "Save Scaled Recipe"
+      },
+      {
+        "id": "delete_recipe",
+        "type": "record.delete",
+        "label": "Delete Recipe"
+      }
+    ],
+    "generated": {
+      "js": "(async () => {\n  let state = await lf.ready;\n  const form = document.getElementById('scale-form');\n  const ingredientInput = document.getElementById('ingredient');\n  const quantityInput = document.getElementById('quantity');\n  const originalInput = document.getElementById('original');\n  const targetInput = document.getElementById('target');\n  const calcBtn = document.getElementById('calc-btn');\n  const saveBtn = document.getElementById('save-btn');\n  const resultContainer = document.getElementById('result-container');\n  const resultValue = document.getElementById('result-value');\n  const previewNotice = document.getElementById('preview-notice');\n  const errorContainer = document.getElementById('error-container');\n  const savedListContainer = document.getElementById('saved-list-container');\n\n  let lastCalculation = null;\n\n  function clearResult() {\n    lastCalculation = null;\n    resultContainer.style.display = 'none';\n    saveBtn.disabled = true;\n    errorContainer.textContent = '';\n  }\n\n  [ingredientInput, quantityInput, originalInput, targetInput].forEach(input => {\n    input.addEventListener('input', clearResult);\n  });\n\n  form.addEventListener('submit', async (e) => {\n    e.preventDefault();\n    errorContainer.textContent = '';\n    \n    const ingredient = ingredientInput.value.trim();\n    const quantity = parseFloat(quantityInput.value);\n    const originalServings = parseFloat(originalInput.value);\n    const targetServings = parseFloat(targetInput.value);\n\n    if (!state.permissions.canUseTools) {\n      resultContainer.style.display = 'flex';\n      resultValue.textContent = 'Publish required';\n      previewNotice.style.display = 'block';\n      previewNotice.textContent = 'Publish to run tool.';\n      saveBtn.disabled = true;\n      return;\n    }\n\n    try {\n      calcBtn.disabled = true;\n      calcBtn.textContent = 'Calculating...';\n      const res = await lf.runTool('scale_ingredient', 1, {\n        quantity,\n        originalServings,\n        targetServings\n      });\n      \n      const scaled = res.result.scaledQuantity;\n      lastCalculation = {\n        ingredient,\n        quantity,\n        originalServings,\n        targetServings,\n        scaledQuantity: scaled\n      };\n\n      resultValue.textContent = `${scaled} g`;\n      previewNotice.style.display = 'none';\n      resultContainer.style.display = 'flex';\n      saveBtn.disabled = false;\n    } catch (err) {\n      errorContainer.innerHTML = `<div class=\"error-msg\">Calculation failed: ${err.message || 'Unknown error'}</div>`;\n    } finally {\n      calcBtn.disabled = false;\n      calcBtn.textContent = 'Calculate';\n    }\n  });\n\n  saveBtn.addEventListener('click', async () => {\n    if (!lastCalculation) return;\n    try {\n      saveBtn.disabled = true;\n      saveBtn.textContent = 'Saving...';\n      state = await lf.create({\n        ingredient: lastCalculation.ingredient,\n        quantity: lastCalculation.quantity,\n        original: lastCalculation.originalServings,\n        target: lastCalculation.targetServings,\n        scaled: lastCalculation.scaledQuantity\n      });\n      renderRecords(state);\n      clearResult();\n      form.reset();\n    } catch (err) {\n      errorContainer.innerHTML = `<div class=\"error-msg\">Save failed: ${err.message || 'Unknown error'}</div>`;\n    } finally {\n      saveBtn.disabled = false;\n      saveBtn.textContent = 'Save Result';\n    }\n  });\n\n  function renderRecords(currentState) {\n    const records = currentState.records || [];\n    if (records.length === 0) {\n      savedListContainer.innerHTML = '<div class=\"empty-state\">No saved calculations yet. Scale and save an ingredient above.</div>';\n      return;\n    }\n\n    savedListContainer.innerHTML = '';\n    records.forEach(rec => {\n      const vals = rec.values;\n      const item = document.createElement('div');\n      item.className = 'saved-item';\n      \n      const info = document.createElement('div');\n      info.className = 'saved-info';\n      info.innerHTML = `\n        <h3>${escapeHtml(vals.ingredient || 'Ingredient')}</h3>\n        <p>${vals.quantity}g (${vals.original} servings) \u2794 <strong>${vals.scaled}g</strong> (${vals.target} servings)</p>\n      `;\n\n      const delBtn = document.createElement('button');\n      delBtn.className = 'btn-secondary';\n      delBtn.style.padding = '0.4rem 0.75rem';\n      delBtn.style.fontSize = '0.85rem';\n      delBtn.textContent = 'Delete';\n      delBtn.addEventListener('click', async () => {\n        try {\n          state = await lf.remove(rec.id);\n          renderRecords(state);\n        } catch (err) {\n          alert('Failed to delete: ' + (err.message || 'Unknown error'));\n        }\n      });\n\n      item.appendChild(info);\n      item.appendChild(delBtn);\n      savedListContainer.appendChild(item);\n    });\n  }\n\n  function escapeHtml(str) {\n    return str.replace(/[&<>'\"]/g, \n      tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', \"'\": '&#39;', '\"': '&quot;' }[tag] || tag)\n    );\n  }\n\n  lf.subscribe(next => {\n    state = next;\n    renderRecords(state);\n  });\n\n  renderRecords(state);\n  await lf.reportReady();\n})();\n",
+      "css": ":root {\n  --bg: #fdfbf7;\n  --surface: #ffffff;\n  --surface-alt: #f7f4ed;\n  --text: #2c2926;\n  --text-muted: #6b655d;\n  --primary: #9c4a2f;\n  --primary-hover: #823c24;\n  --primary-light: #fbeee9;\n  --border: #e6dfd3;\n  --border-focus: #9c4a2f;\n  --radius: 12px;\n  --font: system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif;\n}\n\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  font-family: var(--font);\n  background-color: var(--bg);\n  color: var(--text);\n  line-height: 1.5;\n  padding: 2rem 1rem;\n  max-width: 720px;\n  margin: 0 auto;\n}\n\nheader {\n  margin-bottom: 2rem;\n  text-align: center;\n}\n\nh1 {\n  font-size: 2.25rem;\n  font-weight: 700;\n  color: var(--primary);\n  margin-bottom: 0.5rem;\n}\n\np.subtitle {\n  color: var(--text-muted);\n  font-size: 1.05rem;\n}\n\nmain {\n  display: flex;\n  flex-direction: column;\n  gap: 2rem;\n}\n\n.card {\n  background: var(--surface);\n  border: 1px solid var(--border);\n  border-radius: var(--radius);\n  padding: 1.5rem;\n  box-shadow: 0 4px 12px rgba(44, 41, 38, 0.03);\n}\n\n.card h2 {\n  font-size: 1.25rem;\n  font-weight: 600;\n  margin-bottom: 1.25rem;\n  color: var(--text);\n}\n\nform {\n  display: grid;\n  grid-template-columns: 1fr;\n  gap: 1rem;\n}\n\n@media(min-width: 540px) {\n  form {\n    grid-template-columns: 1fr 1fr;\n  }\n  .full-width {\n    grid-column: span 2;\n  }\n}\n\n.field-group {\n  display: flex;\n  flex-direction: column;\n  gap: 0.375rem;\n}\n\nlabel {\n  font-size: 0.9rem;\n  font-weight: 500;\n  color: var(--text);\n}\n\ninput {\n  font-family: var(--font);\n  font-size: 1rem;\n  padding: 0.75rem;\n  border: 1px solid var(--border);\n  border-radius: 8px;\n  background: var(--surface);\n  color: var(--text);\n  transition: border-color 0.15s ease, box-shadow 0.15s ease;\n}\n\ninput:focus {\n  outline: none;\n  border-color: var(--border-focus);\n  box-shadow: 0 0 0 3px var(--primary-light);\n}\n\n.button-row {\n  display: flex;\n  gap: 1rem;\n  margin-top: 0.5rem;\n  align-items: center;\n}\n\nbutton {\n  font-family: var(--font);\n  font-size: 0.95rem;\n  font-weight: 600;\n  padding: 0.75rem 1.25rem;\n  border-radius: 8px;\n  border: none;\n  cursor: pointer;\n  transition: background-color 0.15s ease, transform 0.05s ease;\n}\n\nbutton:active {\n  transform: scale(0.98);\n}\n\n.btn-primary {\n  background-color: var(--primary);\n  color: white;\n}\n\n.btn-primary:hover:not(:disabled) {\n  background-color: var(--primary-hover);\n}\n\n.btn-secondary {\n  background-color: var(--surface-alt);\n  color: var(--text);\n  border: 1px solid var(--border);\n}\n\n.btn-secondary:hover:not(:disabled) {\n  background-color: var(--border);\n}\n\nbutton:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n\n.result-box {\n  margin-top: 1.5rem;\n  padding: 1rem;\n  background-color: var(--primary-light);\n  border-radius: 8px;\n  border: 1px solid rgba(156, 74, 47, 0.2);\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.result-box span {\n  font-weight: 600;\n  color: var(--primary);\n  font-size: 1.15rem;\n}\n\n.notice {\n  font-size: 0.85rem;\n  color: var(--text-muted);\n  margin-top: 0.5rem;\n}\n\n.saved-list {\n  display: flex;\n  flex-direction: column;\n  gap: 0.75rem;\n}\n\n.saved-item {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 1rem;\n  background: var(--surface-alt);\n  border-radius: 8px;\n  border: 1px solid var(--border);\n}\n\n.saved-info h3 {\n  font-size: 1rem;\n  font-weight: 600;\n  margin-bottom: 0.25rem;\n}\n\n.saved-info p {\n  font-size: 0.85rem;\n  color: var(--text-muted);\n}\n\n.empty-state {\n  text-align: center;\n  padding: 2rem;\n  color: var(--text-muted);\n  font-style: italic;\n}\n\n.error-msg {\n  color: #b91c1c;\n  font-size: 0.85rem;\n  margin-top: 0.5rem;\n}\n",
+      "html": "<header>\n  <h1>Serving Studio</h1>\n  <p class=\"subtitle\">Precise ingredient scaling for every recipe size.</p>\n</header>\n\n<main>\n  <section class=\"card\" aria-labelledby=\"calc-heading\">\n    <h2 id=\"calc-heading\">Scale Ingredient</h2>\n    <form id=\"scale-form\">\n      <div class=\"field-group full-width\">\n        <label for=\"ingredient\">Ingredient Name</label>\n        <input type=\"text\" id=\"ingredient\" placeholder=\"e.g., All-Purpose Flour\" required />\n      </div>\n\n      <div class=\"field-group\">\n        <label for=\"quantity\">Quantity (grams)</label>\n        <input type=\"number\" id=\"quantity\" step=\"any\" min=\"0\" placeholder=\"150\" required />\n      </div>\n\n      <div class=\"field-group\">\n        <label for=\"original\">Original Servings</label>\n        <input type=\"number\" id=\"original\" step=\"any\" min=\"0.1\" placeholder=\"4\" required />\n      </div>\n\n      <div class=\"field-group full-width\">\n        <label for=\"target\">Target Servings</label>\n        <input type=\"number\" id=\"target\" step=\"any\" min=\"0.1\" placeholder=\"6\" required />\n      </div>\n\n      <div class=\"button-row full-width\">\n        <button type=\"submit\" id=\"calc-btn\" class=\"btn-primary\">Calculate</button>\n        <button type=\"button\" id=\"save-btn\" class=\"btn-secondary\" disabled>Save Result</button>\n      </div>\n    </form>\n\n    <div id=\"error-container\"></div>\n\n    <div id=\"result-container\" style=\"display: none;\" class=\"result-box\">\n      <div>\n        <div style=\"font-size: 0.85rem; color: var(--text-muted);\">Scaled Quantity</div>\n        <span id=\"result-value\">0 g</span>\n      </div>\n      <div id=\"preview-notice\" class=\"notice\" style=\"display: none;\"></div>\n    </div>\n  </section>\n\n  <section class=\"card\" aria-labelledby=\"saved-heading\">\n    <h2 id=\"saved-heading\">Saved Calculations</h2>\n    <div id=\"saved-list-container\" class=\"saved-list\">\n      <div class=\"empty-state\">No saved calculations yet. Scale and save an ingredient above.</div>\n    </div>\n  </section>\n</main>\n",
+      "format": "html-v1",
+      "assetIds": [],
+      "bridgeVersion": 1
+    },
+    "components": [
+      {
+        "id": "generated-page",
+        "span": "full",
+        "type": "generated-site",
+        "fields": [
+          "ingredient",
+          "quantity",
+          "original",
+          "target",
+          "scaled"
+        ],
+        "variant": "default",
+        "version": 1,
+        "actionIds": [
+          "calculate_scale",
+          "save_recipe",
+          "delete_recipe"
+        ],
+        "toolBindings": [
+          {
+            "kind": "generated",
+            "toolId": "scale_ingredient",
+            "actionId": "calculate_scale",
+            "toolVersion": 1
+          }
+        ]
+      }
+    ],
+    "description": "Focused recipe scaling tool with backend computation and saved lists.",
+    "specVersion": 1
+  },
+  "summary": "A focused English recipe-scaling website called Serving Studio with custom backend tool calculation and saved records.",
+  "entitySchema": {
+    "name": "Recipe Calculation",
+    "fields": [
+      {
+        "id": "ingredient",
+        "type": "text",
+        "label": "Ingredient Name",
+        "public": true,
+        "required": true
+      },
+      {
+        "id": "quantity",
+        "type": "number",
+        "label": "Quantity (g)",
+        "public": true,
+        "required": true
+      },
+      {
+        "id": "original",
+        "type": "number",
+        "label": "Original Servings",
+        "public": true,
+        "required": true
+      },
+      {
+        "id": "target",
+        "type": "number",
+        "label": "Target Servings",
+        "public": true,
+        "required": true
+      },
+      {
+        "id": "scaled",
+        "type": "number",
+        "label": "Scaled Quantity (g)",
+        "public": true,
+        "required": true
+      }
+    ],
+    "schemaVersion": 1
+  },
+  "capabilityGaps": [],
+  "codeToolProposals": [
+    {
+      "kind": "code-js-v1",
+      "name": "Scale Ingredient",
+      "tests": [
+        {
+          "name": "Standard scale up",
+          "input": {
+            "quantity": 150,
+            "targetServings": 6,
+            "originalServings": 4
+          },
+          "expected": {
+            "scaledQuantity": 225
+          }
+        },
+        {
+          "name": "Scale up small",
+          "input": {
+            "quantity": 200,
+            "targetServings": 3,
+            "originalServings": 2
+          },
+          "expected": {
+            "scaledQuantity": 300
+          }
+        }
+      ],
+      "source": "function run(input, api) {\n  const scaled = (input.quantity * input.targetServings) / input.originalServings;\n  return { scaledQuantity: Math.round(scaled * 100) / 100 };\n}",
+      "toolId": "scale_ingredient",
+      "description": "Scales an ingredient quantity based on original and target servings.",
+      "inputSchema": {
+        "type": "object",
+        "required": [
+          "quantity",
+          "originalServings",
+          "targetServings"
+        ],
+        "properties": {
+          "quantity": {
+            "type": "number",
+            "minimum": 0
+          },
+          "targetServings": {
+            "type": "number",
+            "minimum": 0.1
+          },
+          "originalServings": {
+            "type": "number",
+            "minimum": 0.1
+          }
+        },
+        "additionalProperties": false
+      },
+      "sideEffects": "none",
+      "toolVersion": 1,
+      "capabilities": {
+        "connectors": [],
+        "publicRecordFields": []
+      },
+      "outputSchema": {
+        "type": "object",
+        "required": [
+          "scaledQuantity"
+        ],
+        "properties": {
+          "scaledQuantity": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  ]
+}

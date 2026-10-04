@@ -967,7 +967,9 @@
         "LF-223",
         "LF-234",
         "LF-235",
-        "LF-236"
+        "LF-236",
+        "LF-237",
+        "LF-238"
       ],
       "acceptance": [
         "Deploy exact reviewed CI-green source to existing free Render service and preserve Neon data/OAuth",
@@ -1146,7 +1148,47 @@
         "Meaningful offline request instruction regression and relevant source-generator tests pass; no additional live provider request needed"
       ],
       "notes": "Root real KitchenMath candidate26 failedPiarguments actions.1.id/actions.2.id pattern: model used record.create/record.delete asIDs. Earlier24/25 used create_calc action as toolbinding buttype record.create. Providercompactprojection removesregex fromwire; explain semantic constraints in natural instructions so ordinaryusers do not needinternalcontracts. No advancedresearch/provider/deploy/source-template specialization."
+    },
+    {
+      "id": "LF-237",
+      "role": "backend",
+      "title": "Support ordinary generated form submit interactions without native navigation",
+      "paths": [
+        "apps/api/src/generated-frame.ts",
+        "apps/api/src/generated-browser.test.ts",
+        "docs/backend/generated-sites.md",
+        "docs/memory/roles/backend/",
+        "docs/memory/handoffs/backend/"
+      ],
+      "depends_on": [
+        "LF-235"
+      ],
+      "acceptance": [
+        "Trusted submit-button clicks and ordinary Enter interactions dispatch one submit with constraint validation/submitter behavior in the generated frame",
+        "Keep iframe/CSP sandbox allow-scripts and form-action none; no native form navigation, network permission expansion, new model calls or advanced bypass research",
+        "Targeted ordinary browser tests cover valid/invalid/disabled/typebutton/textarea/Enter behavior and prior supported interactions; API build/typecheck pass"
+      ],
+      "notes": "Hosted real Pi candidate Serving Studio v1 has a form submit handler; actual valid Calculate clicks produce no submit/toolPOST because native sandbox blocks before submit event. Adapt trusted host bootstrap only. Preserve source/tool version and provider ledger30/30; no regenerated candidate needed. Coordinate independent QA LF238."
+    },
+    {
+      "id": "LF-238",
+      "role": "qa",
+      "title": "Independently verify generated form user interactions and actual calculator fixture",
+      "paths": [
+        "docs/qa/generated-forms/",
+        "docs/memory/roles/qa/",
+        "docs/memory/handoffs/qa/"
+      ],
+      "depends_on": [
+        "LF-237"
+      ],
+      "acceptance": [
+        "Independent ordinary browser verification of trusted click/Enter, invalid required values, disabled controls, typebutton and textarea behavior without unintended duplicate submission/navigation",
+        "Use an isolated business database and actual published Serving Studio browser source/tool fixture to invoke150/4/6 result225 and save; label local identities and evidence accurately",
+        "Existing sandbox/CSP network restrictions remain unchanged; no model/provider/production mutation or advanced bypass reproduction; handoff actual results/limits"
+      ],
+      "notes": "Prepare read-only while LF237 is being implemented; claim only after dependency completion. Live formal225/save acceptance remains DevOps LF228 after exact reviewed patch deployment."
     }
   ],
-  "revision": 25
+  "revision": 26
 }

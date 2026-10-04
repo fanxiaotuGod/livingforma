@@ -26,6 +26,62 @@ it('runs normal DOM interaction and bridge in an opaque frame with Trusted Types
   const page=await browser.newPage();try{await page.goto(origin);const frame=page.frameLocator('iframe');await frame.getByRole('button',{name:'Count 0'}).click();expect(await frame.getByRole('button',{name:'Count 1'}).count()).toBe(1);expect(await frame.locator('circle').count()).toBe(1);expect(await frame.locator('body').getAttribute('data-records')).toBe('0');expect(await page.evaluate(()=> (window as unknown as {audit:{origins:string[]}}).audit.origins)).toEqual(['null']);}finally{await page.close();}
 });
 
+// Ordinary local form fixtures. The host returns fixture data; these do not run
+// a model or write business records. Real generated-source/tool acceptance is QA.
+const formScript=`(async()=>{await lf.ready;const events=[];document.addEventListener('submit',event=>{events.push({form:event.target.id,submitter:event.submitter?.id??null,bubbles:event.bubbles,cancelable:event.cancelable});event.preventDefault();document.body.dataset.submits=JSON.stringify(events);});document.body.dataset.submits='[]';lf.reportReady();})();`;
+function formSource(html:string,js=formScript):GeneratedArtifact{return{format:'html-v1',bridgeVersion:1,html,css:'body{font:16px system-ui} label,button{display:block;margin:8px}',js,assetIds:[]};}
+
+it('dispatches one local form submit for click, nested button content and Enter using the native form owner',async()=>{
+ const previous=source;source=formSource('<main><button id="external" form="recipe"><span>External calculate</span></button><form id="recipe"><label>Amount<input name="amount" type="number" min="1" required value="150"></label><input name="submit" value="named"><input name="reportValidity" value="named"><input name="requestSubmit" value="named"><button id="calculate"><span>Calculate</span></button><button id="second" type="submit">Second calculate</button></form></main>',formScript+`document.getElementById('external').addEventListener('click',event=>document.body.dataset.implicitClick=JSON.stringify({trusted:event.isTrusted,detail:event.detail}));`);
+ const page=await browser.newPage(),errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));try{
+  const before=outbound;await page.goto(origin);const frame=page.frameLocator('iframe');const state=()=>frame.locator('body').getAttribute('data-submits').then(value=>JSON.parse(value!));await frame.locator('body[data-submits]').waitFor();
+  await frame.getByText('Calculate',{exact:true}).click();await expect.poll(state).toHaveLength(1);expect((await state())[0]).toEqual({form:'recipe',submitter:'calculate',bubbles:true,cancelable:true});
+  await frame.getByLabel('Amount').press('Enter');await expect.poll(state).toHaveLength(2);expect((await state())[1].submitter).toBe('external');expect(await frame.locator('body').getAttribute('data-implicit-click')).toBe('{"trusted":true,"detail":0}');
+  await frame.getByText('External calculate',{exact:true}).click();await expect.poll(state).toHaveLength(3);expect((await state())[2].submitter).toBe('external');
+  await frame.getByRole('button',{name:'Second calculate',exact:true}).click();await expect.poll(state).toHaveLength(4);expect((await state())[3].submitter).toBe('second');
+  await page.waitForTimeout(50);expect(await state()).toHaveLength(4);expect(outbound).toBe(before);expect(page.frames().find(frame=>frame.url().includes('/api/generated-frame'))?.url()).toBe(`${origin}/api/generated-frame`);expect(await page.locator('iframe').getAttribute('sandbox')).toBe('allow-scripts');expect(errors).toEqual([]);
+ }finally{await page.close();source=previous;}
+});
+
+it('preserves required/min/pattern validation and novalidate controls without native navigation',async()=>{
+ const previous=source;source=formSource('<form id="validated"><label>Amount<input name="amount" type="number" min="1" required></label><label>Code<input name="code" pattern="[A-Z]{2}" required value="LF"></label><button id="calculate">Calculate</button><button id="skip" formnovalidate>Skip validation</button></form><form id="unchecked" novalidate><input required><button id="unchecked-button">Unchecked calculate</button></form>');
+ const page=await browser.newPage(),errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));try{
+  await page.goto(origin);const frame=page.frameLocator('iframe');const state=()=>frame.locator('body').getAttribute('data-submits').then(value=>JSON.parse(value!));await frame.locator('body[data-submits]').waitFor();
+  await frame.getByRole('button',{name:'Calculate',exact:true}).click();await page.waitForTimeout(30);expect(await state()).toEqual([]);expect(await frame.getByLabel('Amount').evaluate(input=>(input as HTMLInputElement).validity.valueMissing)).toBe(true);
+  await frame.getByLabel('Amount').fill('0');await frame.getByRole('button',{name:'Calculate',exact:true}).click();await page.waitForTimeout(30);expect(await state()).toEqual([]);expect(await frame.getByLabel('Amount').evaluate(input=>(input as HTMLInputElement).validity.rangeUnderflow)).toBe(true);
+  await frame.getByLabel('Amount').fill('150');await frame.getByLabel('Code').fill('invalid');await frame.getByRole('button',{name:'Calculate',exact:true}).click();await page.waitForTimeout(30);expect(await state()).toEqual([]);expect(await frame.getByLabel('Code').evaluate(input=>(input as HTMLInputElement).validity.patternMismatch)).toBe(true);
+  await frame.getByRole('button',{name:'Skip validation'}).click();await expect.poll(state).toHaveLength(1);expect((await state())[0].submitter).toBe('skip');
+  await frame.getByRole('button',{name:'Unchecked calculate'}).click();await expect.poll(state).toHaveLength(2);expect((await state())[1].form).toBe('unchecked');
+  await frame.getByLabel('Code').fill('LF');await frame.getByRole('button',{name:'Calculate',exact:true}).click();await expect.poll(state).toHaveLength(3);expect(errors).toEqual([]);
+ }finally{await page.close();source=previous;}
+});
+
+it('does not submit disabled controls, type button, textarea, cancelled activations or multiple-input implicit forms',async()=>{
+ const previous=source;source=formSource('<form id="disabled-default"><label>Default input<input value="ready"></label><button id="disabled" disabled>Disabled calculate</button><button id="enabled">Enabled calculate</button><button type="button">Other action</button><fieldset disabled><button>Fieldset calculate</button></fieldset><label>Notes<textarea></textarea></label><button id="cancel">Cancelled calculate</button></form><form id="single"><label>Only input<input value="ready"></label></form><form id="multi"><label>First input<input value="ready"></label><input value="second"></form>',formScript+`document.getElementById('cancel').addEventListener('click',event=>event.preventDefault());`);
+ const page=await browser.newPage(),errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));try{
+  await page.goto(origin);const frame=page.frameLocator('iframe');const state=()=>frame.locator('body').getAttribute('data-submits').then(value=>JSON.parse(value!));await frame.locator('body[data-submits]').waitFor();
+  await frame.getByRole('button',{name:'Disabled calculate',exact:true}).click({force:true});await frame.getByRole('button',{name:'Fieldset calculate'}).click({force:true});await frame.getByRole('button',{name:'Other action'}).click();await frame.getByRole('button',{name:'Cancelled calculate'}).click();await frame.getByLabel('Default input').press('Enter');await frame.getByLabel('Notes').press('Enter');await frame.getByLabel('First input').press('Enter');await page.waitForTimeout(30);expect(await state()).toEqual([]);expect(await frame.getByLabel('Notes').inputValue()).toBe('\n');
+  await frame.getByLabel('Only input').press('Enter');await expect.poll(state).toEqual([{form:'single',submitter:null,bubbles:true,cancelable:true}]);
+  await frame.getByRole('button',{name:'Enabled calculate'}).click();await expect.poll(state).toHaveLength(2);expect(errors).toEqual([]);
+ }finally{await page.close();source=previous;}
+});
+
+it('supports local requestSubmit and avoids a second submit when activation handlers already dispatch one',async()=>{
+ const previous=source;source=formSource('<form id="recipe"><label>Amount<input type="number" min="1" value="150" required></label><button id="calculate">Calculate once</button><button id="manual">Manual submit once</button><button id="request" type="button">Request submit</button><button id="request-no-button" type="button">Request without button</button><button id="bad-request" type="button">Invalid request</button></form><form id="other"><button id="foreign">Foreign button</button></form>',formScript+`const form=document.getElementById('recipe'),calculate=document.getElementById('calculate');calculate.addEventListener('click',()=>form.requestSubmit(calculate));document.getElementById('manual').addEventListener('click',event=>form.dispatchEvent(new SubmitEvent('submit',{bubbles:true,cancelable:true,submitter:event.currentTarget})));document.getElementById('request').onclick=()=>form.requestSubmit(calculate);let withoutCalls=0;document.getElementById('request-no-button').onclick=()=>{if(withoutCalls++)form.requestSubmit(null);else form.requestSubmit();};document.getElementById('bad-request').onclick=()=>{const errors=[];for(const button of [document.getElementById('request'),document.getElementById('foreign')])try{form.requestSubmit(button)}catch(error){errors.push(error.name)}document.body.dataset.requestErrors=JSON.stringify(errors);};form.querySelector('input').onkeydown=event=>event.preventDefault();`);
+ const page=await browser.newPage(),errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));try{
+  await page.goto(origin);const frame=page.frameLocator('iframe');const state=()=>frame.locator('body').getAttribute('data-submits').then(value=>JSON.parse(value!));await frame.locator('body[data-submits]').waitFor();
+  await frame.getByRole('button',{name:'Calculate once'}).click();await expect.poll(state).toHaveLength(1);await page.waitForTimeout(30);expect(await state()).toHaveLength(1);
+  await frame.getByRole('button',{name:'Manual submit once'}).click();await expect.poll(state).toHaveLength(2);await page.waitForTimeout(30);expect(await state()).toHaveLength(2);
+  await frame.getByRole('button',{name:'Request submit',exact:true}).click();await expect.poll(state).toHaveLength(3);expect((await state())[2].submitter).toBe('calculate');
+  await frame.getByRole('button',{name:'Request without button'}).click();await expect.poll(state).toHaveLength(4);expect((await state())[3].submitter).toBeNull();
+  await frame.getByRole('button',{name:'Invalid request'}).click();expect(await frame.locator('body').getAttribute('data-request-errors')).toBe('["TypeError","NotFoundError"]');
+  await frame.getByLabel('Amount').press('Enter');await page.waitForTimeout(30);expect(await state()).toHaveLength(4);
+  // The normal UI handler passes null explicitly; like omitted submitter it
+  // validates the form and exposes event.submitter=null.
+  await frame.getByRole('button',{name:'Request without button'}).click();await expect.poll(state).toHaveLength(5);expect((await state())[4].submitter).toBeNull();expect(errors).toEqual([]);
+ }finally{await page.close();source=previous;}
+});
+
 it('blocks fresh-realm srcdoc, HTML sinks, script/event sinks and private policy recovery',async()=>{
   // Deliberately bypass source validation to exercise the actual browser containment.
   source.js=`const result={};const check=(name,fn)=>{try{result[name]=fn()}catch(error){result[name]='blocked:'+error.name}};

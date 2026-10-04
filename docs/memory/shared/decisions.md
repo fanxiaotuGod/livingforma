@@ -6,6 +6,10 @@ permalink: livingforma/shared/decisions
 
 # 已接受决策
 
+## D-029 · 2026-10-04 02:11 America/Vancouver · 普通生成表单事件适配
+
+正式Serving Studio真实模型候选已checked/published，但宿主sandbox allow-scripts在浏览器派发原生submit前阻止表单提交，正常Calculate无工具POST。这是普通兼容问题。接受LF237由可信frame bootstrap支持用户submit按钮/Enter及局部requestSubmit事件，保留原生约束校验、submitter、取消与一次派发；iframe/CSP仍sandbox allow-scripts、form-action none，不开放原生表单导航、网络或allow-forms。LF238独立普通浏览器验收后，LF228精确CI绿SHA修复发布并验证原候选225/save，无新模型请求。当前只是接受方案/任务，尚未宣称修复验收。
+
 ## D-028 · 2026-10-04 00:35 America/Vancouver · 有界冷启动与工具执行分阶段
 
 单并发和移除Worker运行时schema/parser导入后，实际Free0.1CPU/512MiB的完整adapter测试仍有冷启动超过4秒；证据保留在Backend LF229 performance.json。D027的4秒**总**deadline不能宣称验收通过。改为明确且有界的启动8秒、guest执行4秒、单Worker总计最多12秒；只有宿主可信Worker就绪后才进入执行阶段，parent仍终止超时/取消。全局并发1、guest heap32MiB/stack256KiB/Broker8和所有权限不变。API invoke14秒、registry test batch65秒；网站生成90秒、独立tool proposal30秒仍为更严格的整体工作期限，超过则真实失败。无偷偷预热或无限等待，不增加费用。LF229须同Free规格实测全部检查通过后完成。

@@ -55,7 +55,7 @@ const remove=bindCall(Node.prototype.removeChild),getNames=bindCall(Element.prot
 const lower=bindCall(String.prototype.toLowerCase),test=bindCall(RegExp.prototype.test),setHas=bindCall(Set.prototype.has);
 const htmlTags=new Set('a abbr address article aside b bdi bdo blockquote br button caption code col colgroup data datalist dd del details dfn dialog div dl dt em fieldset figcaption figure footer form h1 h2 h3 h4 h5 h6 header hr i img input kbd label legend li main mark menu meter nav ol optgroup option output p picture pre progress q s samp section select small source span strong sub summary sup table tbody td template textarea tfoot th thead time tr u ul var wbr'.split(' '));
 const svgTags=new Set('svg g defs path circle ellipse rect line polyline polygon text tspan title desc lineargradient radialgradient stop clippath mask pattern symbol use'.split(' '));
-const attributes=new Set('id class title role style hidden tabindex dir lang name type value placeholder disabled checked selected readonly required multiple min max step maxlength minlength rows cols for width height alt loading decoding colspan rowspan scope datetime open start reversed size autocomplete accept list form controls viewbox fill stroke stroke-width stroke-linecap stroke-linejoin stroke-dasharray stroke-dashoffset fill-rule clip-rule d points x y x1 x2 y1 y2 cx cy r rx ry transform opacity fill-opacity stroke-opacity preserveaspectratio offset stop-color stop-opacity gradientunits gradienttransform patternunits patterntransform clip-path mask text-anchor dominant-baseline font-size'.split(' '));
+const attributes=new Set('id class title role style hidden tabindex dir lang name type value placeholder disabled checked selected readonly required multiple min max step maxlength minlength pattern novalidate formnovalidate rows cols for width height alt loading decoding colspan rowspan scope datetime open start reversed size autocomplete accept list form controls viewbox fill stroke stroke-width stroke-linecap stroke-linejoin stroke-dasharray stroke-dashoffset fill-rule clip-rule d points x y x1 x2 y1 y2 cx cy r rx ry transform opacity fill-opacity stroke-opacity preserveaspectratio offset stop-color stop-opacity gradientunits gradienttransform patternunits patterntransform clip-path mask text-anchor dominant-baseline font-size'.split(' '));
 const htmlNamespace='http://www.w3.org/1999/xhtml',svgNamespace='http://www.w3.org/2000/svg';
 function clean(root){
   let node=first(root);
@@ -79,6 +79,53 @@ const defaultPolicy=trustedTypes.createPolicy('default',{createHTML(value){
   const parsed=parseHTML(parseTrusted(value),'text/html'),root=body(parsed);clean(root);return innerHTML(root);
 }});
 const sourcePolicy=trustedTypes.createPolicy('lf-source',{createScript:value=>value});
+// The sandbox stops native form submission before validation or submit events.
+// Reproduce the local event path only; never invoke a native form navigation.
+const add=bindCall(EventTarget.prototype.addEventListener),dispatch=bindCall(EventTarget.prototype.dispatchEvent);
+const matches=bindCall(Element.prototype.matches),closest=bindCall(Element.prototype.closest),queryAll=bindCall(Document.prototype.querySelectorAll);
+const connected=getter(Node.prototype,'isConnected'),formElements=getter(HTMLFormElement.prototype,'elements');
+const noValidate=getter(HTMLFormElement.prototype,'noValidate'),reportValidity=bindCall(HTMLFormElement.prototype.reportValidity);
+const buttonForm=getter(HTMLButtonElement.prototype,'form'),buttonType=getter(HTMLButtonElement.prototype,'type'),buttonNoValidate=getter(HTMLButtonElement.prototype,'formNoValidate');
+const inputForm=getter(HTMLInputElement.prototype,'form'),inputType=getter(HTMLInputElement.prototype,'type'),inputNoValidate=getter(HTMLInputElement.prototype,'formNoValidate');
+const Submit=SubmitEvent,Exception=DOMException,later=setTimeout.bind(window),submissions=new WeakMap(),submitting=new WeakSet();
+const isTag=(element,tag)=>element&&nodeType(element)===1&&namespace(element)===htmlNamespace&&localName(element)===tag;
+const formOwner=element=>isTag(element,'button')?buttonForm(element):isTag(element,'input')?inputForm(element):null;
+const submitButton=element=>isTag(element,'button')?buttonType(element)==='submit':isTag(element,'input')&&['submit','image'].includes(inputType(element));
+const skipsValidation=element=>isTag(element,'button')?buttonNoValidate(element):element?inputNoValidate(element):false;
+function submitLocally(form,submitter){
+  if(!connected(form)||submitting.has(form))return;
+  submitting.add(form);
+  try{
+    if(!noValidate(form)&&!skipsValidation(submitter)&&!reportValidity(form))return;
+    dispatch(form,new Submit('submit',{bubbles:true,cancelable:true,submitter}));
+  }finally{submitting.delete(form);}
+}
+add(document,'submit',event=>{if(isTag(event.target,'form'))submissions.set(event.target,(submissions.get(event.target)||0)+1);},true);
+function afterActivation(event,form,submitter){
+  const before=submissions.get(form)||0;
+  // A task observes cancellation by all activation handlers, and avoids adding
+  // a second event if a handler already dispatched one or used requestSubmit.
+  later(()=>{if(!event.defaultPrevented&&(submissions.get(form)||0)===before&&(!submitter||(connected(submitter)&&formOwner(submitter)===form&&!matches(submitter,':disabled'))))submitLocally(form,submitter);},0);
+}
+add(document,'click',event=>{
+  if(!event.isTrusted||event.button!==0||!event.target||nodeType(event.target)!==1)return;
+  const submitter=closest(event.target,'button,input');
+  if(!submitter||!submitButton(submitter)||matches(submitter,':disabled'))return;
+  const form=formOwner(submitter);if(form)afterActivation(event,form,submitter);
+},true);
+const implicitTypes=new Set('text search tel url email password date month week time datetime-local number'.split(' '));
+add(document,'keydown',event=>{
+  if(!event.isTrusted||event.key!=='Enter'||event.isComposing||event.repeat||event.altKey||event.ctrlKey||event.metaKey||event.shiftKey||!isTag(event.target,'input')||!setHas(implicitTypes,inputType(event.target)))return;
+  const form=inputForm(event.target);if(!form||matches(event.target,':disabled'))return;
+  const controls=queryAll(document,'button,input');let blocking=0;
+  for(let i=0;i<controls.length;i++){const control=controls[i];if(formOwner(control)!==form)continue;if(submitButton(control))return;if(isTag(control,'input')&&setHas(implicitTypes,inputType(control)))blocking++;}
+  if(blocking<=1)afterActivation(event,form,null);
+},true);
+Object.defineProperty(HTMLFormElement.prototype,'requestSubmit',{value:function(submitter=null){
+  formElements(this); // Native brand check; form controls may shadow method names.
+  if(submitter!==null){if(!submitButton(submitter))throw new TypeError('The submitter must be a submit button.');if(formOwner(submitter)!==this)throw new Exception('The submitter belongs to another form.','NotFoundError');}
+  submitLocally(this,submitter);
+},writable:false,configurable:false});
 // Deny registering customized built-ins that could construct a fresh frame realm.
 try{Object.defineProperty(CustomElementRegistry.prototype,'define',{value:denied,writable:false,configurable:false});Object.defineProperty(customElements,'define',{value:denied,writable:false,configurable:false});}catch{}
 const style=document.createElement('style');style.textContent=artifact.css;document.head.appendChild(style);
