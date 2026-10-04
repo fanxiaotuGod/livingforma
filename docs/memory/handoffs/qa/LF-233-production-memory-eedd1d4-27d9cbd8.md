@@ -1,18 +1,18 @@
+# Preserved production session-hotfix role memory
+
+Source: origin/main eedd1d450b45ff36062bbc7281040fddb0d462ca. Historical accepted hotfix state; newer generation summary remains in role memory.
+
 ---
 title: LivingForma QA memory
 type: note
 permalink: livingforma/roles/qa/memory
-updated: 2026-10-04
+updated: 2026-10-03
 timezone: America/Vancouver
 ---
 
 # QA 角色记忆
 
-**当前 LF-223：本地普通生成验收 verified，2026-10-04。** 独立 Chrome→实际Host/PGlite/SSE/iframe/QuickJS 8/8、HTTP工具/物理重启11/11、既有普通generated/bridge/progress28/28、QA脚本strict TypeScript/diffcheck通过。详见 [报告](../../../qa/generated-sites/acceptance.md) 和 [handoff](../../handoffs/qa/LF-223-78389b52-ff39-48a0-9ffc-2ade937f3f37.md)。生成源码/工具/轮廓明确为离线fixtures，真正的Host/数据库/Guest执行和浏览器交互不是API拦截mock；不证明真实Gemini或新版上线。当前生产仍为eedd1d4历史门槛，Root负责新真实模型/部署验收。高级绕过研究暂停，只审阅旧防御证据、执行普通功能/隐私/权限/stale/invalid-source回归。
-
-发布限制：LF-229 constrained free Docker 的冷初始化/fixture/invocation 仍超时；Backend 的本地 runtime6/API10 通过不能替代此实际资源门槛。性能报告已读、阻断已写入 QA handoff。三类页面双宽交互及晚到账号响应均实际通过，剩余真实模型兼容性、免费容器修复与公网发布由对应任务验收。
-
-负责独立核对事实与验收证据。先读 PRD 和任务板，再验证分配范围。当前以文末 LF-160 最终更新为准：MVP 实现验收通过，正式域名部署仍待 LF-170。以下早期工作流和应用回归记录保留历史状态。
+负责独立核对事实与验收证据。先读 PRD 和任务板，再验证分配范围。当前以文末 LF-211 更新为准：独立 session recovery hotfix 验证通过，待 coordinator 整合和线上复验。LF-160 及以下早期工作流和应用回归记录保留历史状态。
 
 **当前 LF-005：verified（仅为工作流范围）。** coordinator 调整依赖并为检索增加有界等待后，14:24 独立复核最终报告成功。14:22 初次成功和14:23 暂时失败都作为历史证据保留；产品应用和当前 Codex chat 热加载仍不包含在此结论中。
 
@@ -84,19 +84,12 @@ timezone: America/Vancouver
 - 预算以真实自然UTC日切为准：GeminiOct4 1/30，固定period STT5/60秒/TTS316/1000字符；此前30/30失败前后ledger相同。QA本轮真实provider调用0、budget/clock修改0。
 - 发布限制：待LF170实际host/domain/HTTPS/Google生产及代理SSE/secure-context媒体；物理设备和其他浏览器未由虚拟Chrome替代。仅单实例工具in-flight合并，跨实例完成结果持久replay；不声称跨实例external exactly-once。收费和Render新账户条款遵循用户确认。
 
-## 2026-10-03 17:35 · LF-204 60-module expansion
+## 2026-10-03 17:55 · America/Vancouver · LF-211 当前状态
 
-- Verified local-development module acceptance; no confirmed open defects in tested scope. Independent Chromium matrix60×5=300 passed at320/390/768/1440 and318px desktop component width; no overflow/content escape/clipping/pageerrors. Changed-module post-fix geometry20/20 also passed.
-- Gallery analytics/input behavior plus actual local HTTP/PGlite Owner add/config/drag/save/reload, anonymous SSE, numeric persistence/login guard and stale layout conflict22/22 passed. Camera/tool-result gallery placeholders are expressly excluded from new device/provider execution claims.
-- Coordinator review fixes independently verified11/11: invalidbins/precision safety, leaderboard rank-before-limit, text/range switch-record drafts, concurrent real-record conflicts, controls locked during delayed real presentation, card variants. Legacy form/calendar/kanban compact and detail hero atmobile/narrowPC8/8 passed.
-- [Report](../../../qa/module-expansion/acceptance.md) includes JSON, reusable4scripts, screenshots and harness limitations. Scoped QA TypeScript and diff check passed. Original transient hero369px measurement settled320 and no escaped element; bounded settled assertion passed, not an open defect.
-- No provider/cloud/paid/production call, commit or push; local fixture spaces only. QA browsers closed, coordinator's local server retained. Handoff [LF-204-440496ff](../../handoffs/qa/LF-204-440496ff-3b82-495f-8bf4-641aee81b0f5.md).
+- **Verified：独立 session recovery hotfix regression 16/16 pass，浏览器 JS errors 0。** 最新 `index-Bt_tUXM1.js`，实际 HTTP/PGlite/Chrome；未发现仍阻塞此次热修的缺陷。代码只读核对 force invalidation、乱序 session read、私有 view、account draft、media cleanup 边界。
+- 工作仅隔离 `/Users/fanhaocheng/project/livingforma-release-fix` / `fix/session-recovery`，base `3325718596cca11e794b4525eb98c3ea5efc8405`、runtime base `7efaa91`。原 checkout 的其他 chat module edits 不属于此次测试或发布。
+- 同 Owner 轮换恰好一 POST / 一 planner；Participant/anonymous 零 POST；GET→POST 轮换实际403不自动重放，草稿保留、明确重试成功；迟到 proposal/create/tool/identity 不恢复私有内容或清草稿。私有404清视图、media tracks ended/plays0、Participant书籍和习惯写入、logout账户隔离、并行同账号表单/tool乱序读均通过。
+- [报告](../../../qa/session-recovery/report.md)、[机器证据](../../../qa/session-recovery/results.json)、[源码与bundle SHA256](../../../qa/session-recovery/source-manifest.json)。历史 harness 429 和旧版 setup timeout 原样保留；最终全场景通过。独立 strict TypeScript script check通过；只改自己的tests/docs/role，不改产品代码。
+- 边界：local personas 不是 Google，local rules/fixture adapters 不是 Gemini/Pi provider实调；camera虚拟设备；本轮不读.env、不访问真实provider或云、不改quota、不收费。Coordinator负责全repo检查/上线，DevOps需 hosted Google跨tab轮换复验；已被server接受的旧写入不承诺回滚。
 
-### 17:40 supplemental real capability shells
-
-- Actual idle CameraScene and enabled ToolResult at320/1440 narrow passed4/4 on separate local4319 PGlite. Explicit metadata fixtures only; media-session requests/provider/tool invokes all0. Browser and temporary server closed.
-- Found collapsed camera icon, then aspect-ratio width expansion from initial fix. Coordinator final CSS independently reverified: previews234×240/260×240, icon34px, contained text/controls and exact document widths. Final screenshot visually inspected. No open defects in tested scope.
-- All5 QA scripts pass scoped TypeScript; capability-shells.json and actual-camera/tool screenshots supplement the report. Gallery placeholders remain clearly distinguished from actual idle controls and provider/device execution.
-
-
-Historical production403 hotfix summary preserved during LF233 Git integration: [eedd1d4 memory](../../handoffs/qa/LF-233-production-memory-eedd1d4-27d9cbd8.md). Current generated-application state above remains authoritative.
+- 最后新增同身份/同CSRF private membership撤销：真实404清private内容。首版404清理留下无限skeleton已由QA复现，Frontend补error/loadingfalse/offline并校验identity/page/slug；最终全16项重新通过，英文error/Reconnect截图视觉核对通过。完整最终run00:54:55UTC，历史15pass和此追加失败均保留。

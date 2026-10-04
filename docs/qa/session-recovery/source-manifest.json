@@ -1,0 +1,23 @@
+{
+  "recordedAt": "2026-10-04T00:55:42.277975+00:00",
+  "baseCommit": "3325718596cca11e794b4525eb98c3ea5efc8405",
+  "testedFrontendBundle": "index-Bt_tUXM1.js",
+  "testRunAt": "2026-10-04T00:54:55.636Z",
+  "scenarioCount": 16,
+  "note": "Final full 16-case run after same-identity private membership 404/loading fix. Product/test hashes captured after run. Prior 15-case results and source manifest retained as historical evidence; no primary-checkout module expansion included.",
+  "sha256": {
+    "apps/web/src/App.tsx": "7fd1f5481a1d79098985098e94a978b3b0a76914f396c79937b3dff34ade480b",
+    "apps/web/src/components/OwnerOrb.tsx": "9e5a41df2cd5d94dc6c006d4706ebd4011e3fe2c05080bcf9af7cc1586a495b6",
+    "apps/web/src/components/Renderer.tsx": "8ab158c5b78a01f0eb227e2de1c751ce30824edb18dfa80e26af31903a43360c",
+    "apps/web/src/lib/client.ts": "d77632557d5446f562a268a3db84a9cd355d460a011240430f9f70615e622c38",
+    "apps/web/src/lib/media.ts": "97796405e151a7cdea6f4c52e751ea7edac3c5453bbb39cc2f1a87d2f90db3ff",
+    "apps/web/src/lib/session-client.ts": "881d7604e5ba2b88df95ee4003ceabee2c30b968e4339839d515c1192dafbadf",
+    "apps/web/src/lib/session-client.test.ts": "d5801d17d0f13298190dc8b7cdf31706a673f4583a0b4fcb67f0692d3ed078cf",
+    "apps/web/dist/index.html": "fa9ac5bd58e0cb11ccfd8424ccdce255795072bd7edafd3eae39c9afb19455ee",
+    "apps/web/dist/assets/index-Bt_tUXM1.js": "0b781a17a59408f7d1a1292cf2484ff414f8ba72632dc7a57e1a3601c74b1573",
+    "tests/e2e/session-recovery.ts": "cc152d5b1492dd5fef9ef116fead2f2d027a6d0f30a76979bbb0537fc17d25ea",
+    "docs/qa/session-recovery/results.json": "b24511654c25136fb9dbfe963605b1563be859060ec837a2e82173cecbe6ce46",
+    "docs/qa/session-recovery/media-stop.json": "4d41ae6290bc04ce8afe5fe68ac24be8f674184cc12d414be2b112e797148a89",
+    "docs/qa/session-recovery/membership-revocation.png": "fb1ce271425b4a8232b59e6a77a4de7fd9d3b4eb7fddfe07980cce378fda845a"
+  }
+}

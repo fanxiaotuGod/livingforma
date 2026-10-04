@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-04T00:53:34.838Z",
+  "scope": "Independent local HTTP/PGlite/Chrome, explicit local identity rotation, local provider fixtures. Selected real HTTP responses delayed for races. No real Google/cloud/provider claims.",
+  "checks": [
+    {
+      "name": "Same-identity private membership revocation clears the inaccessible view after real 404",
+      "status": "fail",
+      "detail": "expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'A little pause.', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'A little pause.', exact: true }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'A little pause.', exact: true })\n"
+    }
+  ],
+  "pageErrors": [],
+  "totals": {
+    "planner": 0,
+    "tool": 0,
+    "describe": 0,
+    "transcribe": 0,
+    "speech": 0
+  }
+}

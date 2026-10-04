@@ -1,0 +1,21 @@
+{
+  "recordedAt": "2026-10-04T00:51:43.065054+00:00",
+  "baseCommit": "3325718596cca11e794b4525eb98c3ea5efc8405",
+  "testedFrontendBundle": "index-DE19SV4l.js",
+  "testRunAt": "2026-10-04T00:49:30.939Z",
+  "note": "Product hashes captured after final browser run; QA harness subsequent edits only remove unused import and add compile-time definite assignment. No application runtime edits. Branch fix/session-recovery excludes primary-checkout module expansion.",
+  "sha256": {
+    "apps/web/src/App.tsx": "7fd1f5481a1d79098985098e94a978b3b0a76914f396c79937b3dff34ade480b",
+    "apps/web/src/components/OwnerOrb.tsx": "9e5a41df2cd5d94dc6c006d4706ebd4011e3fe2c05080bcf9af7cc1586a495b6",
+    "apps/web/src/components/Renderer.tsx": "8ab158c5b78a01f0eb227e2de1c751ce30824edb18dfa80e26af31903a43360c",
+    "apps/web/src/lib/client.ts": "b3804d873a84fb6a518a90aaef9d05c3648a26a476c19399ad596a14445dfb6c",
+    "apps/web/src/lib/media.ts": "97796405e151a7cdea6f4c52e751ea7edac3c5453bbb39cc2f1a87d2f90db3ff",
+    "apps/web/src/lib/session-client.ts": "881d7604e5ba2b88df95ee4003ceabee2c30b968e4339839d515c1192dafbadf",
+    "apps/web/src/lib/session-client.test.ts": "d5801d17d0f13298190dc8b7cdf31706a673f4583a0b4fcb67f0692d3ed078cf",
+    "apps/web/dist/index.html": "46c370da7e5a658a8a6dd40135689df3623780844c231bae40333fbe139242eb",
+    "apps/web/dist/assets/index-DE19SV4l.js": "1c6f37c0209e622e6b7a793eda19fd8ddf043fcf915d8d9582afd6d5132154e5",
+    "tests/e2e/session-recovery.ts": "0eb675416024ff848f5ba28a7ca21741fca3124253995791e4bf14e5056f9a67",
+    "docs/qa/session-recovery/results.json": "2a854c831893c8d84f507c05d54a5a601faa1f23df1acca61d3caa2af352345d",
+    "docs/qa/session-recovery/media-stop.json": "4d41ae6290bc04ce8afe5fe68ac24be8f674184cc12d414be2b112e797148a89"
+  }
+}

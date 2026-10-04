@@ -10,5 +10,8 @@
 
 Do not deploy the primary module checkout as part of the session-only patch. Existing DevOps evidence and exact-SHA deployment discipline remain authoritative.
 
+## Release review
 
-LF233 also preserves the remote production handoff: [eedd1d4 copy](LF-233-production-session-handoff-eedd1d4-27d9cbd8.md).
+LF210 implementation and LF211 independent testing are complete in the isolated production baseline. Root full `pnpm check` passed112 tests, TypeScript and web/API builds. Final additional current-private-view404 handling was rebuilt as `index-Bt_tUXM1.js` and independently passed the full16-case Chrome/HTTP/PGlite suite, including ending inaccessible views with an English error and Reconnect rather than an indefinite loader. Historical failure evidence is retained. No backend/auth/DB/provider code changed; original exactOrigin/CSRF checks remain. Credential-pattern scan of28 changed/relevant source/evidence text files found no credential patterns. Primary60module and general-generation code remains excluded.
+
+The user clarified that general code generation—not a Tinder-specific module—is the next product objective, and confirmed it stays in this chat. Primary-checkout contracts andLF220/221/222/223 are being developed separately. This hotfix does not claim that new generator is already available online.

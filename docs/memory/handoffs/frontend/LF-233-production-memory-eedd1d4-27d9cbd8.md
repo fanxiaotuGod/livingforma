@@ -1,3 +1,7 @@
+# Preserved production session-hotfix role memory
+
+Source: origin/main eedd1d450b45ff36062bbc7281040fddb0d462ca. Historical accepted hotfix state; newer generation summary remains in role memory.
+
 ---
 title: LivingForma Frontend Role Memory
 type: memory
@@ -7,35 +11,13 @@ permalink: livingforma/roles/frontend/memory
 
 # 前端角色记忆
 
-## Current preview feedback · 2026-10-04 LF-232
+## Current release hotfix · 2026-10-03 LF-210
 
-- Owner 在 preview/checked 下可 Report an issue，1–500字符描述后明确 Request repair；protected POST现有preview接口携带sourceRevision/ok:false，复用唯一hostrepair，无额外模型循环。repairCount1后提示将更多问题放进description并Create another revision。
-- 原始prompt与live app保留，feedback按account/job/revision保存；失败文本/error保留、不自动重放、该候选禁止发布，pending禁重复发送。身份/page/job失效淘汰迟到结果；单调job合并与按sourceRevision暂停旧diagnostic，允许新修复候选在旧响应到达前完成startupcheck。
-- 20单测（feedback3/progress5/session12）、整仓tsc、webbuild成功 index-DIgLXu9Q.js（791.91kB提示）；真实Chrome+localhost4348/PGlite+offlinegenerator五项通过，0pageerrors。实际host修复stage/revision验证，503/迟到delivery明确fixture；无真实provider/PhotoDrift/云端修复声明。截图已读取，390px无横溢出。
-- [交接](../../handoffs/frontend/LF-232-01a65ac6-7807-4eba-8648-7b13320089a8.md)、[结果](../../handoffs/frontend/LF-232-browser-results.json)。仅改GenerationStudio.tsx/newtest/studio.css及own docs；未碰其他source/rootconfig/backend/4347实际provider任务。已通知coordinator源码冻结，真实UI由其继续。
-
-## Current live formation and tools · 2026-10-03 LF-226
-
-- Studio 接受真实 generation outline checkpoint，安全 React wireframe 展示 hero/collection/form/metrics/chart/media/content，Motion 稳定 ID 变形、phone 单栏/reduced-motion；没有实际 outline 时等待，不计时制造进度，partialJS 永不执行。最新 sourceRevision/sequence 淘汰过时状态，完整 candidate 仍需严格 frame、检查与明确 Publish。
-- Owner Tools 页展示转义工具源码/声明能力/实际 host testReport，复用版本从 Owner-only registry 获取；严格 lf.runTool 仅匹配 current component exact tool/version，host 选 generated/catalog endpoint 与 action/definition，guarded session/CSRF、无匿名重放、participant拒绝、preview禁执行、迟到身份结果丢弃。frame不接收工具源码、私字段或凭据。
-- Verified：33 targeted tests、全仓 tsc、web build（index-BrPTX2l6.js，788.13kB warning）、新增7项Chrome fixture与原LF222九项本地流程回归通过。3张新截图实际读取；390px无横溢出。图形/工具报告/执行是明确fixture，真实Chrome/PGlite/session/frame/bridge，不声称Pi或QuickJS/provider上线证据。
-- Backend修复匿名projection剔除actions但留bindings造成校验失败；浏览器跨iframe滚动后直接pointer个别未触发handler，anonymous/image用实际keyboard+Enter验证，已交coordinator记录，不夸大指针兼容范围。原60模块、媒体、LF210 guard与LF222证据保留。
-- [说明](../../../frontend/generated-tools.md)、[新结果](../../handoffs/frontend/LF-226-browser-results.json)、[基准回归](../../handoffs/frontend/LF-226-base-regression-browser-results.json)、[交接](../../handoffs/frontend/LF-226-48ca39bc-04e0-4f47-86a1-a7a948f6615a.md)。无provider/收费/依赖/锁文件/commit/push/deploy，本角色收尾后释放槽位供Agent/QA继续。
-
-## Current general website frontend · 2026-10-03 LF-222
-
-- 用户已覆盖“只允许受限目录”的旧产品边界：Owner 普通网站请求默认进入 general HTML/CSS/JS Studio，展示真实阶段/转义源码/隔离只读 preview/一次修复，明确 Publish 后生效；新建空间先 blank-create，再进入同一流水线。原60模块与 LF-201 历史完整保留，classic composer 可显式使用，generated-site 不混入预制目录计数。
-- 手动合入 LF-210 session-client、账户草稿、每次写前刷新身份/CSRF、拒绝跨身份迟到响应、media token 清理；保留 PRIMARY presentation/60-module 集成并给 presentation 加 guarded write。旧记忆“退出清空草稿”已被账户隔离且保留草稿取代。私有 snapshot 401/403/404 明确清视图并结束 loading；release-fix narrow hotfix 已另由 QA16/16 验证，现冻结。
-- GeneratedSite 使用后端受限 frame URL + sandbox allow-scripts + strict MessageChannel，公开绑定数据投影、host 选动作/recordVersion、访客登录无重放、删除host确认、显式图片选择/asset引用、身份/空间/源码旧端口失效。Backend Trusted Types loader 不支持浏览器 fail closed；不能声称完整 CPU 沙盒。
-- 本角色完成全仓 tsc、23 targeted tests、web build 与9项真实Chrome+local API/PGlite fixture场景；源码/preview/publish/CRUD、同账号CSRF刷新仅1POST、图片刷新与版本演进、repair/cancel/新空间、键盘和390px/1440px均验证。1个故意注入的JS错误用于repair；没有真实provider/生产请求。仅 fixture 证明实现，LF221/223继续实际Agent与独立安全QA。
-- [实现/重跑说明](../../../frontend/generated-sites.md)、[证据](../../handoffs/frontend/LF-222-browser-results.json)、[交接](../../handoffs/frontend/LF-222-24abd2ef-60c5-4900-ae1f-feccafa6631b.md)。本任务没有依赖/锁文件/环境修改、付费、push或部署；771.53kB chunk warning已如实记录。
-
-## Current local expansion · 2026-10-03 LF-201
-
-- LF-199 已接受 60 类目录与受限 size/config；LF-201 新增16个记录/规划/目标/管理模块，代码在 `apps/web/src/modules/collections.tsx` 与 `collections.css`。具体绑定及用例见 [模块扩展](../../../frontend/module-expansion.md)。不是整页模板，未发布生产。
-- scoped strict tsc 和整仓 tsc 已通过。48 SSR renders 验证所有16模块 populated/empty/missing-schema；Chrome检查所有16模块在320px/390px及桌面280px窄容器，整合后再通过48个React布局（320px/1440px三栏/1440px全宽）。10组真实React交互通过，0pageerrors、0 API调用；都是显式local sample，非持久化/云集成证据。
-- session `31e546d8-5bd1-4d5c-9ea2-8de50b676ebb` 只认领 LF-201；共同 helper/renderer/catalog/persistence 由 coordinator/Backend 处理。打卡仅 matching authorized action，导出只当前投影字段并中和 CSV formula。
-- [交接与可重跑脚本](../../handoffs/frontend/LF-201-31e546d8-5bd1-4d5c-9ea2-8de50b676ebb.md)。已修复整合ModuleFrame下sr-only绝对定位逃逸表格滚动的窄屏溢出。共同records helper按coordinator更新为默认全部记录，只有显式limit才截断，不截断goal/budget等汇总。
+- 本次实现位于隔离 `/Users/fanhaocheng/project/livingforma-release-fix` / `fix/session-recovery`，base `3325718`；没有触碰主checkout的后续组件扩展。提交、整合及部署由coordinator负责。
+- `lib/session-client.ts`统一每次protected write的no-store session预检；相同account刷新CSRF后单次发送，变化account/匿名零write；401/403刷新身份但不自动重放。记录、提案、建空间、工具、媒体、退出均覆盖。仅旧媒体session的best-effort原token DELETE和显式local auth入口使用raw传输。
+- identity/page/intent revision防迟到成功清草稿或重现旧权限视图；导航同步改slug，身份变化/强制鉴权失败清snapshot并close SSE，sameaccount tokenrotate保留表单挂载但停media和旧inflight。force/logout淘汰旧session GET；较旧并发GET可消费最新已接受session，不会无故拒同account并行写。
+- 草稿使用account-scoped v2 key，创建title/prompt也持久化；logout保留原account草稿，key变化不复制旧值。legacy Owner command仅当前已确认Owner迁移；storage失败不崩溃。用户需显式重试被拒的意图。
+- 已验证guard12/12 + media5/5、完整tsc与release webbuild，最新bundle `index-DE19SV4l.js`。独立QA LF-211在最终build上真实HTTP/PGlite/Chrome+local fixtures回归15/15通过，真实Google/provider或线上部署不从这些测试推断。行为说明见 [session-recovery](../../../frontend/session-recovery.md)。
 
 ## Current implementation · 2026-10-03 LF-180
 
@@ -73,6 +55,3 @@ permalink: livingforma/roles/frontend/memory
 - Orb 与定义发布可用 Motion 的稳定身份过渡；焦点、键盘、`aria-live`、reduced motion 必需。动画与表单/业务动作解耦；真实阶段来自后端，不伪造百分比。未登录写入草稿应在跳转前保存。
 - 技能现状（LF-011，2026-10-03）：用户要求的 Codex skill `frontend-dev`、`animations` 已安装于个人 `~/.codex/skills/`，固定上游 commit 分别为 `60aaae52bb2af8162732751a4332f62a5fef518b`、`dfd1a495c850678f247dfccdfe761d74164f5be5`；完整上游子树分别 98、23 个源文件 Git blob hash 匹配，MIT LICENSE 与 INSTALLATION.json 附在安装目录。全新本地 Codex app-server 的 `skills/list` 实测两项 `enabled: true` 且无 skill 错误；未打开 GUI 新对话或执行模型任务。未运行上游脚本/API 或安装项目依赖，前端应用仍未实现。项目只采纳 [`skills-guide`](../../../frontend/skills-guide.md) 中适配的视觉与状态编排原则：Vite SPA 推荐待 LF-100 锁定，排除 MiniMax 素材 Phase 3 和额外密钥/收费，Motion 为核心，独立 GSAP 仅在明确需求下评估，R3F 为 3D stretch。未安装的 `Skill(...)` 依赖不能假装可用；新对话需按准确名称选择技能，不假设已自动调用。
 - 后续需锁定公开快照/写入门槛、扩展组件 schema、媒体会话、阶段事件、迁移规则与部署栈。首次发布前的快照拟采用 `phase: "unconfigured"`、`definition: null`，初始提案基准版本 0→v1；这仍是架构候选，不得对空定义调用 Renderer。参考 [体验方向](../../../frontend/experience-direction.md)、[运行时方案](../../../frontend/runtime-plan.md) 与 [PRD](../../../PRD.md)；公共契约由 coordinator 在 LF-100 定稿。
-
-
-Historical production403 hotfix summary preserved during LF233 Git integration: [eedd1d4 memory](../../handoffs/frontend/LF-233-production-memory-eedd1d4-27d9cbd8.md). Current generated-application state above remains authoritative.
