@@ -1,0 +1,11 @@
+{
+  "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Add an image', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Add an image', exact: true }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Add an image', exact: true })\n",
+  "body": "Skip to your space\nLivingForma.\nLittle by little\nThe Interactive Reading Room\nL\nYour space, in your words\nThe Interactive Reading Room.\n\nAn original website fixture running through the real generation pipeline.\n\nLive and in sync\nAn open space\n6 records\n01 /\nCollected, not forgotten\nShare space\nWebsite studio\nBuilding blocks\n\nYour modules, your proportions.\n\nAdd module ＋\nCustomize layout\nWebsite ready\nYour data stays in this space\nMade to change. Built to keep.\nLocal development\nLivingForma\n✳\nYour session was refreshed. Your drafts are safe.\n×",
+  "frames": [
+    {
+      "url": "http://localhost:4337/api/generated-frame?space=reading&channel=706971a9-ed4a-454a-8b09-7ca805149323&version=2",
+      "text": "A SPACE TO EXPLORE\nThe Interactive Reading Room\n\n6 records, kept safe.\n\nCount a moment · 0\nBook title\nSave entry\nRemove first record\nChoose a photo"
+    }
+  ],
+  "errors": []
+}

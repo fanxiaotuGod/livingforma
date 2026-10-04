@@ -1,14 +1,16 @@
 import { mkdirSync, readFileSync, writeFileSync, renameSync, rmdirSync, existsSync } from 'node:fs';
 import { dirname, isAbsolute, resolve } from 'node:path';
-import { Agent, type AgentTool, type StreamFn } from '@earendil-works/pi-agent-core';
+import { Agent, type AgentEvent, type AgentTool, type StreamFn } from '@earendil-works/pi-agent-core';
 import { googleProvider } from '@earendil-works/pi-ai/providers/google';
 import { stream as googleStream } from '@earendil-works/pi-ai/api/google-generative-ai';
 import { lazyStream, type AssistantMessage } from '@earendil-works/pi-ai';
+import { candidateDiagnostic, classifiedProviderError, providerDiagnostic, type CandidateDiagnostic, type ProviderDiagnostic } from './provider-diagnostics';
+import { compactToolPayload } from './provider-schema';
 
 export class PlannerError extends Error {
   constructor(public code:string,message:string){super(message);this.name='PlannerError';}
 }
-export type RunEvidence={provider:'gemini';model:string;requests:number;toolCalls:string[];tokens:{input:number;output:number};elapsedMs:number};
+export type RunEvidence={provider:'gemini';model:string;requests:number;toolCalls:string[];tokens:{input:number;output:number};elapsedMs:number;failure?:ProviderDiagnostic;candidateFailures?:CandidateDiagnostic[]};
 let inflight=0;
 export type BudgetStore=import('@livingforma/contracts').ProviderBudgetStore;
 let budgetStore:BudgetStore|undefined;
@@ -42,8 +44,10 @@ export function reserveFreeRequest(env:NodeJS.ProcessEnv=process.env,now=Date.no
   }catch(error){if(error instanceof PlannerError)throw error;throw new PlannerError('BUDGET_UNAVAILABLE','The free-use budget could not be verified. AI planning is paused.');}
   finally{rmdirSync(lock);}
 }
-export async function runGeminiTools(input:{prompt:string;system:string;tools:AgentTool<any>[];signal?:AbortSignal;complete:()=>boolean}):Promise<RunEvidence>{
+export type GeminiToolRunInput={prompt:string;system:string;tools:AgentTool<any>[];signal?:AbortSignal;complete:()=>boolean;maxRequests?:1|2|3;requireDurableBudget?:boolean;compactToolSchema?:boolean;onEvent?:(event:AgentEvent)=>void};
+export async function runGeminiTools(input:GeminiToolRunInput):Promise<RunEvidence>{
   if(input.signal?.aborted)throw new PlannerError('ABORTED','Planning was cancelled.');
+  if(input.requireDurableBudget&&!budgetStore)throw new PlannerError('BUDGET_NOT_CONFIGURED','Website generation requires a durable database budget.');
   if(inflight>=1)throw new PlannerError('PROVIDER_BUSY','The planner is busy. Please try again shortly.');
   const modelId=process.env.GEMINI_MODEL||'gemini-3.5-flash-lite';
   // Changing models requires a separately verified deployment; never silently route to a paid fallback.
@@ -52,11 +56,27 @@ export async function runGeminiTools(input:{prompt:string;system:string;tools:Ag
   if(!model)throw new PlannerError('MODEL_UNAVAILABLE','The configured Gemini model is unavailable.');
   const evidence:RunEvidence={provider:'gemini',model:modelId,requests:0,toolCalls:[],tokens:{input:0,output:0},elapsedMs:0};
   const started=Date.now();
-  const streamFn:StreamFn=(m,c,o)=>lazyStream(m,async()=>{await reserveProviderRequest();evidence.requests++;return googleStream(m as typeof model,c,{...o,apiKey:process.env.GEMINI_API_KEY,maxTokens:6000,temperature:0.15,toolChoice:'any',thinking:{enabled:true,level:'LOW'},maxRetryDelayMs:0,maxRetries:0});});
-  const agent=new Agent({streamFn,initialState:{model,systemPrompt:input.system,tools:input.tools,thinkingLevel:'off'},toolExecution:'sequential',prepareRequest:()=>{if(evidence.requests>=3)throw new PlannerError('INVALID_PROPOSAL','The planner could not produce a valid proposal within its request budget.');},finishTurn:()=>input.complete()?{action:'end'}:undefined});
-  agent.subscribe(event=>{if(event.type==='tool_execution_start')evidence.toolCalls.push(event.toolName);if(event.type==='message_end'&&event.message.role==='assistant'){const msg=event.message as AssistantMessage;evidence.tokens.input+=msg.usage.input;evidence.tokens.output+=msg.usage.output;}});
-  const signal=AbortSignal.any([AbortSignal.timeout(60_000),...(input.signal?[input.signal]:[])]);const abort=()=>agent.abort();signal.addEventListener('abort',abort,{once:true});inflight++;
-  try{await agent.prompt(input.prompt);if(signal.aborted)throw new PlannerError('ABORTED','Planning was cancelled or timed out.');if(!input.complete()){const reason=agent.state.errorMessage??'';throw new PlannerError(/429|quota|free-use budget|RESOURCE_EXHAUSTED/i.test(reason)?'FREE_QUOTA_EXHAUSTED':'PROVIDER_FAILED',/429|quota|free-use budget|RESOURCE_EXHAUSTED/i.test(reason)?'The Gemini free quota is exhausted. No paid fallback is enabled.':'The AI planner could not complete this request. Your current app is unchanged.');}return evidence;}
+  const requestLimit=Math.min(3,Math.max(1,input.maxRequests??3));
+  const signal=AbortSignal.any([AbortSignal.timeout(60_000),...(input.signal?[input.signal]:[])]);
+  const streamFn:StreamFn=(m,c,o)=>lazyStream(m,async()=>{
+    signal.throwIfAborted();
+    if(evidence.requests>=requestLimit)throw new PlannerError('INVALID_PROPOSAL','The planner reached its request limit.');
+    await reserveProviderRequest();evidence.requests++;signal.throwIfAborted();
+    return googleStream(m as typeof model,c,{...o,apiKey:process.env.GEMINI_API_KEY,maxTokens:6000,temperature:0.15,toolChoice:'any',thinking:{enabled:true,level:'LOW'},maxRetryDelayMs:0,maxRetries:0,...(input.compactToolSchema?{onPayload:compactToolPayload}:{})});
+  });
+  const agent=new Agent({streamFn,initialState:{model,systemPrompt:input.system,tools:input.tools,thinkingLevel:'off'},toolExecution:'sequential',prepareRequest:()=>{signal.throwIfAborted();if(evidence.requests>=requestLimit)throw new PlannerError('INVALID_PROPOSAL','The planner could not produce a valid proposal within its request budget.');},finishTurn:()=>input.complete()||requestLimit===1?{action:'end'}:undefined});
+  const argumentsByCall=new Map<string,unknown>();
+  agent.subscribe(event=>{
+    if(event.type==='tool_execution_start'){evidence.toolCalls.push(event.toolName);argumentsByCall.set(event.toolCallId,event.args);}
+    if(event.type==='tool_execution_end'){
+      if(event.isError){const tool=input.tools.find(tool=>tool.name===event.toolName);if(tool){const message=(event.result.content as Array<{type:string;text?:string}>).flatMap(part=>part.type==='text'&&part.text?[part.text]:[]).join('\n');(evidence.candidateFailures??=[]).push(candidateDiagnostic(tool.name,message,tool.parameters,argumentsByCall.get(event.toolCallId)));}}
+      argumentsByCall.delete(event.toolCallId);
+    }
+    if(event.type==='message_end'&&event.message.role==='assistant'){const msg=event.message as AssistantMessage;evidence.tokens.input+=msg.usage.input;evidence.tokens.output+=msg.usage.output;}
+    if(!signal.aborted)input.onEvent?.(event);
+  });
+  const abort=()=>agent.abort();signal.addEventListener('abort',abort,{once:true});inflight++;
+  try{await agent.prompt(input.prompt);if(signal.aborted)throw new PlannerError('ABORTED','Planning was cancelled or timed out.');if(!input.complete()){evidence.failure=evidence.candidateFailures?.length?{category:'output',signals:['candidate_validation']}:providerDiagnostic(agent.state.errorMessage??'',[process.env.GEMINI_API_KEY??'',input.prompt,input.system]);const error=classifiedProviderError(evidence.failure);throw new PlannerError(error.code,error.message);}return evidence;}
   finally{signal.removeEventListener('abort',abort);inflight--;evidence.elapsedMs=Date.now()-started;lastEvidence=evidence;}
 }
 

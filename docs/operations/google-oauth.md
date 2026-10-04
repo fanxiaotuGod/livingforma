@@ -1,6 +1,6 @@
 # Google sign-in
 
-Updated 2026-10-03, America/Vancouver. DevOps owns `packages/auth`; Backend owns the persistent adapter and per-space authorization. Google sign-in has completed a real local browser roundtrip. Production sign-in is pending deployment and must be tested separately.
+Updated 2026-10-03, America/Vancouver. DevOps owns `packages/auth`; Backend owns the persistent adapter and per-space authorization. Google sign-in has completed real local and production-domain browser roundtrips. Production logout and same-account cross-tab session recovery are also verified on the released hotfix.
 
 ## Implemented contract
 
@@ -30,8 +30,9 @@ Local identity access requires all of: `ENABLE_LOCAL_DEMO=true`, `localDemo:true
 ## Evidence
 
 - `packages/auth/src/auth.test.ts`: 17 passing tests, including real RSA/JWS verification through openid-client against a local OIDC provider fixture. Covers invalid signature, nonce, audience, issuer, expiry, state replay, redirect safety, hash storage, rotation, expiry, CSRF, logout and production demo denial. This fixture is not evidence of live Google availability.
-- Live local Chrome verification: Google account selection and consent returned to `/s/reading`; signed-in controls and business form appeared, while Owner orb remained absent because the account does not own the local demonstration space. Reload retained the signed-in session. Clicking Sign out restored Sign in and Sign in to add while all four public fixture records remained readable. Evidence is stored privately at `.local/deployment/google-logout-public.png`. Production-domain verification remains pending.
-- No production callback or two-account live-Google isolation claim yet. Backend/API tests verify authorization independently of the provider.
+- Live local Chrome verification: Google account selection and consent returned to `/s/reading`; signed-in controls and business form appeared, while Owner orb remained absent because the account does not own the local demonstration space. Reload retained the signed-in session. Clicking Sign out restored Sign in and Sign in to add while all four public fixture records remained readable. Evidence is stored privately at `.local/deployment/google-logout-public.png`. Production login verification is recorded below; production logout is recorded below.
+- Live production Chrome verification (LF170): normal `https://livingforma.tech/s/space-bb2d7928` → Google account selection → canonical callback returned the existing Owner. Orb and writing controls appeared; reload retained identity. Cookie inspection emitted attributes only: `__Host-lf-session`, Secure, HttpOnly, SameSite=Lax, path `/`, host-only. No cookie value was recorded. A second synthetic book was created through the actual website and independently read from durable Neon. Production logout returned200; the next session had null user/CSRF and the secure session cookie was absent. Both public records remained readable, with no Owner controls. Two-account Google isolation was not exercised in production.
+- During concurrent user activity, the user reported403 on a habit proposal. Coordinator confirmed the actual error was `CSRF_TOKEN` / “Session verification failed”. A fresh Google login in the shared Chrome profile replaced the cookie while another tab retained its old CSRF value; the frozen client lacks write-session recovery. The user authorized an isolated hotfix. Released eedd1d4 performs a fresh session preflight before protected writes, checks the initiating account, and does not replay rejected writes. Actual two-tab Google rotation changed CSRF; the old tab used the new token in exactly one200 proposal POST. Local independent QA also covered changed identity, rejected-write races, drafts, late responses and media cleanup. The unrelated module expansion was excluded.
 
 ## References
 

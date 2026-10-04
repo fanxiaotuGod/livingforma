@@ -6,6 +6,38 @@ permalink: livingforma/roles/agent/memory
 
 # Agent 开发角色记忆
 
+## LF-230 真实请求兼容 · 2026-10-04 America/Vancouver
+- site/tool新增provider-only compact schema投影：去regex和length/item/range decoding约束，结构/required/enum保留；原Pi schema与Host严格限制未变。原ANY schema实际HTTP400generic INVALID_ARGUMENT，瘦身后真实toolcall/source，Root进一步完整候选+actualIAB checked通过。无法断定某一个keyword是唯一原因。
+- provider-diagnostics输出固定English分类+脱敏短reason；nested/arrayGoogle wrappers可识别。Pi1.0.1引用TypeBox1.3已移除error.message导致字段说明undefined，现捕捉tool_execution_end并用Compile.Errors恢复仅白名单path/rule，永不存Received arguments全文。
+- 受控createSiteGenerator({onCandidate})可保存实际complete toolcall候选（去private defaults/credentialpattern/160k cap），默认generateSite不保存。此callback不是thinking/rawcontext日志。
+- Agent3次明确授权普通实调原Neon15→18；第三次provider通过但candidate fail，当时没有留存args，具体原因未知，未冒称optionalnull等。Root实际确认11.607s/3793in4747out、source+outline与完整candidate/sharedchecks+IABstartup checked。完整upload/swipe/save留LF227+LF232正常Owner修复。
+- 图片bridge提示明确lf.pickImage自身负责chooser/upload、每gesture一次、不加child fileInput前置二次选择；纯localfileparser不全局禁用。Preview文案为Preview only. Publish to save changes.
+- 全Agent122/122，最终prompt后定向32/32、全仓typecheck、diffcheck过；harness无provider时actualSDK onPayload capture beforetransport。无ledgerreset/refund/付费/业务云迁移/高级绕过/Git发布。hand off LF-230-b064ec16-3675-4fef-b4b7-b5c6ba4f5860.md。最新部署/剩余额度以coordinator实时证据为准。
+
+## LF-225 通用后端工具生成 · 2026-10-04 America/Vancouver
+- `generateTool` export接shared GeneratedToolGenerator：真实Pi一次submit_tool创建任意受控原始JS+JSONschemas+2–5syntheticfixtures，或选择enabled exactversion。无关键词生产模板；不在生成器中执行/登记/启用源码。
+- `generateSite`同一次submit_site返回页面与codeTools+toolBindings，解析JSONstring模型表示为shared `Proposal.codeToolProposals`；保留tool.invoke和稳定schema/componentID。lf.runTool读取response.result，preview明确Publish to run tool且仍reportReady，只有Owner运行。
+- enabled registry显式投影去source/tests/endpoint/session；当前与repair私字段defaults剔除；actualPi源码快照→writing，Host负责actualtesting/ready/failed。SDK整块快照限制如实记录，无计时假流/额外planningcall。
+- 每次1providerrequest/6000tokens/60s，共用既有durablebudget，缺失即拒绝，取消不refund；Host一次repair覆盖页面/工具/浏览器，shape-valid坏源码交Host修复，malformedshape失败。
+- 107/107 Agent tests+全仓typecheck+diffcheck通过；新增11包括四类不同逻辑真实Pi fixturetransport→Backend真实QuickJS、synthetic brokers、wrongalgorithm实际失败再hostrepair、单页+tool生成/精确复用/privacy/cancel/budget。无真实provider/.env/费用/账本变更/高级绕过/部署。
+- 文档 [generated-tools](../../../agent/generated-tools.md)，交接LF-225-a8fbbea3-b931-4885-8a65-231277d202f8.md。LF227由root接真实模型/浏览器与registry发布；本角色实现不宣称该整体验收已完成。
+
+## LF-221 通用网站生成 · 2026-10-03 America/Vancouver
+- 用户已取代“只能60目录组件”的旧上限；`generateSite`通过同一Pi/Gemini工具生成任意普通页面的HTML/CSS/JS，不按Tinder等关键词挑整站模板。仅在浏览器隔离边界执行，禁止host执行/新费用/自动付费fallback。
+- `packages/agent/src/site-generator.ts`导出SiteGenerator，outline作为首字段，实际Pi message_update/toolcall_*快照→sharedvalidated Progress.ui/source；无thinking/原始文本/假计时代码流。SDK当前Google函数参数快照可能整块返回，不能宣称逐字符流。
+- 每调用1providerrequest/6000tokens/60s，生产与开发均需注入durablebudget，仍共用已验证30/day、5/min、一并发与无retry；本轮没有读.env/实际调用provider/改用量。
+- schema-valid候选先做shared静态/演化check，失败如实checkpoint并交host权威拒绝与唯一repair，不内部偷修；malformedproposal直接fail。Private defaults在current+repair再次剔除，Host恢复原metadata；不接records/session额外输入。
+- lf.ready与CRUD都返回fullpublicstate，JS正确绑定listeners/reportReady；preview只读、照片走pickImage/image，不伪造外部服务。60模块planner排除generated-site并拒绝从legacy路径改generatedapp。LF225后续接backend code tools。
+- 新17项realPi+fixtureprovider tests，连同已有tests共96/96与全仓typecheck通过。三类不同source、actualevent/outline、privacy/evolution、repair、cancel/concurrency/durablebudget均有离线证据，不当作真实模型质量/浏览器实调/已部署。
+- 详细文档 [generated-sites](../../../agent/generated-sites.md)。LF221完成后由coordinator/Backend接server export并实际验收；随后按依赖领取LF225，无自行provider calls。
+
+## LF-202 最新模块扩展 · 2026-10-03 America/Vancouver
+- 实现 `apps/web/src/modules/tools.tsx` / `tools.css` 的 16 个 study/discovery/local-tool 模块：flashcards、quiz、random-picker、pomodoro、stopwatch、breathing-guide、calculator、unit-converter、search-panel、filter-panel、tag-cloud、text-reader、word-counter、markdown-viewer、link-directory、recipe-scaler。临时跨角色 scope 由 LF-202 catalog 明确授予，其他 frontend/shared 文件未编辑。
+- `planner.ts` 识别全部60 manifests，增加 bounded size/config TypeBox；最终 columns 为3–12、minHeight120–960，保留既有配置。`module-composer.ts` 按单独 module IDs/元数据及数据原语组合全部48新增类型，不增加整App模板；无外部provider调用。每页24实例，新增字段保持可选/稳定IDs，主机校验仍权威。
+- 79/79 agent tests、全仓typecheck、49/49 realChrome检查通过。32项覆盖16模块×320px手机/1440px桌面3列窄容器；其他交互与timer pause/unmount interval清理实测。首次reader range默认margin导致2px内部溢出已修复并复验；其余首次失败为测试定位器歧义。截图已实际查看。
+- 证据 `docs/memory/handoffs/agent/LF-202-a903b374-browser.json` / `LF-202-a903b374-reader-mobile.png`；可复验脚本 `packages/agent/scripts/module-browser-smoke.ts`。样例数据/受控browser clock，不冒称真实服务调用或生产用户数据。无quota修改/付费/推送/部署。
+- 后续：coordinator完成所有60模块的整合、完整布局持久化与mobile/PC验收；本角色完成LF-202后释放session。以下较早媒体账本与待办是历史记录，最新跨角色服务/上线状态以shared memory为准。
+
 ## 已确认
 - 负责 Pi runtime、Gemini 规划、AppSpec/ToolSpec 生成、受控能力注册和复用。
 - 通用 App 生成优先，业务示例不限于活动。

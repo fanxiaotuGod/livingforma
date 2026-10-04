@@ -6,6 +6,17 @@ permalink: livingforma/shared/interfaces
 
 # 公共接口状态
 
+## Accepted generation/tool v1 · 2026-10-03 23:40 America/Vancouver
+
+以 `packages/contracts/src/generated.ts`、`generated-tools.ts` 为精确契约，见 [generated-tools](../../product/generated-tools.md)。以下为实施契约，尚非真实模型/生产验收。
+
+- SiteGenerator 接收 enabled registeredTools元数据及registeredCatalogTools；Proposal可附codeToolProposals≤3。GeneratedToolGenerator产出新spec或exactversion复用；host验证/测试后才能Publish。
+- GeneratedToolSpec=code-js-v1，单一顶层 `run(input,api)`、object input/output schema、sideEffects=none、publicRecordFields/connectors、2–5测试，source≤32KiB。QuickJS Worker guest heap32MiB/stack256KiB/guest execution4s/startup8s/total12s/concurrency1/Broker≤8，JSON≤64KiB；不保证整个Worker RSS硬上限。
+- generated-site.toolBindings={actionId,toolId,toolVersion,kind:generated|catalog}，必须绑定允许tool.invoke，action与toolId/version跨kind唯一。lf.ready仅给metadata；lf.runTool返回ToolResult `{toolId,toolVersion,result,reused}`，仅Owner已发布可调用，preview提示Publish to run tool且仍reportReady。
+- Owner API code-tools/proposals `{prompt}`；POST code-tools `{spec,enable}`；GET code-tools→`{tools}`；POST code-tools/:toolId/invoke `{requestId,definitionVersion,componentId,actionId,toolVersion,input}`。host验身份/Origin/CSRF/space/action/version；source/tests不进公开frame。
+- Progress/Event可附ui={version:1,title?,layout:flow|split|grid,skin?,sections:[{id,kind,label?,columns?,items?}]}、tool={toolId,name,phase:writing|testing|ready|failed,message?}；来自实际模型完整参数快照。GenerationJob可附toolReports。
+- API build输出server.js和generated-tool-worker.js；quickjs-emscripten0.32.0已安装，server.ts已在LF227挂接真实适配器，真实模型/生产验收待完成。
+
 LF-100 已建立 `packages/contracts/src/index.ts` 与 `examples.ts` 的代码契约；以下本轮接受项取代后文历史候选。本文件由 coordinator 单独维护。
 
 ## Accepted v1 · 2026-10-03
@@ -80,3 +91,16 @@ Agent exports `createMediaAdapter({budgetStore:MediaBudgetStore}):MediaAdapter`.
 ## Delayed work and retry authorization · LF-185
 
 After model planning or tool validation, the API revalidates the original session and CSRF before entering its short publication transaction. A completed logout or expired session cannot publish late results or receive an Owner snapshot. Tool GET runs outside business transactions so logout remains responsive. The single-instance host coalesces concurrent identical request IDs, checks durable replay again inside the registered in-flight task, then revalidates session, Owner and enabled tool/spec before atomically recording result, count and audit. Completed results replay across restarts. In-flight coalescing is process-local; multi-instance exactly-once external execution is not promised and would require a durable pending lease design before horizontal scaling. All dynamic tools remain read-only GET.
+
+## LF199 · Bounded module presentation expansion · 2026-10-03
+
+Accepted local-development contract: 60 catalog types, retaining max24 instances/page. Component v1 gains optional `size:{columns:3..12,minHeight?:120..960}` and strict `config` with common showHeader/density plus per-manifest configKeys. No CSS/HTML/code/field IDs inside config. Existing fields/groupBy/dateField/valueField remain bindings. Existing definitions need no migration.
+
+POST `/api/spaces/:slug/presentation` (LF203): `presentationRequestSchema` exports requestId, baseDefinitionVersion, complete components and optional layout. Owner + session/Origin/CSRF required; no planner call. Preserve entitySchema/actions/records; validate definition/evolution, tool references and transaction replay/version conflicts; emit definition.published. Return Snapshot. Frontend LF200 adds/configures modules through this endpoint and handles conflicts without overwriting remote changes.
+
+Module implementation families receive disjoint temporary cross-role paths via LF201/202 catalog tasks. All existing/new modules must pass mobile/PC and narrow container checks. Deployed12-module version remains fixed; new definitions use isolated PGlite only.
+
+
+## General generated websites — 2026-10-03
+
+User accepted code generation beyond the component catalog. Shared source/job/bridge contracts are now [generated-sites.md](../../product/generated-sites.md) and packages/contracts/src/generated.ts. A bounded HTML/CSS/JS artifact pairs exactly one generated-site surface; schema/actions/records remain existing business state. New Owner-scoped durable jobs expose real stage/source events, isolated preview/one repair and checked explicit publication. Runtime code is browser-only, served with opaque response sandbox and strict CSP; host bridge contains no credentials/private fields. LF220/221/222 implement, LF223 independently verifies. This local registration is not a claim of deployed/verified support; source remains outside the frozen session patch.

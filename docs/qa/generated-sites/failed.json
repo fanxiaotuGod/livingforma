@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-04T07:27:16.720Z",
+  "error": "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  locator('iframe[title=\"Generated website\"]').contentFrame().getByRole('status')\nExpected: \"Skipped · 0 favorites\"\nReceived: \"\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveText\" locator('iframe[title=\"Generated website\"]').contentFrame().getByRole('status') with timeout 5000ms\n  - waiting for locator('iframe[title=\"Generated website\"]').contentFrame().getByRole('status')\n    14 × locator resolved to <p id=\"result\" role=\"status\"></p>\n       - unexpected value \"\"\n",
+  "checks": [
+    {
+      "name": "Actual host SSE checkpoints reshape stable safe UI; source is escaped and incomplete code never runs",
+      "status": "passed"
+    }
+  ],
+  "body": "Skip to your space\nLivingForma.\nLittle by little\nBetween the lines\nL\nYour space, in your words\nPhoto discoveries.\n\nAn explicitly offline authored QA candidate.\n\nLive and in sync\nAn open space\n4 records\n01 /\nCollected, not forgotten\nShare space\nWebsite studio\nBuilding blocks\n\nYour modules, your proportions.\n\nAdd module ＋\nCustomize layout\nWebsite ready\nYour data stays in this space\nMade to change. Built to keep.\nLocal development\nLivingForma\n✳\nSpace updated · Offline authored custom page through the real host pipeline.\n×",
+  "frames": [
+    {
+      "url": "http://localhost:4349/api/generated-frame?space=reading&channel=f331209c-c524-46ec-acf6-cc7f2bf2b487&version=2",
+      "body": "PHOTO DISCOVERIES\nSwipe your perspective.\n\n4 saved records\n\nInvisible Cities\nSkip photo\nLike photo\n\nLiked · 1 favorites"
+    }
+  ],
+  "calls": [
+    {
+      "prompt": "photos: an offline custom swipe discovery interaction",
+      "repair": false
+    }
+  ],
+  "errors": []
+}

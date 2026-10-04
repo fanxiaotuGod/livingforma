@@ -1,0 +1,452 @@
+{
+  "date": "2026-10-04T00:26:02.002Z",
+  "scope": "Real Chrome/React showcase with explicit local sample records; no API/provider calls or persistence evidence.",
+  "checks": [
+    "All 16 mounted React modules fit 320px mobile, 1440px narrow 3-column, and full-width desktop (48 layouts)",
+    "Mobile data table search and bidirectional numeric sort",
+    "Keyboard disclosure and record detail opening",
+    "Record comparison changes columns and enforces four selections",
+    "Weekly navigation and reset",
+    "Goal sums sample values to 234 / 300 = 78%",
+    "Balance computes 234 - 265 = -31",
+    "Authorized sample check-in toggles and reverses without extra API calls",
+    "Expense month navigation and selected-day details",
+    "Actual CSV and JSON downloads respect field selection and omit record metadata"
+  ],
+  "layouts": [
+    {
+      "width": 320,
+      "columns": 6,
+      "type": "data-table",
+      "client": 286,
+      "scroll": 286,
+      "page": 320,
+      "viewport": 320
+    },
+    {
+      "width": 320,
+      "columns": 6,
+      "type": "record-accordion",
+      "client": 286,
+      "scroll": 286,
+      "page": 320,
+      "viewport": 320
+    },
+    {
+      "width": 320,
+      "columns": 6,
+      "type": "comparison-table",
+      "client": 286,
+      "scroll": 286,
+      "page": 320,
+      "viewport": 320
+    },
+    {
+      "width": 320,
+      "columns": 6,
+      "type": "timeline",
+      "client": 286,
+      "scroll": 286,
+      "page": 320,
+      "viewport": 320
+    },
+    {
+      "width": 320,
+      "columns": 6,
+      "type": "agenda",
+      "client": 286,
+      "scroll": 286,
+      "page": 320,
+      "viewport": 320
+    },
+    {
+      "width": 320,
+      "columns": 6,
+      "type": "week-board",
+      "client": 286,
+      "scroll": 286,
+      "page": 320,
+      "viewport": 320
+    },
+    {
+      "width": 320,
+      "columns": 6,
+      "type": "milestone-stepper",
+      "client": 286,
+      "scroll": 286,
+      "page": 320,
+      "viewport": 320
+    },
+    {
+      "width": 320,
+      "columns": 6,
+      "type": "priority-matrix",
+      "client": 286,
+      "scroll": 286,
+      "page": 320,
+      "viewport": 320
+    },
+    {
+      "width": 320,
+      "columns": 6,
+      "type": "goal-meter",
+      "client": 286,
+      "scroll": 286,
+      "page": 320,
+      "viewport": 320
+    },
+    {
+      "width": 320,
+      "columns": 6,
+      "type": "budget-breakdown",
+      "client": 286,
+      "scroll": 286,
+      "page": 320,
+      "viewport": 320
+    },
+    {
+      "width": 320,
+      "columns": 6,
+      "type": "balance-sheet",
+      "client": 286,
+      "scroll": 286,
+      "page": 320,
+      "viewport": 320
+    },
+    {
+      "width": 320,
+      "columns": 6,
+      "type": "habit-matrix",
+      "client": 286,
+      "scroll": 286,
+      "page": 320,
+      "viewport": 320
+    },
+    {
+      "width": 320,
+      "columns": 6,
+      "type": "date-countdown",
+      "client": 286,
+      "scroll": 286,
+      "page": 320,
+      "viewport": 320
+    },
+    {
+      "width": 320,
+      "columns": 6,
+      "type": "inventory-levels",
+      "client": 286,
+      "scroll": 286,
+      "page": 320,
+      "viewport": 320
+    },
+    {
+      "width": 320,
+      "columns": 6,
+      "type": "expense-calendar",
+      "client": 286,
+      "scroll": 286,
+      "page": 320,
+      "viewport": 320
+    },
+    {
+      "width": 320,
+      "columns": 6,
+      "type": "export-panel",
+      "client": 286,
+      "scroll": 286,
+      "page": 320,
+      "viewport": 320
+    },
+    {
+      "width": 1440,
+      "columns": 3,
+      "type": "data-table",
+      "client": 316,
+      "scroll": 316,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 3,
+      "type": "record-accordion",
+      "client": 316,
+      "scroll": 316,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 3,
+      "type": "comparison-table",
+      "client": 316,
+      "scroll": 316,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 3,
+      "type": "timeline",
+      "client": 316,
+      "scroll": 316,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 3,
+      "type": "agenda",
+      "client": 316,
+      "scroll": 316,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 3,
+      "type": "week-board",
+      "client": 316,
+      "scroll": 316,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 3,
+      "type": "milestone-stepper",
+      "client": 316,
+      "scroll": 316,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 3,
+      "type": "priority-matrix",
+      "client": 316,
+      "scroll": 316,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 3,
+      "type": "goal-meter",
+      "client": 316,
+      "scroll": 316,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 3,
+      "type": "budget-breakdown",
+      "client": 316,
+      "scroll": 316,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 3,
+      "type": "balance-sheet",
+      "client": 316,
+      "scroll": 316,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 3,
+      "type": "habit-matrix",
+      "client": 316,
+      "scroll": 316,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 3,
+      "type": "date-countdown",
+      "client": 316,
+      "scroll": 316,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 3,
+      "type": "inventory-levels",
+      "client": 316,
+      "scroll": 316,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 3,
+      "type": "expense-calendar",
+      "client": 316,
+      "scroll": 316,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 3,
+      "type": "export-panel",
+      "client": 316,
+      "scroll": 316,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 12,
+      "type": "data-table",
+      "client": 1342,
+      "scroll": 1342,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 12,
+      "type": "record-accordion",
+      "client": 1342,
+      "scroll": 1342,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 12,
+      "type": "comparison-table",
+      "client": 1342,
+      "scroll": 1342,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 12,
+      "type": "timeline",
+      "client": 1342,
+      "scroll": 1342,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 12,
+      "type": "agenda",
+      "client": 1342,
+      "scroll": 1342,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 12,
+      "type": "week-board",
+      "client": 1342,
+      "scroll": 1342,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 12,
+      "type": "milestone-stepper",
+      "client": 1342,
+      "scroll": 1342,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 12,
+      "type": "priority-matrix",
+      "client": 1342,
+      "scroll": 1342,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 12,
+      "type": "goal-meter",
+      "client": 1342,
+      "scroll": 1342,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 12,
+      "type": "budget-breakdown",
+      "client": 1342,
+      "scroll": 1342,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 12,
+      "type": "balance-sheet",
+      "client": 1342,
+      "scroll": 1342,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 12,
+      "type": "habit-matrix",
+      "client": 1342,
+      "scroll": 1342,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 12,
+      "type": "date-countdown",
+      "client": 1342,
+      "scroll": 1342,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 12,
+      "type": "inventory-levels",
+      "client": 1342,
+      "scroll": 1342,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 12,
+      "type": "expense-calendar",
+      "client": 1342,
+      "scroll": 1342,
+      "page": 1440,
+      "viewport": 1440
+    },
+    {
+      "width": 1440,
+      "columns": 12,
+      "type": "export-panel",
+      "client": 1342,
+      "scroll": 1342,
+      "page": 1440,
+      "viewport": 1440
+    }
+  ],
+  "errors": [],
+  "api": []
+}

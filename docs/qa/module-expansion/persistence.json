@@ -1,0 +1,35 @@
+{
+  "slug": "qa-modules-933a2fc1",
+  "beforeVersion": 1,
+  "afterVersion": 2,
+  "component": {
+    "id": "module_a3f79d906eea46",
+    "size": {
+      "columns": 5,
+      "minHeight": 380
+    },
+    "span": "full",
+    "type": "number-stepper",
+    "title": "QA adjustable quantity",
+    "config": {
+      "density": "compact"
+    },
+    "fields": [
+      "title",
+      "author",
+      "status",
+      "progress"
+    ],
+    "variant": "default",
+    "version": 1,
+    "actionIds": [
+      "edit"
+    ],
+    "valueField": "progress"
+  },
+  "recordIds": [
+    "rec_9e6a740c-0c36-4d9f-8ade-4e5809f98143"
+  ],
+  "recordsPreserved": true,
+  "source": "Local test identity + real HTTP/PGlite, no Google/provider"
+}

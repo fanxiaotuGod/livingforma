@@ -103,3 +103,32 @@ permalink: livingforma/roles/devops/journal
 - **verified live**：Render Hobby无卡/无待付款，Free $0、0.1CPU/512MB、Virginia。通过public Git URL部署，无GitHub App权限扩张。Dockerfile infra/Dockerfile、context .、health /api/health、auto deploy off。首个deploy `dep-db0pi4tg1s2s73f4vp2g` 在1m10s后Live，source `7efaa919361be0165f8bc0bf20852f0c0e2b37b6`。service `srv-db0pi4lg1s2s73f4vnbg`，平台 https://livingforma.onrender.com 的4项post-deploy smoke全部通过。
 - **DNS published / propagation pending**：添加apex+自动www共2个included域名；Render实际指示A 216.24.57.1与www CNAME livingforma.onrender.com。现有Namify账户已保存这两项，权威NS部分已返回，公共resolver仍有负缓存。www在Render Verified、证书Pending，apex等待传播；未把平台成功当作正式域名验收。
 - 私密.env导入13项配置，保留原verified flags、模型3.5flashlite和30请求上限，复用Neon严格TLS。没有新费用、银行卡、quotareset或provider生成。忽略目录中保存无secret截图及0600只读业务表备份（不含临时session/OAuth），不对业务数据执行恢复。正在以同一reviewed SHA进行redeploy/rollback演练，随后验证域名Google与HTTPS媒体。
+
+- **17:16 incident hold**：用户报告GitHub检测到Gemini API key，coordinator调查历史/secret alert。立即暂停LF170完成与所有provider生成，未轮换或重新传输凭据；本发布任务此前零provider生成。只读检查线上HTML及引用JS/CSS三个资源，当前私密Gemini key均未精确匹配；这不证明Git历史安全。保持7efaa91服务/现存DB，等待事件处置结论，不能提前finish。
+
+- **17:19 readonly incident follow-up**：AI Studio API key列表的masked suffix与.env当前key相符，Default Gemini Key/Default Gemini Project显示Free tier；列表未见blocked/leaked/disabled标记，未点击reveal/copy/创建或调用provider。coordinator报告289个reachableGitblob、trackedworkingfiles均无当前key，Googlekey格式pattern0、远端仅main3325718、GitHub原生secretalerts0；QA继续审查其他公开表面。未检出不等于误报，需用户提供实际告警位置；验收继续暂停。
+
+- **17:23 superseding resolution**：root直接在用户GitGuardianincident37849019看到被标记值是catalogrev12校验摘要、Validity No checker，确认为falsepositive。不同于此前单凭无命中不下结论，此次有直接detectedvalue证据。未修改alert/轮换凭据；恢复原授权Free部署验收，仍保持runtime7efaa91。
+
+- **17:29–17:33 canonical release checks**：Render自动签发apex+www证书；Google公共DNS刷新显示Success，Cloudflare请求queued；本机curl仍负缓存，但真实Chrome及root独立IAB正常URL均加载canonicalReadingJournal，无override/警告绕过。真实Google选择Owner→callback→刷新成功，__Host-cookie安全属性仅输出metadata。第二本SecretGarden线上UI创建成功，DB只读确认ID/version1/progress100/rating4，原LittlePrince不变。
+- 用户另报habitproposal403，按root要求暂停任何morph/media，未调用provider；共享Chrome新登录替换cookie/旧tabCSRF是待核实假设。阅读immutable7ef和DB发现bookscomponent.actionIds=[]，虽已有record.update action却没绑进collection，导致详情只读；不直接改DB，拟原定一次cards/rating-sortproposal同时明确绑定。
+- Demo尝试：detachedbackground CDPscreencast被adminpolicycheckunavailable拒绝，未绕过/未录到frame，成功stop。同一文档API在完整await的监督call内后续成功录6frames（只开recorddetail，无provider），之后root要求暂停capture，已停。视频尚未完成，不能声称已录制完整demo。
+
+- **17:37 superseding hosted diagnosis**：root已读真实OwnerOrb错误CSRF_TOKEN / Session verification failed，确认write-session恢复缺口；用户批准协调hotfix。root从3325718建立独立livingforma-release-fix/fix/session-recovery，不混入另一个chat的60modules变更。等待已审精确SHA前维持7efaa91；模型/媒体/capture/login/logout均暂停。root另独立观察匿名canonicalIAB同URL、同CDPloaderId自动1→2records、35→68%，作为实际线上recordSSE证据。
+
+## 2026-10-03 17:59 America/Vancouver · LF-170 session hotfix deployment
+
+- 按coordinator协调先release LF170新增LF210/LF211前置，现catalog16依赖完成，同session重新next认领。root确认精确eedd1d450b45ff36062bbc7281040fddb0d462ca已push，CI37166475387success；独立QA16/16和root112tests/typecheck/build通过。仅部署隔离fix/session-recovery提交，未混入primary60modules/general-generator修改。
+- Render手动specific-commit实际选择该SHA，deploy dep-db0q9nvavr4c738sqtqg已开始Building。配置/secret/plan不变，AutoDeployOff。当前不能提前声称hotfix已live。
+- 只读preflight18项通过，真实ledger已由其他活动推进Gemini7/30、STT5/60、TTS456/1000，保留不reset；本LF170仍零provider调用。保存两本书的验收前私密0600snapshot，v3definition及记录版本2/1不变。
+
+## 2026-10-03 18:10 America/Vancouver · LF-170 hosted acceptance completed
+
+- Exact eedd1d4 Render deploy dep-db0q9nvavr4c738sqtqg在61s后Live；未混入其他checkout模块代码，AutoDeployOff/Free/secret不变。Canonical与platform strictHTTPS各4/4通过。
+- 真实Google同账号2tab轮换改变CSRF，旧页preflight取得新token并仅一次proposalPOST200；cards/ratingdesc/edit-remove生效，完整recordJSON/URL保留，schema只有可选ratingdefault0省略。Garden一次actions200改Reading80/4星，Prince完全不变；root独立IAB同loader先见morph再见recordupdate，无reload/Owner控制。刷新持久化与真实logout200→匿名/cookie消失通过。
+- 一次synthetic-camera observe200，真实Gemini描述与239chars ElevenTTS，audio.play/playing各1；物理设备0/automaticOff。Stop后trackended/audio暂停清src。测试覆盖已restore/delete；早期selector等待超时后同一个请求成功，未重试。root独立habitvisitor媒体off/无Start/console0。最终ledger Gemini10/30、STT5/60、TTS695/1000，全保留。
+- 已有LF185真实30/30quota-stop与QA160证据适用未改server；没有人为耗尽剩余额度。历史Renderrollback9表一致、无DBrestore保留。
+- 203实际CDPframes整理为35.67s英文highlights（长等待缩短有明示），独立匿名截图明确静态proof；无音轨，真playing事件独立记录。输出.local/deployment/livingforma-live-release-demo.mp4，H2641280×720/30fps，5s与34s视觉预览通过。没有OAuth/secret画面。
+- 更新operations、ownmemory/journal和唯一LF170MD/JSON；下一步scoped链接/secret/diff验证后finish并close，不全局Gitstage/commit/push。
+
+- **Final verification**：6个ownscope文档/JSON、9条本地链接、whitespace/diff、4个已知私密配置精确匹配检查通过（0泄漏匹配），.env0600、证据/视频Gitignored；JSON releasegates全真，35.67s视频小于3min。没有重复应用tests或provider请求。结束capture/Network观察，清临时敏感buffers、关闭新增轮换tab，保留canonical deliverable及Renderhandoff。LF170验收已达成，执行finish/close。

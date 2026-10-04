@@ -1,0 +1,13 @@
+import {describe,it,expect} from 'vitest';
+import type {GenerationJob,GenerationOutline} from '@livingforma/contracts';
+import {acceptGenerationEvent,latestOutline,newerGeneration} from './progress';
+const outline:GenerationOutline={version:1,title:'Reading room',layout:'split',sections:[{id:'intro',kind:'hero',columns:8},{id:'books',kind:'collection',columns:4}]};
+function fixture():GenerationJob{return {id:'job',spaceId:'reading',slug:'reading',requestId:'request',baseDefinitionVersion:1,sourceRevision:1,stage:'planning',prompt:'An original website',createdAt:'now',updatedAt:'now',events:[],repairCount:0};}
+const checkpoint=(sequence:number,sourceRevision=1)=>({sequence,sourceRevision,stage:'planning',message:'Planning your website.',at:'now',ui:outline});
+describe('actual generation checkpoints',()=>{
+ it('has no fabricated outline before the model produces one',()=>{const job=fixture();expect(latestOutline(job)).toBeNull();expect(latestOutline(acceptGenerationEvent(job,{...checkpoint(1),ui:undefined}))).toBeNull();});
+ it('applies stable IDs and layout changes only at increasing accepted checkpoints',()=>{const first=acceptGenerationEvent(fixture(),checkpoint(1));const next=acceptGenerationEvent(first,{...checkpoint(2),ui:{...outline,sections:[...outline.sections].reverse()}});expect(latestOutline(next)?.outline.sections.map(section=>section.id)).toEqual(['books','intro']);expect(acceptGenerationEvent(next,checkpoint(1))).toBe(next);});
+ it('clears the previous revision outline while repairing and ignores older revision events and reads',()=>{const previous=acceptGenerationEvent(fixture(),checkpoint(1));const repairing=acceptGenerationEvent(previous,{...checkpoint(2,2),stage:'repairing',ui:undefined});expect(latestOutline(repairing)).toBeNull();expect(acceptGenerationEvent(repairing,checkpoint(3,1))).toBe(repairing);expect(newerGeneration(repairing,previous)).toBe(repairing);});
+ it('rejects an invalid outline without promoting it, and cannot resurrect cancelled work',()=>{const invalid=acceptGenerationEvent(fixture(),{...checkpoint(1),ui:{...outline,sections:[outline.sections[0],outline.sections[0]]}});expect(latestOutline(invalid)).toBeNull();const cancelled={...invalid,stage:'cancelled' as const};expect(acceptGenerationEvent(cancelled,checkpoint(2))).toBe(cancelled);});
+ it('allows the full job response to enrich a checkpoint at the same sequence without an older fetch rolling it back',()=>{const current=acceptGenerationEvent(fixture(),checkpoint(2));const full={...current,toolReports:[{toolId:'summary',toolVersion:1,name:'Summary',report:{ok:true,results:[]}}]};expect(newerGeneration(current,full)).toBe(full);expect(newerGeneration(full,{...full,events:[checkpoint(1)] as any})).toBe(full);});
+});

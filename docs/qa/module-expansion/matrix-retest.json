@@ -1,0 +1,287 @@
+{
+  "at": "2026-10-04T00:34:19.234Z",
+  "scope": "Chromium local sample gallery. Camera/tool-result are explicit device/service placeholders, not real provider verification.",
+  "results": [
+    {
+      "type": "form",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Name *Notes / answerActualTargetRating3CategoryChoose an optionLearnCreateRestoreCompleteCompleteDateWebsiteAdd"
+      }
+    },
+    {
+      "type": "cards",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "LIVING LIBRARY · 01Read one chapterA small step, repeated with care.LFRead one chapterA small step, repeated with care.2430LIVING LIBRARY · 02Sketch a"
+      }
+    },
+    {
+      "type": "list",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterA small step, repeated with care.2430A little counts, tooSketch a new idea## Begin with curiosity\n- Notice a detail\n- Try a different "
+      }
+    },
+    {
+      "type": "calendar-grid",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "October 2026TodayMTWTFSS12345678910111213141516171819202122232425262728293031Small steps, collected10 / 03 · 4 completed"
+      }
+    },
+    {
+      "type": "kanban",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn2Read one chapterPractice a languageCreate2Sketch a new ideaWrite a reflectionRestore2Take a quiet walkMake something useful"
+      }
+    },
+    {
+      "type": "detail",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "TAKE A CLOSER LOOKRead one chapterNotes / answerA small step, repeated with care.Actual24Target30Rating4/ 5CategoryLearnCompletetrueDate2026-09-30Chec"
+      }
+    },
+    {
+      "type": "histogram",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual · 6 values211203141516View data18–25.8225.8–33.7133.7–41.5041.5–49.3149.3–57.2157.2–651"
+      }
+    },
+    {
+      "type": "leaderboard",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "01Practice a language6502Make something useful5403Sketch a new idea4204Write a reflection3105Read one chapter2406Take a quiet walk18"
+      }
+    },
+    {
+      "type": "range-input",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulActualValueSave value"
+      }
+    },
+    {
+      "type": "text-editor",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordA small step, repeated with care.## Begin with curiosity\n- Notice a detail\n- Try a different angleLeave a little room to breathe.Practice makes "
+      }
+    },
+    {
+      "type": "form",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Name *Notes / answerActualTargetRating3CategoryChoose an optionLearnCreateRestoreCompleteCompleteDateWebsiteAdd"
+      }
+    },
+    {
+      "type": "cards",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "LIVING LIBRARY · 01Read one chapterA small step, repeated with care.LFRead one chapterA small step, repeated with care.2430LIVING LIBRARY · 02Sketch a"
+      }
+    },
+    {
+      "type": "list",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterA small step, repeated with care.2430A little counts, tooSketch a new idea## Begin with curiosity\n- Notice a detail\n- Try a different "
+      }
+    },
+    {
+      "type": "calendar-grid",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "October 2026TodayMTWTFSS12345678910111213141516171819202122232425262728293031Small steps, collected10 / 03 · 4 completed"
+      }
+    },
+    {
+      "type": "kanban",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn2Read one chapterPractice a languageCreate2Sketch a new ideaWrite a reflectionRestore2Take a quiet walkMake something useful"
+      }
+    },
+    {
+      "type": "detail",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "TAKE A CLOSER LOOKRead one chapterNotes / answerA small step, repeated with care.Actual24Target30Rating4/ 5CategoryLearnCompletetrueDate2026-09-30Chec"
+      }
+    },
+    {
+      "type": "histogram",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual · 6 values211203141516View data18–25.8225.8–33.7133.7–41.5041.5–49.3149.3–57.2157.2–651"
+      }
+    },
+    {
+      "type": "leaderboard",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "01Practice a language6502Make something useful5403Sketch a new idea4204Write a reflection3105Read one chapter2406Take a quiet walk18"
+      }
+    },
+    {
+      "type": "range-input",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulActualValueSave value"
+      }
+    },
+    {
+      "type": "text-editor",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordA small step, repeated with care.## Begin with curiosity\n- Notice a detail\n- Try a different angleLeave a little room to breathe.Practice makes "
+      }
+    }
+  ],
+  "errors": []
+}

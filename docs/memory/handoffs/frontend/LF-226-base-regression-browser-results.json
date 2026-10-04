@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-04T06:48:16.051Z",
+  "scope": "Real local API/PGlite/Chrome and strict sandbox with offline fixture generator. No provider calls.",
+  "checks": [
+    "Default Owner prompt opens general generation with actual source and isolated read-only preview",
+    "Publish keeps records and URL; public-only bridge can save with existing actions",
+    "Same-account fresh CSRF sends one bridge write and reconnects the frame to saved state",
+    "Explicit host image selection saves a reference and restores the image after reload",
+    "Destructive frame requests need host confirmation; visitor writes request sign-in",
+    "Runtime failure repairs once; explicit publication preserves records, image and URL",
+    "Explicit cancellation suppresses late preview and preserves the live version",
+    "New space description creates a blank space then enters the same generation flow",
+    "Optional module gallery still exposes 60 reusable modules separately"
+  ],
+  "calls": 5,
+  "expectedFixtureErrors": [
+    "Fixture startup failure"
+  ]
+}

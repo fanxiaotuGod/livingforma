@@ -1,0 +1,203 @@
+{
+  "date": "2026-10-04T00:27:52.193Z",
+  "scope": "Real Chrome, local sample playground; clock-controlled timer checks. No live providers, paid services, production state or real user data.",
+  "checks": [
+    {
+      "name": "flashcards: 320px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "quiz: 320px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "random-picker: 320px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "pomodoro: 320px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "stopwatch: 320px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "breathing-guide: 320px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "calculator: 320px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "unit-converter: 320px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "search-panel: 320px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "filter-panel: 320px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "tag-cloud: 320px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "text-reader: 320px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "word-counter: 320px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "markdown-viewer: 320px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "link-directory: 320px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "recipe-scaler: 320px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "flashcards: 1440px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "quiz: 1440px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "random-picker: 1440px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "pomodoro: 1440px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "stopwatch: 1440px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "breathing-guide: 1440px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "calculator: 1440px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "unit-converter: 1440px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "search-panel: 1440px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "filter-panel: 1440px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "tag-cloud: 1440px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "text-reader: 1440px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "word-counter: 1440px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "markdown-viewer: 1440px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "link-directory: 1440px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "recipe-scaler: 1440px viewport / 3-column container",
+      "status": "pass"
+    },
+    {
+      "name": "Flashcards: keyboard flip and next card",
+      "status": "pass"
+    },
+    {
+      "name": "Quiz: correct answer, score, next and restart",
+      "status": "pass"
+    },
+    {
+      "name": "Random picker: no-repeat pool exhausts and resets",
+      "status": "pass"
+    },
+    {
+      "name": "Calculator: arithmetic, divide-zero and clear",
+      "status": "pass"
+    },
+    {
+      "name": "Unit converter: real length and temperature conversion",
+      "status": "pass"
+    },
+    {
+      "name": "Search and enum filters change the shared tag-cloud view",
+      "status": "pass"
+    },
+    {
+      "name": "Tag cloud selects and clears a category",
+      "status": "pass"
+    },
+    {
+      "name": "Reader size is adjustable and source record can change",
+      "status": "pass"
+    },
+    {
+      "name": "Word counter handles Unicode and remains a local draft",
+      "status": "pass"
+    },
+    {
+      "name": "Markdown renders headings and escapes HTML/unsafe links",
+      "status": "pass"
+    },
+    {
+      "name": "Link directory filters and only exposes safe web links",
+      "status": "pass"
+    },
+    {
+      "name": "Recipe scaler changes numeric preview, not stored quantities",
+      "status": "pass"
+    },
+    {
+      "name": "Stopwatch timestamp, pause, laps and reset with controlled browser clock",
+      "status": "pass"
+    },
+    {
+      "name": "Pomodoro completes, pauses and resets explicitly",
+      "status": "pass"
+    },
+    {
+      "name": "Breathing phase starts only on click and reduced-motion disables transitions",
+      "status": "pass"
+    },
+    {
+      "name": "All three timers clear intervals on pause and module unmount",
+      "status": "pass"
+    },
+    {
+      "name": "No browser runtime errors",
+      "status": "pass"
+    }
+  ],
+  "errors": []
+}

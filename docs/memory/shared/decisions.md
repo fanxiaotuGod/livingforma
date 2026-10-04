@@ -6,6 +6,22 @@ permalink: livingforma/shared/decisions
 
 # 已接受决策
 
+## D-028 · 2026-10-04 00:35 America/Vancouver · 有界冷启动与工具执行分阶段
+
+单并发和移除Worker运行时schema/parser导入后，实际Free0.1CPU/512MiB的完整adapter测试仍有冷启动超过4秒；证据保留在Backend LF229 performance.json。D027的4秒**总**deadline不能宣称验收通过。改为明确且有界的启动8秒、guest执行4秒、单Worker总计最多12秒；只有宿主可信Worker就绪后才进入执行阶段，parent仍终止超时/取消。全局并发1、guest heap32MiB/stack256KiB/Broker8和所有权限不变。API invoke14秒、registry test batch65秒；网站生成90秒、独立tool proposal30秒仍为更严格的整体工作期限，超过则真实失败。无偷偷预热或无限等待，不增加费用。LF229须同Free规格实测全部检查通过后完成。
+
+## D-027 · 2026-10-04 00:17 America/Vancouver · 免费规格单工具并发
+
+实际 compiled Docker 在0.1 CPU/512 MiB下，单QuickJS工具2.7–3.2秒通过，但两个冷Worker同时超过原4秒deadline。共享限额改为全进程1个并发，保留4秒deadline；额外请求立即TOOL_BUSY，不启动第二Worker。LF229验证完成/取消释放容量、持久requestId重试语义，并由DevOps在相同免费规格复验。LF227依赖LF229，catalog18；收费仍须用户先批准。此决策取代此前concurrency2规格，不扩大执行权限，也不重置账本。
+
+## D-026 · 2026-10-03 23:40 America/Vancouver · 原创工具与真实动态 UI
+
+用户当前 goal 要求 AI 前端页面、后端新工具及生成中 UI 变形。接受 [generated-tools](../../product/generated-tools.md) 和代码契约：code-js-v1 原创 JavaScript/schema/2–5 JSON测试，QuickJS/WASM Worker执行；Broker 仅提供声明的当前空间公开字段和已启用精确版本连接器。无宿主 Node/shell、密钥、任意网络或收费能力。guest heap/stack/deadline 不等于整个 Worker RSS 硬隔离，当前不承诺跨副本外部 exactly-once。
+
+候选可附 codeToolProposals，经宿主测试后 Owner 显式 Publish 原子注册/启用/发布。组件 toolId/version 跨 kind 唯一；预览不运行后端工具，提示 Publish to run tool。UI/source/tool事件来自实际模型参数与宿主测试。高级绕过复现暂停，QA 做普通功能/权限/隐私/版本验证与已有防御证据审阅。LF221/224/225/226→LF223/227→LF228，尚未上线。
+
+LF170 初版生产与403修复已完成真实验收：eedd1d4、CI37166475387、Render dep-db0q9nvavr4c738sqtqg，Free/AutoDeployOFF。60模块与新生成仍本地；旧上线证据不能当作新功能完成。
+
 ## D-001 · 2026-10-03 · 通用生成优先
 
 来源：用户明确选择“优先通用 App 生成，弱化活动场景”。
@@ -100,3 +116,13 @@ Gemini3.5-flash-lite经真实应用创建、patch和Pi调用验证，作为本�
 ## D-020 · 2026-10-03 America/Vancouver · Render账户与私密配置授权
 
 用户告知已自行创建并登录Render，随后明确回答“允许，继续免费部署”：允许现有Google OAuth配置、Neon数据库连接、Gemini和ElevenLabs API密钥保存到Render的服务端私密环境变量，用于LivingForma部署，不放入网页或仓库，仅用免费资源且不添加付款方式。该回复解除先前账户与凭据传递阻碍；不是收费授权，也不证明服务或域名已经部署。QA160已通过，DevOps170执行实际发布验证。
+
+
+## D-021 · 2026-10-03 America/Vancouver · 60 个可调模块与双端适配
+
+用户要求50–100个模块、全部mobile/PC适配，并明确授权跨聊天协调。接受总计60类型（现有12+新增48），保留每页最多24实例；通用width为3–12列/minHeight120–960，手机自动全宽/内容高度，配置仅允许manifest声明的有界键。Owner手动布局通过独立presentation API版本化保存与SSE传播，不需要模型调用、不改记录/schema/actions。所有类型复用版本注册/字段/权限能力，禁止任意生成代码。模块展厅使用显式本地sample；真实space继续授权写入。新增开发仅独立PGlite/local模式；生产7efaa91固定、AutoDeployOff，本轮未发布模块扩展。
+
+
+## D-025 · 2026-10-03 · General website generation replaces catalog-only ceiling
+
+The user corrected a proposed Tinder-specific component fix: they want any ordinary website request to be attempted through a general generation process. The accepted product direction is code generation → isolated preview → real checks/repair → publish, retaining data and URL. Reusable components remain useful but are no longer the hard frontend expressiveness limit. This supersedes the initial generated-code exclusion inD005/PRD, while preserving Owner authorization, server-only credentials, exactCSRF/Origin, state evolution and confirmed-before-charge rules. Swipe photos is an acceptance input, not a hardcoded planner template. Architecture/security contracts are being specified; no completed implementation is claimed. Session repairLF210/211 remains the immediate isolated release.

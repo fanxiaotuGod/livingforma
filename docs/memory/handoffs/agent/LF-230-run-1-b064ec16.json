@@ -1,0 +1,41 @@
+{
+  "run": 1,
+  "at": "2026-10-04T07:25:47.565Z",
+  "before": {
+    "day": "2026-10-04",
+    "requests": 15
+  },
+  "model": "gemini-3.5-flash-lite",
+  "budget": "original-neon-ledger",
+  "businessDatabaseTouched": false,
+  "ok": false,
+  "errorCode": "PROVIDER_REQUEST_INVALID",
+  "runtime": {
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "requests": 1,
+    "toolCalls": [],
+    "tokens": {
+      "input": 0,
+      "output": 0
+    },
+    "elapsedMs": 798,
+    "failure": {
+      "category": "schema",
+      "status": 400,
+      "code": "INVALID_ARGUMENT",
+      "signals": []
+    }
+  },
+  "after": {
+    "day": "2026-10-04",
+    "requests": 16
+  },
+  "progress": [
+    {
+      "stage": "planning",
+      "sourceKeys": [],
+      "outline": false
+    }
+  ]
+}

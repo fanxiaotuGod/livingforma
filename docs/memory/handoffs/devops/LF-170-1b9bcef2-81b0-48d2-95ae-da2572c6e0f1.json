@@ -1,0 +1,470 @@
+{
+  "status": "completed",
+  "observedAt": "2026-10-04T00:14:40.567289+00:00",
+  "sourceCommit": "eedd1d450b45ff36062bbc7281040fddb0d462ca",
+  "service": {
+    "provider": "Render",
+    "id": "srv-db0pi4lg1s2s73f4vnbg",
+    "plan": "Free",
+    "pricePerMonthUsd": 0,
+    "region": "Virginia (US East)",
+    "cpu": 0.1,
+    "memoryMb": 512,
+    "paymentMethod": false,
+    "autoDeploy": "off",
+    "source": "public Git repository",
+    "dockerfile": "infra/Dockerfile",
+    "buildContext": ".",
+    "healthPath": "/api/health",
+    "platformUrl": "https://livingforma.onrender.com",
+    "canonicalOrigin": "https://livingforma.tech"
+  },
+  "deploys": {
+    "initial": {
+      "id": "dep-db0pi4tg1s2s73f4vp2g",
+      "status": "live",
+      "durationSeconds": 70
+    },
+    "sameCommitRedeploy": {
+      "id": "dep-db0pk1mgekts73aot5f0",
+      "status": "succeeded",
+      "durationSeconds": 32.5
+    },
+    "rollback": {
+      "id": "dep-db0pkiou01pc73bdtjj0",
+      "target": "dep-db0pi4tg1s2s73f4vp2g",
+      "status": "live",
+      "configurationChanges": false,
+      "durationSeconds": 20.6
+    },
+    "sessionHotfix": {
+      "id": "dep-db0q9nvavr4c738sqtqg",
+      "sourceCommit": "eedd1d450b45ff36062bbc7281040fddb0d462ca",
+      "status": "live",
+      "ciRun": "37166475387",
+      "ciConclusion": "success",
+      "qa": "LF211 independent actual Chrome16/16; root112tests/typecheck/build",
+      "durationSeconds": 61,
+      "bundle": "/assets/index-Bt_tUXM1.js"
+    }
+  },
+  "dns": {
+    "provider": "Namify / orderbox-dns",
+    "apexA": "216.24.57.1",
+    "wwwCname": "livingforma.onrender.com",
+    "recordsSaved": true,
+    "includedDomainsUsed": 2,
+    "httpsVerified": true,
+    "apexVerified": true,
+    "wwwVerified": true,
+    "apexCertificate": "Issued",
+    "wwwCertificate": "Issued",
+    "canonicalNormalChromeNavigation": true,
+    "canonicalIndependentIabNavigation": true,
+    "localCurlResolverStillNegative": false,
+    "cacheRefresh": [
+      "Google A refresh showed Success",
+      "Cloudflare A refresh queued"
+    ]
+  },
+  "checks": {
+    "platformSmoke": true,
+    "realProductionGoogleLogin": true,
+    "realProductionGoogleLogout": true,
+    "rollbackPersistence": true,
+    "hostedPublicRecordSse": true,
+    "canonicalStrictHttpsSmoke": true,
+    "hostedSessionRotation": true,
+    "hostedMorphAndRecordSse": true,
+    "hostedSyntheticVisionSpeechStop": true,
+    "anonymousHostedCameraIsolation": true
+  },
+  "privateArtifacts": {
+    "billing": ".local/deployment/render-free-billing.png",
+    "firstLive": ".local/deployment/render-first-live.png",
+    "dnsInstructions": ".local/deployment/render-dns-instructions.png",
+    "wwwSaved": ".local/deployment/dns-www-saved.png",
+    "applicationRowBackup": ".local/deployment/LF-170-pre-rollback-business-backup.json",
+    "backupSha256": "99e1fbe9b06a8fb611be98543084098d7d4f337d214ff891e1595e2532ed4547",
+    "beforeHotfixReading": ".local/deployment/LF-170-before-hotfix-reading.json",
+    "hotfixLive": ".local/deployment/render-session-hotfix-live.png",
+    "readingFinal": ".local/deployment/livingforma-canonical-reading-final.png",
+    "logoutPublic": ".local/deployment/livingforma-production-logout-public.png",
+    "syntheticScene": ".local/deployment/livingforma-hosted-synthetic-scene.png",
+    "demoFrames": ".local/deployment/hotfix-demo-frames/frames.json",
+    "demo": ".local/deployment/livingforma-live-release-demo.mp4",
+    "visitorStatic": ".local/deployment/coordinator-anonymous-reading.png",
+    "finalReading": ".local/deployment/LF-170-final-reading.json"
+  },
+  "notes": [
+    "All secrets imported only into approved Render private environment; no values recorded.",
+    "Reuse existing Neon strict verify-full TLS, business data and provider ledgers.",
+    "Backup excludes ephemeral auth session/OAuth tables; budgets must never be restored for application rollback.",
+    "Actual hosted acceptance used one approved proposal submission and one synthetic observation, with real Gemini/TTS; all ledgers preserved."
+  ],
+  "rollbackPersistence": {
+    "checkedAt": "2026-10-04T00:14:53.475Z",
+    "tables": [
+      {
+        "table": "lf_migrations",
+        "count": 4,
+        "unchanged": true
+      },
+      {
+        "table": "lf_users",
+        "count": 1,
+        "unchanged": true
+      },
+      {
+        "table": "lf_spaces",
+        "count": 2,
+        "unchanged": true
+      },
+      {
+        "table": "lf_events",
+        "count": 8,
+        "unchanged": true
+      },
+      {
+        "table": "lf_requests",
+        "count": 8,
+        "unchanged": true
+      },
+      {
+        "table": "lf_tools",
+        "count": 1,
+        "unchanged": true
+      },
+      {
+        "table": "lf_tool_runs",
+        "count": 2,
+        "unchanged": true
+      },
+      {
+        "table": "lf_provider_budgets",
+        "count": 1,
+        "unchanged": true
+      },
+      {
+        "table": "lf_media_budgets",
+        "count": 2,
+        "unchanged": true
+      }
+    ],
+    "allUnchanged": true,
+    "gemini": {
+      "day": "2026-10-04",
+      "requests": 1
+    },
+    "media": [
+      {
+        "bucket": "elevenlabs-stt-seconds",
+        "period": "verified-2026-10-03",
+        "units": 5
+      },
+      {
+        "bucket": "elevenlabs-tts-characters",
+        "period": "verified-2026-10-03",
+        "units": 316
+      }
+    ],
+    "restoredDatabase": false
+  },
+  "incident": {
+    "observedAt": "2026-10-04T00:16:25.853030+00:00",
+    "reported": "User reports Gemini API key detected in GitHub; coordinator investigating",
+    "providerCallsPaused": false,
+    "releaseAcceptancePaused": false,
+    "currentPublicBundleExactKeyMatch": false,
+    "bundlePaths": [
+      "/",
+      "/assets/index-C5_-AVIL.js",
+      "/assets/index-D9XgRzj7.css"
+    ],
+    "scope": "Current deployed resources only; no Git history assertion",
+    "credentialRotationPerformed": false,
+    "aiStudio": {
+      "checkedAt": "2026-10-04T00:19:07.280781+00:00",
+      "configuredKeyMatchedMaskedFreeDefaultRow": true,
+      "visibleBlockedLeakedDisabledTag": false,
+      "keyRevealedOrCopied": false,
+      "providerRequestMade": false
+    },
+    "coordinatorAudit": {
+      "reachableGitBlobsChecked": 289,
+      "exactCurrentKeyMatches": 0,
+      "googleKeyPatternMatches": 0,
+      "trackedWorkingFileMatches": 0,
+      "remoteBranches": [
+        "main"
+      ],
+      "remoteMainCommitPrefix": "3325718",
+      "githubNativeSecretAlerts": 0,
+      "source": "Coordinator report; DevOps did not duplicate history audit",
+      "allStoredGitBlobsIncludingUnreachable": 296,
+      "allStoredGitCommits": 5,
+      "allStoredExactOrBase64KeyMatches": 0,
+      "allStoredGoogleKeyPatternMatches": 0,
+      "envIgnoredUntrackedMode": "0600",
+      "dockerBuildContextEnvExcluded": true
+    },
+    "resolution": "Coordinator directly inspected GitGuardian incident37849019. Detected value is a known catalog SHA-256 digest, not an API key; validity No checker. False positive identified and generation/release hold cleared.",
+    "independentQaAudit": {
+      "reportedCommit": "3325718",
+      "changedFilesChecked": 120,
+      "reachableImagesOcrChecked": 18,
+      "ciLogRuns": [
+        "37164335690",
+        "37163223781"
+      ],
+      "ciLogBytesChecked": 85060,
+      "literalEncodedGoogleKeyPatternMatches": 0,
+      "pngMetadataMatches": 0,
+      "nonBlobGithubTextMatches": 0,
+      "identifiedHandoffLongValues": "chat/session UUIDs and commit/catalog digests, not Google key format",
+      "limitations": [
+        "Historical limitation before direct alert inspection; superseded by identified catalog-digest false positive",
+        "OCR and scans cannot exclude unknown old keys/deleted external surfaces",
+        "setup-node pnpm dependency cache existed; contents not downloaded"
+      ],
+      "source": "Independent QA final report in collaboration; no duplicate DevOps scan"
+    },
+    "userReportedLocation": {
+      "repository": "fanxiaotuGod/livingforma",
+      "commit": "3325718",
+      "path": "docs/memory/handoffs/coordinator/LF-155-module-expansion-handoff-744b6b36.md",
+      "coordinatorReview": "Resolved by direct GitGuardian detected-value identification; no API key involved"
+    },
+    "resolvedAt": "2026-10-04T00:22:51.482838+00:00",
+    "incidentUrl": "https://dashboard.gitguardian.com/workspace/661605/incidents/37849019?sort_published_at=true",
+    "alertMutationPerformed": false
+  },
+  "auth": {
+    "realGoogleAccountSelectionCallback": true,
+    "canonicalReturnPath": "/s/space-bb2d7928",
+    "ownerOrbVisible": true,
+    "reloadPersisted": true,
+    "cookie": {
+      "name": "__Host-lf-session",
+      "secure": true,
+      "httpOnly": true,
+      "sameSite": "Lax",
+      "path": "/",
+      "hostOnly": true
+    },
+    "logoutVerified": true,
+    "sameAccountRotation": {
+      "oldAndNewAccountSame": true,
+      "csrfChanged": true,
+      "postUsedFreshCsrf": true,
+      "preflightStatus": 200,
+      "proposalPostCount": 1,
+      "proposalStatus": 200,
+      "sameUrl": true,
+      "bundle": "/assets/index-Bt_tUXM1.js"
+    },
+    "logout": {
+      "httpStatus": 200,
+      "anonymous": true,
+      "csrfCleared": true,
+      "sessionCookiePresent": false,
+      "sameUrl": true,
+      "fixtureRemoved": true
+    }
+  },
+  "reading": {
+    "definitionVersion": 4,
+    "existingBook": {
+      "id": "rec_2c05e85b-9db1-4f88-9ced-284fa61b6a59",
+      "version": 2,
+      "progress": 35,
+      "unchanged": true
+    },
+    "secondBook": {
+      "id": "rec_4265b207-9c16-4337-a543-476314dd4a56",
+      "title": "The Secret Garden",
+      "version": 2,
+      "progress": 80,
+      "rating": 4,
+      "createdThroughActualHostedUi": true,
+      "exactHttpResponseNotInstrumented": true,
+      "status": "Reading",
+      "updatePostStatus": 200
+    },
+    "morphSubmitted": true,
+    "finding": "Existing edit/remove bindings now attached by the single approved composition. No direct database repair.",
+    "morphPostCount": 1,
+    "morphStatus": 200,
+    "recordsExactlyPreservedByMorph": true,
+    "schemaExactlyPreserved": false,
+    "schemaDifference": "Only optional rating.defaultValue=0 omitted; IDs/types/labels/bounds/required/options/public visibility preserved; existing record JSON unchanged",
+    "collection": {
+      "type": "cards",
+      "variant": "cover",
+      "sort": {
+        "field": "rating",
+        "direction": "desc"
+      },
+      "actionIds": [
+        "edit",
+        "remove"
+      ]
+    },
+    "reloadVerified": true
+  },
+  "activeHold": null,
+  "demo": {
+    "detachedBackgroundScreencast": "Blocked by browser admin-policy check unavailable; no bypass attempted; stopped",
+    "supervisedAwaitedSameApiRecording": "203 actual frames with timestamps; no policy errors during hotfix capture; one selector timeout did not replay the request",
+    "videoCompleted": true,
+    "path": ".local/deployment/livingforma-live-release-demo.mp4",
+    "durationSeconds": 35.666667,
+    "width": 1280,
+    "height": 720,
+    "codec": "h264",
+    "fps": 30,
+    "audioTrack": false,
+    "rawFrames": 203,
+    "rawSpanSeconds": 179.303384,
+    "edits": "Original action frames retained; long between-action idle gaps shortened to2s; explanatory English labels; independent visitor screenshot shown as static evidence",
+    "visitorStillSource": "Coordinator /tmp/livingforma-public-hotfix.png",
+    "syntheticCameraExplicitlyLabeled": true,
+    "previewFramesReviewed": [
+      5,
+      34
+    ]
+  },
+  "independentCoordinatorBrowser": {
+    "origin": "https://livingforma.tech",
+    "slug": "space-bb2d7928",
+    "before": {
+      "records": 1,
+      "progress": 35
+    },
+    "after": {
+      "records": 2,
+      "progress": 68,
+      "secondBook": "The Secret Garden",
+      "rating": 4
+    },
+    "sameUrl": true,
+    "sameCdpLoaderId": true,
+    "fullReload": false,
+    "observedBy": "Coordinator separate anonymous IAB, not DevOps or new QA execution",
+    "hotfixMorph": {
+      "observer": "Root independent anonymous IAB tab5",
+      "loaderId": "1B2EF6F066CCA9A4987C867D0C3F000C",
+      "sameUrl": true,
+      "fullReload": false,
+      "before": "Reading List; Garden100% Finished4; Prince35% Reading0; aggregate68%",
+      "after": "Reading Gallery/cards; records unchanged; aggregate68%; visitor Sign in/noOwnerControls"
+    },
+    "hotfixRecordUpdate": {
+      "sameLoaderId": true,
+      "sameUrl": true,
+      "fullReload": false,
+      "garden": "Reading80%4stars",
+      "prince": "Reading35%0",
+      "recordCount": 2,
+      "aggregateProgress": 58,
+      "ownerControls": false
+    },
+    "habitVisitor": {
+      "origin": "https://livingforma.tech",
+      "slug": "space-3c242042",
+      "signedIn": false,
+      "recordCount": 1,
+      "cameraStartControl": false,
+      "message": "Only owner can start; camera and microphone off",
+      "consoleErrors": 0,
+      "liveInSync": true,
+      "observedBy": "Coordinator independent IAB; no cloud mutations"
+    }
+  },
+  "updatedAt": "2026-10-04T01:10:24.036145+00:00",
+  "preHotfixQuotas": {
+    "observedAt": "2026-10-04T00:59:25.327055+00:00",
+    "geminiDay": "2026-10-04",
+    "geminiReserved": 7,
+    "geminiLimit": 30,
+    "sttSeconds": 5,
+    "sttLimit": 60,
+    "ttsCharacters": 456,
+    "ttsLimit": 1000,
+    "period": "verified-2026-10-03",
+    "readOnly": true,
+    "devopsProviderCalls": 0
+  },
+  "media": {
+    "synthetic": true,
+    "observePostCount": 1,
+    "observeStatus": 200,
+    "beforeStop": {
+      "audio": [
+        {
+          "paused": false,
+          "srcCleared": false
+        }
+      ],
+      "audioPlays": 1,
+      "getUserMediaCalls": 1,
+      "physicalDeviceCalls": 0,
+      "playingEvents": 1,
+      "secureContext": true,
+      "synthetic": true,
+      "trackStops": 0,
+      "tracks": [
+        {
+          "kind": "video",
+          "readyState": "live"
+        }
+      ]
+    },
+    "afterStop": {
+      "audio": [
+        {
+          "paused": true,
+          "srcCleared": true
+        }
+      ],
+      "audioPlays": 1,
+      "getUserMediaCalls": 1,
+      "physicalDeviceCalls": 0,
+      "playingEvents": 1,
+      "secureContext": true,
+      "synthetic": true,
+      "trackStops": 1,
+      "tracks": [
+        {
+          "kind": "video",
+          "readyState": "ended"
+        }
+      ]
+    },
+    "fixtureRestoredAndRemoved": true,
+    "automaticDescription": false,
+    "sttInvocations": 0,
+    "selectorWaitTimedOutBeforeSameObserveSucceeded": true
+  },
+  "finalQuotas": {
+    "observedAt": "2026-10-04T01:07:20.871871+00:00",
+    "geminiDay": "2026-10-04",
+    "geminiReserved": 10,
+    "geminiLimit": 30,
+    "sttSeconds": 5,
+    "sttLimit": 60,
+    "ttsCharacters": 695,
+    "ttsLimit": 1000,
+    "period": "verified-2026-10-03",
+    "noResets": true,
+    "lf170ProposalPosts": 1,
+    "lf170ObservePosts": 1,
+    "ttsCharacterDeltaForObserve": 239,
+    "providerCountNote": "One planner POST can use several bounded Pi model turns; ledger moved7\u21929 across proposal and9\u219210 across observation. Do not equate one POST to one provider HTTP request."
+  },
+  "freeQuotaStopEvidence": {
+    "path": "docs/memory/handoffs/coordinator/LF-185-camera-quota-evidence.json",
+    "scope": "Previously verified local browser/API against same real Neon durable budget and unchanged server runtime; not re-exhausted on host",
+    "result": "30/30 returns503 FREE_QUOTA_EXHAUSTED before new provider calls, unchanged ledger; independent LF160 QA accepted"
+  }
+}

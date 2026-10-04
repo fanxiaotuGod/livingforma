@@ -1,5 +1,7 @@
 import { COMPONENT_MANIFESTS, proposalSchema, validateEvolution, type ComponentSpec, type Definition, type EntityField, type Proposal } from '@livingforma/contracts';
 
+import { addRequestedModules, requestedModules } from './module-composer';
+
 // Small, explicit offline rules are a fallback. Component assembly is shared across domains.
 const domains = [
   {match:/book|read|书|阅读/i,name:'Book',title:'Between the lines',description:'Books, ideas, and your next chapter.',skin:'linen',fields:[{id:'author',label:'Author',type:'text'},{id:'status',label:'Reading status',type:'enum',options:['To read','Reading','Finished'],defaultValue:'To read'},{id:'progress',label:'Progress',type:'number',min:0,max:100,defaultValue:0}],tags:['books','reading'],primary:'cards'},
@@ -43,7 +45,7 @@ export function localProposal(prompt:string,current:Definition|null):Proposal {
     }
     components.push(component('form',{title:'Make a little space',fields:fields.filter(f=>f.type!=='dates').map(f=>f.id),actionIds:['add'],span:'side'}));
     p={entitySchema:{schemaVersion:1,name:d.name,fields},appSpec:{specVersion:1,title:d.title,description:d.description,skin:d.skin,layout:date?'dashboard':d.primary==='cards'?'gallery':'split',actions,components},summary:'Created a reusable component composition.',source:'local-rules',capabilityGaps:[]};
-    if(!domain)gaps.push('Local mode supports collection, reading, habit, task, and expense composition. Use the configured AI planner for other requests.');
+    if(!domain&&!requestedModules(prompt).length)gaps.push('Local mode supports collection, reading, habit, task, and expense composition. Use the configured AI planner for other requests.');
   }
   const fields=p.entitySchema.fields;
   if(/rating|评分/i.test(prompt)){
@@ -55,7 +57,7 @@ export function localProposal(prompt:string,current:Definition|null):Proposal {
     for(const c of p.appSpec.components.filter(c=>['cards','list','kanban'].includes(c.type)))c.sort={field:/rating|评分/i.test(prompt)?'rating':sortField,direction:/ascending|a.to.z|升序/i.test(prompt)?'asc':'desc'};
   }
   if(/highlight|emphasi|突出|强调/i.test(prompt)&&fields.some(f=>f.id==='status'&&f.options?.includes('Reading')))for(const c of p.appSpec.components.filter(c=>c.type==='cards'))c.emphasis={field:'status',equals:'Reading',style:'highlight'};
-  const desiredType=/kanban|board|看板/i.test(prompt)?'kanban':/compact list|as a list|列表/i.test(prompt)?'list':/cards|gallery|卡片/i.test(prompt)?'cards':null;
+  const desiredType=requestedModules(prompt).length?null:/kanban|board|看板/i.test(prompt)?'kanban':/compact list|as a list|列表/i.test(prompt)?'list':/cards|gallery|卡片/i.test(prompt)?'cards':null;
   if(desiredType){const c=p.appSpec.components.find(c=>['cards','list','kanban','detail'].includes(c.type));const group=fields.find(f=>f.type==='enum');if(c&&(desiredType!=='kanban'||group)){c.type=desiredType;c.variant=desiredType==='cards'?'cover':'default';delete c.groupBy;if(desiredType==='kanban')c.groupBy=group!.id;const allowed=COMPONENT_MANIFESTS.find(m=>m.id===desiredType)!;c.actionIds=c.actionIds.filter(id=>allowed.actions.includes(p.appSpec.actions.find(a=>a.id===id)!.type));p.appSpec.layout=desiredType==='cards'?'gallery':'split';}else gaps.push('A board requires an enum workflow field.');}
   const skin=(['linen','sage','ink','clay','sand','rose'] as const).find(s=>new RegExp(`\\b${s}\\b`,'i').test(prompt));if(skin)p.appSpec.skin=skin;
   if(/compact|dense|紧凑/i.test(prompt))for(const c of p.appSpec.components){const m=COMPONENT_MANIFESTS.find(m=>m.id===c.type)!;if(m.variants.includes('compact'))c.variant='compact';else if(m.variants.includes('dense'))c.variant='dense';}
@@ -67,6 +69,7 @@ export function localProposal(prompt:string,current:Definition|null):Proposal {
       }
     }else gaps.push('Camera observation is not yet available in the registered component catalog.');
   }
+  addRequestedModules(p,prompt,gaps);
   if(/voice|video|payment|email|weather|map|语音|支付|邮件/i.test(prompt))gaps.push('This request needs a capability that is not yet available in the registered text-planning catalog.');
   if(/search.*book|book.*search|open.?library|查.*书/i.test(prompt))gaps.push('Open Library search requires a tool proposal, validation, and explicit Owner enablement before use.');
   if(/delete.*field|remove.*field|删除.*字段/i.test(prompt))gaps.push('Removing fields is destructive and is not supported by safe evolution.');

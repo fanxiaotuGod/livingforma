@@ -1,5 +1,5 @@
 import { createHash, randomUUID } from 'node:crypto';
-import { validateEvolution, validateValues, type Definition, type Mutation, type Proposal, type Snapshot, type User } from '@livingforma/contracts';
+import { COMPONENT_MANIFESTS, validateEvolution, validateValues, validateGeneratedArtifact, type Definition, type Mutation, type PresentationRequest, type Proposal, type Snapshot, type User } from '@livingforma/contracts';
 import type { SpaceState, Store, SqlConnection } from '@livingforma/db';
 
 export class ApiProblem extends Error{constructor(public statusCode:number,public code:string,message:string){super(message);}}
@@ -17,15 +17,21 @@ export function projection(state:SpaceState,user:User|null):Snapshot{
     const privateRequired=state.definition!.entitySchema.fields.some(field=>!field.public&&field.required&&field.defaultValue===undefined);
     definition.appSpec.actions=definition.appSpec.actions.filter(action=>action.type!=='tool.invoke'&&(!action.fieldId||visible.has(action.fieldId))&&!(privateRequired&&action.type==='record.create'));
     const actions=new Set(definition.appSpec.actions.map(action=>action.id));
-    definition.appSpec.components=definition.appSpec.components.filter(component=>component.type!=='tool-result').map(component=>{
-      component.fields=component.fields.filter(id=>visible.has(id));component.actionIds=component.actionIds.filter(id=>actions.has(id));
-      if(component.groupBy&&!visible.has(component.groupBy))delete component.groupBy;
-      if(component.dateField&&!visible.has(component.dateField))delete component.dateField;
-      if(component.valueField&&!visible.has(component.valueField))delete component.valueField;
+    definition.appSpec.components=definition.appSpec.components.flatMap(component=>{
+      const manifest=COMPONENT_MANIFESTS.find(candidate=>candidate.id===component.type&&candidate.version===component.version);
+      if(!manifest||component.toolRef||manifest.bindings.includes('toolRef'))return [];
+      // Removing an explicit private scalar binding could make a module silently
+      // fall back to a different public field. Omit that module instead.
+      if([component.groupBy,component.dateField,component.valueField].some(id=>id&&!visible.has(id)))return [];
+      const hadFields=component.fields.length>0;
+      component.fields=component.fields.filter(id=>visible.has(id));component.actionIds=component.actionIds.filter(id=>actions.has(id));delete component.toolBindings;
+      if(hadFields&&!component.fields.length)return [];
       if(component.sort&&!visible.has(component.sort.field))delete component.sort;
       if(component.emphasis&&!visible.has(component.emphasis.field))delete component.emphasis;
-      return component;
-    }).filter(component=>!(['cards','list','detail','form'].includes(component.type)&&!component.fields.length)&&!(['calendar-grid','streak'].includes(component.type)&&!component.dateField)&&!(component.type==='kanban'&&!component.groupBy)&&!(component.type==='progress'&&!component.valueField));
+      // Config and size contain schema-bounded presentation values, never field
+      // references; every binding continues to live in the fields above.
+      return [component];
+    });
   }
   // An owner definition can legitimately contain no public fields or visible components.
   // Represent that audience's empty view with the existing null-definition contract.
@@ -67,9 +73,22 @@ export function applyMutation(state:SpaceState,user:User,mutation:Mutation){
   state.stateVersion++;
 }
 export function applyProposal(state:SpaceState,proposal:Proposal):Definition{
+  if(proposal.appSpec.generated)validateGeneratedArtifact(proposal.appSpec.generated);
   const next=validateEvolution(state.definition,{definitionVersion:(state.definition?.definitionVersion??0)+1,entitySchema:proposal.entitySchema,appSpec:proposal.appSpec,summary:proposal.summary});
   // Validate every retained record with the new schema before committing either definitions or defaults.
   let changed=false;
   for(const record of state.records){const values=validateValues(next.entitySchema,record.values);if(fingerprint(values)!==fingerprint(record.values)){record.values=values;record.version++;record.updatedAt=new Date().toISOString();changed=true;}}
   state.definition=next;state.space.title=next.appSpec.title;if(changed)state.stateVersion++;return next;
+}
+
+export function applyPresentation(state:SpaceState,input:PresentationRequest):Definition{
+  const current=state.definition;if(!current)fail(409,'SPACE_UNCONFIGURED','Create your app before changing its modules.');
+  if(input.baseDefinitionVersion!==current.definitionVersion)fail(409,'DEFINITION_CONFLICT','This app has changed. Refresh before saving your module changes.');
+  // A presentation edit never runs schema defaults/backfills or mutates records.
+  const next=validateEvolution(current,{
+    ...current,definitionVersion:current.definitionVersion+1,
+    appSpec:{...current.appSpec,components:input.components,...(input.layout?{layout:input.layout}:{})},
+    summary:'Updated module layout and presentation.',
+  });
+  state.definition=next;return next;
 }

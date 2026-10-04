@@ -6,40 +6,23 @@ permalink: livingforma/shared/task-board
 
 # 任务板
 
-仅 coordinator 写。本轮更新产品方向、角色文档与任务目录：前端组合/变形、Pi 工具创建/复用、Owner orb 和语音/相机里程碑。应用已开始实际实现；当前生产上线仍待后续验收。此表是摘要；实时认领/完成状态以 `python3 scripts/coordination.py status` 为准，任务定义来自 `.codex/coordination.json`。
+## 当前状态 · 2026-10-04 01:00 America/Vancouver · catalog23
 
-| ID | Owner | Task | Status | Evidence / next |
-| --- | --- | --- | --- | --- |
-| LF-001 | coordinator | 多 agent 规则、角色配置、共享记忆工作流 | verified | AGENTS.md、.codex/、docs/WORKFLOW.md；新 chat 加载 |
-| LF-002 | frontend | 通用产品 PRD 与前端 runtime 计划 | verified（文档） | PRD/前端计划已对齐；读书记录+习惯打卡已确认 |
-| LF-003 | backend | 状态/版本/实时/ToolSpec 架构提案 | verified（文档） | docs/architecture.md；候选命名已对齐，非应用实现 |
-| LF-004 | devops | 本地 MCP 研究、安装与部署约定 | verified | shared/setup-verification.md；未部署应用 |
-| LF-005 | qa | 验证配置、文档、MCP 跨客户端读写 | verified | roles/qa/journal.md；最新 smoke 六项通过 |
-| LF-006 | coordinator | 独立对话自动任务/路径认领；Google OAuth 与服务归属 | verified（工作流） | 30 项脚本测试、10 任务临时仓库流程、配置/链接检查通过；见 setup-verification.md |
-| LF-007 | frontend | 扩展组件、Owner orb、动效与 skills 使用约定 | verified（文档） | experience-direction、skills-guide、runtime-plan、独立交接；未实现组件 |
-| LF-008 | agent | 语音/视觉、工具创造与能力装配方案 | verified（文档） | multimodal-plan、官方资料核查与独立 handoff；未调用 API |
-| LF-009 | devops | 公开读/登录写、SPA 路由与媒体部署约定 | verified（文档） | operations 文档、own memory 与 handoff；未配置 OAuth/部署 |
-| LF-011 | frontend | 已安装第三方 skills 的使用适配与角色交接 | verified（文档） | frontend-dev / animations，98/23 源文件比对、Codex skills/list enabled；skills-guide 与独立 handoff |
-| LF-100 | coordinator | 应用骨架、组件 manifest、Pi registry 与 Google session 契约 | verified | pnpm typecheck/test/build，4 项契约测试，API/Vite HTTP smoke，Pi core 构造/registry smoke；详见 LF-100 handoff |
-| LF-110 | frontend | 丰富组件库/组装、Owner orb、变形与访客登录 UI | verified | 11组件/6皮肤英文UI；真实CRUD/独立SSE/blank/offline/mobile与fixture变形证据；见frontend LF110 handoff |
-| LF-120 | backend | Tiger Data/Postgres、用户映射、权限/API/SSE | verified | 12项真实PGlite/Fastify测试、磁盘重启、APIbuild/typecheck；生产Docker已连接Neon，用户业务流程仍待整合 |
-| LF-130 | agent | Pi/Gemini 装配 Planner、工具创建/注册/复用与基础适配 | verified | 真Gemini reading/habits/patch与工具调用，真OpenLibrary+审批注册复用+审计，10单测；CLI budget22/30需迁移 |
-| LF-140 | devops | Google OAuth/session、免费资源核查、部署准备 | verified | 真实Google登录刷新退出、17安全测试、Neon严格TLS、免费用量与Docker/CI准备；正式Render/域名待LF170 |
-| LF-145 | coordinator | 并行阶段的共享接口、依赖与任务板维护 | verified | 四角色handoff已审核，shared契约/预算/媒体接口及依赖准备完成 |
-| LF-150 | coordinator | 文字基础、组件组装、Pi 工具闭环与多人同步整合 | verified | 真GoogleOwner+Gemini+Neon两类app/变形/数据URL/SSE/工具审批复用；QA14718/18，见LF150证据 |
-| LF-180 | frontend | 语音 orb、相机组件与本地设备生命周期 | verified | 11 虚拟设备浏览器检查、5 媒体单测、12 组件回归；真实 UI 整合由 LF185 承接 |
-| LF-181 | agent | 语音改站、Gemini 看图与 ElevenLabs 播报 | verified | 实际 STT/vision/TTS、23 单测；真实 voice Apply 已发布 habit v2；完整相机 UI 由 LF185 承接 |
-| LF-182 | backend | 媒体会话鉴权/配额、短期传输与数据隔离 | verified | 13 媒体 host + 4 budget 测试，取消/退出/过期/跨会话隔离通过 |
-| LF-185 | coordinator | Jarvis 真实语音/相机整合与数据保留 | verified | 实际voice→v2、camera→vision→speech→browser播放、停止/访客隔离/记录保留；LF-185-camera-live-evidence.json，100 tests + GitHub CI通过 |
-| LF-155 | coordinator | QA/部署期间目录维护与返工安排 | handoff | 正在释放给用户授权的60模块扩展coordinator；DevOps170继续固定7efaa91发布，见module-expansion-handoff |
-| LF-160 | qa | 独立 MVP 验收 | verified | LF-160-acceptance.md及evidence.json，100tests CI、独立18浏览器及安全复验、真实服务证据一致性；上线门槛留LF170 |
-| LF-170 | devops | 部署到 livingforma.tech、生产登录与 HTTPS 验收 | in progress | QA已通过；用户已创建/登录Render，并明确授权现有凭据写入Render私密环境；仅Free、不添加付款方式 |
+Coordinator27d9cbd8持有LF155。初版eedd1d4已在livingforma.tech，60模块/通用生成仍本地。高级绕过研究暂停，正常开发继续。实时认领以registry为准。
 
-原 LF-010～014 backlog 已由上述可执行任务目录取代，尚未执行的旧任务不能当作已完成依赖。Snowflake 功能有负责人，但先作为可选分析项，待用途与额度验证后再由 coordinator 加入任务目录。
+| Task | State | Evidence / next |
+| --- | --- | --- |
+| LF220/221/222/224/225/226 | verified / closed | 原创页面/工具、持久jobs/assets/history、QuickJS、Studio/真实checkpointUI实现交接 |
+| LF223 | verified / closed | 普通独立QA：8/8Chrome、11/11HTTP/QuickJS/restart、28/28回归，生成器fixture |
+| LF229 | verified / closed | 独立FreeDocker6/6；1Worker，启动8s/执行4s/总计12s，保留失败证据 |
+| LF230 | verified / closed | 请求兼容修复；122+32测试，Root真实候选/IAB启动通过，交互另验 |
+| LF232 | claimed frontend01a65ac6 | Owner功能反馈通过原单次修复；本地浏览器4/4，最后样式/取消复验 |
+| LF233 | awaits LF232 | Coordinator整合远程403热修复历史，保留所有当前源/角色历史 |
+| LF227 | waits LF232/233 | 真实三类页面、原创工具/复用、数据/URL/访客同步、全检查/CI |
+| LF228 | waits LF227 | reviewedCI-green exactSHA，原FreeRender/Neon/Google上线验收 |
 
-2026-10-03 新目录验证：17 项实际任务在临时 Git 仓库完成文档/文字/多模态/QA/部署路由模拟，包括阻止越过依赖、维护认领释放后整合。证据 `.local/vision-catalog-smoke-report.json`；这只验证工作流，不完成真实产品任务。下一应用任务仍为 LF-100。
+Root实际PhotoDrift候选已checked但上传双选择需修复；未发布。原Neonledger18后Root一次请求，预计19/30，后续先核对，不退款或重置。
 
-第三方 skills 安装补充：用户授权后两项完整安装并被本地 Codex scanner 识别；目录版本现为 6，共 18 项任务（新增 LF-011 文档任务，不改变应用依赖）。来源 .codex/third-party-skills.json；新窗口入口 docs/product/start-development.md。产品任务仍待 LF-100 开始。
 
 ## 本轮开发补充任务
 
@@ -55,3 +38,37 @@ LF-148（DevOps，verified）：生产配置与私密环境已对齐实际 gemin
 LF185 独立只读 QA 发现并复现等待中的 proposal 可在 logout 后发布，已由 coordinator 修复并通过独立复验；补充工具并发窗口和 includeSpeech=false 复验通过。完整 release QA160 尚未开始，不把这些局部证据标成最终验收。
 
 2026-10-03 16:50 America/Vancouver：最终 pnpm check 100/100、TypeScript、web/API生产构建通过；新增pg空闲连接断开故障处理及回归。QA独立访问生产Docker中两个匿名深链，资源/CSP/SSE/英文UI均通过，无Owner控制、JS错误或横向溢出。实际camera成功链路仍待UTC日切；正式QA160与发布170尚未完成。
+
+
+## 2026-10-03 · 可调模块扩展（catalog revision14）
+
+用户另一个聊天的50–100模块请求已协调接管，采用60类型/每页24实例。只读生产部署仍由DevOps170在固定7efaa91独立验收；本轮开发使用独立PGlite/local模式，不写云数据库。
+
+| ID | Owner | Status | Evidence / next |
+| --- | --- | --- | --- |
+| LF-199 | coordinator | verified | 60 manifests及受限size/config/presentation契约；11 contracts tests；[handoff](../handoffs/coordinator/LF-199-5731fe24.md) |
+| LF-200 | coordinator | verified | 60注册与通用编辑/展厅；170tests/typecheck/build；300响应式+22交互+11回归+4实际能力面板，见LF200 handoff |
+| LF-201 | frontend | verified | 16collection/planning/goals模块；48SSR与48React布局、10组行为；独立handoff |
+| LF-202 | agent | verified | 16study/tools/discovery/reading模块，60manifest planner与48offline组合；79单测/49浏览器检查 |
+| LF-203 | backend | verified | Owner presentation保存/replay/version/SSE/publicprojection；35针对性测试及disk重开 |
+| LF-204 | qa | verified | 300布局、22交互/持久化、11回归、20重测、8变体、4实际camera/tool面板均通过；见QA acceptance |
+
+LF155维护槽当前available。模块任务交付完成，root session5731fe24与QA session440496ff正在finish/close；以实时registry为准。后续生产403热修复由原部署chat接管协调，不混入60模块。
+
+
+## 2026-10-03 17:44 · Production repair and next generation experience
+
+Coordinator27d9cbd8 holdsLF155, catalog15. LF210 frontend andLF211 QA implement/test isolated session recovery on3325718; LF170 released incomplete with both repair gates before redeploy. Public livingforma.tech HTTPS/Google and two-book persistence/SSE now verified. New user request for freedom/live generation uses swipeable photos as acceptance; design/contract work pending after the repair, without losing60-module primary checkout changes. See [current handoff](../handoffs/coordinator/LF-155-session-recovery-27d9cbd8.md).
+
+
+## 2026-10-03 18:03 · General generation and production hotfix (catalog16)
+
+- LF155: coordinator27d9cbd8 active. User confirmed all new frontend/backend generation work in this chat. Accepted contract [generated-sites](../../product/generated-sites.md).
+- LF210/211: completed; isolated eedd1d4 hotfix112tests/typecheck/build, final independent16/16browser checks. CI37166475387 success. Prior15-check source evidence remains historical.
+- LF170: reclaimed after repair gates. ExactSHA Render deploydep-db0q9nvavr4c738sqtqg nowLive; freshbundle/Google rotation/actualprompt hosted gates underway.
+- LF220: backend951d4f9f active. Durablejobs/versionhistory/assets/frame/CRUDbridgehost.
+- LF221: agent general Pi source generation available, waiting concurrency slot.
+- LF222: frontend24abd2ef active. Sessionhotfix merged into primary, studio/progress/source/preview/bridge/default generation path.
+- LF223: independentQA awaits implementation dependencies. Generalgeneration not deployed. Root detected nested srcdoc fresh-realm RTC gap in initialbootstrap; repair and adversarial acceptance required.
+
+Primary60modules remain preserved; newgeneralrelease needs integrated reviewed source/CI/explicit exactSHA deploy under existinguserauthorization. Currenthotfix deploy contains no60modules ornewgenerator.

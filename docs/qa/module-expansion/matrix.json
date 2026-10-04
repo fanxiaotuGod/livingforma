@@ -1,0 +1,4207 @@
+{
+  "at": "2026-10-04T00:29:54.079Z",
+  "scope": "Chromium local sample gallery. Camera/tool-result are explicit device/service placeholders, not real provider verification.",
+  "results": [
+    {
+      "type": "form",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Name *Notes / answerActualTargetRating3CategoryChoose an optionLearnCreateRestoreCompleteCompleteDateWebsiteAdd"
+      }
+    },
+    {
+      "type": "cards",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "LIVING LIBRARY · 01Read one chapterA small step, repeated with care.LFRead one chapterA small step, repeated with care.2430LIVING LIBRARY · 02Sketch a"
+      }
+    },
+    {
+      "type": "list",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterA small step, repeated with care.2430A little counts, tooSketch a new idea## Begin with curiosity\n- Notice a detail\n- Try a different "
+      }
+    },
+    {
+      "type": "counter",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "234in total"
+      }
+    },
+    {
+      "type": "progress",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "39%A little further alongEvery page opens up a little more of the world."
+      }
+    },
+    {
+      "type": "calendar-grid",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "October 2026TodayMTWTFSS12345678910111213141516171819202122232425262728293031Small steps, collected10 / 03 · 4 completed"
+      }
+    },
+    {
+      "type": "streak",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "3daysSmall actions, becoming a rhythm of your own.SMTWTFS"
+      }
+    },
+    {
+      "type": "chart",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn89Create73Restore72"
+      }
+    },
+    {
+      "type": "kanban",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn2Read one chapterPractice a languageCreate2Sketch a new ideaWrite a reflectionRestore2Take a quiet walkMake something useful"
+      }
+    },
+    {
+      "type": "detail",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "TAKE A CLOSER LOOKRead one chapterNotes / answerA small step, repeated with care.Actual24Target30Rating4/ 5CategoryLearnCompletetrueDate2026-09-30Chec"
+      }
+    },
+    {
+      "type": "tool-result",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Look something up with a registered read-only tool. Your records stay intact.Tool access is restricted"
+      }
+    },
+    {
+      "type": "camera",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Your view, on your terms.Open this module in your own space to start a camera session. Devices stay off in the playground."
+      }
+    },
+    {
+      "type": "data-table",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Search records6 matching recordsName↕Notes / answer↕Actual↕Target↕Rating↕Category↕Complete↕Date↕Check-ins↕Website↕RecordRead one chapterA small step, "
+      }
+    },
+    {
+      "type": "record-accordion",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapter＋NameRead one chapterNotes / answerA small step, repeated with care.Actual24Target30Rating4CategoryLearnCompletetrueDate2026-09-30Chec"
+      }
+    },
+    {
+      "type": "comparison-table",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Compare up to four recordsRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulFieldRead one ch"
+      }
+    },
+    {
+      "type": "timeline",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Sep 30, 2026Read one chapterOct 1, 2026Sketch a new ideaOct 2, 2026Take a quiet walkOct 3, 2026Practice a languageOct 4, 2026Write a reflectionOct 5, "
+      }
+    },
+    {
+      "type": "agenda",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Today1Oct 3Practice a languageUpcoming2Oct 4Write a reflectionOct 5Make something usefulPast3Oct 2Take a quiet walkOct 1Sketch a new ideaSep 30Read on"
+      }
+    },
+    {
+      "type": "week-board",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "←Sep 28 – Oct 4→This weekMon28Nothing scheduled.Tue29Nothing scheduled.Wed30Read one chapterThu1Sketch a new ideaFri2Take a quiet walkSat3Practice a l"
+      }
+    },
+    {
+      "type": "milestone-stepper",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "3 of 6 milestones complete✓Read one chapterComplete02Sketch a new ideaCreate✓Take a quiet walkComplete04Practice a languageLearn✓Write a reflectionCom"
+      }
+    },
+    {
+      "type": "priority-matrix",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual / Target · High is 40 or aboveHigh / High3Sketch a new ideaPractice a languageMake something usefulLow / High1Write a reflectionHigh / Low0No r"
+      }
+    },
+    {
+      "type": "metric-grid",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Total234Average39Lowest18Highest656 values · Actual"
+      }
+    },
+    {
+      "type": "line-chart",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual · daily totals2026-09-30: 242026-10-01: 422026-10-02: 182026-10-03: 652026-10-04: 312026-10-05: 542026-09-302026-10-0565View data2026-09-302420"
+      }
+    },
+    {
+      "type": "donut-chart",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "234positive totalLearn38%Create31%Restore31%"
+      }
+    },
+    {
+      "type": "histogram",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual · 6 values211203141516View data18–25.8225.8–33.7133.7–41.5041.5–49.3149.3–57.2157.2–651"
+      }
+    },
+    {
+      "type": "scatter-plot",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual × TargetRead one chapter: 24, 30Sketch a new idea: 42, 40Take a quiet walk: 18, 25Practice a language: 65, 70Write a reflection: 31, 40Make som"
+      }
+    },
+    {
+      "type": "activity-heatmap",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Last 12 weeks · Check-ins2026-07-12: 02026-07-13: 02026-07-14: 02026-07-15: 02026-07-16: 02026-07-17: 02026-07-18: 02026-07-19: 02026-07-20: 02026-07-"
+      }
+    },
+    {
+      "type": "leaderboard",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "01Practice a language6502Make something useful5403Sketch a new idea4204Write a reflection3105Read one chapter2406Take a quiet walk18"
+      }
+    },
+    {
+      "type": "funnel",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Current stage distribution · not conversion ratesLearn2Create2Restore2"
+      }
+    },
+    {
+      "type": "checklist",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterDoneSketch a new ideaTo doTake a quiet walkDonePractice a languageTo doWrite a reflectionDoneMake something usefulTo do"
+      }
+    },
+    {
+      "type": "rating-input",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulRating · 4 / 5★★★★☆"
+      }
+    },
+    {
+      "type": "number-stepper",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something useful−24＋Actual · step 1"
+      }
+    },
+    {
+      "type": "range-input",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulActualValueSave value"
+      }
+    },
+    {
+      "type": "segmented-input",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulLearnCreateRestore"
+      }
+    },
+    {
+      "type": "toggle-panel",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulComplete"
+      }
+    },
+    {
+      "type": "quick-add",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Name *Add record"
+      }
+    },
+    {
+      "type": "text-editor",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordA small step, repeated with care.## Begin with curiosity\n- Notice a detail\n- Try a different angleLeave a little room to breathe.Practice makes "
+      }
+    },
+    {
+      "type": "goal-meter",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual234of 30066 to go78%"
+      }
+    },
+    {
+      "type": "budget-breakdown",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual against TargetLearn89 / 10011 remainingCreate73 / 807 remainingRestore72 / 8513 remaining"
+      }
+    },
+    {
+      "type": "balance-sheet",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual234Target265Net differenceActual − Target-31"
+      }
+    },
+    {
+      "type": "habit-matrix",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "HabitSun27Mon28Tue29Wed30Thu1Fri2Sat3Read one chapter··✓·✓✓＋Sketch a new idea✓·✓··✓✓Take a quiet walk✓···✓·✓Practice a language··✓·✓✓＋Write a reflecti"
+      }
+    },
+    {
+      "type": "date-countdown",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterSep 30, 20263days agoSketch a new ideaOct 1, 20262days agoTake a quiet walkOct 2, 20261day agoPractice a languageOct 3, 20260todayWrit"
+      }
+    },
+    {
+      "type": "inventory-levels",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "0 below threshold · Reorder below 10Read one chapter24ActualIn stockSketch a new idea42ActualIn stockTake a quiet walk18ActualIn stockPractice a langu"
+      }
+    },
+    {
+      "type": "expense-calendar",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "←October 2026→MonTueWedThuFriSatSun1422183654315546—7—8—9—10—11—12—13—14—15—16—17—18—19—20—21—22—23—24—25—26—27—28—29—30—31—Oct 365Practice a language"
+      }
+    },
+    {
+      "type": "export-panel",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Download 6 visible records. Hidden fields and private data outside this view are excluded.Fields to includeNameNotes / answerActualTargetRatingCategor"
+      }
+    },
+    {
+      "type": "flashcards",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "1 / 6 · QuestionRead one chapterTap to reveal answerPreviousNext cardOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "quiz",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Question 1 of 6Read one chapterYour answerCheck answerNext questionRestart0 correct / 0 answered · Answers match ignoring case and surrounding spaces."
+      }
+    },
+    {
+      "type": "random-picker",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Let chance chooseAvoid repeatsPick a recordReset pool6 choices available.Only in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "pomodoro",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "FocusShort break25:00Ready to focusStartResetOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "stopwatch",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "00:00.0StartRecord lapResetOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "breathing-guide",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Find your rhythm4 seconds per phase. Breathe comfortably; pause whenever you like.Start breathingStop & resetOnly in this browser. Resets when you lea"
+      }
+    },
+    {
+      "type": "calculator",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "First numberOperation+−×÷Second numberCalculateClearReady for your numbersOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "unit-converter",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "MeasurementLengthMassTemperatureAmountFromMetresKilometresCentimetresInchesFeetMilesToMetresKilometresCentimetresInchesFeetMilesSwap units3.2808 FeetO"
+      }
+    },
+    {
+      "type": "search-panel",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Search this collectionClear search6 / 6 records shownUpdates every record-based module in this view. Search stays in this browser."
+      }
+    },
+    {
+      "type": "filter-panel",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "CategoryAll valuesLearnCreateRestoreCompleteAll valuesYesNoClear all filters6 records shownFilters combine with search across this view. Nothing is ch"
+      }
+    },
+    {
+      "type": "tag-cloud",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn2Create2Restore26 matching recordsRead one chapterLearnSketch a new ideaCreateTake a quiet walkRestorePractice a languageLearnWrite a reflectionC"
+      }
+    },
+    {
+      "type": "text-reader",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulReading size · 18pxA small step, rep"
+      }
+    },
+    {
+      "type": "word-counter",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulText to measureA small step, repeate"
+      }
+    },
+    {
+      "type": "markdown-viewer",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulA small step, repeated with care.Sup"
+      }
+    },
+    {
+      "type": "link-directory",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Find a linkRead one chapterexample.com↗Sketch a new ideaexample.com↗Take a quiet walkexample.com↗Practice a languageexample.com↗Write a reflectionexam"
+      }
+    },
+    {
+      "type": "recipe-scaler",
+      "variant": "mobile320",
+      "status": "pass",
+      "geometry": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "moduleWidth": 288,
+        "moduleRight": 304,
+        "escaped": [],
+        "clipped": [],
+        "text": "Recipe multiplier0.5×1×2×3×Read one chapter24Sketch a new idea42Take a quiet walk18Practice a language65Write a reflection31Make something useful54Sca"
+      }
+    },
+    {
+      "type": "form",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Name *Notes / answerActualTargetRating3CategoryChoose an optionLearnCreateRestoreCompleteCompleteDateWebsiteAdd"
+      }
+    },
+    {
+      "type": "cards",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "LIVING LIBRARY · 01Read one chapterA small step, repeated with care.LFRead one chapterA small step, repeated with care.2430LIVING LIBRARY · 02Sketch a"
+      }
+    },
+    {
+      "type": "list",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterA small step, repeated with care.2430A little counts, tooSketch a new idea## Begin with curiosity\n- Notice a detail\n- Try a different "
+      }
+    },
+    {
+      "type": "counter",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "234in total"
+      }
+    },
+    {
+      "type": "progress",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "39%A little further alongEvery page opens up a little more of the world."
+      }
+    },
+    {
+      "type": "calendar-grid",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "October 2026TodayMTWTFSS12345678910111213141516171819202122232425262728293031Small steps, collected10 / 03 · 4 completed"
+      }
+    },
+    {
+      "type": "streak",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "3daysSmall actions, becoming a rhythm of your own.SMTWTFS"
+      }
+    },
+    {
+      "type": "chart",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn89Create73Restore72"
+      }
+    },
+    {
+      "type": "kanban",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn2Read one chapterPractice a languageCreate2Sketch a new ideaWrite a reflectionRestore2Take a quiet walkMake something useful"
+      }
+    },
+    {
+      "type": "detail",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "TAKE A CLOSER LOOKRead one chapterNotes / answerA small step, repeated with care.Actual24Target30Rating4/ 5CategoryLearnCompletetrueDate2026-09-30Chec"
+      }
+    },
+    {
+      "type": "tool-result",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Look something up with a registered read-only tool. Your records stay intact.Tool access is restricted"
+      }
+    },
+    {
+      "type": "camera",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Your view, on your terms.Open this module in your own space to start a camera session. Devices stay off in the playground."
+      }
+    },
+    {
+      "type": "data-table",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Search records6 matching recordsName↕Notes / answer↕Actual↕Target↕Rating↕Category↕Complete↕Date↕Check-ins↕Website↕RecordRead one chapterA small step, "
+      }
+    },
+    {
+      "type": "record-accordion",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapter＋NameRead one chapterNotes / answerA small step, repeated with care.Actual24Target30Rating4CategoryLearnCompletetrueDate2026-09-30Chec"
+      }
+    },
+    {
+      "type": "comparison-table",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Compare up to four recordsRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulFieldRead one ch"
+      }
+    },
+    {
+      "type": "timeline",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Sep 30, 2026Read one chapterOct 1, 2026Sketch a new ideaOct 2, 2026Take a quiet walkOct 3, 2026Practice a languageOct 4, 2026Write a reflectionOct 5, "
+      }
+    },
+    {
+      "type": "agenda",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Today1Oct 3Practice a languageUpcoming2Oct 4Write a reflectionOct 5Make something usefulPast3Oct 2Take a quiet walkOct 1Sketch a new ideaSep 30Read on"
+      }
+    },
+    {
+      "type": "week-board",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "←Sep 28 – Oct 4→This weekMon28Nothing scheduled.Tue29Nothing scheduled.Wed30Read one chapterThu1Sketch a new ideaFri2Take a quiet walkSat3Practice a l"
+      }
+    },
+    {
+      "type": "milestone-stepper",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "3 of 6 milestones complete✓Read one chapterComplete02Sketch a new ideaCreate✓Take a quiet walkComplete04Practice a languageLearn✓Write a reflectionCom"
+      }
+    },
+    {
+      "type": "priority-matrix",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual / Target · High is 40 or aboveHigh / High3Sketch a new ideaPractice a languageMake something usefulLow / High1Write a reflectionHigh / Low0No r"
+      }
+    },
+    {
+      "type": "metric-grid",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Total234Average39Lowest18Highest656 values · Actual"
+      }
+    },
+    {
+      "type": "line-chart",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual · daily totals2026-09-30: 242026-10-01: 422026-10-02: 182026-10-03: 652026-10-04: 312026-10-05: 542026-09-302026-10-0565View data2026-09-302420"
+      }
+    },
+    {
+      "type": "donut-chart",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "234positive totalLearn38%Create31%Restore31%"
+      }
+    },
+    {
+      "type": "histogram",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual · 6 values211203141516View data18–25.8225.8–33.7133.7–41.5041.5–49.3149.3–57.2157.2–651"
+      }
+    },
+    {
+      "type": "scatter-plot",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual × TargetRead one chapter: 24, 30Sketch a new idea: 42, 40Take a quiet walk: 18, 25Practice a language: 65, 70Write a reflection: 31, 40Make som"
+      }
+    },
+    {
+      "type": "activity-heatmap",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Last 12 weeks · Check-ins2026-07-12: 02026-07-13: 02026-07-14: 02026-07-15: 02026-07-16: 02026-07-17: 02026-07-18: 02026-07-19: 02026-07-20: 02026-07-"
+      }
+    },
+    {
+      "type": "leaderboard",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "01Practice a language6502Make something useful5403Sketch a new idea4204Write a reflection3105Read one chapter2406Take a quiet walk18"
+      }
+    },
+    {
+      "type": "funnel",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Current stage distribution · not conversion ratesLearn2Create2Restore2"
+      }
+    },
+    {
+      "type": "checklist",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterDoneSketch a new ideaTo doTake a quiet walkDonePractice a languageTo doWrite a reflectionDoneMake something usefulTo do"
+      }
+    },
+    {
+      "type": "rating-input",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulRating · 4 / 5★★★★☆"
+      }
+    },
+    {
+      "type": "number-stepper",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something useful−24＋Actual · step 1"
+      }
+    },
+    {
+      "type": "range-input",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulActualValueSave value"
+      }
+    },
+    {
+      "type": "segmented-input",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulLearnCreateRestore"
+      }
+    },
+    {
+      "type": "toggle-panel",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulComplete"
+      }
+    },
+    {
+      "type": "quick-add",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Name *Add record"
+      }
+    },
+    {
+      "type": "text-editor",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordA small step, repeated with care.## Begin with curiosity\n- Notice a detail\n- Try a different angleLeave a little room to breathe.Practice makes "
+      }
+    },
+    {
+      "type": "goal-meter",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual234of 30066 to go78%"
+      }
+    },
+    {
+      "type": "budget-breakdown",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual against TargetLearn89 / 10011 remainingCreate73 / 807 remainingRestore72 / 8513 remaining"
+      }
+    },
+    {
+      "type": "balance-sheet",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual234Target265Net differenceActual − Target-31"
+      }
+    },
+    {
+      "type": "habit-matrix",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "HabitSun27Mon28Tue29Wed30Thu1Fri2Sat3Read one chapter··✓·✓✓＋Sketch a new idea✓·✓··✓✓Take a quiet walk✓···✓·✓Practice a language··✓·✓✓＋Write a reflecti"
+      }
+    },
+    {
+      "type": "date-countdown",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterSep 30, 20263days agoSketch a new ideaOct 1, 20262days agoTake a quiet walkOct 2, 20261day agoPractice a languageOct 3, 20260todayWrit"
+      }
+    },
+    {
+      "type": "inventory-levels",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "0 below threshold · Reorder below 10Read one chapter24ActualIn stockSketch a new idea42ActualIn stockTake a quiet walk18ActualIn stockPractice a langu"
+      }
+    },
+    {
+      "type": "expense-calendar",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "←October 2026→MonTueWedThuFriSatSun1422183654315546—7—8—9—10—11—12—13—14—15—16—17—18—19—20—21—22—23—24—25—26—27—28—29—30—31—Oct 365Practice a language"
+      }
+    },
+    {
+      "type": "export-panel",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Download 6 visible records. Hidden fields and private data outside this view are excluded.Fields to includeNameNotes / answerActualTargetRatingCategor"
+      }
+    },
+    {
+      "type": "flashcards",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "1 / 6 · QuestionRead one chapterTap to reveal answerPreviousNext cardOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "quiz",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Question 1 of 6Read one chapterYour answerCheck answerNext questionRestart0 correct / 0 answered · Answers match ignoring case and surrounding spaces."
+      }
+    },
+    {
+      "type": "random-picker",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Let chance chooseAvoid repeatsPick a recordReset pool6 choices available.Only in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "pomodoro",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "FocusShort break25:00Ready to focusStartResetOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "stopwatch",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "00:00.0StartRecord lapResetOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "breathing-guide",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Find your rhythm4 seconds per phase. Breathe comfortably; pause whenever you like.Start breathingStop & resetOnly in this browser. Resets when you lea"
+      }
+    },
+    {
+      "type": "calculator",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "First numberOperation+−×÷Second numberCalculateClearReady for your numbersOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "unit-converter",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "MeasurementLengthMassTemperatureAmountFromMetresKilometresCentimetresInchesFeetMilesToMetresKilometresCentimetresInchesFeetMilesSwap units3.2808 FeetO"
+      }
+    },
+    {
+      "type": "search-panel",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Search this collectionClear search6 / 6 records shownUpdates every record-based module in this view. Search stays in this browser."
+      }
+    },
+    {
+      "type": "filter-panel",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "CategoryAll valuesLearnCreateRestoreCompleteAll valuesYesNoClear all filters6 records shownFilters combine with search across this view. Nothing is ch"
+      }
+    },
+    {
+      "type": "tag-cloud",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn2Create2Restore26 matching recordsRead one chapterLearnSketch a new ideaCreateTake a quiet walkRestorePractice a languageLearnWrite a reflectionC"
+      }
+    },
+    {
+      "type": "text-reader",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulReading size · 18pxA small step, rep"
+      }
+    },
+    {
+      "type": "word-counter",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulText to measureA small step, repeate"
+      }
+    },
+    {
+      "type": "markdown-viewer",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulA small step, repeated with care.Sup"
+      }
+    },
+    {
+      "type": "link-directory",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Find a linkRead one chapterexample.com↗Sketch a new ideaexample.com↗Take a quiet walkexample.com↗Practice a languageexample.com↗Write a reflectionexam"
+      }
+    },
+    {
+      "type": "recipe-scaler",
+      "variant": "mobile390",
+      "status": "pass",
+      "geometry": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "moduleWidth": 358,
+        "moduleRight": 374,
+        "escaped": [],
+        "clipped": [],
+        "text": "Recipe multiplier0.5×1×2×3×Read one chapter24Sketch a new idea42Take a quiet walk18Practice a language65Write a reflection31Make something useful54Sca"
+      }
+    },
+    {
+      "type": "form",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Name *Notes / answerActualTargetRating3CategoryChoose an optionLearnCreateRestoreCompleteCompleteDateWebsiteAdd"
+      }
+    },
+    {
+      "type": "cards",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "LIVING LIBRARY · 01Read one chapterA small step, repeated with care.LFRead one chapterA small step, repeated with care.2430LIVING LIBRARY · 02Sketch a"
+      }
+    },
+    {
+      "type": "list",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterA small step, repeated with care.2430A little counts, tooSketch a new idea## Begin with curiosity\n- Notice a detail\n- Try a different "
+      }
+    },
+    {
+      "type": "counter",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "234in total"
+      }
+    },
+    {
+      "type": "progress",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "39%A little further alongEvery page opens up a little more of the world."
+      }
+    },
+    {
+      "type": "calendar-grid",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "October 2026TodayMTWTFSS12345678910111213141516171819202122232425262728293031Small steps, collected10 / 03 · 4 completed"
+      }
+    },
+    {
+      "type": "streak",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "3daysSmall actions, becoming a rhythm of your own.SMTWTFS"
+      }
+    },
+    {
+      "type": "chart",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn89Create73Restore72"
+      }
+    },
+    {
+      "type": "kanban",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn2Read one chapterPractice a languageCreate2Sketch a new ideaWrite a reflectionRestore2Take a quiet walkMake something useful"
+      }
+    },
+    {
+      "type": "detail",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "TAKE A CLOSER LOOKRead one chapterNotes / answerA small step, repeated with care.Actual24Target30Rating4/ 5CategoryLearnCompletetrueDate2026-09-30Chec"
+      }
+    },
+    {
+      "type": "tool-result",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Look something up with a registered read-only tool. Your records stay intact.Tool access is restricted"
+      }
+    },
+    {
+      "type": "camera",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Your view, on your terms.Open this module in your own space to start a camera session. Devices stay off in the playground."
+      }
+    },
+    {
+      "type": "data-table",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Search records6 matching recordsName↕Notes / answer↕Actual↕Target↕Rating↕Category↕Complete↕Date↕Check-ins↕Website↕RecordRead one chapterA small step, "
+      }
+    },
+    {
+      "type": "record-accordion",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapter＋NameRead one chapterNotes / answerA small step, repeated with care.Actual24Target30Rating4CategoryLearnCompletetrueDate2026-09-30Chec"
+      }
+    },
+    {
+      "type": "comparison-table",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Compare up to four recordsRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulFieldRead one ch"
+      }
+    },
+    {
+      "type": "timeline",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Sep 30, 2026Read one chapterOct 1, 2026Sketch a new ideaOct 2, 2026Take a quiet walkOct 3, 2026Practice a languageOct 4, 2026Write a reflectionOct 5, "
+      }
+    },
+    {
+      "type": "agenda",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Today1Oct 3Practice a languageUpcoming2Oct 4Write a reflectionOct 5Make something usefulPast3Oct 2Take a quiet walkOct 1Sketch a new ideaSep 30Read on"
+      }
+    },
+    {
+      "type": "week-board",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "←Sep 28 – Oct 4→This weekMon28Nothing scheduled.Tue29Nothing scheduled.Wed30Read one chapterThu1Sketch a new ideaFri2Take a quiet walkSat3Practice a l"
+      }
+    },
+    {
+      "type": "milestone-stepper",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "3 of 6 milestones complete✓Read one chapterComplete02Sketch a new ideaCreate✓Take a quiet walkComplete04Practice a languageLearn✓Write a reflectionCom"
+      }
+    },
+    {
+      "type": "priority-matrix",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual / Target · High is 40 or aboveHigh / High3Sketch a new ideaPractice a languageMake something usefulLow / High1Write a reflectionHigh / Low0No r"
+      }
+    },
+    {
+      "type": "metric-grid",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Total234Average39Lowest18Highest656 values · Actual"
+      }
+    },
+    {
+      "type": "line-chart",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual · daily totals2026-09-30: 242026-10-01: 422026-10-02: 182026-10-03: 652026-10-04: 312026-10-05: 542026-09-302026-10-0565View data2026-09-302420"
+      }
+    },
+    {
+      "type": "donut-chart",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "234positive totalLearn38%Create31%Restore31%"
+      }
+    },
+    {
+      "type": "histogram",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual · 6 values211203141516View data18–25.8225.8–33.7133.7–41.5041.5–49.3149.3–57.2157.2–651"
+      }
+    },
+    {
+      "type": "scatter-plot",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual × TargetRead one chapter: 24, 30Sketch a new idea: 42, 40Take a quiet walk: 18, 25Practice a language: 65, 70Write a reflection: 31, 40Make som"
+      }
+    },
+    {
+      "type": "activity-heatmap",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Last 12 weeks · Check-ins2026-07-12: 02026-07-13: 02026-07-14: 02026-07-15: 02026-07-16: 02026-07-17: 02026-07-18: 02026-07-19: 02026-07-20: 02026-07-"
+      }
+    },
+    {
+      "type": "leaderboard",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "01Practice a language6502Make something useful5403Sketch a new idea4204Write a reflection3105Read one chapter2406Take a quiet walk18"
+      }
+    },
+    {
+      "type": "funnel",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Current stage distribution · not conversion ratesLearn2Create2Restore2"
+      }
+    },
+    {
+      "type": "checklist",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterDoneSketch a new ideaTo doTake a quiet walkDonePractice a languageTo doWrite a reflectionDoneMake something usefulTo do"
+      }
+    },
+    {
+      "type": "rating-input",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulRating · 4 / 5★★★★☆"
+      }
+    },
+    {
+      "type": "number-stepper",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something useful−24＋Actual · step 1"
+      }
+    },
+    {
+      "type": "range-input",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulActualValueSave value"
+      }
+    },
+    {
+      "type": "segmented-input",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulLearnCreateRestore"
+      }
+    },
+    {
+      "type": "toggle-panel",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulComplete"
+      }
+    },
+    {
+      "type": "quick-add",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Name *Add record"
+      }
+    },
+    {
+      "type": "text-editor",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordA small step, repeated with care.## Begin with curiosity\n- Notice a detail\n- Try a different angleLeave a little room to breathe.Practice makes "
+      }
+    },
+    {
+      "type": "goal-meter",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual234of 30066 to go78%"
+      }
+    },
+    {
+      "type": "budget-breakdown",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual against TargetLearn89 / 10011 remainingCreate73 / 807 remainingRestore72 / 8513 remaining"
+      }
+    },
+    {
+      "type": "balance-sheet",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual234Target265Net differenceActual − Target-31"
+      }
+    },
+    {
+      "type": "habit-matrix",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "HabitSun27Mon28Tue29Wed30Thu1Fri2Sat3Read one chapter··✓·✓✓＋Sketch a new idea✓·✓··✓✓Take a quiet walk✓···✓·✓Practice a language··✓·✓✓＋Write a reflecti"
+      }
+    },
+    {
+      "type": "date-countdown",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterSep 30, 20263days agoSketch a new ideaOct 1, 20262days agoTake a quiet walkOct 2, 20261day agoPractice a languageOct 3, 20260todayWrit"
+      }
+    },
+    {
+      "type": "inventory-levels",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "0 below threshold · Reorder below 10Read one chapter24ActualIn stockSketch a new idea42ActualIn stockTake a quiet walk18ActualIn stockPractice a langu"
+      }
+    },
+    {
+      "type": "expense-calendar",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "←October 2026→MonTueWedThuFriSatSun1422183654315546—7—8—9—10—11—12—13—14—15—16—17—18—19—20—21—22—23—24—25—26—27—28—29—30—31—Oct 365Practice a language"
+      }
+    },
+    {
+      "type": "export-panel",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Download 6 visible records. Hidden fields and private data outside this view are excluded.Fields to includeNameNotes / answerActualTargetRatingCategor"
+      }
+    },
+    {
+      "type": "flashcards",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "1 / 6 · QuestionRead one chapterTap to reveal answerPreviousNext cardOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "quiz",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Question 1 of 6Read one chapterYour answerCheck answerNext questionRestart0 correct / 0 answered · Answers match ignoring case and surrounding spaces."
+      }
+    },
+    {
+      "type": "random-picker",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Let chance chooseAvoid repeatsPick a recordReset pool6 choices available.Only in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "pomodoro",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "FocusShort break25:00Ready to focusStartResetOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "stopwatch",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "00:00.0StartRecord lapResetOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "breathing-guide",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Find your rhythm4 seconds per phase. Breathe comfortably; pause whenever you like.Start breathingStop & resetOnly in this browser. Resets when you lea"
+      }
+    },
+    {
+      "type": "calculator",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "First numberOperation+−×÷Second numberCalculateClearReady for your numbersOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "unit-converter",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "MeasurementLengthMassTemperatureAmountFromMetresKilometresCentimetresInchesFeetMilesToMetresKilometresCentimetresInchesFeetMilesSwap units3.2808 FeetO"
+      }
+    },
+    {
+      "type": "search-panel",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Search this collectionClear search6 / 6 records shownUpdates every record-based module in this view. Search stays in this browser."
+      }
+    },
+    {
+      "type": "filter-panel",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "CategoryAll valuesLearnCreateRestoreCompleteAll valuesYesNoClear all filters6 records shownFilters combine with search across this view. Nothing is ch"
+      }
+    },
+    {
+      "type": "tag-cloud",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn2Create2Restore26 matching recordsRead one chapterLearnSketch a new ideaCreateTake a quiet walkRestorePractice a languageLearnWrite a reflectionC"
+      }
+    },
+    {
+      "type": "text-reader",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulReading size · 18pxA small step, rep"
+      }
+    },
+    {
+      "type": "word-counter",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulText to measureA small step, repeate"
+      }
+    },
+    {
+      "type": "markdown-viewer",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulA small step, repeated with care.Sup"
+      }
+    },
+    {
+      "type": "link-directory",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Find a linkRead one chapterexample.com↗Sketch a new ideaexample.com↗Take a quiet walkexample.com↗Practice a languageexample.com↗Write a reflectionexam"
+      }
+    },
+    {
+      "type": "recipe-scaler",
+      "variant": "tablet768",
+      "status": "pass",
+      "geometry": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "moduleWidth": 324,
+        "moduleRight": 372,
+        "escaped": [],
+        "clipped": [],
+        "text": "Recipe multiplier0.5×1×2×3×Read one chapter24Sketch a new idea42Take a quiet walk18Practice a language65Write a reflection31Make something useful54Sca"
+      }
+    },
+    {
+      "type": "form",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Name *Notes / answerActualTargetRating3CategoryChoose an optionLearnCreateRestoreCompleteCompleteDateWebsiteAdd"
+      }
+    },
+    {
+      "type": "cards",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "LIVING LIBRARY · 01Read one chapterA small step, repeated with care.LFRead one chapterA small step, repeated with care.2430LIVING LIBRARY · 02Sketch a"
+      }
+    },
+    {
+      "type": "list",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterA small step, repeated with care.2430A little counts, tooSketch a new idea## Begin with curiosity\n- Notice a detail\n- Try a different "
+      }
+    },
+    {
+      "type": "counter",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "234in total"
+      }
+    },
+    {
+      "type": "progress",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "39%A little further alongEvery page opens up a little more of the world."
+      }
+    },
+    {
+      "type": "calendar-grid",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "October 2026TodayMTWTFSS12345678910111213141516171819202122232425262728293031Small steps, collected10 / 03 · 4 completed"
+      }
+    },
+    {
+      "type": "streak",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "3daysSmall actions, becoming a rhythm of your own.SMTWTFS"
+      }
+    },
+    {
+      "type": "chart",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn89Create73Restore72"
+      }
+    },
+    {
+      "type": "kanban",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn2Read one chapterPractice a languageCreate2Sketch a new ideaWrite a reflectionRestore2Take a quiet walkMake something useful"
+      }
+    },
+    {
+      "type": "detail",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "TAKE A CLOSER LOOKRead one chapterNotes / answerA small step, repeated with care.Actual24Target30Rating4/ 5CategoryLearnCompletetrueDate2026-09-30Chec"
+      }
+    },
+    {
+      "type": "tool-result",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Look something up with a registered read-only tool. Your records stay intact.Tool access is restricted"
+      }
+    },
+    {
+      "type": "camera",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Your view, on your terms.Open this module in your own space to start a camera session. Devices stay off in the playground."
+      }
+    },
+    {
+      "type": "data-table",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Search records6 matching recordsName↕Notes / answer↕Actual↕Target↕Rating↕Category↕Complete↕Date↕Check-ins↕Website↕RecordRead one chapterA small step, "
+      }
+    },
+    {
+      "type": "record-accordion",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapter＋NameRead one chapterNotes / answerA small step, repeated with care.Actual24Target30Rating4CategoryLearnCompletetrueDate2026-09-30Chec"
+      }
+    },
+    {
+      "type": "comparison-table",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Compare up to four recordsRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulFieldRead one ch"
+      }
+    },
+    {
+      "type": "timeline",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Sep 30, 2026Read one chapterOct 1, 2026Sketch a new ideaOct 2, 2026Take a quiet walkOct 3, 2026Practice a languageOct 4, 2026Write a reflectionOct 5, "
+      }
+    },
+    {
+      "type": "agenda",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Today1Oct 3Practice a languageUpcoming2Oct 4Write a reflectionOct 5Make something usefulPast3Oct 2Take a quiet walkOct 1Sketch a new ideaSep 30Read on"
+      }
+    },
+    {
+      "type": "week-board",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "←Sep 28 – Oct 4→This weekMon28Nothing scheduled.Tue29Nothing scheduled.Wed30Read one chapterThu1Sketch a new ideaFri2Take a quiet walkSat3Practice a l"
+      }
+    },
+    {
+      "type": "milestone-stepper",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "3 of 6 milestones complete✓Read one chapterComplete02Sketch a new ideaCreate✓Take a quiet walkComplete04Practice a languageLearn✓Write a reflectionCom"
+      }
+    },
+    {
+      "type": "priority-matrix",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual / Target · High is 40 or aboveHigh / High3Sketch a new ideaPractice a languageMake something usefulLow / High1Write a reflectionHigh / Low0No r"
+      }
+    },
+    {
+      "type": "metric-grid",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Total234Average39Lowest18Highest656 values · Actual"
+      }
+    },
+    {
+      "type": "line-chart",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual · daily totals2026-09-30: 242026-10-01: 422026-10-02: 182026-10-03: 652026-10-04: 312026-10-05: 542026-09-302026-10-0565View data2026-09-302420"
+      }
+    },
+    {
+      "type": "donut-chart",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "234positive totalLearn38%Create31%Restore31%"
+      }
+    },
+    {
+      "type": "histogram",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual · 6 values211203141516View data18–25.8225.8–33.7133.7–41.5041.5–49.3149.3–57.2157.2–651"
+      }
+    },
+    {
+      "type": "scatter-plot",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual × TargetRead one chapter: 24, 30Sketch a new idea: 42, 40Take a quiet walk: 18, 25Practice a language: 65, 70Write a reflection: 31, 40Make som"
+      }
+    },
+    {
+      "type": "activity-heatmap",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Last 12 weeks · Check-ins2026-07-12: 02026-07-13: 02026-07-14: 02026-07-15: 02026-07-16: 02026-07-17: 02026-07-18: 02026-07-19: 02026-07-20: 02026-07-"
+      }
+    },
+    {
+      "type": "leaderboard",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "01Practice a language6502Make something useful5403Sketch a new idea4204Write a reflection3105Read one chapter2406Take a quiet walk18"
+      }
+    },
+    {
+      "type": "funnel",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Current stage distribution · not conversion ratesLearn2Create2Restore2"
+      }
+    },
+    {
+      "type": "checklist",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterDoneSketch a new ideaTo doTake a quiet walkDonePractice a languageTo doWrite a reflectionDoneMake something usefulTo do"
+      }
+    },
+    {
+      "type": "rating-input",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulRating · 4 / 5★★★★☆"
+      }
+    },
+    {
+      "type": "number-stepper",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something useful−24＋Actual · step 1"
+      }
+    },
+    {
+      "type": "range-input",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulActualValueSave value"
+      }
+    },
+    {
+      "type": "segmented-input",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulLearnCreateRestore"
+      }
+    },
+    {
+      "type": "toggle-panel",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulComplete"
+      }
+    },
+    {
+      "type": "quick-add",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Name *Add record"
+      }
+    },
+    {
+      "type": "text-editor",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordA small step, repeated with care.## Begin with curiosity\n- Notice a detail\n- Try a different angleLeave a little room to breathe.Practice makes "
+      }
+    },
+    {
+      "type": "goal-meter",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual234of 30066 to go78%"
+      }
+    },
+    {
+      "type": "budget-breakdown",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual against TargetLearn89 / 10011 remainingCreate73 / 807 remainingRestore72 / 8513 remaining"
+      }
+    },
+    {
+      "type": "balance-sheet",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual234Target265Net differenceActual − Target-31"
+      }
+    },
+    {
+      "type": "habit-matrix",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "HabitSun27Mon28Tue29Wed30Thu1Fri2Sat3Read one chapter··✓·✓✓＋Sketch a new idea✓·✓··✓✓Take a quiet walk✓···✓·✓Practice a language··✓·✓✓＋Write a reflecti"
+      }
+    },
+    {
+      "type": "date-countdown",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterSep 30, 20263days agoSketch a new ideaOct 1, 20262days agoTake a quiet walkOct 2, 20261day agoPractice a languageOct 3, 20260todayWrit"
+      }
+    },
+    {
+      "type": "inventory-levels",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "0 below threshold · Reorder below 10Read one chapter24ActualIn stockSketch a new idea42ActualIn stockTake a quiet walk18ActualIn stockPractice a langu"
+      }
+    },
+    {
+      "type": "expense-calendar",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "←October 2026→MonTueWedThuFriSatSun1422183654315546—7—8—9—10—11—12—13—14—15—16—17—18—19—20—21—22—23—24—25—26—27—28—29—30—31—Oct 365Practice a language"
+      }
+    },
+    {
+      "type": "export-panel",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Download 6 visible records. Hidden fields and private data outside this view are excluded.Fields to includeNameNotes / answerActualTargetRatingCategor"
+      }
+    },
+    {
+      "type": "flashcards",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "1 / 6 · QuestionRead one chapterTap to reveal answerPreviousNext cardOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "quiz",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Question 1 of 6Read one chapterYour answerCheck answerNext questionRestart0 correct / 0 answered · Answers match ignoring case and surrounding spaces."
+      }
+    },
+    {
+      "type": "random-picker",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Let chance chooseAvoid repeatsPick a recordReset pool6 choices available.Only in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "pomodoro",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "FocusShort break25:00Ready to focusStartResetOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "stopwatch",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "00:00.0StartRecord lapResetOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "breathing-guide",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Find your rhythm4 seconds per phase. Breathe comfortably; pause whenever you like.Start breathingStop & resetOnly in this browser. Resets when you lea"
+      }
+    },
+    {
+      "type": "calculator",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "First numberOperation+−×÷Second numberCalculateClearReady for your numbersOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "unit-converter",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "MeasurementLengthMassTemperatureAmountFromMetresKilometresCentimetresInchesFeetMilesToMetresKilometresCentimetresInchesFeetMilesSwap units3.2808 FeetO"
+      }
+    },
+    {
+      "type": "search-panel",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Search this collectionClear search6 / 6 records shownUpdates every record-based module in this view. Search stays in this browser."
+      }
+    },
+    {
+      "type": "filter-panel",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "CategoryAll valuesLearnCreateRestoreCompleteAll valuesYesNoClear all filters6 records shownFilters combine with search across this view. Nothing is ch"
+      }
+    },
+    {
+      "type": "tag-cloud",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn2Create2Restore26 matching recordsRead one chapterLearnSketch a new ideaCreateTake a quiet walkRestorePractice a languageLearnWrite a reflectionC"
+      }
+    },
+    {
+      "type": "text-reader",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulReading size · 18pxA small step, rep"
+      }
+    },
+    {
+      "type": "word-counter",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulText to measureA small step, repeate"
+      }
+    },
+    {
+      "type": "markdown-viewer",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulA small step, repeated with care.Sup"
+      }
+    },
+    {
+      "type": "link-directory",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Find a linkRead one chapterexample.com↗Sketch a new ideaexample.com↗Take a quiet walkexample.com↗Practice a languageexample.com↗Write a reflectionexam"
+      }
+    },
+    {
+      "type": "recipe-scaler",
+      "variant": "desktop1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 660,
+        "moduleRight": 708,
+        "escaped": [],
+        "clipped": [],
+        "text": "Recipe multiplier0.5×1×2×3×Read one chapter24Sketch a new idea42Take a quiet walk18Practice a language65Write a reflection31Make something useful54Sca"
+      }
+    },
+    {
+      "type": "form",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Name *Notes / answerActualTargetRating3CategoryChoose an optionLearnCreateRestoreCompleteCompleteDateWebsiteAdd"
+      }
+    },
+    {
+      "type": "cards",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "LIVING LIBRARY · 01Read one chapterA small step, repeated with care.LFRead one chapterA small step, repeated with care.2430LIVING LIBRARY · 02Sketch a"
+      }
+    },
+    {
+      "type": "list",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterA small step, repeated with care.2430A little counts, tooSketch a new idea## Begin with curiosity\n- Notice a detail\n- Try a different "
+      }
+    },
+    {
+      "type": "counter",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "234in total"
+      }
+    },
+    {
+      "type": "progress",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "39%A little further alongEvery page opens up a little more of the world."
+      }
+    },
+    {
+      "type": "calendar-grid",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "October 2026TodayMTWTFSS12345678910111213141516171819202122232425262728293031Small steps, collected10 / 03 · 4 completed"
+      }
+    },
+    {
+      "type": "streak",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "3daysSmall actions, becoming a rhythm of your own.SMTWTFS"
+      }
+    },
+    {
+      "type": "chart",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn89Create73Restore72"
+      }
+    },
+    {
+      "type": "kanban",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn2Read one chapterPractice a languageCreate2Sketch a new ideaWrite a reflectionRestore2Take a quiet walkMake something useful"
+      }
+    },
+    {
+      "type": "detail",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "TAKE A CLOSER LOOKRead one chapterNotes / answerA small step, repeated with care.Actual24Target30Rating4/ 5CategoryLearnCompletetrueDate2026-09-30Chec"
+      }
+    },
+    {
+      "type": "tool-result",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Look something up with a registered read-only tool. Your records stay intact.Tool access is restricted"
+      }
+    },
+    {
+      "type": "camera",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Your view, on your terms.Open this module in your own space to start a camera session. Devices stay off in the playground."
+      }
+    },
+    {
+      "type": "data-table",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Search records6 matching recordsName↕Notes / answer↕Actual↕Target↕Rating↕Category↕Complete↕Date↕Check-ins↕Website↕RecordRead one chapterA small step, "
+      }
+    },
+    {
+      "type": "record-accordion",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapter＋NameRead one chapterNotes / answerA small step, repeated with care.Actual24Target30Rating4CategoryLearnCompletetrueDate2026-09-30Chec"
+      }
+    },
+    {
+      "type": "comparison-table",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Compare up to four recordsRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulFieldRead one ch"
+      }
+    },
+    {
+      "type": "timeline",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Sep 30, 2026Read one chapterOct 1, 2026Sketch a new ideaOct 2, 2026Take a quiet walkOct 3, 2026Practice a languageOct 4, 2026Write a reflectionOct 5, "
+      }
+    },
+    {
+      "type": "agenda",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Today1Oct 3Practice a languageUpcoming2Oct 4Write a reflectionOct 5Make something usefulPast3Oct 2Take a quiet walkOct 1Sketch a new ideaSep 30Read on"
+      }
+    },
+    {
+      "type": "week-board",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "←Sep 28 – Oct 4→This weekMon28Nothing scheduled.Tue29Nothing scheduled.Wed30Read one chapterThu1Sketch a new ideaFri2Take a quiet walkSat3Practice a l"
+      }
+    },
+    {
+      "type": "milestone-stepper",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "3 of 6 milestones complete✓Read one chapterComplete02Sketch a new ideaCreate✓Take a quiet walkComplete04Practice a languageLearn✓Write a reflectionCom"
+      }
+    },
+    {
+      "type": "priority-matrix",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual / Target · High is 40 or aboveHigh / High3Sketch a new ideaPractice a languageMake something usefulLow / High1Write a reflectionHigh / Low0No r"
+      }
+    },
+    {
+      "type": "metric-grid",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Total234Average39Lowest18Highest656 values · Actual"
+      }
+    },
+    {
+      "type": "line-chart",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual · daily totals2026-09-30: 242026-10-01: 422026-10-02: 182026-10-03: 652026-10-04: 312026-10-05: 542026-09-302026-10-0565View data2026-09-302420"
+      }
+    },
+    {
+      "type": "donut-chart",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "234positive totalLearn38%Create31%Restore31%"
+      }
+    },
+    {
+      "type": "histogram",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual · 6 values211203141516View data18–25.8225.8–33.7133.7–41.5041.5–49.3149.3–57.2157.2–651"
+      }
+    },
+    {
+      "type": "scatter-plot",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual × TargetRead one chapter: 24, 30Sketch a new idea: 42, 40Take a quiet walk: 18, 25Practice a language: 65, 70Write a reflection: 31, 40Make som"
+      }
+    },
+    {
+      "type": "activity-heatmap",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Last 12 weeks · Check-ins2026-07-12: 02026-07-13: 02026-07-14: 02026-07-15: 02026-07-16: 02026-07-17: 02026-07-18: 02026-07-19: 02026-07-20: 02026-07-"
+      }
+    },
+    {
+      "type": "leaderboard",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "01Practice a language6502Make something useful5403Sketch a new idea4204Write a reflection3105Read one chapter2406Take a quiet walk18"
+      }
+    },
+    {
+      "type": "funnel",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Current stage distribution · not conversion ratesLearn2Create2Restore2"
+      }
+    },
+    {
+      "type": "checklist",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterDoneSketch a new ideaTo doTake a quiet walkDonePractice a languageTo doWrite a reflectionDoneMake something usefulTo do"
+      }
+    },
+    {
+      "type": "rating-input",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulRating · 4 / 5★★★★☆"
+      }
+    },
+    {
+      "type": "number-stepper",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something useful−24＋Actual · step 1"
+      }
+    },
+    {
+      "type": "range-input",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulActualValueSave value"
+      }
+    },
+    {
+      "type": "segmented-input",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulLearnCreateRestore"
+      }
+    },
+    {
+      "type": "toggle-panel",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulComplete"
+      }
+    },
+    {
+      "type": "quick-add",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Name *Add record"
+      }
+    },
+    {
+      "type": "text-editor",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordA small step, repeated with care.## Begin with curiosity\n- Notice a detail\n- Try a different angleLeave a little room to breathe.Practice makes "
+      }
+    },
+    {
+      "type": "goal-meter",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual234of 30066 to go78%"
+      }
+    },
+    {
+      "type": "budget-breakdown",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual against TargetLearn89 / 10011 remainingCreate73 / 807 remainingRestore72 / 8513 remaining"
+      }
+    },
+    {
+      "type": "balance-sheet",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Actual234Target265Net differenceActual − Target-31"
+      }
+    },
+    {
+      "type": "habit-matrix",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "HabitSun27Mon28Tue29Wed30Thu1Fri2Sat3Read one chapter··✓·✓✓＋Sketch a new idea✓·✓··✓✓Take a quiet walk✓···✓·✓Practice a language··✓·✓✓＋Write a reflecti"
+      }
+    },
+    {
+      "type": "date-countdown",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Read one chapterSep 30, 20263days agoSketch a new ideaOct 1, 20262days agoTake a quiet walkOct 2, 20261day agoPractice a languageOct 3, 20260todayWrit"
+      }
+    },
+    {
+      "type": "inventory-levels",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "0 below threshold · Reorder below 10Read one chapter24ActualIn stockSketch a new idea42ActualIn stockTake a quiet walk18ActualIn stockPractice a langu"
+      }
+    },
+    {
+      "type": "expense-calendar",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "←October 2026→MonTueWedThuFriSatSun1422183654315546—7—8—9—10—11—12—13—14—15—16—17—18—19—20—21—22—23—24—25—26—27—28—29—30—31—Oct 365Practice a language"
+      }
+    },
+    {
+      "type": "export-panel",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Download 6 visible records. Hidden fields and private data outside this view are excluded.Fields to includeNameNotes / answerActualTargetRatingCategor"
+      }
+    },
+    {
+      "type": "flashcards",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "1 / 6 · QuestionRead one chapterTap to reveal answerPreviousNext cardOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "quiz",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Question 1 of 6Read one chapterYour answerCheck answerNext questionRestart0 correct / 0 answered · Answers match ignoring case and surrounding spaces."
+      }
+    },
+    {
+      "type": "random-picker",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Let chance chooseAvoid repeatsPick a recordReset pool6 choices available.Only in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "pomodoro",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "FocusShort break25:00Ready to focusStartResetOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "stopwatch",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "00:00.0StartRecord lapResetOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "breathing-guide",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Find your rhythm4 seconds per phase. Breathe comfortably; pause whenever you like.Start breathingStop & resetOnly in this browser. Resets when you lea"
+      }
+    },
+    {
+      "type": "calculator",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "First numberOperation+−×÷Second numberCalculateClearReady for your numbersOnly in this browser. Resets when you leave this module."
+      }
+    },
+    {
+      "type": "unit-converter",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "MeasurementLengthMassTemperatureAmountFromMetresKilometresCentimetresInchesFeetMilesToMetresKilometresCentimetresInchesFeetMilesSwap units3.2808 FeetO"
+      }
+    },
+    {
+      "type": "search-panel",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Search this collectionClear search6 / 6 records shownUpdates every record-based module in this view. Search stays in this browser."
+      }
+    },
+    {
+      "type": "filter-panel",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "CategoryAll valuesLearnCreateRestoreCompleteAll valuesYesNoClear all filters6 records shownFilters combine with search across this view. Nothing is ch"
+      }
+    },
+    {
+      "type": "tag-cloud",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Learn2Create2Restore26 matching recordsRead one chapterLearnSketch a new ideaCreateTake a quiet walkRestorePractice a languageLearnWrite a reflectionC"
+      }
+    },
+    {
+      "type": "text-reader",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulReading size · 18pxA small step, rep"
+      }
+    },
+    {
+      "type": "word-counter",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulText to measureA small step, repeate"
+      }
+    },
+    {
+      "type": "markdown-viewer",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "RecordRead one chapterSketch a new ideaTake a quiet walkPractice a languageWrite a reflectionMake something usefulA small step, repeated with care.Sup"
+      }
+    },
+    {
+      "type": "link-directory",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Find a linkRead one chapterexample.com↗Sketch a new ideaexample.com↗Take a quiet walkexample.com↗Practice a languageexample.com↗Write a reflectionexam"
+      }
+    },
+    {
+      "type": "recipe-scaler",
+      "variant": "narrow1440",
+      "status": "pass",
+      "geometry": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "moduleWidth": 318,
+        "moduleRight": 366,
+        "escaped": [],
+        "clipped": [],
+        "text": "Recipe multiplier0.5×1×2×3×Read one chapter24Sketch a new idea42Take a quiet walk18Practice a language65Write a reflection31Make something useful54Sca"
+      }
+    }
+  ],
+  "errors": []
+}

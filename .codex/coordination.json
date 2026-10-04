@@ -469,7 +469,9 @@
         ".local/deployment/"
       ],
       "depends_on": [
-        "LF-160"
+        "LF-160",
+        "LF-210",
+        "LF-211"
       ],
       "acceptance": [
         "Provider URL then livingforma.tech HTTPS are reachable",
@@ -572,7 +574,510 @@
         "Validate deployment configuration and report the exact remaining hosting approval and release steps without claiming deployment"
       ],
       "notes": "Preparation while final media integration proceeds. Render Create Account still awaits the pending user terms confirmation; do not accept terms or create service until authorized. Actual release LF170 remains dependent on LF160."
+    },
+    {
+      "id": "LF-199",
+      "role": "coordinator",
+      "title": "Accept 60-module catalog and bounded presentation contracts",
+      "paths": [
+        ".codex/coordination.json",
+        "packages/contracts/",
+        "docs/product/",
+        "docs/memory/shared/",
+        "docs/memory/roles/coordinator/",
+        "docs/memory/handoffs/coordinator/",
+        "README.md"
+      ],
+      "depends_on": [],
+      "acceptance": [
+        "Exactly 60 distinct registered module types with typed metadata and bounded optional size/config",
+        "Existing definitions parse unchanged; invalid presentation fields rejected; use-case map documented"
+      ],
+      "notes": "Local 60-module expansion only. Preserve frozen 7efaa91 deployment and existing records; all modules responsive on mobile and PC. No push/deploy/provider calls. Task paths override default role boundaries for the named module family only."
+    },
+    {
+      "id": "LF-200",
+      "role": "coordinator",
+      "title": "Integrate adjustable responsive runtime, catalog and analytics/input modules",
+      "paths": [
+        ".codex/coordination.json",
+        "packages/contracts/",
+        "docs/product/",
+        "docs/memory/shared/",
+        "docs/memory/roles/coordinator/",
+        "docs/memory/handoffs/coordinator/",
+        "README.md",
+        "apps/web/src/App.tsx",
+        "apps/web/src/styles.css",
+        "apps/web/src/lib/client.ts",
+        "apps/web/src/components/Renderer.tsx",
+        "apps/web/src/modules/shared.tsx",
+        "apps/web/src/modules/analytics.tsx",
+        "apps/web/src/modules/inputs.tsx",
+        "apps/web/src/modules/runtime.css",
+        "apps/web/src/modules/ModuleFrame.tsx",
+        "apps/web/src/modules/ModuleLibrary.tsx",
+        "apps/web/src/modules/fixtures.ts",
+        "apps/web/src/modules/Showcase.tsx"
+      ],
+      "depends_on": [
+        "LF-199"
+      ],
+      "acceptance": [
+        "All 60 modules mapped to real renderers with common size/config controls and responsive layout",
+        "Owner can add/configure/resize and persist via protected endpoint; visitors cannot edit layout",
+        "16 analytics/input additions have useful behaviors and isolated record action permissions",
+        "Existing modules retained; integration typecheck/build/tests and complete mobile/desktop QA pass"
+      ],
+      "notes": "Local 60-module expansion only. Preserve frozen 7efaa91 deployment and existing records; all modules responsive on mobile and PC. No push/deploy/provider calls. Task paths override default role boundaries for the named module family only."
+    },
+    {
+      "id": "LF-201",
+      "role": "frontend",
+      "title": "Implement 16 collection/planning and goal/management modules",
+      "paths": [
+        "apps/web/src/modules/collections.tsx",
+        "apps/web/src/modules/collections.css",
+        "docs/frontend/module-expansion.md",
+        "docs/memory/roles/frontend/",
+        "docs/memory/handoffs/frontend/"
+      ],
+      "depends_on": [
+        "LF-199"
+      ],
+      "acceptance": [
+        "16 distinct real implementations with typed bindings and empty states",
+        "All work at 320px and narrow desktop containers; no page overflow, accessible touch/keyboard controls",
+        "Export only permitted visible data and preserve existing mutation permissions"
+      ],
+      "notes": "Local 60-module expansion only. Preserve frozen 7efaa91 deployment and existing records; all modules responsive on mobile and PC. No push/deploy/provider calls. Task paths override default role boundaries for the named module family only."
+    },
+    {
+      "id": "LF-202",
+      "role": "agent",
+      "title": "Implement 16 study/discovery modules and planner discovery",
+      "paths": [
+        "apps/web/src/modules/tools.tsx",
+        "apps/web/src/modules/tools.css",
+        "packages/agent/",
+        "docs/agent/module-expansion.md",
+        "docs/memory/roles/agent/",
+        "docs/memory/handoffs/agent/"
+      ],
+      "depends_on": [
+        "LF-199"
+      ],
+      "acceptance": [
+        "16 distinct functional study/discovery modules responsive on mobile and PC",
+        "Search/filter actually changes data; timers clean up; no arbitrary code execution, unsafe links or HTML",
+        "Planner and local composition know new catalog and bounded presentation fields; offline checks pass"
+      ],
+      "notes": "Local 60-module expansion only. Preserve frozen 7efaa91 deployment and existing records; all modules responsive on mobile and PC. No push/deploy/provider calls. Task paths override default role boundaries for the named module family only."
+    },
+    {
+      "id": "LF-203",
+      "role": "backend",
+      "title": "Persist owner presentation edits with authorization and versioning",
+      "paths": [
+        "apps/api/src/",
+        "docs/backend/module-expansion.md",
+        "docs/memory/roles/backend/",
+        "docs/memory/handoffs/backend/"
+      ],
+      "depends_on": [
+        "LF-199"
+      ],
+      "acceptance": [
+        "Owner-only presentation route saves validated components with version/replay/CSRF protections without model calls",
+        "Records/schema/actions preserved; public projection handles all new bindings and SSE publication",
+        "Tests cover persistence, concurrent/stale edits, replay, private field projection, participant/anonymous denial"
+      ],
+      "notes": "Local 60-module expansion only. Preserve frozen 7efaa91 deployment and existing records; all modules responsive on mobile and PC. No push/deploy/provider calls. Task paths override default role boundaries for the named module family only."
+    },
+    {
+      "id": "LF-204",
+      "role": "qa",
+      "title": "Verify all 60 modules on mobile/PC and layout persistence",
+      "paths": [
+        "tests/e2e/",
+        "docs/qa/module-expansion/",
+        "docs/memory/roles/qa/",
+        "docs/memory/handoffs/qa/"
+      ],
+      "depends_on": [
+        "LF-199",
+        "LF-203"
+      ],
+      "acceptance": [
+        "All 60 modules verified at mobile and PC widths plus narrow desktop container",
+        "Representative real module interactions and layout save/reload/SSE/authorization verified on isolated local database",
+        "Actionable defects reported and retested; screenshots and truthful evidence saved"
+      ],
+      "notes": "Local 60-module expansion only. Preserve frozen 7efaa91 deployment and existing records; all modules responsive on mobile and PC. No push/deploy/provider calls. Task paths override default role boundaries for the named module family only."
+    },
+    {
+      "id": "LF-210",
+      "role": "frontend",
+      "title": "Repair production stale-session writes and preserve account-scoped drafts",
+      "paths": [
+        "apps/web/src/",
+        "docs/frontend/session-recovery.md",
+        "docs/memory/roles/frontend/",
+        "docs/memory/handoffs/frontend/"
+      ],
+      "depends_on": [],
+      "acceptance": [
+        "Every protected user write preflights session; same identity uses fresh CSRF and changed identity sends zero writes",
+        "Rejected writes are never automatically replayed; late responses cannot clear drafts or restore old private views",
+        "Drafts remain scoped to the originating account/space, and media stops on authentication changes",
+        "Targeted tests, typecheck and release build pass on isolated frozen production worktree"
+      ],
+      "notes": "User authorized coordinate and fix online. Worktree /Users/fanhaocheng/project/livingforma-release-fix, branch fix/session-recovery, base3325718 runtime7efaa91. Do not deploy or overwrite primary checkout60module changes. Service-side CSRF/Origin remains strict. No real provider calls."
+    },
+    {
+      "id": "LF-211",
+      "role": "qa",
+      "title": "Independently reproduce session-rotation production bug and validate hotfix",
+      "paths": [
+        "tests/e2e/session-recovery.ts",
+        "tests/session-recovery.test.ts",
+        "docs/qa/session-recovery/",
+        "docs/memory/roles/qa/",
+        "docs/memory/handoffs/qa/"
+      ],
+      "depends_on": [],
+      "acceptance": [
+        "Same-owner rotation succeeds with exactly one POST and planner invocation; changed identity sends zero protected POSTs",
+        "A rotation race never retries a POST automatically; drafts survive rejected, delayed and identity-changing operations without cross-account leakage",
+        "Verify private-view invalidation, tools/media handling and existing reading/habit behavior using isolated local fixtures",
+        "Review final LF210 changes and report all blockers resolved before finish"
+      ],
+      "notes": "QA may author independent regressions in parallel; finish only afterLF210 implemented and reviewed. No production/provider writes. Isolated release worktree only."
+    },
+    {
+      "id": "LF-220",
+      "role": "backend",
+      "title": "Durable general website generation, sandbox delivery, assets and checked publication",
+      "paths": [
+        "apps/api/src/",
+        "packages/db/",
+        "docs/backend/generated-sites.md",
+        "docs/memory/roles/backend/",
+        "docs/memory/handoffs/backend/"
+      ],
+      "depends_on": [],
+      "acceptance": [
+        "Owner/session/CSRF-protected durable generation jobs expose truthful scoped events and previews without modifying the published website",
+        "Checked source revisions publish atomically with preserved schema/records/URL, immutable history and stale-session/version rejection",
+        "Generated browser source is served with opaque response sandbox and restrictive CSP; no generated source executes on the server",
+        "Bounded raster assets persist by space, authorized bridge actions retain record permissions, offline API/security regressions pass"
+      ],
+      "notes": "User explicitly superseded catalog-only boundary and confirmed development stays in this chat. Primary checkout only, isolated localPGlite; preserve60module work and exclude from session-only hotfix. Read docs/product/generated-sites.md and packages/contracts/src/generated.ts. No realprovider/deploy/secret edits."
+    },
+    {
+      "id": "LF-221",
+      "role": "agent",
+      "title": "General Pi website code generation, live source checkpoints and repair",
+      "paths": [
+        "packages/agent/",
+        "docs/agent/generated-sites.md",
+        "docs/memory/roles/agent/",
+        "docs/memory/handoffs/agent/"
+      ],
+      "depends_on": [],
+      "acceptance": [
+        "Arbitrary ordinary website intent generates HTML/CSS/JS rather than selecting keyword templates or rejecting at catalog boundary",
+        "Pi emits sanitized actual source/stage checkpoints without thinking or secrets; shared static validation and evolution checks reject invalid candidates",
+        "At most one repair per candidate uses concrete validation/runtime errors within unchanged durable free budgets",
+        "Offline varied-prompt/repair/provider-boundary tests pass; realmodel calls are reserved for coordinator acceptance"
+      ],
+      "notes": "Primary checkout only; source code is data for the browser sandbox, never Node/shell execution. SiteGenerator interface and bridge API in generated-sites.md. No live providers, paid resources or new environment edits."
+    },
+    {
+      "id": "LF-222",
+      "role": "frontend",
+      "title": "Live generation studio, isolated website runtime and account-safe data bridge",
+      "paths": [
+        "apps/web/src/",
+        "apps/web/public/",
+        "docs/frontend/generated-sites.md",
+        "docs/memory/roles/frontend/",
+        "docs/memory/handoffs/frontend/"
+      ],
+      "depends_on": [
+        "LF-210"
+      ],
+      "acceptance": [
+        "Owner sees real planning/writing/check/repair events, escaped source and runnable isolated preview, then publishes the checked revision",
+        "Generated UI accepts custom HTML/CSS/JS interactions through a strict frame/version-bound bridge; no credentials or private fields enter frames",
+        "Published generated sites persist records/assets across refresh and evolution; session invalidation and cancellation discard late frames/results",
+        "Desktop/mobile, reduced-motion, keyboard access and existing60modules remain functional"
+      ],
+      "notes": "After root merges reviewed session fix into primary checkout; preserve module work. English UI, frontend-dev/animations projectadaptation, no paidassets. Coordinate backendcontract. No parallel writes to release-fix hotfix."
+    },
+    {
+      "id": "LF-223",
+      "role": "qa",
+      "title": "Independent generated page/tool and dynamic UI acceptance",
+      "paths": [
+        "tests/e2e/generated-sites.ts",
+        "tests/e2e/generated-tools.ts",
+        "tests/generated-site-security.test.ts",
+        "docs/qa/generated-sites/",
+        "docs/qa/generated-tools/",
+        "docs/memory/roles/qa/",
+        "docs/memory/handoffs/qa/"
+      ],
+      "depends_on": [
+        "LF-220",
+        "LF-221",
+        "LF-222",
+        "LF-224",
+        "LF-225",
+        "LF-226"
+      ],
+      "acceptance": [
+        "Review existing isolated-frame defensive evidence and verify ordinary authorization, bridge privacy, stale-session and invalid-source regressions; no new advanced bypass research",
+        "Three substantially different generated page interactions and at least one generated backend tool run through the same pipeline at mobile/PC sizes",
+        "Visible actual generation checkpoints change the UI; evolution retains data/URL, updates anonymous viewers, and failed candidates never replace live versions",
+        "Generated tools validate, test, register, execute and reuse/version with durable audit/idempotency; evidence separates fixtures from real provider/hosted acceptance"
+      ],
+      "notes": "Ordinary functional/integration verification. Advanced exploit/bypass reproduction is paused following platform restriction. Use isolated local database; real provider or production requests only assigned by coordinator with existing free limits."
+    },
+    {
+      "id": "LF-224",
+      "role": "backend",
+      "title": "Generated backend JavaScript tools: isolated runtime, tests, registry and invocation",
+      "paths": [
+        "apps/api/src/",
+        "packages/db/",
+        "packages/tool-runtime/",
+        "docs/backend/generated-tools.md",
+        "docs/memory/roles/backend/",
+        "docs/memory/handoffs/backend/"
+      ],
+      "depends_on": [
+        "LF-220"
+      ],
+      "acceptance": [
+        "A generated JavaScript tool with declared schemas/tests executes as new logic in a mature isolated runtime with explicit limits and no ambient server credentials/Node/shell access",
+        "Host validates and runs tests before versioned persistent registration and enablement; authorized invoke/replay and reuse preserve current session/data permissions",
+        "Website generation can request/store tool candidates, publish only tested approved bindings, and generated frames invoke bound tools through the host",
+        "Offline functional tests cover different computations, limits, version/reuse, restart, idempotency, authorization and retained records"
+      ],
+      "notes": "User active goal explicitly includes backend generation of new tools, beyond fixed OpenLibrary recipes. Read new shared generated-tool contracts. Ordinary defensive implementation, no advanced bypass research/provider/env/deployment. Root owns dependency manifests and lockfile."
+    },
+    {
+      "id": "LF-225",
+      "role": "agent",
+      "title": "Pi creates and reuses new backend tools during website generation",
+      "paths": [
+        "packages/agent/",
+        "docs/agent/generated-tools.md",
+        "docs/memory/roles/agent/",
+        "docs/memory/handoffs/agent/"
+      ],
+      "depends_on": [
+        "LF-221"
+      ],
+      "acceptance": [
+        "Pi generates original tool source, declared schemas and representative tests for requested backend logic rather than choosing only hardcoded recipes",
+        "Website generator discovers existing enabled tools and reuses compatible versions, reports real tool-writing/testing checkpoints, and binds only host-tested tools",
+        "One bounded repair and cancellation use existing durable free budgets; source/progress excludes secrets and private records",
+        "Meaningful offline varied-intent/streaming/integration tests pass; real model calls reserved for coordinator acceptance"
+      ],
+      "notes": "Coordinate mature runtime/host capability contract with Root and Backend. No shell/npm from model, no provider calls or advanced bypass reproduction. Shared dependencies by Root."
+    },
+    {
+      "id": "LF-226",
+      "role": "frontend",
+      "title": "Dynamic UI formation during generation and bound backend tool interaction",
+      "paths": [
+        "apps/web/src/",
+        "apps/web/public/",
+        "docs/frontend/generated-sites.md",
+        "docs/frontend/generated-tools.md",
+        "docs/memory/roles/frontend/",
+        "docs/memory/handoffs/frontend/"
+      ],
+      "depends_on": [
+        "LF-222"
+      ],
+      "acceptance": [
+        "Actual Pi planning/source checkpoints visibly reshape a safe staged UI using Motion and responsive/reduced-motion behavior",
+        "Generated sites invoke exact bound tool/version through lf.runTool with host-selected endpoint, current auth and clear pending/result/error UI",
+        "Draft preview remains read-only and late identity/source/job changes cannot update a newer page; records/URL/60 modules preserved",
+        "Ordinary local functional/browser regression passes with truthful fixture evidence"
+      ],
+      "notes": "Read Root shared progress/ui/tool contracts before write. No execution of incomplete unvalidated source, simulated model progress, provider calls, paid assets, advanced bypass research or deployment."
+    },
+    {
+      "id": "LF-227",
+      "role": "coordinator",
+      "title": "Integrate real AI page/tool generation and verify the full requested experience",
+      "paths": [
+        "apps/api/src/server.ts",
+        "packages/contracts/",
+        "package.json",
+        "pnpm-lock.yaml",
+        "README.md",
+        "docs/PRD.md",
+        "docs/architecture.md",
+        "docs/product/",
+        "docs/integrations.md",
+        "docs/memory/shared/",
+        "docs/memory/roles/coordinator/",
+        "docs/memory/handoffs/coordinator/"
+      ],
+      "depends_on": [
+        "LF-221",
+        "LF-224",
+        "LF-225",
+        "LF-226",
+        "LF-229",
+        "LF-230",
+        "LF-232",
+        "LF-233"
+      ],
+      "acceptance": [
+        "Server wires real SiteGenerator and generated-tool runtime using unchanged durable provider budgets",
+        "At least three real model-created page interactions, original generated backend tool execution/reuse, dynamic progress and data/URL evolution are verified",
+        "Full required checks/QA evidence, scoped reviewed commit and CI pass before exact-SHA deployment",
+        "Memory and English startup/product instructions match actual features and limits"
+      ],
+      "notes": "Preserve all prior60module and403fix source. Use isolated database until review; do not reset budget or invoke paid services. Public deployment remains user-authorized at livingforma.tech."
+    },
+    {
+      "id": "LF-228",
+      "role": "devops",
+      "title": "Deploy and verify generated page/tool release at livingforma.tech",
+      "paths": [
+        "infra/",
+        ".github/",
+        "scripts/deploy/",
+        ".env.example",
+        "docs/operations/",
+        "docs/memory/roles/devops/",
+        "docs/memory/handoffs/devops/",
+        ".env",
+        ".local/deployment/"
+      ],
+      "depends_on": [
+        "LF-227",
+        "LF-223"
+      ],
+      "acceptance": [
+        "Deploy exact reviewed CI-green source to existing free Render service and preserve Neon data/OAuth",
+        "Hosted page generation/tool execution/progress and anonymous sync work through canonical HTTPS with honest evidence",
+        "Charges require prior user confirmation; no ledger reset, credential exposure or unverified main deploy"
+      ],
+      "notes": "Existing user authorization for deployment and server secrets persists. No new paid resources. Older LF170 evidence remains historical sourceeedd1d4."
+    },
+    {
+      "id": "LF-229",
+      "role": "backend",
+      "title": "Validate bounded tool startup and execution on the free server budget",
+      "paths": [
+        "apps/api/src/generated-tool-runtime.ts",
+        "apps/api/src/generated-tool-worker.ts",
+        "apps/api/src/generated-tool-runtime.test.ts",
+        "apps/api/src/generated-tools.ts",
+        "apps/api/src/generated-tools.test.ts",
+        "docs/backend/generated-tools.md",
+        "docs/memory/roles/backend/",
+        "docs/memory/handoffs/backend/"
+      ],
+      "depends_on": [
+        "LF-224"
+      ],
+      "acceptance": [
+        "Use global concurrency1 and host-passed limits with no Worker schema/parser initialization; bound startup8s, guest execution4s and total12s, invoke route14s/register batch65s; extra requests receive honest immediate TOOL_BUSY",
+        "Ordinary runtime/API tests prove one active Worker, capacity release after completion/cancellation, bounded retry/requestId semantics and no duplicate execution",
+        "DevOps reproduces successful sequential fixture/invoke and honest concurrent busy handling under Docker 0.1CPU/512MiB; no new paid resources or advanced bypass research"
+      ],
+      "notes": "Observed two simultaneous compiled QuickJS coldstarts fail under Free0.1CPU. Root owns shared limit; backend owns scoped ordinary regression and status message. Preserve existing source and fixed deadline. /tmp/lf228-worker-smoke-result.json records the original failure. Actual adapter single-slot coldfixture tests also exceeded4s, so single-slot alone is not accepted. Worker may receive trusted limits in workerData and use only type imports; no guest capability increase. Preserve failed preflight evidence. Second complete Free smoke still exceeded4s despite3.01KiB Worker. Accepted explicit phases8s startup/4s execution/12s total, no hidden waiting/prewarm or guest privilege increase; keep existing90s generation and30s standalone proposal caps documented as stricter overall bounds."
+    },
+    {
+      "id": "LF-230",
+      "role": "agent",
+      "title": "Diagnose and repair real Gemini site/tool request compatibility",
+      "paths": [
+        "packages/agent/src/",
+        "docs/agent/generated-sites.md",
+        "docs/agent/generated-tools.md",
+        "docs/memory/roles/agent/",
+        "docs/memory/handoffs/agent/"
+      ],
+      "depends_on": [
+        "LF-221",
+        "LF-225"
+      ],
+      "acceptance": [
+        "Find the actual ordinary provider failure without exposing credentials, hidden reasoning or raw private context; keep honest English classified errors",
+        "Repair request/schema compatibility if needed while preserving host validation, free budget, no automatic retries and general source generation",
+        "Relevant offline request-shape regressions and real Pi/Gemini acceptance pass using the original durable free ledger; no paid fallback or advanced bypass work"
+      ],
+      "notes": "Root actualStudio prompt failed after1371ms, requests1, tokens0, toolCalls[]. Existing generic error hides diagnosis. Coordinate opt-in4347 harness originalNeonbudget; only one assigned provider run at a time. No resetting budget or modifying business production data."
+    },
+    {
+      "id": "LF-232",
+      "role": "frontend",
+      "title": "Let Owners report a functional preview issue for the existing single repair",
+      "paths": [
+        "apps/web/src/generated/GenerationStudio.tsx",
+        "apps/web/src/generated/GenerationStudio.test.tsx",
+        "apps/web/src/generated/formation.test.ts",
+        "apps/web/src/generated/studio.css",
+        "docs/frontend/generated-sites.md",
+        "docs/memory/roles/frontend/",
+        "docs/memory/handoffs/frontend/"
+      ],
+      "depends_on": [
+        "LF-222",
+        "LF-226"
+      ],
+      "acceptance": [
+        "Owner can describe a normal functional issue in a checked/preview draft and explicitly request the existing bounded repair via protected sourceRevision-scoped preview report",
+        "No extra automatic model loops; after the single shared repair is used show honest English guidance to create another revision; session/page changes discard late UI",
+        "Targeted frontend and real browser fixture verification show feedback→actual host repair stage/revision, clear errors and safe publication gating; no live provider calls or advanced bypass work"
+      ],
+      "notes": "Actual real PhotoDrift passes startup but upload handler wrongly gates lf.pickImage behind childfileinput. Need explicit Owner feedback for ordinary interaction issues, not only automatic startup diagnostics. Existing backendpreview endpoint already accepts checked-stage failing report and single repair. Preserve drafts/live website; no direct backend/source edits."
+    },
+    {
+      "id": "LF-233",
+      "role": "coordinator",
+      "title": "Reconcile reviewed production session hotfix ancestry with preserved generated application work",
+      "paths": [
+        "apps/web/src/App.tsx",
+        "apps/web/src/components/OwnerOrb.tsx",
+        "apps/web/src/components/Renderer.tsx",
+        "apps/web/src/lib/client.ts",
+        "apps/web/src/lib/media.ts",
+        "apps/web/src/lib/session-client.ts",
+        "apps/web/src/lib/session-client.test.ts",
+        "docs/frontend/session-recovery.md",
+        "docs/qa/session-recovery/",
+        "tests/e2e/session-recovery.ts",
+        "docs/memory/roles/frontend/",
+        "docs/memory/roles/qa/",
+        "docs/memory/handoffs/frontend/",
+        "docs/memory/handoffs/qa/",
+        "docs/memory/shared/",
+        "docs/memory/roles/coordinator/",
+        "docs/memory/handoffs/coordinator/"
+      ],
+      "depends_on": [
+        "LF-232",
+        "LF-223",
+        "LF-230"
+      ],
+      "acceptance": [
+        "Preserve all current uncommitted60module and generated-site/tool source while reconciling the exact reviewed eedd1d4 hotfix history",
+        "Both role histories and session-recovery evidence remain available; current summaries describe newer generation work",
+        "Review actual conflict resolutions and appropriate checks before release; no reset/stash or unreviewed external publication"
+      ],
+      "notes": "Coordinator alone owns deliberate Git integration after FrontendLF232 releases. Read-only independent source review may proceed. Local scoped commits preserve source before merging origin/main; push and production deployment only after LF227 acceptance."
     }
   ],
-  "revision": 12
+  "revision": 23
 }

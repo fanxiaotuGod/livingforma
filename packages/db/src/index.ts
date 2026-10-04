@@ -3,7 +3,7 @@ import pg from 'pg';
 import { randomUUID } from 'node:crypto';
 import { mkdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import type { DataRecord, Definition, RegisteredTool, SpaceEvent, Snapshot, User, ProviderBudgetStore, MediaBudgetStore } from '@livingforma/contracts';
+import type { DataRecord, Definition, RegisteredTool, RegisteredGeneratedTool, SpaceEvent, Snapshot, User, ProviderBudgetStore, MediaBudgetStore } from '@livingforma/contracts';
 
 export interface SqlConnection { query<T = Record<string, unknown>>(sql: string, params?: unknown[]): Promise<{rows:T[]}> }
 export interface Database extends SqlConnection { kind:'pglite'|'postgres'; transaction<T>(fn:(tx:SqlConnection)=>Promise<T>):Promise<T>; close():Promise<void> }
@@ -58,6 +58,19 @@ export async function migrate(db:Database){await db.transaction(async tx=>{
     await tx.query('CREATE TABLE lf_media_budgets (bucket text NOT NULL, period text NOT NULL, data jsonb NOT NULL, PRIMARY KEY(bucket,period))');
     await tx.query('INSERT INTO lf_migrations(version) VALUES(4)');
   }
+  if(!(await tx.query('SELECT version FROM lf_migrations WHERE version=5')).rows.length){
+    await tx.query('CREATE TABLE lf_generations (id text PRIMARY KEY, space_id text NOT NULL REFERENCES lf_spaces(id) ON DELETE CASCADE, user_id text NOT NULL, request_id text NOT NULL, data jsonb NOT NULL, UNIQUE(space_id,user_id,request_id))');
+    await tx.query('CREATE TABLE lf_definition_versions (space_id text NOT NULL REFERENCES lf_spaces(id) ON DELETE CASCADE, version integer NOT NULL, data jsonb NOT NULL, created_at timestamptz NOT NULL DEFAULT now(), PRIMARY KEY(space_id,version))');
+    await tx.query("INSERT INTO lf_definition_versions(space_id,version,data) SELECT id,(data->'definition'->>'definitionVersion')::integer,data->'definition' FROM lf_spaces WHERE data->'definition' IS NOT NULL AND data->'definition'<>'null'::jsonb ON CONFLICT DO NOTHING");
+    await tx.query('CREATE TABLE lf_assets (id text PRIMARY KEY, space_id text NOT NULL REFERENCES lf_spaces(id) ON DELETE CASCADE, user_id text NOT NULL, mime_type text NOT NULL, bytes integer NOT NULL, data_base64 text NOT NULL, created_at timestamptz NOT NULL DEFAULT now())');
+    await tx.query('CREATE INDEX lf_assets_space ON lf_assets(space_id)');
+    await tx.query('INSERT INTO lf_migrations(version) VALUES(5)');
+  }
+  if(!(await tx.query('SELECT version FROM lf_migrations WHERE version=6')).rows.length){
+    await tx.query('CREATE TABLE lf_code_tools (space_id text NOT NULL REFERENCES lf_spaces(id) ON DELETE CASCADE, tool_id text NOT NULL, version integer NOT NULL, data jsonb NOT NULL, PRIMARY KEY(space_id,tool_id,version))');
+    await tx.query('CREATE TABLE lf_code_tool_requests (space_id text NOT NULL REFERENCES lf_spaces(id) ON DELETE CASCADE, user_id text NOT NULL, request_id text NOT NULL, data jsonb NOT NULL, PRIMARY KEY(space_id,user_id,request_id))');
+    await tx.query('INSERT INTO lf_migrations(version) VALUES(6)');
+  }
 });}
 export type SpaceState={space:Snapshot['space'];ownerId:string;members:string[];definition:Definition|null;records:DataRecord[];stateVersion:number;eventCursor:number};
 export class Store {
@@ -66,7 +79,7 @@ export class Store {
   async listSpaces():Promise<SpaceState[]>{return (await this.db.query<{data:SpaceState}>('SELECT data FROM lf_spaces ORDER BY slug')).rows.map(row=>row.data);}
   async insertSpace(state:SpaceState,tx:SqlConnection=this.db){await tx.query('INSERT INTO lf_spaces(id,slug,data) VALUES($1,$2,$3)',[state.space.id,state.space.slug,JSON.stringify(state)]);}
   async saveSpace(state:SpaceState,tx:SqlConnection){await tx.query('UPDATE lf_spaces SET data=$1 WHERE id=$2',[JSON.stringify(state),state.space.id]);}
-  async event(state:SpaceState,type:SpaceEvent['type'],tx:SqlConnection){state.eventCursor++;const event:SpaceEvent={id:state.eventCursor,spaceId:state.space.id,type,definitionVersion:state.definition?.definitionVersion??0,stateVersion:state.stateVersion};await tx.query('INSERT INTO lf_events(space_id,cursor,data) VALUES($1,$2,$3)',[state.space.id,event.id,JSON.stringify(event)]);await this.saveSpace(state,tx);return event;}
+  async event(state:SpaceState,type:SpaceEvent['type'],tx:SqlConnection){state.eventCursor++;const event:SpaceEvent={id:state.eventCursor,spaceId:state.space.id,type,definitionVersion:state.definition?.definitionVersion??0,stateVersion:state.stateVersion};await tx.query('INSERT INTO lf_events(space_id,cursor,data) VALUES($1,$2,$3)',[state.space.id,event.id,JSON.stringify(event)]);if(type==='definition.published'&&state.definition)await tx.query('INSERT INTO lf_definition_versions(space_id,version,data) VALUES($1,$2,$3) ON CONFLICT DO NOTHING',[state.space.id,state.definition.definitionVersion,JSON.stringify(state.definition)]);await this.saveSpace(state,tx);return event;}
   async events(spaceId:string,after:number,limit=100):Promise<SpaceEvent[]>{return (await this.db.query<{data:SpaceEvent}>('SELECT data FROM lf_events WHERE space_id=$1 AND cursor>$2 ORDER BY cursor LIMIT $3',[spaceId,after,limit])).rows.map(row=>row.data);}
   async request(tx:SqlConnection,spaceId:string,userId:string,requestId:string):Promise<{fingerprint:string;result:unknown}|null>{return (await tx.query<{fingerprint:string;result:unknown}>('SELECT fingerprint,result FROM lf_requests WHERE space_id=$1 AND user_id=$2 AND request_id=$3',[spaceId,userId,requestId])).rows[0]??null;}
   async remember(tx:SqlConnection,spaceId:string,userId:string,requestId:string,fingerprint:string,result:unknown=null){await tx.query('INSERT INTO lf_requests(space_id,user_id,request_id,fingerprint,result) VALUES($1,$2,$3,$4,$5)',[spaceId,userId,requestId,fingerprint,JSON.stringify(result)]);}
@@ -80,6 +93,9 @@ export class Store {
   async getTools(spaceId:string):Promise<RegisteredTool[]>{return (await this.db.query<{data:RegisteredTool}>('SELECT data FROM lf_tools WHERE space_id=$1 ORDER BY tool_id,version',[spaceId])).rows.map(row=>row.data);}
   async getTool(spaceId:string,toolId:string,version:number,tx:SqlConnection=this.db):Promise<RegisteredTool|null>{return (await tx.query<{data:RegisteredTool}>('SELECT data FROM lf_tools WHERE space_id=$1 AND tool_id=$2 AND version=$3',[spaceId,toolId,version])).rows[0]?.data??null;}
   async putTool(spaceId:string,tool:RegisteredTool,tx:SqlConnection=this.db){await tx.query('INSERT INTO lf_tools(space_id,tool_id,version,data) VALUES($1,$2,$3,$4) ON CONFLICT(space_id,tool_id,version) DO UPDATE SET data=EXCLUDED.data',[spaceId,tool.spec.toolId,tool.spec.toolVersion,JSON.stringify(tool)]);}
+  async getCodeTools(spaceId:string,tx:SqlConnection=this.db):Promise<RegisteredGeneratedTool[]>{return (await tx.query<{data:RegisteredGeneratedTool}>('SELECT data FROM lf_code_tools WHERE space_id=$1 ORDER BY tool_id,version',[spaceId])).rows.map(row=>row.data);}
+  async getCodeTool(spaceId:string,toolId:string,version:number,tx:SqlConnection=this.db):Promise<RegisteredGeneratedTool|null>{return (await tx.query<{data:RegisteredGeneratedTool}>('SELECT data FROM lf_code_tools WHERE space_id=$1 AND tool_id=$2 AND version=$3',[spaceId,toolId,version])).rows[0]?.data??null;}
+  async putCodeTool(spaceId:string,tool:RegisteredGeneratedTool,tx:SqlConnection=this.db){await tx.query('INSERT INTO lf_code_tools(space_id,tool_id,version,data) VALUES($1,$2,$3,$4) ON CONFLICT(space_id,tool_id,version) DO UPDATE SET data=EXCLUDED.data',[spaceId,tool.spec.toolId,tool.spec.toolVersion,JSON.stringify(tool)]);}
   async auditTool(spaceId:string,toolId:string,version:number,status:'ok'|'failed',durationMs:number,tx:SqlConnection=this.db){await tx.query('INSERT INTO lf_tool_runs(id,space_id,tool_id,version,status,duration_ms) VALUES($1,$2,$3,$4,$5,$6)',[randomUUID(),spaceId,toolId,version,status,Math.max(0,Math.round(durationMs))]);}
 }
 

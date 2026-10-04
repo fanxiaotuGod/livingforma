@@ -1,0 +1,39 @@
+{
+  "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Make this moment yours.' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('heading', { name: 'Make this moment yours.' }) with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Make this moment yours.' })\n",
+  "body": "Skip to your space\nLivingForma.\nLittle by little\nReading with perspective\nL\nYour space, in your words\nReading with perspective.\n\nAn offline browser fixture for tool and progress interactions.\n\nLive and in sync\nAn open space\n4 records\n01 /\nCollected, not forgotten\nShare space\nWebsite studio\nBuilding blocks\n\nYour modules, your proportions.\n\nAdd module ＋\nCustomize layout\nWebsite ready\nYour data stays in this space\n\nThe fixture tool could not complete this request.\n\nMade to change. Built to keep.\nLocal development\nLivingForma\n✳\nSpace updated · Offline UI fixture with a bound tool.\n×",
+  "posts": [
+    {
+      "body": {
+        "definitionVersion": 2,
+        "componentId": "custom-site",
+        "actionId": "insights",
+        "toolVersion": 2,
+        "input": {
+          "prefix": "You have "
+        },
+        "requestId": "c5c22f29-5e9f-426e-96df-455074d6cf87"
+      },
+      "hasCsrf": true
+    },
+    {
+      "body": {
+        "definitionVersion": 2,
+        "componentId": "custom-site",
+        "actionId": "insights",
+        "toolVersion": 2,
+        "input": {
+          "prefix": "You have "
+        },
+        "requestId": "0f1d5370-4404-45ba-aa0e-76b449e46404"
+      },
+      "hasCsrf": true
+    }
+  ],
+  "frames": [
+    {
+      "url": "http://localhost:4336/api/generated-frame?space=reading&channel=a7633a6e-1863-437a-8aa1-285ce797483c&version=2",
+      "text": "READING WITH PERSPECTIVE\nA little insight.\n\n4 saved books\n\nSummary introduction\nRun reading insights\nTry another version\n\nThe fixture tool could not complete this request."
+    }
+  ],
+  "errors": []
+}

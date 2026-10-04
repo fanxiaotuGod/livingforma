@@ -1,0 +1,95 @@
+{
+  "at": "2026-10-04T00:33:00.354Z",
+  "scope": "16 local gallery interactions + real isolated local HTTP/PGlite presentation/record/SSE flows; no cloud/provider calls",
+  "checks": [
+    {
+      "name": "metric-grid computes sum, average, minimum and maximum",
+      "status": "pass"
+    },
+    {
+      "name": "line-chart exposes six daily totals with the correct total",
+      "status": "pass"
+    },
+    {
+      "name": "donut-chart aggregates category shares",
+      "status": "pass"
+    },
+    {
+      "name": "histogram accounts for all six numeric records",
+      "status": "pass"
+    },
+    {
+      "name": "scatter-plot renders six points and opens a selected source record",
+      "status": "pass"
+    },
+    {
+      "name": "activity-heatmap renders 84 days and exposes 20 check-ins",
+      "status": "pass"
+    },
+    {
+      "name": "leaderboard ranks the largest quantity first and opens the record",
+      "status": "pass"
+    },
+    {
+      "name": "funnel presents current stage counts without claiming conversion rates",
+      "status": "pass"
+    },
+    {
+      "name": "checklist toggles a stored local sample boolean",
+      "status": "pass"
+    },
+    {
+      "name": "rating-input edits a selected record and keeps other records separate",
+      "status": "pass"
+    },
+    {
+      "name": "number-stepper increments/decrements the actual numeric field",
+      "status": "pass"
+    },
+    {
+      "name": "range-input saves a changed value and restores it after record selection",
+      "status": "pass"
+    },
+    {
+      "name": "segmented-input switches the selected category",
+      "status": "pass"
+    },
+    {
+      "name": "toggle-panel changes the selected boolean",
+      "status": "pass"
+    },
+    {
+      "name": "quick-add creates a new record visible in another added module",
+      "status": "pass"
+    },
+    {
+      "name": "text-editor saves long text and restores it after changing records",
+      "status": "pass"
+    },
+    {
+      "name": "explicit local test sign-in and isolated real reading-space creation",
+      "status": "pass"
+    },
+    {
+      "name": "Owner adds, configures and drags a module; save persists and anonymous SSE updates",
+      "status": "pass"
+    },
+    {
+      "name": "saved numeric module writes real records and reaches the anonymous client",
+      "status": "pass"
+    },
+    {
+      "name": "anonymous numeric write asks for sign-in and leaves real records unchanged",
+      "status": "pass"
+    },
+    {
+      "name": "concurrent remote layout publication preserves local draft and prevents stale Save",
+      "status": "pass"
+    },
+    {
+      "name": "saved space fits mobile 320/390 and no browser exceptions occurred",
+      "status": "pass"
+    }
+  ],
+  "errors": []
+}

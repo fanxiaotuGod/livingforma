@@ -7,6 +7,36 @@ permalink: livingforma/roles/frontend/memory
 
 # 前端角色记忆
 
+## Current preview feedback · 2026-10-04 LF-232
+
+- Owner 在 preview/checked 下可 Report an issue，1–500字符描述后明确 Request repair；protected POST现有preview接口携带sourceRevision/ok:false，复用唯一hostrepair，无额外模型循环。repairCount1后提示将更多问题放进description并Create another revision。
+- 原始prompt与live app保留，feedback按account/job/revision保存；失败文本/error保留、不自动重放、该候选禁止发布，pending禁重复发送。身份/page/job失效淘汰迟到结果；单调job合并与按sourceRevision暂停旧diagnostic，允许新修复候选在旧响应到达前完成startupcheck。
+- 20单测（feedback3/progress5/session12）、整仓tsc、webbuild成功 index-DIgLXu9Q.js（791.91kB提示）；真实Chrome+localhost4348/PGlite+offlinegenerator五项通过，0pageerrors。实际host修复stage/revision验证，503/迟到delivery明确fixture；无真实provider/PhotoDrift/云端修复声明。截图已读取，390px无横溢出。
+- [交接](../../handoffs/frontend/LF-232-01a65ac6-7807-4eba-8648-7b13320089a8.md)、[结果](../../handoffs/frontend/LF-232-browser-results.json)。仅改GenerationStudio.tsx/newtest/studio.css及own docs；未碰其他source/rootconfig/backend/4347实际provider任务。已通知coordinator源码冻结，真实UI由其继续。
+
+## Current live formation and tools · 2026-10-03 LF-226
+
+- Studio 接受真实 generation outline checkpoint，安全 React wireframe 展示 hero/collection/form/metrics/chart/media/content，Motion 稳定 ID 变形、phone 单栏/reduced-motion；没有实际 outline 时等待，不计时制造进度，partialJS 永不执行。最新 sourceRevision/sequence 淘汰过时状态，完整 candidate 仍需严格 frame、检查与明确 Publish。
+- Owner Tools 页展示转义工具源码/声明能力/实际 host testReport，复用版本从 Owner-only registry 获取；严格 lf.runTool 仅匹配 current component exact tool/version，host 选 generated/catalog endpoint 与 action/definition，guarded session/CSRF、无匿名重放、participant拒绝、preview禁执行、迟到身份结果丢弃。frame不接收工具源码、私字段或凭据。
+- Verified：33 targeted tests、全仓 tsc、web build（index-BrPTX2l6.js，788.13kB warning）、新增7项Chrome fixture与原LF222九项本地流程回归通过。3张新截图实际读取；390px无横溢出。图形/工具报告/执行是明确fixture，真实Chrome/PGlite/session/frame/bridge，不声称Pi或QuickJS/provider上线证据。
+- Backend修复匿名projection剔除actions但留bindings造成校验失败；浏览器跨iframe滚动后直接pointer个别未触发handler，anonymous/image用实际keyboard+Enter验证，已交coordinator记录，不夸大指针兼容范围。原60模块、媒体、LF210 guard与LF222证据保留。
+- [说明](../../../frontend/generated-tools.md)、[新结果](../../handoffs/frontend/LF-226-browser-results.json)、[基准回归](../../handoffs/frontend/LF-226-base-regression-browser-results.json)、[交接](../../handoffs/frontend/LF-226-48ca39bc-04e0-4f47-86a1-a7a948f6615a.md)。无provider/收费/依赖/锁文件/commit/push/deploy，本角色收尾后释放槽位供Agent/QA继续。
+
+## Current general website frontend · 2026-10-03 LF-222
+
+- 用户已覆盖“只允许受限目录”的旧产品边界：Owner 普通网站请求默认进入 general HTML/CSS/JS Studio，展示真实阶段/转义源码/隔离只读 preview/一次修复，明确 Publish 后生效；新建空间先 blank-create，再进入同一流水线。原60模块与 LF-201 历史完整保留，classic composer 可显式使用，generated-site 不混入预制目录计数。
+- 手动合入 LF-210 session-client、账户草稿、每次写前刷新身份/CSRF、拒绝跨身份迟到响应、media token 清理；保留 PRIMARY presentation/60-module 集成并给 presentation 加 guarded write。旧记忆“退出清空草稿”已被账户隔离且保留草稿取代。私有 snapshot 401/403/404 明确清视图并结束 loading；release-fix narrow hotfix 已另由 QA16/16 验证，现冻结。
+- GeneratedSite 使用后端受限 frame URL + sandbox allow-scripts + strict MessageChannel，公开绑定数据投影、host 选动作/recordVersion、访客登录无重放、删除host确认、显式图片选择/asset引用、身份/空间/源码旧端口失效。Backend Trusted Types loader 不支持浏览器 fail closed；不能声称完整 CPU 沙盒。
+- 本角色完成全仓 tsc、23 targeted tests、web build 与9项真实Chrome+local API/PGlite fixture场景；源码/preview/publish/CRUD、同账号CSRF刷新仅1POST、图片刷新与版本演进、repair/cancel/新空间、键盘和390px/1440px均验证。1个故意注入的JS错误用于repair；没有真实provider/生产请求。仅 fixture 证明实现，LF221/223继续实际Agent与独立安全QA。
+- [实现/重跑说明](../../../frontend/generated-sites.md)、[证据](../../handoffs/frontend/LF-222-browser-results.json)、[交接](../../handoffs/frontend/LF-222-24abd2ef-60c5-4900-ae1f-feccafa6631b.md)。本任务没有依赖/锁文件/环境修改、付费、push或部署；771.53kB chunk warning已如实记录。
+
+## Current local expansion · 2026-10-03 LF-201
+
+- LF-199 已接受 60 类目录与受限 size/config；LF-201 新增16个记录/规划/目标/管理模块，代码在 `apps/web/src/modules/collections.tsx` 与 `collections.css`。具体绑定及用例见 [模块扩展](../../../frontend/module-expansion.md)。不是整页模板，未发布生产。
+- scoped strict tsc 和整仓 tsc 已通过。48 SSR renders 验证所有16模块 populated/empty/missing-schema；Chrome检查所有16模块在320px/390px及桌面280px窄容器，整合后再通过48个React布局（320px/1440px三栏/1440px全宽）。10组真实React交互通过，0pageerrors、0 API调用；都是显式local sample，非持久化/云集成证据。
+- session `31e546d8-5bd1-4d5c-9ea2-8de50b676ebb` 只认领 LF-201；共同 helper/renderer/catalog/persistence 由 coordinator/Backend 处理。打卡仅 matching authorized action，导出只当前投影字段并中和 CSV formula。
+- [交接与可重跑脚本](../../handoffs/frontend/LF-201-31e546d8-5bd1-4d5c-9ea2-8de50b676ebb.md)。已修复整合ModuleFrame下sr-only绝对定位逃逸表格滚动的窄屏溢出。共同records helper按coordinator更新为默认全部记录，只有显式limit才截断，不截断goal/budget等汇总。
+
 ## Current implementation · 2026-10-03 LF-180
 
 本节补充 LF-110 并取代其“媒体未实现”的历史限制；全产品 UI 继续为英文。

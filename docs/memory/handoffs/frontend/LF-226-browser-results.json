@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-04T06:48:51.153Z",
+  "scope": "Real Chrome/local PGlite/session/TT frame; explicitly fixture generation progress/jobs/tool reports/invocations. No provider calls or QuickJS execution claim.",
+  "checks": [
+    "No fabricated outline before a real checkpoint; actual stable sections reshape and add content",
+    "Reduced-motion phone formation keeps all sections readable without overflow",
+    "Owner sees escaped tool source and actual host report; candidate tool calls stay read-only",
+    "Exact bound tool request uses fresh auth; pending, result, error and unbound version are explicit",
+    "Anonymous tool use opens host login without executing or replaying",
+    "Reused exact-version tool source and saved test evidence load only in Owner studio",
+    "Identity change discards an in-flight tool response and the next account cannot use Owner tools"
+  ],
+  "toolPosts": 3,
+  "errors": []
+}

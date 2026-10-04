@@ -1,0 +1,101 @@
+{
+  "at": "2026-10-04T07:28:39.647Z",
+  "scope": "Independent real Chrome, host generation/SSE/storage/assets/frame/MessageChannel and actual QuickJS. HTML/CSS/JS/tools/outline come from an explicitly offline injected SiteGenerator. No provider, real OAuth/cloud or production claim.",
+  "checks": [
+    {
+      "name": "Actual host SSE checkpoints reshape stable safe UI; source is escaped and incomplete code never runs",
+      "status": "passed"
+    },
+    {
+      "name": "Custom photo drag/button interaction works in preview and publish preserves records, image references and URL",
+      "status": "passed"
+    },
+    {
+      "name": "A substantially different search/save page evolves the same space; preview stays read-only",
+      "status": "passed"
+    },
+    {
+      "name": "Third custom page is bound to original host-tested backend source; actual QuickJS reads scoped records",
+      "status": "passed",
+      "details": {
+        "actualQuickJsResult": {
+          "remainingMinutes": 969,
+          "books": 5
+        },
+        "interactiveWidths": [
+          390,
+          1440
+        ]
+      }
+    },
+    {
+      "name": "Anonymous tool use opens login, sends zero invokes and has no Owner orb or backend source",
+      "status": "passed"
+    },
+    {
+      "name": "Exact registered tool is reused in a new page revision without regenerating or replacing source",
+      "status": "passed"
+    },
+    {
+      "name": "Invalid source receives one concrete repair and cannot replace the published definition, records or tools",
+      "status": "passed"
+    },
+    {
+      "name": "Changed account discards a completed tool response delayed in transport; Participant sends no new invocation",
+      "status": "passed",
+      "details": {
+        "serverCall": "Completed before identity change",
+        "delayedDelivery": "Explicit local transport fixture",
+        "lateResult": "Discarded"
+      }
+    }
+  ],
+  "generatorCalls": [
+    {
+      "prompt": "photos: an offline custom swipe discovery interaction",
+      "repair": false
+    },
+    {
+      "prompt": "search: an offline interactive searchable reading desk",
+      "repair": false
+    },
+    {
+      "prompt": "tool: an offline original reading-time calculator",
+      "repair": false
+    },
+    {
+      "prompt": "tool reuse: keep the records and reuse readingTime in a fresh layout",
+      "repair": false
+    },
+    {
+      "prompt": "invalid tool reuse: ordinary invalid syntax regression",
+      "repair": false
+    },
+    {
+      "prompt": "invalid tool reuse: ordinary invalid syntax regression",
+      "repair": true
+    }
+  ],
+  "protectedPosts": [
+    "/api/spaces/reading/generations",
+    "/api/spaces/reading/generations/42e9730d-eea9-4f69-960b-7f7c7291238b/preview",
+    "/api/spaces/reading/generations/42e9730d-eea9-4f69-960b-7f7c7291238b/publish",
+    "/api/spaces/reading/generations",
+    "/api/spaces/reading/generations/0d6fee17-9317-4b20-92a8-4d401cc45463/preview",
+    "/api/spaces/reading/generations/0d6fee17-9317-4b20-92a8-4d401cc45463/publish",
+    "/api/spaces/reading/actions",
+    "/api/spaces/reading/actions",
+    "/api/spaces/reading/generations",
+    "/api/spaces/reading/generations/fd018010-f6a1-4957-b9a3-d16bd6697e2e/preview",
+    "/api/spaces/reading/generations/fd018010-f6a1-4957-b9a3-d16bd6697e2e/publish",
+    "/api/spaces/reading/code-tools/readingTime/invoke",
+    "/api/spaces/reading/code-tools/readingTime/invoke",
+    "/api/spaces/reading/generations",
+    "/api/spaces/reading/generations/640dcb1e-3bd4-49f8-b8d0-40dd8fa23c70/preview",
+    "/api/spaces/reading/generations/640dcb1e-3bd4-49f8-b8d0-40dd8fa23c70/publish",
+    "/api/spaces/reading/code-tools/readingTime/invoke",
+    "/api/spaces/reading/generations",
+    "/api/spaces/reading/code-tools/readingTime/invoke"
+  ],
+  "errors": []
+}

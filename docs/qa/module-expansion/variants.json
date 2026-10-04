@@ -1,0 +1,135 @@
+{
+  "at": "2026-10-04T00:34:35.798Z",
+  "scope": "Real CSS behavior, mobile320 + desktop1440 with3-column containers",
+  "results": [
+    {
+      "type": "form",
+      "variant": "compact",
+      "viewport": 320,
+      "status": "pass",
+      "before": {
+        "padding": "11px 12px",
+        "minHeight": "auto",
+        "background": "rgb(252, 251, 247)"
+      },
+      "after": {
+        "padding": "10px 12px",
+        "minHeight": "42px",
+        "background": "rgb(252, 251, 247)"
+      }
+    },
+    {
+      "type": "calendar-grid",
+      "variant": "compact",
+      "viewport": 320,
+      "status": "pass",
+      "before": {
+        "padding": "19px 14px",
+        "minHeight": "0px",
+        "background": "rgb(252, 251, 247)"
+      },
+      "after": {
+        "padding": "16px 10px",
+        "minHeight": "0px",
+        "background": "rgb(252, 251, 247)"
+      }
+    },
+    {
+      "type": "kanban",
+      "variant": "compact",
+      "viewport": 320,
+      "status": "pass",
+      "before": {
+        "padding": "17px 12px",
+        "minHeight": "120px",
+        "background": "rgb(233, 237, 223)"
+      },
+      "after": {
+        "padding": "12px 10px",
+        "minHeight": "110px",
+        "background": "rgb(233, 237, 223)"
+      }
+    },
+    {
+      "type": "detail",
+      "variant": "hero",
+      "viewport": 320,
+      "status": "pass",
+      "before": {
+        "padding": "0px",
+        "minHeight": "0px",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      "after": {
+        "padding": "14px",
+        "minHeight": "0px",
+        "background": "rgb(233, 237, 223)"
+      }
+    },
+    {
+      "type": "form",
+      "variant": "compact",
+      "viewport": 1440,
+      "status": "pass",
+      "before": {
+        "padding": "11px 12px",
+        "minHeight": "auto",
+        "background": "rgb(252, 251, 247)"
+      },
+      "after": {
+        "padding": "10px 12px",
+        "minHeight": "42px",
+        "background": "rgb(252, 251, 247)"
+      }
+    },
+    {
+      "type": "calendar-grid",
+      "variant": "compact",
+      "viewport": 1440,
+      "status": "pass",
+      "before": {
+        "padding": "25px",
+        "minHeight": "0px",
+        "background": "rgb(252, 251, 247)"
+      },
+      "after": {
+        "padding": "16px 10px",
+        "minHeight": "0px",
+        "background": "rgb(252, 251, 247)"
+      }
+    },
+    {
+      "type": "kanban",
+      "variant": "compact",
+      "viewport": 1440,
+      "status": "pass",
+      "before": {
+        "padding": "17px 12px",
+        "minHeight": "180px",
+        "background": "rgb(233, 237, 223)"
+      },
+      "after": {
+        "padding": "12px 10px",
+        "minHeight": "110px",
+        "background": "rgb(233, 237, 223)"
+      }
+    },
+    {
+      "type": "detail",
+      "variant": "hero",
+      "viewport": 1440,
+      "status": "pass",
+      "before": {
+        "padding": "0px",
+        "minHeight": "0px",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      "after": {
+        "padding": "14px",
+        "minHeight": "0px",
+        "background": "rgb(233, 237, 223)"
+      }
+    }
+  ],
+  "errors": []
+}

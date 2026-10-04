@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-04T00:27:27.516Z",
+  "scope": "Offline synthetic fixtures, SSR/static browser layout only; no API/provider calls. Dynamic React interactions and integrated layout persistence are verified separately.",
+  "checks": [
+    "16 renderers × populated, empty, missing-binding states; malformed dates ignored",
+    "CSV formula/control-prefix neutralization, quote escaping, selected-column-only JSON",
+    "All 16 modules contain overflow at 320px/390px and 280px/1100px desktop containers, including long unbroken text",
+    "Native accordion opens with Enter in all four widths"
+  ],
+  "layouts": [
+    {
+      "width": 320,
+      "moduleWidth": 288,
+      "page": 320,
+      "viewport": 320,
+      "overflow": []
+    },
+    {
+      "width": 390,
+      "moduleWidth": 358,
+      "page": 390,
+      "viewport": 390,
+      "overflow": []
+    },
+    {
+      "width": 1440,
+      "moduleWidth": 280,
+      "page": 1440,
+      "viewport": 1440,
+      "overflow": []
+    },
+    {
+      "width": 1440,
+      "moduleWidth": 1100,
+      "page": 1440,
+      "viewport": 1440,
+      "overflow": []
+    }
+  ],
+  "errors": []
+}

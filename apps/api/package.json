@@ -4,25 +4,26 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "tsup"
+    "build": "tsup src/server.ts src/generated-tool-worker.ts"
   },
   "dependencies": {
-    "@livingforma/contracts": "workspace:*",
-    "@livingforma/db": "workspace:*",
-    "@livingforma/auth": "workspace:*",
-    "@livingforma/agent": "workspace:*",
-    "fastify": "^5.6.0",
-    "@fastify/static": "^10.1.5",
-    "@fastify/cookie": "^11.0.0",
-    "@fastify/rate-limit": "^10.3.0",
-    "dotenv": "^17.2.0",
-    "zod": "^3.25.0",
-    "pg": "^8.16.0",
-    "@electric-sql/pglite": "0.5.8",
-    "openid-client": "6.8.8",
     "@earendil-works/pi-agent-core": "1.0.1",
     "@earendil-works/pi-ai": "1.0.1",
-    "typebox": "1.3.27"
+    "@electric-sql/pglite": "0.5.8",
+    "@fastify/cookie": "^11.0.0",
+    "@fastify/rate-limit": "^10.3.0",
+    "@fastify/static": "^10.1.5",
+    "@livingforma/agent": "workspace:*",
+    "@livingforma/auth": "workspace:*",
+    "@livingforma/contracts": "workspace:*",
+    "@livingforma/db": "workspace:*",
+    "dotenv": "^17.2.0",
+    "fastify": "^5.6.0",
+    "openid-client": "6.8.8",
+    "pg": "^8.16.0",
+    "quickjs-emscripten": "0.32.0",
+    "typebox": "1.3.27",
+    "zod": "^3.25.0"
   },
   "devDependencies": {
     "tsup": "^8.5.0"

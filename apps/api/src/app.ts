@@ -4,22 +4,26 @@ import rateLimit from '@fastify/rate-limit';
 import { randomUUID } from 'node:crypto';
 import { existsSync } from 'node:fs';
 import { z } from 'zod';
-import { COMPONENT_MANIFESTS, mutationSchema, proposalRequestSchema, proposalSchema, toolSpecSchema, readingDefinition, habitDefinition, exampleRecords, type Proposal, type Definition, type ToolAdapter, type ToolResult, type RegisteredTool, type ToolProposal, type ProposalResponse, type MediaAdapter } from '@livingforma/contracts';
+import { COMPONENT_MANIFESTS, mutationSchema, presentationRequestSchema, proposalRequestSchema, proposalSchema, toolSpecSchema, readingDefinition, habitDefinition, exampleRecords, type Proposal, type Definition, type ToolAdapter, type ToolResult, type RegisteredTool, type ToolProposal, type ProposalResponse, type MediaAdapter, type SiteGenerator,type GeneratedToolAdapter,type GeneratedToolGenerator } from '@livingforma/contracts';
 import { registerAuth } from '@livingforma/auth';
 import type { AuthApi, AuthOptions } from '@livingforma/auth';
 import { Store, type Database, type SpaceState } from '@livingforma/db';
 import { createAuthStore } from './auth-store';
 import { registerMedia, type MediaController } from './media';
-import { ApiProblem, fail, assertRead, projection, roleFor, requireOwner, applyMutation, applyProposal, replay, fingerprint } from './domain';
+import { registerGenerations, type GenerationController } from './generated';
+import { registerAssets } from './assets';
+import { registerCodeTools,assertToolBinding,type CodeToolsController } from './generated-tools';
+import { GENERATED_FRAME_CSP, GENERATED_FRAME_PERMISSIONS } from './generated-frame';
+import { ApiProblem, fail, assertRead, projection, roleFor, requireOwner, applyMutation, applyPresentation, applyProposal, replay, fingerprint } from './domain';
 
 export type Planner=(input:{prompt:string;current:Definition|null;mode?:'local'|'gemini';signal?:AbortSignal;registeredTools?:RegisteredTool[]})=>Promise<Proposal>;
 export type ToolPlanner=(input:{prompt:string;registered?:RegisteredTool[];mode?:'local'|'gemini';signal?:AbortSignal})=>Promise<ToolProposal>;
-export type AppOptions={db:Database;origin:string;localDemo?:boolean;googleClientId?:string;googleClientSecret?:string;planner?:Planner;toolPlanner?:ToolPlanner;plannerMode?:'local'|'gemini';tools?:ToolAdapter;media?:MediaAdapter;mediaNow?:()=>number;staticDir?:string;logger?:boolean;authFactory?:(app:ReturnType<typeof Fastify>,options:AuthOptions)=>Promise<AuthApi>;closeDatabase?:boolean};
+export type AppOptions={db:Database;origin:string;localDemo?:boolean;googleClientId?:string;googleClientSecret?:string;planner?:Planner;toolPlanner?:ToolPlanner;plannerMode?:'local'|'gemini';tools?:ToolAdapter;media?:MediaAdapter;mediaNow?:()=>number;siteGenerator?:SiteGenerator;generatedToolAdapter?:GeneratedToolAdapter;toolCodeGenerator?:GeneratedToolGenerator;staticDir?:string;logger?:boolean;authFactory?:(app:ReturnType<typeof Fastify>,options:AuthOptions)=>Promise<AuthApi>;closeDatabase?:boolean};
 const createSpaceSchema=z.object({title:z.string().trim().min(1).max(120),slug:z.string().regex(/^[a-z0-9][a-z0-9-]{1,62}$/).optional(),prompt:z.string().trim().min(1).max(4000).optional()}).strict();
 const toolRegistrationSchema=z.object({spec:toolSpecSchema,enable:z.boolean()}).strict();
 const toolProposalRequestSchema=z.object({prompt:z.string().trim().min(1).max(4000)}).strict();
 const toolProposalResponseSchema=z.object({spec:toolSpecSchema.nullable(),reused:z.boolean(),requiresEnable:z.boolean(),summary:z.string().max(500),source:z.enum(['gemini','local-rules'])}).strict();
-const invocationSchema=z.object({toolVersion:z.number().int().positive(),input:z.record(z.unknown()),requestId:z.string().uuid()}).strict();
+const invocationSchema=z.object({toolVersion:z.number().int().positive(),input:z.record(z.unknown()),requestId:z.string().uuid(),definitionVersion:z.number().int().positive().optional(),componentId:z.string().max(64).optional(),actionId:z.string().max(64).optional()}).strict();
 const querySchema=z.object({after:z.coerce.number().int().nonnegative().default(0)});
 
 export async function buildApp(options:AppOptions){
@@ -35,16 +39,24 @@ export async function buildApp(options:AppOptions){
     reply.code(status).send({error:{code,message,requestId:request.id}});
   });
   app.addHook('onSend',async(request,reply,payload)=>{
+    if(request.routeOptions.url==='/api/generated-frame'&&reply.statusCode===200){
+      reply.removeHeader('X-Frame-Options');reply.header('X-Content-Type-Options','nosniff').header('Referrer-Policy','no-referrer').header('Permissions-Policy',GENERATED_FRAME_PERMISSIONS).header('Content-Security-Policy',GENERATED_FRAME_CSP).header('Cache-Control','no-store');return payload;
+    }
     reply.header('X-Content-Type-Options','nosniff').header('X-Frame-Options','DENY');
     if(!reply.getHeader('Referrer-Policy'))reply.header('Referrer-Policy','same-origin');
     reply.header('Permissions-Policy','camera=(self), microphone=(self), geolocation=()');
-    reply.header('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://lh3.googleusercontent.com; connect-src 'self'; font-src 'self'; media-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://accounts.google.com");
+    reply.header('Content-Security-Policy',`default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://lh3.googleusercontent.com; connect-src 'self'; font-src 'self'; media-src 'self' blob:; frame-src ${new URL('/api/generated-frame',options.origin).href}; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://accounts.google.com`);
     if(request.url.startsWith('/api/')||request.url.startsWith('/auth/'))reply.header('Cache-Control','no-store');
     return payload;
   });
   let mediaController:MediaController|undefined;
-  const auth=await (options.authFactory??registerAuth)(app,{store:createAuthStore(store,{onSessionDeleted:session=>mediaController?.revokeAuth(session)}),origin:options.origin,googleClientId:options.googleClientId,googleClientSecret:options.googleClientSecret,localDemo:options.localDemo});
+  let generationController:GenerationController|undefined;
+  let codeTools:CodeToolsController|undefined;
+  const auth=await (options.authFactory??registerAuth)(app,{store:createAuthStore(store,{onSessionDeleted:session=>{mediaController?.revokeAuth(session);generationController?.revokeAuth(session);codeTools?.revokeAuth(session);}}),origin:options.origin,googleClientId:options.googleClientId,googleClientSecret:options.googleClientSecret,localDemo:options.localDemo});
   mediaController=registerMedia(app,{store,auth,adapter:options.media,now:options.mediaNow});
+  codeTools=await registerCodeTools(app,{store,auth,adapter:options.generatedToolAdapter,generator:options.toolCodeGenerator,connectors:options.tools});
+  generationController=await registerGenerations(app,{store,auth,siteGenerator:options.siteGenerator,codeTools});
+  registerAssets(app,{store,auth});
   const localEnabled=options.localDemo&&process.env.ENABLE_LOCAL_DEMO==='true'&&process.env.NODE_ENV!=='production'&&['localhost','127.0.0.1','[::1]'].includes(new URL(options.origin).hostname);
   if(localEnabled)await seedLocal(store);
   async function stateFor(slug:string,user:Awaited<ReturnType<AuthApi['getSession']>>['user']){const state=await store.getSpace(slug);if(!state)fail(404,'SPACE_NOT_FOUND','This space does not exist.');assertRead(state,user);return state;}
@@ -64,7 +76,7 @@ export async function buildApp(options:AppOptions){
   }
   async function plan(prompt:string,current:Definition|null,registeredTools:RegisteredTool[]=[]){
     if(!options.planner)fail(503,'PLANNER_UNAVAILABLE','The planner is not configured.');
-    try{return proposalSchema.parse(await options.planner({prompt,current,registeredTools:registeredTools.filter(tool=>tool.enabled),mode:options.plannerMode??'local',signal:AbortSignal.timeout(30_000)}));}catch(error){providerFailure(error);}
+    try{const proposal=proposalSchema.parse(await options.planner({prompt,current,registeredTools:registeredTools.filter(tool=>tool.enabled),mode:options.plannerMode??'local',signal:AbortSignal.timeout(30_000)}));if(proposal.appSpec.generated||proposal.codeToolProposals?.length)fail(422,'GENERATION_PREVIEW_REQUIRED','Generate and check this website in the studio before publishing browser source.');return proposal;}catch(error){providerFailure(error);}
   }
   function validateTool(input:unknown){if(!options.tools)fail(503,'TOOLS_UNAVAILABLE','Tool execution is not configured.');return validate(()=>options.tools!.validate(input));}
 
@@ -89,6 +101,20 @@ export async function buildApp(options:AppOptions){
       assertRead(state,user);if(!projection(state,user).permissions.canWrite)fail(403,'WRITE_FORBIDDEN','You cannot write to this space.');
       if(await replay(store,tx,state,user,input.requestId,input))return projection(state,user);
       validate(()=>applyMutation(state,user,input));await store.event(state,'records.changed',tx);await store.remember(tx,state.space.id,user.id,input.requestId,fingerprint(input));return projection(state,user);
+    });
+  });
+  app.post<{Params:{slug:string}}>('/api/spaces/:slug/presentation',async request=>{
+    const user=await writer(request);const input=presentationRequestSchema.parse(request.body);
+    const payload={operation:'presentation',...input};
+    return store.db.transaction(async tx=>{
+      const state=await store.getSpace(request.params.slug,tx,true);if(!state)fail(404,'SPACE_NOT_FOUND','This space does not exist.');requireOwner(state,user);
+      if(await replay(store,tx,state,user,input.requestId,payload))return projection(state,user);
+      validate(()=>applyPresentation(state,input));
+      for(const component of state.definition!.appSpec.components){if(component.toolRef){const tool=await store.getTool(state.space.id,component.toolRef.toolId,component.toolRef.toolVersion,tx);if(!tool?.enabled)fail(422,'TOOL_NOT_ENABLED','Enable the referenced tool before publishing this component.');}}
+      await codeTools!.validateBindings({appSpec:state.definition!.appSpec},state,tx);
+      await store.event(state,'definition.published',tx);
+      await store.remember(tx,state.space.id,user.id,input.requestId,fingerprint(payload));
+      return projection(state,user);
     });
   });
   app.post<{Params:{slug:string}}>('/api/spaces/:slug/proposals',{config:{rateLimit:{max:15,timeWindow:'1 minute'}}},async request=>{
@@ -117,6 +143,7 @@ export async function buildApp(options:AppOptions){
       if(state.definition&&proposal.capabilityGaps.length&&fingerprint({entitySchema:proposal.entitySchema,appSpec:proposal.appSpec})===fingerprint({entitySchema:state.definition.entitySchema,appSpec:state.definition.appSpec}))fail(422,'CAPABILITY_UNAVAILABLE','This capability is not available yet. Your current app is unchanged.');
       validate(()=>applyProposal(state,proposal));
       for(const component of state.definition!.appSpec.components){if(component.toolRef){const tool=await store.getTool(state.space.id,component.toolRef.toolId,component.toolRef.toolVersion,tx);if(!tool?.enabled)fail(422,'TOOL_NOT_ENABLED','Enable the referenced tool before publishing this component.');}}
+      await codeTools!.validateBindings({appSpec:state.definition!.appSpec},state,tx);
       await store.event(state,'definition.published',tx);await store.remember(tx,state.space.id,user.id,input.requestId,fingerprint(input),proposal);return {snapshot:projection(state,user),proposal};
     });
   });
@@ -145,7 +172,7 @@ export async function buildApp(options:AppOptions){
   });
   app.post<{Params:{slug:string;toolId:string}}>('/api/spaces/:slug/tools/:toolId/invoke',{config:{rateLimit:{max:20,timeWindow:'1 minute'}}},async request=>{
     const user=await writer(request);const input=invocationSchema.parse(request.body);if(!options.tools)fail(503,'TOOLS_UNAVAILABLE','Tool execution is not configured.');
-    const initial=await stateFor(request.params.slug,user);requireOwner(initial,user);
+    const initial=await stateFor(request.params.slug,user);requireOwner(initial,user);assertToolBinding(initial,input,request.params.toolId,input.toolVersion,'catalog',false);
     const payload={...input,toolId:request.params.toolId};const digest=fingerprint(payload);
     const old=await replay(store,store.db,initial,user,input.requestId,payload);if(old)return old.result as ToolResult;
     const checked=await store.getTool(initial.space.id,request.params.toolId,input.toolVersion);
@@ -172,6 +199,7 @@ export async function buildApp(options:AppOptions){
     return await store.db.transaction(async tx=>{
       const state=await store.getSpace(request.params.slug,tx,true);if(!state)fail(404,'SPACE_NOT_FOUND','This space does not exist.');requireOwner(state,user);
       const old=await replay(store,tx,state,user,input.requestId,payload);if(old)return old.result as ToolResult;
+      assertToolBinding(state,input,request.params.toolId,input.toolVersion,'catalog',false);
       const tool=await store.getTool(state.space.id,request.params.toolId,input.toolVersion,tx);if(!tool?.enabled)fail(403,'TOOL_NOT_ENABLED','This tool is not enabled.');
       if(fingerprint(tool.spec)!==fingerprint(checked.spec))fail(409,'TOOL_VERSION_CONFLICT','This tool changed while the query was running. Please try again.');
       const response:ToolResult={toolId:tool.spec.toolId,toolVersion:tool.spec.toolVersion,result,reused:tool.invocationCount>0};tool.invocationCount++;await store.putTool(state.space.id,tool,tx);await store.auditTool(state.space.id,tool.spec.toolId,tool.spec.toolVersion,'ok',Date.now()-started,tx);await store.remember(tx,state.space.id,user.id,input.requestId,fingerprint(payload),response);return response;

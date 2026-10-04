@@ -1,0 +1,8 @@
+# LF-227 integration checkpoint and free runtime rework
+
+2026-10-04 00:17 America/Vancouver. Coordinator session 27d9cbd8-ed2b-4f98-874c-e81f6a6fd28f releases LF-227 temporarily to update the catalog through LF-155. Integration remains incomplete and is not deployed.
+
+- Implemented: server.ts wires real Pi/Gemini site/tool generators only in gemini mode. Typecheck and build passed. Opt-in isolated localhost:4347 acceptance server is ready; business records use separate local PGlite and real requests use the original Neon free-provider ledger. No provider request has been made by this acceptance run yet; usage was 13/30 at startup.
+- Verified: DevOps compiled Docker under 0.1 CPU / 512 MiB passed two fixture executions (2696/2802 ms) and another input (3206 ms). Two concurrent cold QuickJS Workers both exceeded the existing 4-second deadline (4098/4200 ms), before broker work. No OOM observed. Measurement: /tmp/lf228-worker-smoke-result.json; snapshot image livingforma:lf228-preflight-20261004-0705 is not a reviewed committed release.
+- Decision for rework: reduce the shared global generated-tool concurrency to one, retain the 4-second deadline and truthful immediate TOOL_BUSY response. Backend will verify capacity release and durable request/retry semantics in a scoped new task. DevOps must repeat the same free-spec smoke before release acceptance.
+- Preserve all existing modules, general generation and 403 changes. QA continues ordinary fixture acceptance; advanced bypass research remains paused. Reclaim LF-227 after the scoped fix finishes, then perform actual-model acceptance, scoped review/commit/CI and authorized free deployment.

@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-04T07:05:20.418Z",
+  "scope": "Independent real HTTP, physical PGlite restart and QuickJS execution. Source generation and the inserted interrupted reservation are explicit fixtures; no provider, OAuth/cloud or production evidence.",
+  "checks": [
+    {
+      "name": "Anonymous, Participant, wrong Origin and stale CSRF cannot register a generated tool",
+      "status": "passed"
+    },
+    {
+      "name": "Proposal runs actual guest fixtures but does not register or enable source",
+      "status": "passed"
+    },
+    {
+      "name": "A wrong expected result fails registration without changing registry or data",
+      "status": "passed"
+    },
+    {
+      "name": "Explicit Owner registration tests actual source and preserves immutable exact versions",
+      "status": "passed"
+    },
+    {
+      "name": "Real QuickJS computes a fresh input; request identity replays without a second execution",
+      "status": "passed"
+    },
+    {
+      "name": "Schema, exact binding, current definition and Owner remain authoritative at invocation",
+      "status": "passed"
+    },
+    {
+      "name": "A new tool version coexists with the old source and each exact binding executes its own logic",
+      "status": "passed"
+    },
+    {
+      "name": "Manifest discovery reuses an enabled exact version without exposing source, fixtures or private defaults",
+      "status": "passed"
+    },
+    {
+      "name": "Ordinary private-field capability request is rejected before guest execution",
+      "status": "passed"
+    },
+    {
+      "name": "Physical database/server restart retains both versions, completed replay and audit count without generation",
+      "status": "passed",
+      "details": {
+        "completedAuditRows": 3,
+        "interruptedReservation": "Explicit crash-state fixture; no automatic rerun"
+      }
+    },
+    {
+      "name": "Disabled and logged-out sessions cannot execute cached or new tool requests",
+      "status": "passed"
+    }
+  ]
+}

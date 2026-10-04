@@ -83,3 +83,7 @@ Web 产品可选 agent-core 的嵌入路径，或 coding-agent SDK/extension 的
 LF-100 定契约；LF-110 建首批组件库及组合演示，LF-120/130 接真实数据与 Pi 工具闭环；LF-150 验证同一运行时的组合、变形和复用。LF-180/181/182 → LF-185 接语音/相机；之后 QA 与上线。候选池不是要求第一版一次性交付全部组件。
 
 参见 [PRD](../PRD.md)、[前端方向](../frontend/experience-direction.md)、[Jarvis 方向](jarvis-vision.md)、[多模态方案](../agent/multimodal-plan.md)。
+
+## 2026-10-03 模块实现更新
+
+LF199–204 将运行时扩展到60个注册类型（原12+新增48），均支持手机/PC及窄模块容器；完整名单、字段绑定、调整选项与16个组合场景见[可调模块目录](module-catalog.md)。/modules可操作实验场及Owner手动布局保存已经实现。独立QA的300种尺寸组合、22项交互/本地持久化、11项审查回归通过，详见[验收](../qa/module-expansion/acceptance.md)。外部能力候选仍须逐项注册/授权；本次模块扩展没有新增外部provider调用或部署。

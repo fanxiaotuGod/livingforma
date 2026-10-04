@@ -1,0 +1,441 @@
+{
+  "status": "LF-229 catalog21 local Free-profile acceptance passed; both former failed runs retained. Not hosted deployment acceptance.",
+  "baseline": {
+    "status": "uncommitted development snapshot; not final reviewed release",
+    "image": "livingforma:lf228-preflight-single-slot-20261004",
+    "cpuCores": 0.1,
+    "memoryLimitMiB": 512,
+    "node": "v24.21.0",
+    "architecture": "arm64",
+    "scope": "Actual bundled createGeneratedToolAdapter with actual compiled production Worker; single shared slot, unchanged4s deadline",
+    "network": "none",
+    "envFileLoaded": false,
+    "providerCalls": 0,
+    "checks": [
+      {
+        "name": "Two actual QuickJS fixture outputs",
+        "ok": false,
+        "details": {
+          "elapsedMs": 9897,
+          "report": {
+            "ok": false,
+            "results": [
+              {
+                "name": "Two-row summary",
+                "ok": false,
+                "message": "The fixture did not produce the expected output within its limits."
+              },
+              {
+                "name": "Empty summary",
+                "ok": false,
+                "message": "The fixture did not produce the expected output within its limits."
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Different-input invocation",
+        "ok": true,
+        "details": {
+          "elapsedMs": 3194,
+          "result": {
+            "total": 30,
+            "count": 2,
+            "average": 15
+          }
+        }
+      },
+      {
+        "name": "Cross-adapter simultaneous request rejected busy",
+        "ok": true,
+        "details": {
+          "code": "TOOL_BUSY",
+          "status": 429,
+          "message": "The tool runtime is busy. Start a new request after the current run finishes."
+        }
+      },
+      {
+        "name": "Admitted concurrent request finishes",
+        "ok": true,
+        "details": {
+          "elapsedMs": 4103,
+          "ok": true,
+          "result": {
+            "total": 10,
+            "count": 2,
+            "average": 5
+          }
+        }
+      },
+      {
+        "name": "Fresh request after completion succeeds",
+        "ok": true,
+        "details": {
+          "elapsedMs": 2802,
+          "result": {
+            "total": 30,
+            "count": 2,
+            "average": 15
+          }
+        }
+      }
+    ],
+    "peakRssMiB": 86.8,
+    "memoryHighWaterMiB": 86.8,
+    "passed": false
+  },
+  "after_host_passed_limits": {
+    "status": "uncommitted development snapshot; not final reviewed release",
+    "image": "livingforma:lf229-coldstart-88cc9a2e",
+    "cpuCores": 0.1,
+    "memoryLimitMiB": 512,
+    "node": "v24.21.0",
+    "architecture": "arm64",
+    "scope": "Actual bundled createGeneratedToolAdapter with actual compiled production Worker; single shared slot, unchanged4s deadline",
+    "network": "none",
+    "envFileLoaded": false,
+    "providerCalls": 0,
+    "checks": [
+      {
+        "name": "Two actual QuickJS fixture outputs",
+        "ok": false,
+        "details": {
+          "elapsedMs": 9400,
+          "report": {
+            "ok": false,
+            "results": [
+              {
+                "name": "Two-row summary",
+                "ok": true,
+                "message": "Fixture output matched."
+              },
+              {
+                "name": "Empty summary",
+                "ok": false,
+                "message": "The fixture did not produce the expected output within its limits."
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Different-input invocation",
+        "ok": true,
+        "details": {
+          "elapsedMs": 2901,
+          "result": {
+            "total": 30,
+            "count": 2,
+            "average": 15
+          }
+        }
+      },
+      {
+        "name": "Cross-adapter simultaneous request rejected busy",
+        "ok": true,
+        "details": {
+          "code": "TOOL_BUSY",
+          "status": 429,
+          "message": "The tool runtime is busy. Start a new request after the current run finishes."
+        }
+      },
+      {
+        "name": "Admitted concurrent request finishes",
+        "ok": false,
+        "details": {
+          "elapsedMs": 4395,
+          "ok": false,
+          "code": "TOOL_LIMIT_EXCEEDED",
+          "message": "Tool execution exceeded its time limit."
+        }
+      },
+      {
+        "name": "Fresh request after completion succeeds",
+        "ok": true,
+        "details": {
+          "elapsedMs": 4296,
+          "result": {
+            "total": 30,
+            "count": 2,
+            "average": 15
+          }
+        }
+      }
+    ],
+    "peakRssMiB": 87.7,
+    "memoryHighWaterMiB": 88.2,
+    "passed": false
+  },
+  "after_container": {
+    "exitCode": 1,
+    "oomKilled": false,
+    "memoryBytes": 536870912,
+    "nanoCpus": 100000000,
+    "imageId": "sha256:a31a7b297e6ca697cc237e6f7797522705c579e20d8a91fe2cbcd7cbcee1c0b1"
+  },
+  "after_artifacts": {
+    "generated-tool-worker.js": {
+      "bytes": 3081,
+      "sha256": "0f9568e6579a0226a90ee77f65e32250bf3dbb168b4db0205c6ed734d6108047"
+    },
+    "generated-tool-runtime.js": {
+      "bytes": 241949,
+      "sha256": "bdb411a65b40744f4377858073023014b5f5eba56e9c778378789c97d2ddc361"
+    }
+  },
+  "procedure": "One complete actual-adapter smoke after the source change. Derived local smoke image overlays only compiled adapter+worker on the prior no-secret development image. No network, env file, provider, deployment, guest-state reuse or deadline increase.",
+  "after_bounded_phases": {
+    "status": "Independent local Free-profile acceptance for catalog21 runtime; not a final reviewed release/deployment",
+    "recordedAt": "2026-10-04T07:45:40.707077+00:00",
+    "image": {
+      "tag": "livingforma:lf228-preflight-phased-20261004",
+      "id": "sha256:671f71d90e5094f0d3f32febd337c9f9c5e3563b140482b11eea5fef230adaee",
+      "os": "linux",
+      "architecture": "arm64",
+      "createdAt": "2026-10-04T07:43:26.323222011Z"
+    },
+    "snapshot": {
+      "status": "Uncommitted catalog21 runtime snapshot, not final reviewed CI-green release",
+      "recordedAt": "2026-10-04T07:42:58.050438+00:00",
+      "imageTag": "livingforma:lf228-preflight-phased-20261004",
+      "sourceFiles": [
+        {
+          "path": "apps/api/src/generated-tool-runtime.ts",
+          "sha256": "097ba596dbe6027a8ddfbbafc3012fe33ab1465d9f62e634ba5223eebaf5886e"
+        },
+        {
+          "path": "apps/api/src/generated-tool-worker.ts",
+          "sha256": "bb9ce10861732629801c1a2a1aa8265efc1880c09c166a6150e1634afb779085"
+        },
+        {
+          "path": "apps/api/src/generated-tools.ts",
+          "sha256": "38256220c869da67cfab8ebdb2445f903e86249dce2540330712f9af795494fe"
+        },
+        {
+          "path": "apps/api/src/domain.ts",
+          "sha256": "8c17681ee9ec8886bfd931e74ca856e041fcfa6f89ed7005f1bf122db96bf1c3"
+        },
+        {
+          "path": "packages/contracts/src/generated-tools.ts",
+          "sha256": "f9a7ae605b4c12d4ee1ba02277082723ba0c9884e50ee88109a2cde67ad8749d"
+        },
+        {
+          "path": "packages/contracts/src/index.ts",
+          "sha256": "49ae538f33bf459d46bad1b6ec71c726dcaa758b7bd6c5180eb076a6dbfce5e9"
+        },
+        {
+          "path": "packages/contracts/src/generated.ts",
+          "sha256": "fa814902d82ecbf65a809d290c0d48abc9449556ee04e97bd2dd71359fa522a9"
+        },
+        {
+          "path": "packages/contracts/src/module-catalog.ts",
+          "sha256": "5f0199b2cd0e45fe57d26218803a802a2e23aa7d2a43ef55e796f69937c4243d"
+        },
+        {
+          "path": "apps/api/package.json",
+          "sha256": "3d7b0414444de7508184e291061f8a7bdbe285f76d63784a5f380436210851d7"
+        },
+        {
+          "path": "apps/api/tsup.config.ts",
+          "sha256": "499863c2e322934d8fde9df548091b7c82224bf04add0ec2ab8eddb8d4132c12"
+        },
+        {
+          "path": "pnpm-lock.yaml",
+          "sha256": "8b93fe57b8baae506f7faa07f73a108e1df88b45057e523cdc58460e3e69e112"
+        },
+        {
+          "path": "infra/Dockerfile",
+          "sha256": "a697c7476d6bfec3fb6f6cec40268c28177557cb19a1bc94bcbc51e01472a642"
+        },
+        {
+          "path": "infra/Dockerfile.dockerignore",
+          "sha256": "95594f36c3cd043498e7d1394460e36ffc8839ac90ca4969fd3ca58248c223f7"
+        }
+      ],
+      "runtimeSnapshotSha256": "8f654933b7d91c683ee2286cdb4e64b6927533504377f850d7899ecc3da9be83",
+      "acceptedLimits": {
+        "startupMs": 8000,
+        "guestMs": 4000,
+        "totalMs": 12000,
+        "concurrency": 1,
+        "cpuCores": 0.1,
+        "memoryMiB": 512
+      }
+    },
+    "dockerLimitsObserved": {
+      "NanoCpus": 100000000,
+      "Memory": 536870912,
+      "NetworkMode": "none",
+      "initialOOMKilled": false
+    },
+    "dockerRunExitCode": 0,
+    "postRunOOMFlag": "Container auto-removed; final flag unavailable. Process completed normally with exit0.",
+    "priorEvidencePreserved": [
+      "/tmp/lf228-worker-smoke-result.json",
+      "/tmp/lf228-adapter-smoke-result.json",
+      "docs/memory/handoffs/backend/LF-229-88cc9a2e-8c04-4596-9301-c23057a822ef-performance.json"
+    ],
+    "result": {
+      "status": "uncommitted development snapshot; not final reviewed release",
+      "image": "livingforma:lf228-preflight-phased-20261004",
+      "cpuCores": 0.1,
+      "memoryLimitMiB": 512,
+      "node": "v24.21.0",
+      "architecture": "arm64",
+      "scope": "Actual bundled createGeneratedToolAdapter with actual compiled production Worker; single shared slot, startup8s / guest4s / total12s parent limits; readiness observer changes no worker data or deadlines",
+      "network": "none",
+      "envFileLoaded": false,
+      "providerCalls": 0,
+      "checks": [
+        {
+          "name": "Two actual QuickJS fixture outputs",
+          "ok": true,
+          "details": {
+            "elapsedMs": 10798,
+            "report": {
+              "ok": true,
+              "results": [
+                {
+                  "name": "Two-row summary",
+                  "ok": true,
+                  "message": "Fixture output matched."
+                },
+                {
+                  "name": "Empty summary",
+                  "ok": true,
+                  "message": "Fixture output matched."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Different-input invocation",
+          "ok": true,
+          "details": {
+            "elapsedMs": 2798,
+            "result": {
+              "total": 30,
+              "count": 2,
+              "average": 15
+            }
+          }
+        },
+        {
+          "name": "Cross-adapter simultaneous request rejected busy",
+          "ok": true,
+          "details": {
+            "code": "TOOL_BUSY",
+            "status": 429,
+            "message": "The tool runtime is busy. Start a new request after the current run finishes.",
+            "elapsedMs": 495
+          }
+        },
+        {
+          "name": "Admitted concurrent request finishes",
+          "ok": true,
+          "details": {
+            "elapsedMs": 6606,
+            "ok": true,
+            "result": {
+              "total": 10,
+              "count": 2,
+              "average": 5
+            }
+          }
+        },
+        {
+          "name": "Fresh request after completion succeeds",
+          "ok": true,
+          "details": {
+            "elapsedMs": 3190,
+            "result": {
+              "total": 30,
+              "count": 2,
+              "average": 15
+            }
+          }
+        },
+        {
+          "name": "All five admitted Workers obey observed phase limits",
+          "ok": true,
+          "details": {
+            "admittedWorkers": 5,
+            "startupMs": 8000,
+            "guestMs": 4000,
+            "totalMs": 12000
+          }
+        }
+      ],
+      "workerObservations": [
+        {
+          "index": 1,
+          "source": "actual trusted compiled Worker messages",
+          "readyMs": 2396,
+          "executeMs": 2397,
+          "resultMs": 3195,
+          "brokerCalls": 1,
+          "resultType": "result",
+          "exitMs": 3197,
+          "exitCode": 1,
+          "executionMs": 798
+        },
+        {
+          "index": 2,
+          "source": "actual trusted compiled Worker messages",
+          "readyMs": 4798,
+          "executeMs": 4798,
+          "resultMs": 5506,
+          "brokerCalls": 1,
+          "resultType": "result",
+          "exitMs": 5600,
+          "exitCode": 1,
+          "executionMs": 708
+        },
+        {
+          "index": 3,
+          "source": "actual trusted compiled Worker messages",
+          "readyMs": 1705,
+          "executeMs": 1705,
+          "resultMs": 2299,
+          "brokerCalls": 1,
+          "resultType": "result",
+          "exitMs": 2302,
+          "exitCode": 1,
+          "executionMs": 594
+        },
+        {
+          "index": 4,
+          "source": "actual trusted compiled Worker messages",
+          "readyMs": 4412,
+          "executeMs": 4412,
+          "resultMs": 5402,
+          "brokerCalls": 1,
+          "resultType": "result",
+          "exitMs": 5604,
+          "exitCode": 1,
+          "executionMs": 990
+        },
+        {
+          "index": 5,
+          "source": "actual trusted compiled Worker messages",
+          "readyMs": 1297,
+          "executeMs": 1297,
+          "resultMs": 2403,
+          "brokerCalls": 1,
+          "resultType": "result",
+          "exitMs": 2692,
+          "exitCode": 1,
+          "executionMs": 1106
+        }
+      ],
+      "peakRssMiB": 90.7,
+      "memoryHighWaterMiB": 90.9,
+      "passed": true
+    },
+    "limits": "Linux arm64 Docker Desktop with enforced0.1CPU/512MiB; actual hosted Render architecture/combined server traffic still require LF228 acceptance. RSS observation is not a hard RSS enforcement claim.",
+    "independent_confirmation": "DevOps confirmed this was one complete predetermined run after the product source freeze, with no reruns to select success. Worker exit1 follows intentional parent terminate after successful results, not guest failure.",
+    "source_verification": "Backend verified all thirteen snapshot source/config hashes still matched current files before handoff."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "at": "2026-10-04T00:34:04.473Z",
+  "scope": "Coordinator review findings; sample gallery plus local PGlite and transport-delay fixture",
+  "checks": [
+    {
+      "name": "invalid histogram bins retain the app tree and disable Save until corrected",
+      "status": "pass"
+    },
+    {
+      "name": "invalid calculator precision retains the app tree and disables Save",
+      "status": "pass"
+    },
+    {
+      "name": "leaderboard limit applies after ranking, selecting the real top two",
+      "status": "pass"
+    },
+    {
+      "name": "unsaved text survives switching between records",
+      "status": "pass"
+    },
+    {
+      "name": "unsaved range value survives switching between records",
+      "status": "pass"
+    },
+    {
+      "name": "card compact and hero variants materially change the rendered presentation",
+      "status": "pass"
+    },
+    {
+      "name": "create isolated local two-record regression fixture",
+      "status": "pass"
+    },
+    {
+      "name": "concurrent record update preserves text draft and blocks stale overwrite",
+      "status": "pass"
+    },
+    {
+      "name": "concurrent numeric update preserves range draft and blocks stale overwrite",
+      "status": "pass"
+    },
+    {
+      "name": "layout controls lock throughout a delayed real presentation request",
+      "status": "pass"
+    },
+    {
+      "name": "review regression flows produce no browser exception",
+      "status": "pass"
+    }
+  ],
+  "errors": [],
+  "slug": "qa-drafts-8b09209c"
+}

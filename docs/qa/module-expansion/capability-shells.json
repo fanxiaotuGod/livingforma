@@ -1,0 +1,150 @@
+{
+  "at": "2026-10-04T00:39:46.267Z",
+  "scope": "Actual CameraScene and ToolResult on separate4319 local PGlite; fixture capabilities and enabled tool metadata only; zero device starts/provider/tool invokes",
+  "results": [
+    {
+      "type": "camera",
+      "width": 320,
+      "status": "pass",
+      "documentWidth": 320,
+      "geometry": {
+        "preview": {
+          "width": 234,
+          "height": 240,
+          "top": 773.734375,
+          "bottom": 1013.734375,
+          "contained": true
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "text": "",
+            "top": 812.546875,
+            "bottom": 846.546875,
+            "height": 34,
+            "clipped": false
+          },
+          {
+            "tag": "H3",
+            "text": "Let the world into your space.",
+            "top": 858.546875,
+            "bottom": 914.546875,
+            "height": 56,
+            "clipped": false
+          },
+          {
+            "tag": "P",
+            "text": "Your camera starts only when you choose.",
+            "top": 926.546875,
+            "bottom": 963.921875,
+            "height": 37.375,
+            "clipped": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "tool-result",
+      "width": 320,
+      "status": "pass",
+      "documentWidth": 320,
+      "geometry": {
+        "width": 276,
+        "controls": [
+          {
+            "tag": "INPUT",
+            "width": 234,
+            "height": 40,
+            "contained": true
+          },
+          {
+            "tag": "INPUT",
+            "width": 234,
+            "height": 40,
+            "contained": true
+          },
+          {
+            "tag": "BUTTON",
+            "width": 234,
+            "height": 42,
+            "contained": true
+          }
+        ]
+      }
+    },
+    {
+      "type": "camera",
+      "width": 1440,
+      "status": "pass",
+      "documentWidth": 1440,
+      "geometry": {
+        "preview": {
+          "width": 260,
+          "height": 240,
+          "top": 732.015625,
+          "bottom": 972.015625,
+          "contained": true
+        },
+        "children": [
+          {
+            "tag": "svg",
+            "text": "",
+            "top": 777.171875,
+            "bottom": 811.171875,
+            "height": 34,
+            "clipped": false
+          },
+          {
+            "tag": "H3",
+            "text": "Let the world into your space.",
+            "top": 823.171875,
+            "bottom": 885.171875,
+            "height": 62,
+            "clipped": false
+          },
+          {
+            "tag": "P",
+            "text": "Your camera starts only when you choose.",
+            "top": 897.171875,
+            "bottom": 915.859375,
+            "height": 18.6875,
+            "clipped": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "tool-result",
+      "width": 1440,
+      "status": "pass",
+      "documentWidth": 1440,
+      "geometry": {
+        "width": 310,
+        "controls": [
+          {
+            "tag": "INPUT",
+            "width": 260,
+            "height": 40,
+            "contained": true
+          },
+          {
+            "tag": "INPUT",
+            "width": 260,
+            "height": 40,
+            "contained": true
+          },
+          {
+            "tag": "BUTTON",
+            "width": 260,
+            "height": 42,
+            "contained": true
+          }
+        ]
+      }
+    }
+  ],
+  "mediaStarts": [],
+  "mediaCalls": 0,
+  "toolCalls": 0,
+  "errors": []
+}

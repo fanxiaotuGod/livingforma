@@ -6,26 +6,17 @@ permalink: livingforma/roles/devops/memory
 
 # DevOps 当前记忆
 
-更新：2026-10-03 16:36 America/Vancouver。此处为当前摘要；历史进度完整保留在 journal.md 与独立 handoff，不把历史未实现规划当现状。
+更新：2026-10-03 18:10 America/Vancouver。当前摘要；历史证据保留在journal与唯一handoff。
 
-## 已实现与实际验证
+- **LF170 completed/verified**：正式 https://livingforma.tech 和 https://livingforma.onrender.com 均严格HTTPS4/4smoke通过。当前精确runtime eedd1d450b45ff36062bbc7281040fddb0d462ca，Render dep-db0q9nvavr4c738sqtqg，61sLive；bundle index-Bt_tUXM1.js。CI37166475387success，root112tests/typecheck/build，QA211真实Chrome16/16。
+- Render Free/Hobby/no card/no新增费用，Virginia0.1CPU512MB；service srv-db0pi4lg1s2s73f4vnbg。用户自行完成账户并明确批准既有5项secret存server-privateenv；publicGit无需权限扩张，AutoDeployOff。primary另一个chat的60modules/general-generator未提交内容没有部署。所有后续发布须精确reviewedSHA。
+- Namify apexA216.24.57.1、wwwCNAME livingforma.onrender.com，共2included域名；两证书Issued，www→apex；原DNS负缓存已消失。Neon Free严格verify-full为现有生产DB；Tiger空SharedFree因证书链问题未使用，未关闭TLS。
+- OAuth openid-client6.8.8明确签名/PKCE/state/nonce/issuer/audience；opaque服务器session、Origin/CSRF、生产关闭localpersona。真实canonicalGoogle登录/刷新、第二tab同账号轮换、旧页freshCSRF仅1POST200、真实logout200→匿名/nullCSRF/cookie消失通过。没有放宽服务器校验。17auth测试及LF210/211会话回归证据独立保留。
+- Reading2记录、definitionv4/cards/ratingdesc、edit/remove绑定；morph保留完整recordJSON及URL。SecretGarden synthetic记录更新Reading80/4星v2，Prince原recordv2/35%完全不变。匿名IAB同loader接收布局和recordSSE、reload/退出数据仍在。可选rating.defaultValue0被模型省略，其他字段约束未变，不声称schema全等。
+- Hosted1次合成canvas→真实Gemini→ElevenTTS→playingEvent通过。物理设备0、自动描述Off；Stop使trackended/audio暂停+src清空，测试覆盖已restore/delete。独立IAB访客habit无Start控制/媒体off/console0；没有修改habit数据或用户Tinder草稿。
+- 最后只读额度：Gemini2026-10-04 **10/30**；媒体固定period verified-2026-10-03 **STT5/60s,TTS695/1000chars**。不reset，不付费fallback。实际30/30 stop证据来自LF185同Neon/未变server逻辑，QA160独立接受；未为验收浪费余量。
+- 真实旧版本redeploy+RenderRollback验证过9个表前后一致。当前eedd1d4应作为下次known-good；旧7ef有已修CSRF缺口。不得恢复budgetrows。35.67s英文真实录制highlights在.local/deployment/livingforma-live-release-demo.mp4，等待缩短/合成camera/静态匿名proof均标明，无音轨。
+- GitGuardianincident37849019已由直接detectedvalue确认catalogdigest误报；未轮换凭据/改alert。此前全Git/截图/CI零匹配调查范围与限制在handoffJSON保留。
+- 后续限制：Freecoldstart、未做物理设备/生产双Google账号隔离；60module、general-codegeneration、apphistory不在此release。DevOps不写shared、不全局stage/commit/push。session1b9bcef2-81b0-48d2-95ae-da2572c6e0f1在finish后close。
 
-- LF-140：Google Web OAuth/session模块使用openid-client6.8.8，PKCE/state/nonce、显式JWT签名、opaque哈希会话、Origin/CSRF、退出、生产完全禁止本地persona。17安全测试和真实localhost Google登录/刷新/退出通过；Google用户对自己未拥有的fixture仍是Participant。真实生产回调仍待LF170。
-- 生产主库是Neon Free。严格TLS `sslmode=verify-full` 的SELECT1、业务与预算持久化、coordinator生产Dockerhealth/session/SPA/local-login404已验证。Tiger Shared Free已创建但证书链验证失败，保留为空备用，未关闭TLS校验或升级。
-- LF-148：私密.env与部署Blueprint对齐 `AGENT_MODE=gemini`、`GEMINI_MODEL=gemini-3.5-flash-lite`、日上限30及两个verified=true。3.8曾503、2.5曾404；不付费fallback。公开.env.example保留verified=false给未经核实的新账户，模型/mode明确。
-- ElevenAPI真实账户复核：included pool可用，PAYG零余额、AutoTopUpOFF；官方PAYG说明先消耗included并在余额0时暂停，无自动欠费。独立USD余额没有显示，不从价格表推算。服务器专用key cap10000credits，仅TTS/STT/voices-read/models/subscription-read；Agent真实合成fixture STT/vision/TTS已有证据。
-- 媒体固定期 `verified-2026-10-03`、STT60秒、TTS1000 UTF-16字符/每bucket每分钟3次，Agent与DB代码共同固定，非环境变量；复用既有Neon，不删除或重置ledger。LF148只读时Gemini30/30（2026-10-03），STT5/60、TTS153/1000；并发整合可推进计数，以DB为准。Gemini耗尽后等待正常UTC日窗口，媒体不每日重置。
-- `scripts/deploy/preflight.mjs` 只读检查配置和现有数据库ledger，BEGIN READ ONLY/SELECT/ROLLBACK，无provider请求。18项生产配置及ledger检查通过；unverified flag拒绝且不查DB；YAML解析、固定上限、local links、秘密泄漏、ignore/0600和diff检查通过。
-
-## 部署状态与剩余步骤
-
-- **未上线**：CI/Docker/Render Free Blueprint与读后部署验证脚本已准备。Render账号最终Create Account条款确认仍待用户，未创建托管service/未改DNS/未发布。恢复的Chrome tab1369830686停在 `https://dashboard.render.com/register/github`；保留handoff。
-- LF185整合→LF160独立QA→LF170正式发布。Render批准后先核查Free/no-payment-method，任何card/收费需要用户确认；只发布安全应用修改。Blueprint路径infra/render.yaml，secret初次sync:false输入，后续新secret需手工加。
-- 部署必须复用当前Neon的定义/记录/用户/额度；生产origin livingforma.tech，Google同域callback已登记。平台HTTPS/实际DNS目标/域名证书/production Google登录退出、Owner隔离、SSE恢复、HTTPS设备权限/Stop等仍须实际验收。
-- 凭据只在Git ignored `.env`（0600）与部署secret，禁止输出/前端VITE/公开日志。Render Free超额无卡则停服或停build；不得为了连续服务自动加卡升级。
-
-## 协作与证据
-
-- 当前LF148 session `60aae246-d567-48ba-8809-a5adbfe512e6`，完成准备验收后finish/close；不领取依赖未满足的LF170。
-- [LF148交接](../../handoffs/devops/LF-148-60aae246-d567-48ba-8809-a5adbfe512e6.md)、[LF140交接](../../handoffs/devops/LF-140-9a7de296-330f-4b31-9169-c830876362fb.md)、[部署说明](../../../operations/deployment.md)、[Google说明](../../../operations/google-oauth.md)、[媒体真实证据](../../../agent/evidence/LF-181-live-media.json)。
-- 公共memory只由coordinator编辑。MCP未在当前工具中提供，依AGENTS从Markdown恢复；BasicMemory0.23.2此前验证可跨进程读写/重启持久化，索引不代替实时claim锁。
+证据：[LF170交接](../../handoffs/devops/LF-170-1b9bcef2-81b0-48d2-95ae-da2572c6e0f1.md)、[结果JSON](../../handoffs/devops/LF-170-1b9bcef2-81b0-48d2-95ae-da2572c6e0f1.json)、[部署](../../../operations/deployment.md)、[Google](../../../operations/google-oauth.md)。恢复时先读AGENTS与liveclaim registry；MCPmemory不可用则Markdown为准。
