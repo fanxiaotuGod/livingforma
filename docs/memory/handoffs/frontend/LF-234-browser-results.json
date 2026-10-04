@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-04T08:19:22.993Z",
+  "scope": "Real Chrome/MessageChannel/current backend bootstrap/local API/PGlite; virtual clock for human timeouts, offline generator, explicit transport rejection fixture. No providers or shared apps/web/dist rebuild.",
+  "checks": [
+    "An image selected after 31 seconds still reaches the real host and saves its reference",
+    "Explicit image cancellation and keeping a record send no writes",
+    "120-second image expiry closes the host dialog and ignores a late native selection",
+    "120-second deletion expiry keeps the record; a fresh confirmation after 31 seconds still works",
+    "Identity changes cancel the outstanding choice and ignore its old selection",
+    "Leaving the space cancels a choice before any upload can be sent",
+    "A failed ready report waits for explicit retry, then checks the same job/revision without a model call"
+  ],
+  "writes": [
+    "/api/spaces/reading/assets",
+    "/api/spaces/reading/actions",
+    "/api/spaces/reading/actions"
+  ],
+  "generationCalls": 1,
+  "reports": [
+    {
+      "id": "bd63d578-f501-43f2-ad81-40ae4ef14e00",
+      "revision": 1,
+      "ok": true
+    },
+    {
+      "id": "bd63d578-f501-43f2-ad81-40ae4ef14e00",
+      "revision": 1,
+      "ok": true
+    }
+  ],
+  "errors": []
+}

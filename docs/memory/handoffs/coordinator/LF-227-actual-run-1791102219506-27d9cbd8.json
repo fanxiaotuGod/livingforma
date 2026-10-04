@@ -1,0 +1,213 @@
+{
+  "startedAt": "2026-10-04T08:23:29.599Z",
+  "scope": "Real Pi/Gemini; isolated business PGlite; labelled local identity; unchanged original provider ledger",
+  "events": [
+    {
+      "stage": "planning",
+      "message": "Planning your website."
+    },
+    {
+      "stage": "writing",
+      "message": "Writing the website source.",
+      "source": {
+        "html": "<div class=\"app-container\">\n  <header>\n    <h1>Kitchen Math</h1>\n    <p>Scale recipe ingredients accurately for any number of servings in a notebook style.</p>\n  </header>\n  <main>\n    <section class=\"card\">\n      <h2>Recipe Scaler</h2>\n      <div class=\"form-group\">\n        <label for=\"ingredient\">Ingredient</label>\n        <input type=\"text\" id=\"ingredient\" placeholder=\"e.g. Flour (cups)\" />\n      </div>\n      <div class=\"form-group\">\n        <label for=\"amount\">Original Amount</label>\n        <input type=\"number\" id=\"amount\" step=\"any\" placeholder=\"e.g. 10\" />\n      </div>\n      <div class=\"form-group\">\n        <label for=\"originalServings\">Original Servings</label>\n        <input type=\"number\" id=\"originalServings\" step=\"any\" placeholder=\"e.g. 2\" />\n      </div>\n      <div class=\"form-group\">\n        <label for=\"targetServings\">Target Servings</label>\n        <input type=\"number\" id=\"targetServings\" step=\"any\" placeholder=\"e.g. 3\" />\n      </div>\n      <div id=\"calc-error\" style=\"display:none;\" class=\"alert alert-error\"></div>\n      <button id=\"btn-calculate\" class=\"btn-primary\">Calculate Scale</button>\n      \n      <div class=\"result-box\">\n        <label>Scaled Amount</label>\n        <div id=\"scaled-result\" class=\"result-value\">-</div>\n      </div>\n      <button id=\"btn-save\" class=\"btn-secondary\" disabled>Save Calculation</button>\n      <div id=\"preview-notice\" style=\"display:none;\" class=\"alert\">Preview only. Publish to save changes.</div>\n    </section>\n\n    <section class=\"card\">\n      <h2>Saved Calculations</h2>\n      <div id=\"saved-list\" class=\"saved-list\">\n        <div class=\"empty-state\">No saved calculations yet.</div>\n      </div>\n    </section>\n  </main>\n</div>\n",
+        "css": ":root {\n  --bg-sage: #f2f5f1;\n  --card-bg: #ffffff;\n  --text-main: #2d3732;\n  --text-muted: #5c6b63;\n  --primary: #4a6b5d;\n  --primary-hover: #3b554a;\n  --border-color: #d1dcce;\n  --accent: #d4a373;\n  --shadow: 0 4px 12px rgba(74, 107, 93, 0.08);\n  --radius: 12px;\n}\n* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; }\nbody { background-color: var(--bg-sage); color: var(--text-main); line-height: 1.5; padding: 24px; display: flex; justify-content: center; }\n.app-container { width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 24px; }\nheader { background: var(--card-bg); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color); box-shadow: var(--shadow); }\nheader h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 6px; font-weight: 700; }\nheader p { color: var(--text-muted); font-size: 0.95rem; }\nmain { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }\n@media (max-width: 768px) { main { grid-template-columns: 1fr; } }\n.card { background: var(--card-bg); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color); box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 16px; }\n.card h2 { font-size: 1.2rem; color: var(--primary); border-bottom: 2px solid var(--bg-sage); padding-bottom: 8px; }\n.form-group { display: flex; flex-direction: column; gap: 6px; }\nlabel { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }\ninput { padding: 10px 14px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 1rem; color: var(--text-main); background: #fafbfc; transition: border-color 0.2s; }\ninput:focus { outline: none; border-color: var(--primary); background: #fff; }\nbutton { padding: 12px 20px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s, opacity 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }\n.btn-primary { background: var(--primary); color: white; }\n.btn-primary:hover:not(:disabled) { background: var(--primary-hover); }\n.btn-secondary { background: #e2e8f0; color: var(--text-main); }\n.btn-secondary:hover:not(:disabled) { background: #cbd5e1; }\nbutton:disabled { opacity: 0.6; cursor: not-allowed; }\n.result-box { background: var(--bg-sage); padding: 16px; border-radius: 8px; border: 1px dashed var(--primary); display: flex; flex-direction: column; gap: 6px; }\n.result-value { font-size: 1.5rem; font-weight: 700; color: var(--primary); }\n.saved-list { display: flex; flex-direction: column; gap: 12px; max-height: 400px; overflow-y: auto; }\n.saved-item { background: #fafbfc; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }\n.saved-info { display: flex; flex-direction: column; gap: 2px; }\n.saved-title { font-weight: 600; color: var(--text-main); }\n.saved-detail { font-size: 0.85rem; color: var(--text-muted); }\n.alert { padding: 12px; border-radius: 8px; font-size: 0.9rem; background: #fff3cd; color: #856404; border: 1px solid #ffeeba; }\n.alert-error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }\n.empty-state { text-align: center; color: var(--text-muted); padding: 24px; font-style: italic; }\n",
+        "js": "(async function() {\n  let state = await lf.ready;\n  let lastResult = null;\n\n  const elIngredient = document.getElementById('ingredient');\n  const elAmount = document.getElementById('amount');\n  const elOriginal = document.getElementById('originalServings');\n  const elTarget = document.getElementById('targetServings');\n  const elResult = document.getElementById('scaled-result');\n  const elCalcError = document.getElementById('calc-error');\n  const btnCalculate = document.getElementById('btn-calculate');\n  const btnSave = document.getElementById('btn-save');\n  const previewNotice = document.getElementById('preview-notice');\n  const savedList = document.getElementById('saved-list');\n\n  function render(currentState) {\n    if (!currentState.permissions.canUseTools) {\n      previewNotice.style.display = 'block';\n      previewNotice.textContent = 'Preview tools remain disabled until Publish.';\n    } else {\n      previewNotice.style.display = 'none';\n    }\n\n    const records = currentState.records || [];\n    if (records.length === 0) {\n      savedList.innerHTML = '<div class=\"empty-state\">No saved calculations yet.</div>';\n    } else {\n      savedList.innerHTML = '';\n      records.forEach(rec => {\n        const v = rec.values;\n        const item = document.createElement('div');\n        item.className = 'saved-item';\n        \n        const info = document.createElement('div');\n        info.className = 'saved-info';\n        \n        const title = document.createElement('div');\n        title.className = 'saved-title';\n        title.textContent = v.ingredient || 'Unnamed Ingredient';\n        \n        const detail = document.createElement('div');\n        detail.className = 'saved-detail';\n        detail.textContent = `Scaled: ${v.scaledAmount} (from ${v.amount} for ${v.originalServings} to ${v.targetServings} servings)`;\n        \n        info.appendChild(title);\n        info.appendChild(detail);\n        item.appendChild(info);\n\n        const delBtn = document.createElement('button');\n        delBtn.className = 'btn-secondary';\n        delBtn.textContent = 'Delete';\n        delBtn.style.padding = '6px 12px';\n        delBtn.style.fontSize = '0.85rem';\n        delBtn.addEventListener('click', async () => {\n          try {\n            state = await lf.remove(rec.id);\n            render(state);\n          } catch (e) {\n            alert('Failed to delete: ' + (e.message || e));\n          }\n        });\n        item.appendChild(delBtn);\n\n        savedList.appendChild(item);\n      });\n    }\n  }\n\n  btnCalculate.addEventListener('click', async () => {\n    elCalcError.style.display = 'none';\n    elCalcError.textContent = '';\n    \n    const ingredient = elIngredient.value.trim();\n    const amount = parseFloat(elAmount.value);\n    const originalServings = parseFloat(elOriginal.value);\n    const targetServings = parseFloat(elTarget.value);\n\n    if (!ingredient) {\n      elCalcError.textContent = 'Please enter an ingredient name.';\n      elCalcError.style.display = 'block';\n      return;\n    }\n    if (isNaN(amount) || isNaN(originalServings) || isNaN(targetServings)) {\n      elCalcError.textContent = 'Please enter valid numbers for amount and servings.';\n      elCalcError.style.display = 'block';\n      return;\n    }\n    if (originalServings <= 0) {\n      elCalcError.textContent = 'Original servings must be positive.';\n      elCalcError.style.display = 'block';\n      return;\n    }\n\n    if (!state.permissions.canUseTools) {\n      elCalcError.textContent = 'Preview tools remain disabled until Publish.';\n      elCalcError.style.display = 'block';\n      return;\n    }\n\n    btnCalculate.disabled = true;\n    btnCalculate.textContent = 'Calculating...';\n\n    try {\n      const res = await lf.runTool('scale_recipe', 1, {\n        amount,\n        originalServings,\n        targetServings\n      });\n      lastResult = res.result.scaledAmount;\n      elResult.textContent = lastResult;\n      btnSave.disabled = false;\n    } catch (e) {\n      elCalcError.textContent = 'Calculation failed: ' + (e.message || e);\n      elCalcError.style.display = 'block';\n    } finally {\n      btnCalculate.disabled = false;\n      btnCalculate.textContent = 'Calculate Scale';\n    }\n  });\n\n  btnSave.addEventListener('click', async () => {\n    if (lastResult === null) return;\n    try {\n      const values = {\n        ingredient: elIngredient.value.trim(),\n        amount: parseFloat(elAmount.value),\n        originalServings: parseFloat(elOriginal.value),\n        targetServings: parseFloat(elTarget.value),\n        scaledAmount: lastResult\n      };\n      state = await lf.create(values);\n      render(state);\n      btnSave.disabled = true;\n    } catch (e) {\n      alert('Failed to save calculation: ' + (e.message || e));\n    }\n  });\n\n  lf.subscribe(nextState => {\n    state = nextState;\n    render(state);\n  });\n\n  render(state);\n  await lf.reportReady();\n})();\n"
+      },
+      "ui": {
+        "version": 1,
+        "title": "Kitchen Math",
+        "layout": "split",
+        "skin": "sage",
+        "sections": [
+          {
+            "id": "scaler",
+            "kind": "form",
+            "label": "Recipe Scaler",
+            "columns": 6,
+            "items": 4
+          },
+          {
+            "id": "saved",
+            "kind": "collection",
+            "label": "Saved Calculations",
+            "columns": 6,
+            "items": 1
+          }
+        ]
+      }
+    },
+    {
+      "stage": "writing",
+      "message": "Writing a backend tool candidate.",
+      "tool": {
+        "toolId": "scale_recipe",
+        "name": "scale_recipe",
+        "phase": "writing",
+        "message": "Source is arriving. Host fixture tests have not run."
+      }
+    }
+  ],
+  "candidates": [
+    {
+      "summary": "A responsive sage/cream notebook style recipe portion calculator with a custom scale_recipe tool and saved calculation records.",
+      "artifact": {
+        "html": "<div class=\"app-container\">\n  <header>\n    <h1>Kitchen Math</h1>\n    <p>Scale recipe ingredients accurately for any number of servings in a notebook style.</p>\n  </header>\n  <main>\n    <section class=\"card\">\n      <h2>Recipe Scaler</h2>\n      <div class=\"form-group\">\n        <label for=\"ingredient\">Ingredient</label>\n        <input type=\"text\" id=\"ingredient\" placeholder=\"e.g. Flour (cups)\" />\n      </div>\n      <div class=\"form-group\">\n        <label for=\"amount\">Original Amount</label>\n        <input type=\"number\" id=\"amount\" step=\"any\" placeholder=\"e.g. 10\" />\n      </div>\n      <div class=\"form-group\">\n        <label for=\"originalServings\">Original Servings</label>\n        <input type=\"number\" id=\"originalServings\" step=\"any\" placeholder=\"e.g. 2\" />\n      </div>\n      <div class=\"form-group\">\n        <label for=\"targetServings\">Target Servings</label>\n        <input type=\"number\" id=\"targetServings\" step=\"any\" placeholder=\"e.g. 3\" />\n      </div>\n      <div id=\"calc-error\" style=\"display:none;\" class=\"alert alert-error\"></div>\n      <button id=\"btn-calculate\" class=\"btn-primary\">Calculate Scale</button>\n      \n      <div class=\"result-box\">\n        <label>Scaled Amount</label>\n        <div id=\"scaled-result\" class=\"result-value\">-</div>\n      </div>\n      <button id=\"btn-save\" class=\"btn-secondary\" disabled>Save Calculation</button>\n      <div id=\"preview-notice\" style=\"display:none;\" class=\"alert\">Preview only. Publish to save changes.</div>\n    </section>\n\n    <section class=\"card\">\n      <h2>Saved Calculations</h2>\n      <div id=\"saved-list\" class=\"saved-list\">\n        <div class=\"empty-state\">No saved calculations yet.</div>\n      </div>\n    </section>\n  </main>\n</div>\n",
+        "js": "(async function() {\n  let state = await lf.ready;\n  let lastResult = null;\n\n  const elIngredient = document.getElementById('ingredient');\n  const elAmount = document.getElementById('amount');\n  const elOriginal = document.getElementById('originalServings');\n  const elTarget = document.getElementById('targetServings');\n  const elResult = document.getElementById('scaled-result');\n  const elCalcError = document.getElementById('calc-error');\n  const btnCalculate = document.getElementById('btn-calculate');\n  const btnSave = document.getElementById('btn-save');\n  const previewNotice = document.getElementById('preview-notice');\n  const savedList = document.getElementById('saved-list');\n\n  function render(currentState) {\n    if (!currentState.permissions.canUseTools) {\n      previewNotice.style.display = 'block';\n      previewNotice.textContent = 'Preview tools remain disabled until Publish.';\n    } else {\n      previewNotice.style.display = 'none';\n    }\n\n    const records = currentState.records || [];\n    if (records.length === 0) {\n      savedList.innerHTML = '<div class=\"empty-state\">No saved calculations yet.</div>';\n    } else {\n      savedList.innerHTML = '';\n      records.forEach(rec => {\n        const v = rec.values;\n        const item = document.createElement('div');\n        item.className = 'saved-item';\n        \n        const info = document.createElement('div');\n        info.className = 'saved-info';\n        \n        const title = document.createElement('div');\n        title.className = 'saved-title';\n        title.textContent = v.ingredient || 'Unnamed Ingredient';\n        \n        const detail = document.createElement('div');\n        detail.className = 'saved-detail';\n        detail.textContent = `Scaled: ${v.scaledAmount} (from ${v.amount} for ${v.originalServings} to ${v.targetServings} servings)`;\n        \n        info.appendChild(title);\n        info.appendChild(detail);\n        item.appendChild(info);\n\n        const delBtn = document.createElement('button');\n        delBtn.className = 'btn-secondary';\n        delBtn.textContent = 'Delete';\n        delBtn.style.padding = '6px 12px';\n        delBtn.style.fontSize = '0.85rem';\n        delBtn.addEventListener('click', async () => {\n          try {\n            state = await lf.remove(rec.id);\n            render(state);\n          } catch (e) {\n            alert('Failed to delete: ' + (e.message || e));\n          }\n        });\n        item.appendChild(delBtn);\n\n        savedList.appendChild(item);\n      });\n    }\n  }\n\n  btnCalculate.addEventListener('click', async () => {\n    elCalcError.style.display = 'none';\n    elCalcError.textContent = '';\n    \n    const ingredient = elIngredient.value.trim();\n    const amount = parseFloat(elAmount.value);\n    const originalServings = parseFloat(elOriginal.value);\n    const targetServings = parseFloat(elTarget.value);\n\n    if (!ingredient) {\n      elCalcError.textContent = 'Please enter an ingredient name.';\n      elCalcError.style.display = 'block';\n      return;\n    }\n    if (isNaN(amount) || isNaN(originalServings) || isNaN(targetServings)) {\n      elCalcError.textContent = 'Please enter valid numbers for amount and servings.';\n      elCalcError.style.display = 'block';\n      return;\n    }\n    if (originalServings <= 0) {\n      elCalcError.textContent = 'Original servings must be positive.';\n      elCalcError.style.display = 'block';\n      return;\n    }\n\n    if (!state.permissions.canUseTools) {\n      elCalcError.textContent = 'Preview tools remain disabled until Publish.';\n      elCalcError.style.display = 'block';\n      return;\n    }\n\n    btnCalculate.disabled = true;\n    btnCalculate.textContent = 'Calculating...';\n\n    try {\n      const res = await lf.runTool('scale_recipe', 1, {\n        amount,\n        originalServings,\n        targetServings\n      });\n      lastResult = res.result.scaledAmount;\n      elResult.textContent = lastResult;\n      btnSave.disabled = false;\n    } catch (e) {\n      elCalcError.textContent = 'Calculation failed: ' + (e.message || e);\n      elCalcError.style.display = 'block';\n    } finally {\n      btnCalculate.disabled = false;\n      btnCalculate.textContent = 'Calculate Scale';\n    }\n  });\n\n  btnSave.addEventListener('click', async () => {\n    if (lastResult === null) return;\n    try {\n      const values = {\n        ingredient: elIngredient.value.trim(),\n        amount: parseFloat(elAmount.value),\n        originalServings: parseFloat(elOriginal.value),\n        targetServings: parseFloat(elTarget.value),\n        scaledAmount: lastResult\n      };\n      state = await lf.create(values);\n      render(state);\n      btnSave.disabled = true;\n    } catch (e) {\n      alert('Failed to save calculation: ' + (e.message || e));\n    }\n  });\n\n  lf.subscribe(nextState => {\n    state = nextState;\n    render(state);\n  });\n\n  render(state);\n  await lf.reportReady();\n})();\n",
+        "bridgeVersion": 1,
+        "format": "html-v1",
+        "css": ":root {\n  --bg-sage: #f2f5f1;\n  --card-bg: #ffffff;\n  --text-main: #2d3732;\n  --text-muted: #5c6b63;\n  --primary: #4a6b5d;\n  --primary-hover: #3b554a;\n  --border-color: #d1dcce;\n  --accent: #d4a373;\n  --shadow: 0 4px 12px rgba(74, 107, 93, 0.08);\n  --radius: 12px;\n}\n* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; }\nbody { background-color: var(--bg-sage); color: var(--text-main); line-height: 1.5; padding: 24px; display: flex; justify-content: center; }\n.app-container { width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 24px; }\nheader { background: var(--card-bg); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color); box-shadow: var(--shadow); }\nheader h1 { font-size: 1.8rem; color: var(--primary); margin-bottom: 6px; font-weight: 700; }\nheader p { color: var(--text-muted); font-size: 0.95rem; }\nmain { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }\n@media (max-width: 768px) { main { grid-template-columns: 1fr; } }\n.card { background: var(--card-bg); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border-color); box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 16px; }\n.card h2 { font-size: 1.2rem; color: var(--primary); border-bottom: 2px solid var(--bg-sage); padding-bottom: 8px; }\n.form-group { display: flex; flex-direction: column; gap: 6px; }\nlabel { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }\ninput { padding: 10px 14px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 1rem; color: var(--text-main); background: #fafbfc; transition: border-color 0.2s; }\ninput:focus { outline: none; border-color: var(--primary); background: #fff; }\nbutton { padding: 12px 20px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s, opacity 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }\n.btn-primary { background: var(--primary); color: white; }\n.btn-primary:hover:not(:disabled) { background: var(--primary-hover); }\n.btn-secondary { background: #e2e8f0; color: var(--text-main); }\n.btn-secondary:hover:not(:disabled) { background: #cbd5e1; }\nbutton:disabled { opacity: 0.6; cursor: not-allowed; }\n.result-box { background: var(--bg-sage); padding: 16px; border-radius: 8px; border: 1px dashed var(--primary); display: flex; flex-direction: column; gap: 6px; }\n.result-value { font-size: 1.5rem; font-weight: 700; color: var(--primary); }\n.saved-list { display: flex; flex-direction: column; gap: 12px; max-height: 400px; overflow-y: auto; }\n.saved-item { background: #fafbfc; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }\n.saved-info { display: flex; flex-direction: column; gap: 2px; }\n.saved-title { font-weight: 600; color: var(--text-main); }\n.saved-detail { font-size: 0.85rem; color: var(--text-muted); }\n.alert { padding: 12px; border-radius: 8px; font-size: 0.9rem; background: #fff3cd; color: #856404; border: 1px solid #ffeeba; }\n.alert-error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }\n.empty-state { text-align: center; color: var(--text-muted); padding: 24px; font-style: italic; }\n",
+        "assetIds": []
+      },
+      "toolBindings": [
+        {
+          "actionId": "calculate",
+          "toolVersion": 1,
+          "toolId": "scale_recipe",
+          "kind": "generated"
+        }
+      ],
+      "title": "Kitchen Math",
+      "description": "Kitchen Math recipe portion calculator in sage/cream notebook style.",
+      "entitySchema": {
+        "name": "Calculation",
+        "fields": [
+          {
+            "required": true,
+            "label": "Ingredient",
+            "type": "text",
+            "id": "ingredient",
+            "public": true
+          },
+          {
+            "label": "Original Amount",
+            "public": true,
+            "required": true,
+            "type": "number",
+            "id": "amount"
+          },
+          {
+            "required": true,
+            "id": "originalServings",
+            "type": "number",
+            "public": true,
+            "label": "Original Servings"
+          },
+          {
+            "id": "targetServings",
+            "label": "Target Servings",
+            "public": true,
+            "required": true,
+            "type": "number"
+          },
+          {
+            "required": true,
+            "id": "scaledAmount",
+            "type": "number",
+            "public": true,
+            "label": "Scaled Amount"
+          }
+        ],
+        "schemaVersion": 1
+      },
+      "outline": {
+        "title": "Kitchen Math",
+        "sections": [
+          {
+            "items": 4,
+            "label": "Recipe Scaler",
+            "columns": 6,
+            "id": "scaler",
+            "kind": "form"
+          },
+          {
+            "label": "Saved Calculations",
+            "kind": "collection",
+            "items": 1,
+            "id": "saved",
+            "columns": 6
+          }
+        ],
+        "layout": "split",
+        "version": 1,
+        "skin": "sage"
+      },
+      "skin": "sage",
+      "capabilityGaps": [],
+      "actions": [
+        {
+          "label": "Calculate Scale",
+          "id": "calculate",
+          "type": "tool.invoke"
+        },
+        {
+          "label": "Save Calculation",
+          "type": "record.create",
+          "id": "record.create"
+        },
+        {
+          "id": "record.delete",
+          "label": "Delete Saved Calculation",
+          "type": "record.delete"
+        }
+      ],
+      "codeTools": [
+        {
+          "capabilities": {
+            "connectors": [],
+            "publicRecordFields": [
+              "ingredient",
+              "amount",
+              "originalServings",
+              "targetServings",
+              "scaledAmount"
+            ]
+          },
+          "testsJson": "[\n  {\"name\": \"test 1\", \"input\": {\"amount\": 10, \"originalServings\": 2, \"targetServings\": 3}, \"expected\": {\"scaledAmount\": 15}},\n  {\"name\": \"test 2\", \"input\": {\"amount\": 12, \"originalServings\": 3, \"targetServings\": 2}, \"expected\": {\"scaledAmount\": 8}}\n]",
+          "toolVersion": 1,
+          "description": "Scales recipe amount based on original and target servings, rounding to 2 decimals.",
+          "inputSchemaJson": "{\"type\":\"object\",\"properties\":{\"amount\":{\"type\":\"number\"},\"originalServings\":{\"type\":\"number\"},\"targetServings\":{\"type\":\"number\"}},\"required\":[\"amount\",\"originalServings\",\"targetServings\"],\"additionalProperties\":false}",
+          "source": "function run(input, api) {\n  if (input.originalServings <= 0) {\n    throw new Error(\"originalServings must be positive\");\n  }\n  const raw = (input.amount * input.targetServings) / input.originalServings;\n  const scaledAmount = Math.round(raw * 100) / 100;\n  return { scaledAmount };\n}",
+          "toolId": "scale_recipe",
+          "outputSchemaJson": "{\"type\":\"object\",\"properties\":{\"scaledAmount\":{\"type\":\"number\"}},\"required\":[\"scaledAmount\"],\"additionalProperties\":false}",
+          "name": "scale_recipe"
+        }
+      ]
+    }
+  ],
+  "evidence": {
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "requests": 1,
+    "toolCalls": [
+      "submit_site"
+    ],
+    "tokens": {
+      "input": 3982,
+      "output": 3918
+    },
+    "elapsedMs": 9906,
+    "candidateFailures": [
+      {
+        "tool": "submit_site",
+        "phase": "arguments",
+        "issues": [
+          {
+            "path": "actions.1.id",
+            "rule": "pattern"
+          },
+          {
+            "path": "actions.2.id",
+            "rule": "pattern"
+          }
+        ]
+      }
+    ],
+    "failure": {
+      "category": "output",
+      "signals": [
+        "candidate_validation"
+      ]
+    }
+  }
+}

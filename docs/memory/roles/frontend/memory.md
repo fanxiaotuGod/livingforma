@@ -7,6 +7,14 @@ permalink: livingforma/roles/frontend/memory
 
 # 前端角色记忆
 
+## Current runtime reliability · 2026-10-04 LF-234
+
+- GeneratedSite picker/delete confirmation现有host UI增加120秒deadline、明确Cancel/expiry英文提示；一次settle、绝对时间兜底，identity/channel/page清理，旧native file/button不能上传或删除。Backend LF235 child人类请求180秒，普通30秒；31秒选择/确认实测可完成。
+- Studio failed startup-report移除dedup key并只允许明确Retry preview check；切source/preview不自动重发，retry同job/revision重挂frame，无新generation请求；prompt/live app/原LF232单次repair保留，身份/页面/版本淘汰迟到结果。
+- 验证：整仓tsc、24 targeted tests、隔离temp Vite build index-Da_q2tBw.js通过（794.29kB warning）；真实Chrome/MessageChannel/API/PGlite+offlinegenerator新7/7与LF232回归5/5，0pageerrors。虚拟clock验证120秒与迟到事件，503是明确transportfixture，截图已读取。共享apps/web/dist未动，全部测试资源已关闭。
+- 另经coordinator授权对4347已发布真实Pi PhotoDrift原候选native Chrome手势实测：blue左滑pass、新Synthetic sunset右滑favorite，各1POST，state4→5→6/cursor6→7→8；原coral收藏/definition2/3records/assets/URL保留。正常local Owner登录，未调用模型或改生成源；不宣称新增Google/provider验证。
+- [交接](../../handoffs/frontend/LF-234-3eb46c98-978c-4919-9ed6-94c69331a8bf.md)、[普通fixture](../../handoffs/frontend/LF-234-browser-results.json)、[实际手势](../../handoffs/frontend/LF-234-real-gesture-results.json)。无env/依赖/锁/commit/push/deploy/付费；源码冻结供coordinator整合。
+
 ## Current preview feedback · 2026-10-04 LF-232
 
 - Owner 在 preview/checked 下可 Report an issue，1–500字符描述后明确 Request repair；protected POST现有preview接口携带sourceRevision/ok:false，复用唯一hostrepair，无额外模型循环。repairCount1后提示将更多问题放进description并Create another revision。

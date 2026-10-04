@@ -1,0 +1,27 @@
+: connected
+
+id: 1
+event: definition.published
+data: {"id":1,"type":"definition.published","spaceId":"sp_7a065592-ad88-47da-8b5c-e12edc9a5a9e","stateVersion":0,"definitionVersion":1}
+
+id: 2
+event: records.changed
+data: {"id":2,"type":"records.changed","spaceId":"sp_7a065592-ad88-47da-8b5c-e12edc9a5a9e","stateVersion":1,"definitionVersion":1}
+
+id: 3
+event: records.changed
+data: {"id":3,"type":"records.changed","spaceId":"sp_7a065592-ad88-47da-8b5c-e12edc9a5a9e","stateVersion":2,"definitionVersion":1}
+
+id: 4
+event: records.changed
+data: {"id":4,"type":"records.changed","spaceId":"sp_7a065592-ad88-47da-8b5c-e12edc9a5a9e","stateVersion":3,"definitionVersion":1}
+
+id: 5
+event: definition.published
+data: {"id":5,"type":"definition.published","spaceId":"sp_7a065592-ad88-47da-8b5c-e12edc9a5a9e","stateVersion":3,"definitionVersion":2}
+
+: heartbeat
+
+: heartbeat
+
+: heartbeat

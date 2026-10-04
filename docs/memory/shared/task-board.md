@@ -6,22 +6,18 @@ permalink: livingforma/shared/task-board
 
 # 任务板
 
-## 当前状态 · 2026-10-04 01:00 America/Vancouver · catalog23
+## 当前状态 · 2026-10-04 01:45 America/Vancouver · catalog25
 
-Coordinator27d9cbd8持有LF155。初版eedd1d4已在livingforma.tech，60模块/通用生成仍本地。高级绕过研究暂停，正常开发继续。实时认领以registry为准。
+Root27d9cbd8持有LF227。初版livingforma.tech仍eedd1d4；通用生成已经本地真实验收，尚未发布。高级绕过研究暂停，继续正常业务验证。
 
 | Task | State | Evidence / next |
 | --- | --- | --- |
-| LF220/221/222/224/225/226 | verified / closed | 原创页面/工具、持久jobs/assets/history、QuickJS、Studio/真实checkpointUI实现交接 |
-| LF223 | verified / closed | 普通独立QA：8/8Chrome、11/11HTTP/QuickJS/restart、28/28回归，生成器fixture |
-| LF229 | verified / closed | 独立FreeDocker6/6；1Worker，启动8s/执行4s/总计12s，保留失败证据 |
-| LF230 | verified / closed | 请求兼容修复；122+32测试，Root真实候选/IAB启动通过，交互另验 |
-| LF232 | claimed frontend01a65ac6 | Owner功能反馈通过原单次修复；本地浏览器4/4，最后样式/取消复验 |
-| LF233 | awaits LF232 | Coordinator整合远程403热修复历史，保留所有当前源/角色历史 |
-| LF227 | waits LF232/233 | 真实三类页面、原创工具/复用、数据/URL/访客同步、全检查/CI |
-| LF228 | waits LF227 | reviewedCI-green exactSHA，原FreeRender/Neon/Google上线验收 |
+| LF223/229/230/232/233 | verified / closed | 普通QA8+11+28；LF229 Free Docker6/6取代历史超时阻断；真实Gemini兼容；Owner反馈；Git历史整合84e90bf |
+| LF234/235/236 | verified / closed | 120s人类选择/180s相关RPC；同预览显式重试；真实照片左右手势；严格ID和独立工具action指引 |
+| LF227 | local acceptance verified / claimed Root27d9cbd8 | 真实照片/计算器/测验；新scale_recipe测试与225调用、原版本复用；记录/URL/匿名SSE；308tests/typecheck/build。待reviewed commit与CI |
+| LF228 | gated227 | existingFreeRender无卡/$0；CI精确SHA手动发布；保留Neon数据、OAuth与账本；兼容版本恢复 |
 
-Root实际PhotoDrift候选已checked但上传双选择需修复；未发布。原Neonledger18后Root一次请求，预计19/30，后续先核对，不退款或重置。
+原Neon账本Gemini2026-10-04为29/30，余1次留给正式网站验收。不能重置、退款或付费fallback。实际模型仍可能返回无效草稿；测验用了一次修复，失败证据保留。4347使用隔离PGlite/明确本地身份，不能算Google线上证明。详见[LF227验收交接](../handoffs/coordinator/LF-227-27d9cbd8-ed2b-4f98-874c-e81f6a6fd28f.md)。实时锁以registry为准。
 
 
 ## 本轮开发补充任务

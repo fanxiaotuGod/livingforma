@@ -6,6 +6,11 @@ permalink: livingforma/roles/agent/memory
 
 # Agent 开发角色记忆
 
+## LF-236 元数据提示修复 · 2026-10-04 America/Vancouver
+- 通用SiteGenerator前置解释全部metadata ID的ASCII字母开头、总长64、letters/digits/_/-、唯一与精确引用；区分save_record稳定ID和record.create操作type。每条tool binding指向独立tool.invoke action，保存结果另用record.create，不从关键词选模板。
+- 6新增离线用例检查实际Pi请求context中的规则、精确复用binding以及5类错误ID仍严格拒绝、不改写、不重试。source/tool定向36/36、全仓typecheck、diffcheck通过；无provider/env/预算/投影/校验/部署修改。
+- Root报告本次真实ledger26/30；本角色零实调，不自行续跑。源码已冻结供Root重启4347并做calculator/quiz复用验收；prompt改善不等于真实模型后续已成功。交接LF-236-bf1686ba-d9ac-494d-9552-21929a9f68a0.md。
+
 ## LF-230 真实请求兼容 · 2026-10-04 America/Vancouver
 - site/tool新增provider-only compact schema投影：去regex和length/item/range decoding约束，结构/required/enum保留；原Pi schema与Host严格限制未变。原ANY schema实际HTTP400generic INVALID_ARGUMENT，瘦身后真实toolcall/source，Root进一步完整候选+actualIAB checked通过。无法断定某一个keyword是唯一原因。
 - provider-diagnostics输出固定English分类+脱敏短reason；nested/arrayGoogle wrappers可识别。Pi1.0.1引用TypeBox1.3已移除error.message导致字段说明undefined，现捕捉tool_execution_end并用Compile.Errors恢复仅白名单path/rule，永不存Received arguments全文。

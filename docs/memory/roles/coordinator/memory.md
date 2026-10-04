@@ -6,15 +6,15 @@ permalink: livingforma/roles/coordinator/memory
 
 # 协调者当前记忆
 
-## Latest state · 2026-10-04 01:00 America/Vancouver
+## Latest state · 2026-10-04 01:45 America/Vancouver
 
-Coordinator27d9cbd8 holdsLF155; catalog23 addsLF233 for deliberate remotehotfix ancestry reconciliation afterLF232 closes. Initialproductioneedd1d4 remains usable at livingforma.tech; all primary3325718 uncommittedmodule/generation/tool changes preserved. New release not yet committed/pushed/deployed.
+Root27d9cbd8 owns LF227; accepted catalog25 digest4c27e4e3612c9414daf929b7d4e4222130e4bafcfad1fb68984a6cf4abd4e01d. Checkpoint655d990 and merge84e90bf preserve feature source and remoteeedd1d4 production history. All worker gates223/229/230/232/233/234/235/236 are completed/closed. Final pnpm check308/308, typecheck/web+API build pass; final commit/CI remain. Production stillinitialeedd1d4, no newdeploy yet.
 
-LF223 QA complete8browser/11HTTP-QuickJS-restart/28ordinary regressions, fixture generators honestly separated. LF229 complete actualFree-profileDocker6/6, global1Worker/start8s/execute4s/total12s. LF230 complete122Agenttests+32final targeted; compactprovider-onlyschema accepted realGemini, originalstrictPi/Hostchecks/budget unchanged. Root actualPhotoDrift returned completecandidate and reachedchecked; uploadsource requires childinput thenhostpicker, so functional flow stillneedsLF232explicitOwnerfeedback/singleexistingrepair. EarlierHTTP400generic reason and run3lostcandidatefield cause unknown.
+Real model local acceptance: PhotoDriftspace-cef5f3a3 v2,3syntheticimages, captions/upload/Favorites/independentChromeleft→pass/right→favorite each1POST/0errors; data/assets/URL retained, anonymousSSEpublish observed. KitchenMathspace-6d41668b v1 actual scale_recipe1 source authored byPi/Gemini,2QuickJSfixtures pass, live150/4*6→225 then savedrecordrec_c227b021-f376-4d00-a9d8-7d96b9445633. PortionQuestv2 uses same scale_recipe1/no newcodeTools; correct225/incorrect200/Next/History passed, original record/time/version andURL unchanged. Phone390px realtool passed and anonymousHistory/orbabsence verified afterSignout. Quizscore explicitlysession-only/reloadreset.
 
-4347 opt-inloopbackserver21251 uses PGlite businessdata andoriginalNeonproviderledger, labelledlocalidentity only; actuallastcall11.607s3793input/4747output. Originalledger18beforecall,19expected; verifybeforefurthercalls, neverreset. AgentfinalsinglepickerpromptrequiresrestartafterLF227claimed. CurrentUI PhotoDriftspace-cef5f3a3 job85468d7c-8954-48cc-99b3-c99b268d4509 revision1checked/repair0, no publication.
+Actual requests27 calculator success;28 quiz initial escapedJS failed hostcheck;29 shared one repair success. Earlier failures retained and generalIDs/toolactionguidance now implemented. OriginalNeonGemini29/30 confirmedDevOps, reserve1hostedrequest; noreset/refund/paidfallback. 4347 exec61930 usesisolatedPGlite/tmp/livingforma-real-generation-27d9cbd8, explicitlocalidentity, actualmodel+QuickJS and originalNeonbudgetonly. Does not proveGoogle/cloudbusinesswrites.
 
-Next LF232finish→LF233 reviewedGitmerge→LF227 real3pages/backendtool/reuse/evolution/asset/SSE+fullchecks/CI→LF228 authorizedexactSHAFreeRenderdeployment. Advancedbypassresearchpaused. ReadonlyindependentreviewbyAgent active; noextra providercalls.
+DevOpsdevops_release_new prep18/18, no sessionclaim/write/deploy; waitingLF227close+exactSHA/CI thenLF228. ExistingFreeRender/noCard/$0/AutoDeployOFF and authorization persist. Rollback must be compatible known-good/same-reviewed-SHA redeploy orforwardfix, nooldbinary/newdefs. Advancedbypassresearchpaused; normalfunctional/auth/privacy/version checks only. [LF227 evidence](../../handoffs/coordinator/LF-227-27d9cbd8-ed2b-4f98-874c-e81f6a6fd28f.md).
 
 
 ## Latest state · 2026-10-03 18:03 America/Vancouver

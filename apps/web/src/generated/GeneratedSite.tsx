@@ -2,6 +2,7 @@ import {useEffect,useMemo,useRef,useState,useSyncExternalStore} from 'react';
 import {jsonObjectSchema,type ToolResult,type ComponentSpec,type Mutation,type Snapshot} from '@livingforma/contracts';
 import {getIdentity,getPageRevision,protectedRequest,request,subscribeIdentity} from '../lib/session-client';
 import {Modal} from '../components/ui';
+import {createHumanChoice,type HumanChoice} from './human-input';
 import {bridgeMutation,bridgeToolRequest,frameState,parseBridgeRequest} from './bridge';
 
 type Props={snapshot:Snapshot;spec:ComponentSpec;generation?:{id:string;revision:number};mutate:(input:Omit<Mutation,'requestId'|'definitionVersion'>)=>Promise<unknown>;onLogin:()=>void;onDiagnostic?:(error?:string)=>void};
@@ -15,18 +16,17 @@ async function imageData(file:File){
 export function GeneratedSite(props:Props){
   const identity=useSyncExternalStore(subscribeIdentity,getIdentity),preview=!!props.generation;
   const iframe=useRef<HTMLIFrameElement>(null),port=useRef<MessagePort|null>(null),current=useRef(props);current.current=props;
-  const [status,setStatus]=useState('Connecting to this website…'),[failure,setFailure]=useState(''),[toolStatus,setToolStatus]=useState<{message:string;failed:boolean}|null>(null);
-  const [confirmation,setConfirmation]=useState<{resolve:(yes:boolean)=>void}|null>(null),[picker,setPicker]=useState<{resolve:(file:File|null)=>void}|null>(null);
-  const transient=useRef({confirmation,picker});transient.current={confirmation,picker};
+  const [status,setStatus]=useState('Connecting to this website…'),[failure,setFailure]=useState(''),[choiceError,setChoiceError]=useState(''),[toolStatus,setToolStatus]=useState<{message:string;failed:boolean}|null>(null);
+  const [confirmation,setConfirmation]=useState<HumanChoice<boolean>|null>(null),[picker,setPicker]=useState<HumanChoice<File>|null>(null);
   const version=props.snapshot.definition?.definitionVersion??0;
   const channel=useMemo(()=>crypto.randomUUID(),[props.snapshot.space.slug,version,props.generation?.id,props.generation?.revision,identity.revision]);
   const src=useMemo(()=>`/api/generated-frame?${new URLSearchParams({space:props.snapshot.space.slug,channel,...(props.generation?{generation:props.generation.id,revision:String(props.generation.revision)}:{version:String(version)})})}`,[channel]);
   useEffect(()=>{
-    let alive=true,connected=false,busy=false,ready=false,errors=0,count=0,windowStart=Date.now();const seen=new Set<string>(),uploaded=new Set<string>();
+    let alive=true,connected=false,busy=false,ready=false,errors=0,count=0,windowStart=Date.now();const seen=new Set<string>(),uploaded=new Set<string>();let cancelChoice:(()=>void)|null=null;
     const actor=identity.session?.user?.id??null,scope=getPageRevision(),revision=identity.revision;
     const valid=()=>alive&&scope===getPageRevision()&&revision===getIdentity().revision;
     const state=()=>frameState(current.current.snapshot,current.current.spec,preview);
-    setFailure('');setToolStatus(null);setStatus('Connecting to this website…');
+    setFailure('');setChoiceError('');setToolStatus(null);setStatus('Connecting to this website…');
     const timeout=setTimeout(()=>{if(valid()&&!ready){setFailure('This website did not finish starting. You can retry the preview or ask for a repair.');current.current.onDiagnostic?.('The website did not call lf.reportReady() within 12 seconds.')}},12000);
     async function run(data:unknown,source:MessagePort){
       let id='',method='';
@@ -56,35 +56,37 @@ export function GeneratedSite(props:Props){
                 result={toolId:output.toolId,toolVersion:output.toolVersion,result:jsonObjectSchema.parse(output.result),reused:output.reused};setToolStatus({message:'Tool completed. Its result is now available in this website.',failed:false});
               }catch(error){if(valid())setToolStatus({message:error instanceof Error?error.message:'The tool could not finish.',failed:true});throw error}
             }else if(input.method==='pickImage'){
-              const file=await new Promise<File|null>(resolve=>setPicker({resolve}));setPicker(null);if(!file)throw new Error('Image selection was cancelled.');if(!valid())return;
-              const body=await imageData(file);if(!valid())return;
+              const choice=createHumanChoice<File>();cancelChoice=choice.cancel;setChoiceError('');setPicker(choice);const selected=await choice.result;cancelChoice=null;if(valid())setPicker(null);if(!valid())return;
+              if(selected.status!=='selected')throw new Error(selected.status==='expired'?'Image selection expired after two minutes. Nothing was uploaded. Try again when you are ready.':'Image selection was cancelled. Nothing was uploaded.');
+              const body=await imageData(selected.value);if(!valid())return;
               const asset=checkedAsset(await protectedRequest<Asset>(`/api/spaces/${encodeURIComponent(current.current.snapshot.space.slug)}/assets`,{method:'POST',body:JSON.stringify(body)},actor));uploaded.add(asset.assetId);result=asset;
             }else{
               const mutation=bridgeMutation(input,current.current.snapshot,current.current.spec);
-              if(input.method==='remove'){const approved=await new Promise<boolean>(resolve=>setConfirmation({resolve}));setConfirmation(null);if(!approved)throw new Error('Deletion was cancelled.');if(!valid())return;}
+              if(input.method==='remove'){const choice=createHumanChoice<boolean>();cancelChoice=choice.cancel;setChoiceError('');setConfirmation(choice);const selected=await choice.result;cancelChoice=null;if(valid())setConfirmation(null);if(!valid())return;if(selected.status!=='selected'||!selected.value)throw new Error(selected.status==='expired'?'Delete confirmation expired after two minutes. Your record was kept.':'Deletion was cancelled. Your record was kept.');}
               const next=await current.current.mutate(mutation);if(!valid())return;
               result=frameState(next&&typeof next==='object'&&'records'in next?next as Snapshot:current.current.snapshot,current.current.spec,false);
             }
           }finally{busy=false}
         }
         if(valid())source.postMessage({id,ok:true,result});
-      }catch(error){if(valid()&&method==='runTool')setToolStatus({message:error instanceof Error?error.message:'This tool could not run.',failed:true});if(valid()&&id)source.postMessage({id,ok:false,error:{code:'BRIDGE_REJECTED',message:error instanceof Error?error.message.slice(0,500):'This action could not be completed.'}})}
+      }catch(error){if(valid()&&['pickImage','remove'].includes(method))setChoiceError(error instanceof Error?error.message:'This choice could not be completed.');if(valid()&&method==='runTool')setToolStatus({message:error instanceof Error?error.message:'This tool could not run.',failed:true});if(valid()&&id)source.postMessage({id,ok:false,error:{code:'BRIDGE_REJECTED',message:error instanceof Error?error.message.slice(0,500):'This action could not be completed.'}})}
     }
     const connect=(event:MessageEvent)=>{
       if(!valid()||connected||event.source!==iframe.current?.contentWindow||event.origin!=='null')return;
       const value=event.data;if(!value||typeof value!=='object'||Object.keys(value).sort().join(',')!=='channel,type,version'||value.type!=='lf:connect'||value.channel!==channel||value.version!==1||event.ports.length!==1)return;
       connected=true;const connection=event.ports[0];port.current=connection;connection.onmessage=event=>{void run(event.data,connection)};connection.start();
     };
-    window.addEventListener('message',connect);
-    return()=>{alive=false;clearTimeout(timeout);window.removeEventListener('message',connect);port.current?.close();port.current=null;transient.current.confirmation?.resolve(false);transient.current.picker?.resolve(null);setConfirmation(null);setPicker(null)};
+    const cancelOnLeave=()=>cancelChoice?.();window.addEventListener('message',connect);window.addEventListener('pagehide',cancelOnLeave);
+    return()=>{alive=false;clearTimeout(timeout);window.removeEventListener('message',connect);window.removeEventListener('pagehide',cancelOnLeave);port.current?.close();port.current=null;cancelChoice?.();cancelChoice=null;setConfirmation(null);setPicker(null)};
   },[channel]);
   useEffect(()=>{port.current?.postMessage({type:'state',state:frameState(props.snapshot,props.spec,preview)})},[props.snapshot,props.spec,preview]);
   return <div className={`generated-site ${preview?'is-preview':''}`}>
     <div className="generated-frame-status"><span role="status">{status}</span><span>{preview?'Read-only preview':'Your data stays in this space'}</span></div>
     {(props.spec.toolBindings?.length||toolStatus)&&<p className={`generated-tool-status ${toolStatus?.failed?'form-error':''}`} role={toolStatus?.failed?'alert':'status'}>{toolStatus?.message||(preview?'Tools stay off until you publish.':'Run a connected tool to see its result.')}</p>}
+    {choiceError&&<p className="form-error" role="alert">{choiceError}</p>}
     {failure&&<p className="form-error generated-runtime-error" role="alert">{failure}</p>}
     <iframe ref={iframe} key={channel} src={src} title={preview?'Generated website preview':'Generated website'} sandbox="allow-scripts" referrerPolicy="no-referrer" allow="camera 'none'; microphone 'none'; geolocation 'none'; clipboard-read 'none'; clipboard-write 'none'; payment 'none'; usb 'none'; serial 'none'; fullscreen 'none'"/>
-    <Modal open={!!confirmation} onOpenChange={open=>{if(!open)confirmation?.resolve(false)}} title="Delete this record?" description="This website asked to remove a saved record. This action cannot be undone."><div className="generated-confirm-actions"><button className="button secondary" onClick={()=>confirmation?.resolve(false)}>Keep record</button><button className="button primary" onClick={()=>confirmation?.resolve(true)}>Delete record</button></div></Modal>
-    <Modal open={!!picker} onOpenChange={open=>{if(!open)picker?.resolve(null)}} title="Add an image" description="Choose an image to save in this space. Large images are resized before upload."><label className="field">Choose a PNG, JPEG or WebP<input type="file" accept="image/png,image/jpeg,image/webp" onChange={event=>picker?.resolve(event.target.files?.[0]??null)}/></label><p className="inline-note">Only the file you select is uploaded. Your website receives a saved image reference.</p></Modal>
+    <Modal open={!!confirmation} onOpenChange={open=>{if(!open)confirmation?.cancel()}} title="Delete this record?" description="This website asked to remove a saved record. This action cannot be undone. Confirm within two minutes, or the record will be kept."><div className="generated-confirm-actions"><button className="button secondary" onClick={()=>confirmation?.cancel()}>Keep record</button><button className="button primary" onClick={()=>confirmation?.choose(true)}>Delete record</button></div></Modal>
+    <Modal open={!!picker} onOpenChange={open=>{if(!open)picker?.cancel()}} title="Add an image" description="Choose an image to save in this space. Large images are resized before upload. Choose within two minutes, or this request will expire."><label className="field">Choose a PNG, JPEG or WebP<input type="file" accept="image/png,image/jpeg,image/webp" onChange={event=>{const file=event.target.files?.[0];if(file)picker?.choose(file);else picker?.cancel()}}/></label><p className="inline-note">Only the file you select is uploaded. Your website receives a saved image reference.</p><button className="button secondary" onClick={()=>picker?.cancel()}>Cancel image selection</button></Modal>
   </div>;
 }

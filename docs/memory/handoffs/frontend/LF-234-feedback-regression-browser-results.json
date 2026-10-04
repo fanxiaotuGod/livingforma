@@ -1,0 +1,102 @@
+{
+  "at": "2026-10-04T08:18:31.384Z",
+  "scope": "Real Chrome, local API/PGlite, actual host repair state/revision with an offline generator. Rejection and delayed-delivery transport fixtures are explicit. No external services.",
+  "checks": [
+    "Checked draft accepts explicit bounded feedback and actual host repairs one source revision; live data and original prompt stay intact",
+    "A rejected report preserves feedback and blocks publication without retrying automatically",
+    "A new revision can finish its startup check before the older repair response arrives",
+    "Changed identity before feedback preflight sends zero reports and keeps Owner-only UI away",
+    "An actual repair response delayed past navigation cannot reopen or alter the next space"
+  ],
+  "calls": [
+    {
+      "prompt": "Build an original image interaction for this offline fixture",
+      "repair": false,
+      "errors": []
+    },
+    {
+      "prompt": "Build an original image interaction for this offline fixture",
+      "repair": true,
+      "errors": [
+        "The image button reports a message instead of opening the chooser. Make that interaction work."
+      ]
+    },
+    {
+      "prompt": "Rejected feedback fixture",
+      "repair": false,
+      "errors": []
+    },
+    {
+      "prompt": "Reordered repair acknowledgment fixture",
+      "repair": false,
+      "errors": []
+    },
+    {
+      "prompt": "Reordered repair acknowledgment fixture",
+      "repair": true,
+      "errors": [
+        "Fix this normal image interaction."
+      ]
+    },
+    {
+      "prompt": "Identity preflight fixture",
+      "repair": false,
+      "errors": []
+    },
+    {
+      "prompt": "Late feedback response fixture",
+      "repair": false,
+      "errors": []
+    },
+    {
+      "prompt": "Late feedback response fixture",
+      "repair": true,
+      "errors": [
+        "Fix the image interaction before publication."
+      ]
+    }
+  ],
+  "feedbackReports": [
+    {
+      "path": "/api/spaces/reading/generations/79ab2f50-0e72-4304-bb0f-7758d1405281/preview",
+      "body": {
+        "sourceRevision": 1,
+        "ok": false,
+        "errors": [
+          "The image button reports a message instead of opening the chooser. Make that interaction work."
+        ]
+      }
+    },
+    {
+      "path": "/api/spaces/reading/generations/2f4ab8e0-66f6-4031-b001-1768204fcaa5/preview",
+      "body": {
+        "sourceRevision": 1,
+        "ok": false,
+        "errors": [
+          "The image interaction should open its chooser."
+        ]
+      }
+    },
+    {
+      "path": "/api/spaces/reading/generations/02dc6c86-269c-4721-8e0a-256c3c25bf81/preview",
+      "body": {
+        "sourceRevision": 1,
+        "ok": false,
+        "errors": [
+          "Fix this normal image interaction."
+        ]
+      }
+    },
+    {
+      "path": "/api/spaces/reading/generations/a82b43ff-beb5-460d-a890-6f4f52280631/preview",
+      "body": {
+        "sourceRevision": 1,
+        "ok": false,
+        "errors": [
+          "Fix the image interaction before publication."
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

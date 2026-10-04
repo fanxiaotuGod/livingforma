@@ -3,6 +3,9 @@ import {parse} from 'acorn';
 import type {Definition,Proposal,RegisteredTool} from './index';
 import type {GeneratedToolManifest,GeneratedToolProgress,GeneratedToolTestReport} from './generated-tools';
 
+/** Human choices expire before the frame promise, so late input cannot mutate data. */
+export const GENERATED_BRIDGE_LIMITS=Object.freeze({requestMs:30000,humanChoiceMs:120000,humanRequestMs:180000});
+
 export const generationOutlineSchema=z.object({version:z.literal(1),title:z.string().max(120).optional(),layout:z.enum(['flow','split','grid']),skin:z.enum(['linen','sage','ink','clay','sand','rose']).optional(),sections:z.array(z.object({id:z.string().regex(/^[a-zA-Z][a-zA-Z0-9_-]{0,63}$/),kind:z.enum(['hero','collection','form','metrics','chart','media','content']),label:z.string().max(80).optional(),columns:z.number().int().min(3).max(12).optional(),items:z.number().int().min(1).max(8).optional()}).strict()).min(1).max(24)}).strict().refine(value=>new Set(value.sections.map(section=>section.id)).size===value.sections.length,'Outline section IDs must be unique.');
 export type GenerationOutline=z.infer<typeof generationOutlineSchema>;
 

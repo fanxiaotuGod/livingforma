@@ -113,3 +113,10 @@ permalink: livingforma/roles/agent/journal
 - Final验证：全Agent122/122；最后prompt修改后定向32/32、全仓typecheck、gitdiffcheck通过。Source冻结此前成功请求仍有独立safe证据，Root需重启4347加载最后prompt再做普通修复。
 - Handoff独立LF230笔记/3实际runJSON/可选受控harness，诚实保留run3候选丢失与未知输出cause，不倒推猜测。Provider-only projection与safeprovider/candidate诊断、opt-in candidateobserver/隐私tests均完成。
 - 无新增Agent模型调用（仍3，Root补1验证），无reset/refund/付费/业务云迁移/高级绕过/部署。finish/close后Root继续LF227/232/QA/DevOps完整交互与部署，禁止默认继续消耗预算。
+
+## 2026-10-04 01:30 · America/Vancouver · LF-236
+- Session bf1686ba-d9ac-494d-9552-21929a9f68a0，catalog25 next自动认领，逐批check；保留Root/Frontend/Backend并行修改。
+- Root真实candidate26在actions.1.id/actions.2.id失败（operationtype误作ID），此前24/25toolbinding误指record.create。只改通用source prompt：明确metadata ASCII ID语法、稳定ID与dottedtype分离、eachbinding独立tool.invoke与保存record.create分离，不加特例模板/自动ID改写。
+- 新6离线tests在真实Pi+mockprovider context检查发送的提示与exactreuse、5类无效ID仍拒绝且onecall。source25/tool11共36/36、全仓typecheck通过；初次测试误读旧SDK的context.systemPrompt属性，改为检查实际序列化TranscriptContext后通过，非生产逻辑错误。
+- Changed packages/agent/src/site-generator.ts与test、docs/agent/generated-sites.md、ownmemory/journal与独立handoff。原strictschema/providerprojection/budget/runtime未改；无.env/实际provider/账本reset/收费/Git发布/高级绕过。
+- Source已冻结通知Root重启4347；Root报告26/30额度保持，后续真实calculator+quiz/reuse+部署由coordinator负责。finish/close释放scope。

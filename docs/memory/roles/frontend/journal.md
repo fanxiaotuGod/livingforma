@@ -154,3 +154,13 @@ permalink: livingforma/roles/frontend/journal
 - Changed：apps/web/src/generated/GenerationStudio.tsx、GenerationStudio.test.tsx、studio.css；docs/frontend/generated-sites.md、ownmemory/journal/handoff。未改其他源/配置/shared/Backend/环境/依赖。没有使用真实provider或coordinator的4347会话。
 - Verified：全仓tsc、feedback3+progress5+session12=20tests、webbuild通过（index-DIgLXu9Q.js 791.91kB/240.58gzip sizewarning）；独立4348真实Chrome/host/PGlite+offlinegenerator五场景通过：checked→repairing revision2→checked→显式publish/保留promptrecordURL；503草稿/error无自动retry；新版startup先于旧repair响应仍完成；账号改变preflight0POST；迟到actual200跨space不更新。0pageerrors；两张截图已读取，390px无横溢出。
 - Evidence：LF-232-browser.mts/results.json/feedback-desktop.png/feedback-mobile.png；唯一handoff LF-232-01a65ac6-7807-4eba-8648-7b13320089a8.md。原LF222/226证据保留。源码已冻结通知Root供实际PhotoDrift正常反馈，不声称本角色已运行真实Pi修复。无付费、commit/push/deploy。
+
+
+## 2026-10-04 01:26 America/Vancouver · LF-234 bounded choices and retry
+
+- Session `3eb46c98-978c-4919-9ed6-94c69331a8bf` freshfrontend自动next领取catalog24 LF234；AGENTS/最新角色历史/共享契约/skills适配核对，每批check通过。保留LF233合并的远端session-hotfix日志及本地模块/generated历史。
+- Implemented：GeneratedSite人类选择120秒一次性deadline与绝对时间校验；Cancel/expiry/identity/channel/page清理后晚到file/confirm零mutate。英文UI明确两分钟并关闭dialog。Studio startup-report网络失败清dedup，显式Retry同job/revision重新readycheck，source tab往返不重放；publishgate与迟到scope守卫，LF232feedback保留。
+- Changed：GeneratedSite.tsx、GenerationStudio.tsx、新human-input.ts/test.ts，本角色frontend说明/记忆/handoff。Backend LF235配对180秒childtimer由backend负责；未改其他source、共享、环境或依赖，未重建Root正在使用的apps/web/dist。
+- Verified：24 targeted tests（human4/feedback3/progress5/session12）、整仓tsc、temp Vite build通过；index-Da_q2tBw.js 794.29kB/gzip241.31提示。实际Chrome+API/PGlite/MessageChannel/currentbootstrap新7场景、LF232反馈5场景都pass，0pageerrors，脚本关闭资源。virtual clock负责deadline；offline generator/503transport明确fixture；读取expiry与retry截图确认可见错误/操作。
+- Actual candidate acceptance：Root单独授权在4347/s/space-cef5f3a3现有真实Pi PhotoDrift v2，normal /auth/local Owner登录，以native Chrome mouse pointer左滑blue→pass、右滑Synthetic sunset→favorite。各1POST、recordVersion1→2、stateVersion4→5→6、eventCursor6→7→8、0pageerrors；原第一coral Favorite及全3records/assets/URL/definitionVersion2保留。浏览器已关闭并通知Root；没有生成/新provider/修改source/触碰env。脚本有初始状态断言，非可随意重放数据变更的regression。
+- Evidence：LF-234-browser.mts/results、LF-234-feedback-regression.mts/results、LF-234-real-gesture.mts/results/before/after；唯一handoff LF-234-3eb46c98-978c-4919-9ed6-94c69331a8bf.md。源码已冻结；Root负责最终共享build/check/部署，未commit/push，保持费用确认边界。

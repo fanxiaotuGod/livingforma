@@ -964,7 +964,10 @@
       ],
       "depends_on": [
         "LF-227",
-        "LF-223"
+        "LF-223",
+        "LF-234",
+        "LF-235",
+        "LF-236"
       ],
       "acceptance": [
         "Deploy exact reviewed CI-green source to existing free Render service and preserve Neon data/OAuth",
@@ -1077,7 +1080,73 @@
         "Review actual conflict resolutions and appropriate checks before release; no reset/stash or unreviewed external publication"
       ],
       "notes": "Coordinator alone owns deliberate Git integration after FrontendLF232 releases. Read-only independent source review may proceed. Local scoped commits preserve source before merging origin/main; push and production deployment only after LF227 acceptance."
+    },
+    {
+      "id": "LF-234",
+      "role": "frontend",
+      "title": "Keep human choices bounded and let an Owner retry failed preview checks",
+      "paths": [
+        "apps/web/src/generated/GeneratedSite.tsx",
+        "apps/web/src/generated/GenerationStudio.tsx",
+        "apps/web/src/generated/GenerationStudio.test.tsx",
+        "apps/web/src/generated/human-input.ts",
+        "apps/web/src/generated/human-input.test.ts",
+        "docs/frontend/generated-sites.md",
+        "docs/memory/roles/frontend/",
+        "docs/memory/handoffs/frontend/"
+      ],
+      "depends_on": [
+        "LF-232"
+      ],
+      "acceptance": [
+        "Image picker and record-removal confirmations have an explicit cancellable120s human deadline; cancellation/expiry/page or identity changes prevent late upload/deletion",
+        "Ready-check POST transport failure clears failed dedup state and offers explicit retry of the same revision with no new model call or unsafe automatic replay",
+        "Targeted ordinary tests and browser fixture checks verify expiry/cancel/late selection and explicit retry through real host, while existing functional feedback remains intact"
+      ],
+      "notes": "Readonly Agent ordinary review found child30s RPC expires while parent picker remains live and late image upload becomes orphaned; same human issue affects removal confirmation. Coordinate backend LF235 child180s human lifetime while ordinary RPC stays30s. Root owns shared limits. No providers/deployment/advanced research."
+    },
+    {
+      "id": "LF-235",
+      "role": "backend",
+      "title": "Allow bounded human choices to complete before generated-frame RPC expiry",
+      "paths": [
+        "apps/api/src/generated-frame.ts",
+        "apps/api/src/generated-browser.test.ts",
+        "docs/backend/generated-sites.md",
+        "docs/memory/roles/backend/",
+        "docs/memory/handoffs/backend/"
+      ],
+      "depends_on": [
+        "LF-220"
+      ],
+      "acceptance": [
+        "Generated-frame RPC uses shared180s only for pickImage/remove human interaction; other RPC stays30s, pending size/source/privacy boundaries unchanged",
+        "Ordinary browser regression confirms method-specific timeout behavior and cancellation cleanup without advanced bypass reproduction",
+        "Coordinate frontend120s choice deadline and verify strict shared limits/compiler remain valid"
+      ],
+      "notes": "Human workflow correctness only. Root shared limits defines30/120/180s. Do not edit tool/runtime/generation/provider logic or secrets. No actual long blocking sleep needed; test timers with ordinary mocked clock or source-safe browser transport."
+    },
+    {
+      "id": "LF-236",
+      "role": "agent",
+      "title": "Explain strict identifier and tool-action relationships after compact provider schema projection",
+      "paths": [
+        "packages/agent/src/site-generator.ts",
+        "packages/agent/src/site-generator.test.ts",
+        "docs/agent/generated-sites.md",
+        "docs/memory/roles/agent/",
+        "docs/memory/handoffs/agent/"
+      ],
+      "depends_on": [
+        "LF-230"
+      ],
+      "acceptance": [
+        "General source-generation instructions explain stable ID grammar and distinguish action IDs from dotted action types; tools use separate tool.invoke actions rather than record.create bindings",
+        "Original strict Pi/Host validation, compact provider wire schema, general generation, one repair and durable free budgets stay unchanged",
+        "Meaningful offline request instruction regression and relevant source-generator tests pass; no additional live provider request needed"
+      ],
+      "notes": "Root real KitchenMath candidate26 failedPiarguments actions.1.id/actions.2.id pattern: model used record.create/record.delete asIDs. Earlier24/25 used create_calc action as toolbinding buttype record.create. Providercompactprojection removesregex fromwire; explain semantic constraints in natural instructions so ordinaryusers do not needinternalcontracts. No advancedresearch/provider/deploy/source-template specialization."
     }
   ],
-  "revision": 23
+  "revision": 25
 }

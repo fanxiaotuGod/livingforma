@@ -1,0 +1,156 @@
+{
+  "startedAt": "2026-10-04T08:34:59.756Z",
+  "scope": "Real Pi/Gemini; isolated business PGlite; labelled local identity; unchanged original provider ledger",
+  "events": [
+    {
+      "stage": "repairing",
+      "message": "Repairing the reported issue."
+    },
+    {
+      "stage": "writing",
+      "message": "Writing the website source.",
+      "source": {
+        "html": "<div class=\"container\">\n  <header>\n    <h1>Portion Quest</h1>\n    <p class=\"subtitle\">Interactive Recipe-Scaling Quiz & History</p>\n  </header>\n\n  <div id=\"previewNotice\" class=\"notice\" style=\"display:none;\"></div>\n\n  <div class=\"nav-tabs\">\n    <button type=\"button\" class=\"tab-btn active\" data-tab=\"quiz\">Quiz Quest</button>\n    <button type=\"button\" class=\"tab-btn\" data-tab=\"history\">History View</button>\n  </div>\n\n  <div id=\"quizSection\" class=\"card\">\n    <h2>Recipe Scaling Quiz</h2>\n    <div id=\"scoreBanner\" class=\"notice\" style=\"background:var(--cream); color:var(--ink); margin-bottom:1rem;\">\n      Session Score (Resets on reload): <span id=\"scoreVal\">0</span> / <span id=\"totalVal\">0</span>\n    </div>\n    <div id=\"quizContent\">\n      <div class=\"empty-state\">Loading quest challenge...</div>\n    </div>\n  </div>\n\n  <div id=\"historySection\" class=\"card\" style=\"display:none;\">\n    <h2>Saved Calculations History</h2>\n    <div id=\"savedContainer\">\n      <div class=\"empty-state\">No saved calculations yet.</div>\n    </div>\n  </div>\n</div>\n",
+        "css": ":root {\n  --bg: #fffbf7;\n  --card-bg: #ffffff;\n  --text: #2d2327;\n  --text-muted: #6b5b62;\n  --coral: #e05a47;\n  --coral-dark: #b84332;\n  --ink: #1a1617;\n  --cream: #fcf6f0;\n  --border: #e6d5cc;\n  --radius: 16px;\n}\n* { box-sizing: border-box; margin: 0; padding: 0; }\nbody {\n  font-family: system-ui, -apple-system, sans-serif;\n  background: var(--bg);\n  color: var(--text);\n  line-height: 1.5;\n  padding: 1.5rem;\n}\n.container { max-width: 900px; margin: 0 auto; }\nheader { margin-bottom: 2rem; text-align: center; }\nh1 { font-size: 2.25rem; color: var(--ink); margin-bottom: 0.5rem; font-weight: 800; letter-spacing: -0.02em; }\np.subtitle { color: var(--text-muted); }\n.nav-tabs { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; }\n.tab-btn {\n  background: var(--cream);\n  color: var(--text-muted);\n  border: 1px solid var(--border);\n  padding: 0.5rem 1.25rem;\n  border-radius: 20px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.2s;\n}\n.tab-btn.active { background: var(--coral); color: white; border-color: var(--coral); }\n.card {\n  background: var(--card-bg);\n  border: 2px solid var(--ink);\n  border-radius: var(--radius);\n  padding: 1.75rem;\n  margin-bottom: 1.5rem;\n  box-shadow: 4px 4px 0px var(--ink);\n}\nh2 { font-size: 1.35rem; color: var(--ink); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }\nlabel { font-size: 0.875rem; font-weight: 700; margin-bottom: 0.375rem; color: var(--ink); display: block; }\ninput {\n  width: 100%;\n  padding: 0.75rem;\n  border: 2px solid var(--ink);\n  border-radius: 8px;\n  background: var(--cream);\n  font-size: 1rem;\n  color: var(--text);\n  font-weight: 600;\n}\ninput:focus { outline: none; border-color: var(--coral); }\n.field { display: flex; flex-direction: column; margin-bottom: 1rem; }\n.btn-row { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }\nbutton.primary {\n  background: var(--coral);\n  color: white;\n  border: 2px solid var(--ink);\n  padding: 0.75rem 1.5rem;\n  border-radius: 8px;\n  font-size: 1rem;\n  font-weight: 700;\n  cursor: pointer;\n  box-shadow: 2px 2px 0px var(--ink);\n}\nbutton.primary:hover:not(:disabled) { transform: translate(-1px, -1px); box-shadow: 3px 3px 0px var(--ink); }\nbutton:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }\n.notice {\n  background: #fff3cd;\n  color: #856404;\n  border: 2px solid var(--ink);\n  padding: 0.75rem;\n  border-radius: 8px;\n  margin-bottom: 1rem;\n  font-size: 0.875rem;\n  font-weight: 600;\n}\n.feedback-box { padding: 1rem; border-radius: 8px; border: 2px solid var(--ink); margin-top: 1rem; font-weight: 700; text-align: center; }\n.feedback-box.correct { background: #d4edda; color: #155724; }\n.feedback-box.incorrect { background: #f8d7da; color: #721c24; }\ntable { width: 100%; border-collapse: collapse; margin-top: 1rem; }\nth, td { padding: 0.75rem; text-align: left; border-bottom: 2px solid var(--border); font-size: 0.95rem; }\nth { font-weight: 700; color: var(--ink); background: var(--cream); }\n.empty-state { color: var(--text-muted); text-align: center; padding: 2rem; font-weight: 600; }\n.quiz-card { background: var(--cream); border: 2px dashed var(--ink); padding: 1.25rem; border-radius: 12px; margin-bottom: 1rem; }\n",
+        "js": "(async function() {\n  let state = await lf.ready;\n  let currentQuizRecord = null;\n  let sessionScore = 0;\n  let sessionTotal = 0;\n\n  const previewNotice = document.getElementById('previewNotice');\n  const quizSection = document.getElementById('quizSection');\n  const historySection = document.getElementById('historySection');\n  const savedContainer = document.getElementById('savedContainer');\n  const quizContent = document.getElementById('quizContent');\n  const scoreVal = document.getElementById('scoreVal');\n  const totalVal = document.getElementById('totalVal');\n\n  if (state.preview) {\n    previewNotice.textContent = \"Preview only. Publish to save changes.\";\n    previewNotice.style.display = \"block\";\n  }\n\n  document.querySelectorAll('.tab-btn').forEach(btn => {\n    btn.addEventListener('click', () => {\n      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));\n      btn.classList.add('active');\n      const tab = btn.getAttribute('data-tab');\n      if (tab === 'quiz') {\n        quizSection.style.display = 'block';\n        historySection.style.display = 'none';\n      } else {\n        quizSection.style.display = 'none';\n        historySection.style.display = 'block';\n      }\n    });\n  });\n\n  function pickNewQuizRecord(records) {\n    if (!records || records.length === 0) {\n      currentQuizRecord = null;\n    } else {\n      const randomIndex = Math.floor(Math.random() * records.length);\n      currentQuizRecord = records[randomIndex];\n    }\n    renderQuiz();\n  }\n\n  function renderQuiz() {\n    const records = state.records || [];\n    if (records.length === 0) {\n      quizContent.innerHTML = '<div class=\"empty-state\">No saved calculations found in history to build a quiz from. Add calculations via other means or save records to begin!</div>';\n      return;\n    }\n\n    if (!currentQuizRecord) {\n      pickNewQuizRecord(records);\n      return;\n    }\n\n    const v = currentQuizRecord.values || {};\n    quizContent.innerHTML = `\n      <div class=\"quiz-card\">\n        <p style=\"font-weight:700; margin-bottom:0.5rem;\">Ingredient: <span style=\"color:var(--coral);\">${escapeHtml(v.ingredient || 'Ingredient')}</span></p>\n        <p>Original Amount: <strong>${escapeHtml(String(v.amount ?? ''))}</strong></p>\n        <p>Original Servings: <strong>${escapeHtml(String(v.originalServings ?? ''))}</strong></p>\n        <p>Target Servings: <strong>${escapeHtml(String(v.targetServings ?? ''))}</strong></p>\n      </div>\n\n      <div class=\"field\">\n        <label for=\"guessInput\">Your Guessed Scaled Amount</label>\n        <input type=\"number\" step=\"any\" id=\"guessInput\" placeholder=\"Enter scaled amount\" />\n      </div>\n\n      <div class=\"btn-row\">\n        <button type=\"button\" id=\"checkBtn\" class=\"primary\">Check Answer</button>\n        <button type=\"button\" id=\"nextBtn\" class=\"primary\" style=\"background:var(--ink);\" disabled>Next Question</button>\n      </div>\n\n      <div id=\"quizFeedback\" style=\"display:none;\"></div>\n    `;\n\n    const checkBtn = document.getElementById('checkBtn');\n    const nextBtn = document.getElementById('nextBtn');\n    const guessInput = document.getElementById('guessInput');\n    const quizFeedback = document.getElementById('quizFeedback');\n\n    checkBtn.addEventListener('click', async () => {\n      const guessVal = parseFloat(guessInput.value);\n      if (isNaN(guessVal)) {\n        quizFeedback.textContent = \"Please enter a valid number.\";\n        quizFeedback.className = \"feedback-box incorrect\";\n        quizFeedback.style.display = 'block';\n        return;\n      }\n\n      if (!state.permissions.canUseTools && state.preview) {\n        quizFeedback.textContent = \"Owner-only: Publish to run tool.\";\n        quizFeedback.className = \"feedback-box incorrect\";\n        quizFeedback.style.display = 'block';\n        return;\n      }\n\n      try {\n        checkBtn.disabled = true;\n        checkBtn.textContent = \"Checking...\";\n        const res = await lf.runTool(\"scale_recipe\", 1, {\n          amount: Number(v.amount),\n          originalServings: Number(v.originalServings),\n          targetServings: Number(v.targetServings)\n        });\n\n        const correctAmount = res.result.scaledAmount;\n        sessionTotal++;\n        totalVal.textContent = sessionTotal;\n\n        if (Math.abs(guessVal - correctAmount) < 0.01) {\n          sessionScore++;\n          scoreVal.textContent = sessionScore;\n          quizFeedback.textContent = `Correct! Exact scaled amount is ${correctAmount}.`;\n          quizFeedback.className = \"feedback-box correct\";\n        } else {\n          quizFeedback.textContent = `Try again! The correct scaled amount is ${correctAmount}. (Your guess: ${guessVal})`;\n          quizFeedback.className = \"feedback-box incorrect\";\n        }\n        quizFeedback.style.display = 'block';\n        nextBtn.disabled = false;\n      } catch (err) {\n        quizFeedback.textContent = \"Tool error: \" + (err.message || err);\n        quizFeedback.className = \"feedback-box incorrect\";\n        quizFeedback.style.display = 'block';\n      } finally {\n        checkBtn.disabled = false;\n        checkBtn.textContent = \"Check Answer\";\n      }\n    });\n\n    nextBtn.addEventListener('click', () => {\n      pickNewQuizRecord(records);\n    });\n  }\n\n  function renderHistory(currentState) {\n    const records = currentState.records || [];\n    if (records.length === 0) {\n      savedContainer.innerHTML = '<div class=\"empty-state\">No saved calculations yet.</div>';\n      return;\n    }\n\n    let html = `<table><thead><tr><th>Ingredient</th><th>Amount</th><th>Orig. Serv.</th><th>Target Serv.</th><th>Scaled</th><th>Action</th></tr></thead><tbody>`;\n    for (const r of records) {\n      const v = r.values || {};\n      html += `<tr>\n        <td>${escapeHtml(v.ingredient || '')}</td>\n        <td>${escapeHtml(String(v.amount || ''))}</td>\n        <td>${escapeHtml(String(v.originalServings || ''))}</td>\n        <td>${escapeHtml(String(v.targetServings || ''))}</td>\n        <td><strong>${escapeHtml(String(v.scaledAmount || ''))}</strong></td>\n        <td><button data-id=\"${r.id}\" class=\"del-btn primary\" style=\"padding:0.25rem 0.5rem;font-size:0.8rem;background:#b84332;\">Delete</button></td>\n      </tr>`;\n    }\n    html += `</tbody></table>`;\n    savedContainer.innerHTML = html;\n\n    savedContainer.querySelectorAll('.del-btn').forEach(btn => {\n      btn.addEventListener('click', async () => {\n        const id = btn.getAttribute('data-id');\n        try {\n          state = await lf.remove(id);\n          renderHistory(state);\n          renderQuiz();\n        } catch (err) {\n          alert(\"Failed to delete: \" + (err.message || err));\n        }\n      });\n    });\n  }\n\n  function escapeHtml(str) {\n    return str.replace(/&/g, \"&amp;\").replace(/</g, \"&lt;\").replace(/>/g, \"&gt;\");\n  }\n\n  renderQuiz();\n  renderHistory(state);\n\n  lf.subscribe(next => {\n    state = next;\n    renderHistory(state);\n    if (!currentQuizRecord && state.records && state.records.length > 0) {\n      renderQuiz();\n    }\n  });\n\n  await lf.reportReady();\n})();\n"
+      },
+      "ui": {
+        "version": 1,
+        "title": "Portion Quest",
+        "layout": "flow",
+        "skin": "rose",
+        "sections": [
+          {
+            "id": "quizSection",
+            "kind": "form",
+            "label": "Quiz Quest"
+          },
+          {
+            "id": "historySection",
+            "kind": "collection",
+            "label": "History View"
+          }
+        ]
+      }
+    },
+    {
+      "stage": "validating",
+      "message": "Source and data checks completed. Host tool tests and browser preview are still required."
+    }
+  ],
+  "candidates": [
+    {
+      "codeTools": [],
+      "toolBindings": [
+        {
+          "actionId": "calculate",
+          "toolId": "scale_recipe",
+          "toolVersion": 1,
+          "kind": "generated"
+        }
+      ],
+      "description": "Portion Quest: interactive recipe-scaling quiz and history view with playful ink-and-coral design.",
+      "skin": "rose",
+      "summary": "Portion Quest interactive recipe-scaling quiz and history view.",
+      "artifact": {
+        "format": "html-v1",
+        "html": "<div class=\"container\">\n  <header>\n    <h1>Portion Quest</h1>\n    <p class=\"subtitle\">Interactive Recipe-Scaling Quiz & History</p>\n  </header>\n\n  <div id=\"previewNotice\" class=\"notice\" style=\"display:none;\"></div>\n\n  <div class=\"nav-tabs\">\n    <button type=\"button\" class=\"tab-btn active\" data-tab=\"quiz\">Quiz Quest</button>\n    <button type=\"button\" class=\"tab-btn\" data-tab=\"history\">History View</button>\n  </div>\n\n  <div id=\"quizSection\" class=\"card\">\n    <h2>Recipe Scaling Quiz</h2>\n    <div id=\"scoreBanner\" class=\"notice\" style=\"background:var(--cream); color:var(--ink); margin-bottom:1rem;\">\n      Session Score (Resets on reload): <span id=\"scoreVal\">0</span> / <span id=\"totalVal\">0</span>\n    </div>\n    <div id=\"quizContent\">\n      <div class=\"empty-state\">Loading quest challenge...</div>\n    </div>\n  </div>\n\n  <div id=\"historySection\" class=\"card\" style=\"display:none;\">\n    <h2>Saved Calculations History</h2>\n    <div id=\"savedContainer\">\n      <div class=\"empty-state\">No saved calculations yet.</div>\n    </div>\n  </div>\n</div>\n",
+        "bridgeVersion": 1,
+        "css": ":root {\n  --bg: #fffbf7;\n  --card-bg: #ffffff;\n  --text: #2d2327;\n  --text-muted: #6b5b62;\n  --coral: #e05a47;\n  --coral-dark: #b84332;\n  --ink: #1a1617;\n  --cream: #fcf6f0;\n  --border: #e6d5cc;\n  --radius: 16px;\n}\n* { box-sizing: border-box; margin: 0; padding: 0; }\nbody {\n  font-family: system-ui, -apple-system, sans-serif;\n  background: var(--bg);\n  color: var(--text);\n  line-height: 1.5;\n  padding: 1.5rem;\n}\n.container { max-width: 900px; margin: 0 auto; }\nheader { margin-bottom: 2rem; text-align: center; }\nh1 { font-size: 2.25rem; color: var(--ink); margin-bottom: 0.5rem; font-weight: 800; letter-spacing: -0.02em; }\np.subtitle { color: var(--text-muted); }\n.nav-tabs { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; }\n.tab-btn {\n  background: var(--cream);\n  color: var(--text-muted);\n  border: 1px solid var(--border);\n  padding: 0.5rem 1.25rem;\n  border-radius: 20px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.2s;\n}\n.tab-btn.active { background: var(--coral); color: white; border-color: var(--coral); }\n.card {\n  background: var(--card-bg);\n  border: 2px solid var(--ink);\n  border-radius: var(--radius);\n  padding: 1.75rem;\n  margin-bottom: 1.5rem;\n  box-shadow: 4px 4px 0px var(--ink);\n}\nh2 { font-size: 1.35rem; color: var(--ink); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }\nlabel { font-size: 0.875rem; font-weight: 700; margin-bottom: 0.375rem; color: var(--ink); display: block; }\ninput {\n  width: 100%;\n  padding: 0.75rem;\n  border: 2px solid var(--ink);\n  border-radius: 8px;\n  background: var(--cream);\n  font-size: 1rem;\n  color: var(--text);\n  font-weight: 600;\n}\ninput:focus { outline: none; border-color: var(--coral); }\n.field { display: flex; flex-direction: column; margin-bottom: 1rem; }\n.btn-row { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }\nbutton.primary {\n  background: var(--coral);\n  color: white;\n  border: 2px solid var(--ink);\n  padding: 0.75rem 1.5rem;\n  border-radius: 8px;\n  font-size: 1rem;\n  font-weight: 700;\n  cursor: pointer;\n  box-shadow: 2px 2px 0px var(--ink);\n}\nbutton.primary:hover:not(:disabled) { transform: translate(-1px, -1px); box-shadow: 3px 3px 0px var(--ink); }\nbutton:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }\n.notice {\n  background: #fff3cd;\n  color: #856404;\n  border: 2px solid var(--ink);\n  padding: 0.75rem;\n  border-radius: 8px;\n  margin-bottom: 1rem;\n  font-size: 0.875rem;\n  font-weight: 600;\n}\n.feedback-box { padding: 1rem; border-radius: 8px; border: 2px solid var(--ink); margin-top: 1rem; font-weight: 700; text-align: center; }\n.feedback-box.correct { background: #d4edda; color: #155724; }\n.feedback-box.incorrect { background: #f8d7da; color: #721c24; }\ntable { width: 100%; border-collapse: collapse; margin-top: 1rem; }\nth, td { padding: 0.75rem; text-align: left; border-bottom: 2px solid var(--border); font-size: 0.95rem; }\nth { font-weight: 700; color: var(--ink); background: var(--cream); }\n.empty-state { color: var(--text-muted); text-align: center; padding: 2rem; font-weight: 600; }\n.quiz-card { background: var(--cream); border: 2px dashed var(--ink); padding: 1.25rem; border-radius: 12px; margin-bottom: 1rem; }\n",
+        "assetIds": [],
+        "js": "(async function() {\n  let state = await lf.ready;\n  let currentQuizRecord = null;\n  let sessionScore = 0;\n  let sessionTotal = 0;\n\n  const previewNotice = document.getElementById('previewNotice');\n  const quizSection = document.getElementById('quizSection');\n  const historySection = document.getElementById('historySection');\n  const savedContainer = document.getElementById('savedContainer');\n  const quizContent = document.getElementById('quizContent');\n  const scoreVal = document.getElementById('scoreVal');\n  const totalVal = document.getElementById('totalVal');\n\n  if (state.preview) {\n    previewNotice.textContent = \"Preview only. Publish to save changes.\";\n    previewNotice.style.display = \"block\";\n  }\n\n  document.querySelectorAll('.tab-btn').forEach(btn => {\n    btn.addEventListener('click', () => {\n      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));\n      btn.classList.add('active');\n      const tab = btn.getAttribute('data-tab');\n      if (tab === 'quiz') {\n        quizSection.style.display = 'block';\n        historySection.style.display = 'none';\n      } else {\n        quizSection.style.display = 'none';\n        historySection.style.display = 'block';\n      }\n    });\n  });\n\n  function pickNewQuizRecord(records) {\n    if (!records || records.length === 0) {\n      currentQuizRecord = null;\n    } else {\n      const randomIndex = Math.floor(Math.random() * records.length);\n      currentQuizRecord = records[randomIndex];\n    }\n    renderQuiz();\n  }\n\n  function renderQuiz() {\n    const records = state.records || [];\n    if (records.length === 0) {\n      quizContent.innerHTML = '<div class=\"empty-state\">No saved calculations found in history to build a quiz from. Add calculations via other means or save records to begin!</div>';\n      return;\n    }\n\n    if (!currentQuizRecord) {\n      pickNewQuizRecord(records);\n      return;\n    }\n\n    const v = currentQuizRecord.values || {};\n    quizContent.innerHTML = `\n      <div class=\"quiz-card\">\n        <p style=\"font-weight:700; margin-bottom:0.5rem;\">Ingredient: <span style=\"color:var(--coral);\">${escapeHtml(v.ingredient || 'Ingredient')}</span></p>\n        <p>Original Amount: <strong>${escapeHtml(String(v.amount ?? ''))}</strong></p>\n        <p>Original Servings: <strong>${escapeHtml(String(v.originalServings ?? ''))}</strong></p>\n        <p>Target Servings: <strong>${escapeHtml(String(v.targetServings ?? ''))}</strong></p>\n      </div>\n\n      <div class=\"field\">\n        <label for=\"guessInput\">Your Guessed Scaled Amount</label>\n        <input type=\"number\" step=\"any\" id=\"guessInput\" placeholder=\"Enter scaled amount\" />\n      </div>\n\n      <div class=\"btn-row\">\n        <button type=\"button\" id=\"checkBtn\" class=\"primary\">Check Answer</button>\n        <button type=\"button\" id=\"nextBtn\" class=\"primary\" style=\"background:var(--ink);\" disabled>Next Question</button>\n      </div>\n\n      <div id=\"quizFeedback\" style=\"display:none;\"></div>\n    `;\n\n    const checkBtn = document.getElementById('checkBtn');\n    const nextBtn = document.getElementById('nextBtn');\n    const guessInput = document.getElementById('guessInput');\n    const quizFeedback = document.getElementById('quizFeedback');\n\n    checkBtn.addEventListener('click', async () => {\n      const guessVal = parseFloat(guessInput.value);\n      if (isNaN(guessVal)) {\n        quizFeedback.textContent = \"Please enter a valid number.\";\n        quizFeedback.className = \"feedback-box incorrect\";\n        quizFeedback.style.display = 'block';\n        return;\n      }\n\n      if (!state.permissions.canUseTools && state.preview) {\n        quizFeedback.textContent = \"Owner-only: Publish to run tool.\";\n        quizFeedback.className = \"feedback-box incorrect\";\n        quizFeedback.style.display = 'block';\n        return;\n      }\n\n      try {\n        checkBtn.disabled = true;\n        checkBtn.textContent = \"Checking...\";\n        const res = await lf.runTool(\"scale_recipe\", 1, {\n          amount: Number(v.amount),\n          originalServings: Number(v.originalServings),\n          targetServings: Number(v.targetServings)\n        });\n\n        const correctAmount = res.result.scaledAmount;\n        sessionTotal++;\n        totalVal.textContent = sessionTotal;\n\n        if (Math.abs(guessVal - correctAmount) < 0.01) {\n          sessionScore++;\n          scoreVal.textContent = sessionScore;\n          quizFeedback.textContent = `Correct! Exact scaled amount is ${correctAmount}.`;\n          quizFeedback.className = \"feedback-box correct\";\n        } else {\n          quizFeedback.textContent = `Try again! The correct scaled amount is ${correctAmount}. (Your guess: ${guessVal})`;\n          quizFeedback.className = \"feedback-box incorrect\";\n        }\n        quizFeedback.style.display = 'block';\n        nextBtn.disabled = false;\n      } catch (err) {\n        quizFeedback.textContent = \"Tool error: \" + (err.message || err);\n        quizFeedback.className = \"feedback-box incorrect\";\n        quizFeedback.style.display = 'block';\n      } finally {\n        checkBtn.disabled = false;\n        checkBtn.textContent = \"Check Answer\";\n      }\n    });\n\n    nextBtn.addEventListener('click', () => {\n      pickNewQuizRecord(records);\n    });\n  }\n\n  function renderHistory(currentState) {\n    const records = currentState.records || [];\n    if (records.length === 0) {\n      savedContainer.innerHTML = '<div class=\"empty-state\">No saved calculations yet.</div>';\n      return;\n    }\n\n    let html = `<table><thead><tr><th>Ingredient</th><th>Amount</th><th>Orig. Serv.</th><th>Target Serv.</th><th>Scaled</th><th>Action</th></tr></thead><tbody>`;\n    for (const r of records) {\n      const v = r.values || {};\n      html += `<tr>\n        <td>${escapeHtml(v.ingredient || '')}</td>\n        <td>${escapeHtml(String(v.amount || ''))}</td>\n        <td>${escapeHtml(String(v.originalServings || ''))}</td>\n        <td>${escapeHtml(String(v.targetServings || ''))}</td>\n        <td><strong>${escapeHtml(String(v.scaledAmount || ''))}</strong></td>\n        <td><button data-id=\"${r.id}\" class=\"del-btn primary\" style=\"padding:0.25rem 0.5rem;font-size:0.8rem;background:#b84332;\">Delete</button></td>\n      </tr>`;\n    }\n    html += `</tbody></table>`;\n    savedContainer.innerHTML = html;\n\n    savedContainer.querySelectorAll('.del-btn').forEach(btn => {\n      btn.addEventListener('click', async () => {\n        const id = btn.getAttribute('data-id');\n        try {\n          state = await lf.remove(id);\n          renderHistory(state);\n          renderQuiz();\n        } catch (err) {\n          alert(\"Failed to delete: \" + (err.message || err));\n        }\n      });\n    });\n  }\n\n  function escapeHtml(str) {\n    return str.replace(/&/g, \"&amp;\").replace(/</g, \"&lt;\").replace(/>/g, \"&gt;\");\n  }\n\n  renderQuiz();\n  renderHistory(state);\n\n  lf.subscribe(next => {\n    state = next;\n    renderHistory(state);\n    if (!currentQuizRecord && state.records && state.records.length > 0) {\n      renderQuiz();\n    }\n  });\n\n  await lf.reportReady();\n})();\n"
+      },
+      "title": "Portion Quest",
+      "outline": {
+        "skin": "rose",
+        "layout": "flow",
+        "sections": [
+          {
+            "id": "quizSection",
+            "label": "Quiz Quest",
+            "kind": "form"
+          },
+          {
+            "label": "History View",
+            "kind": "collection",
+            "id": "historySection"
+          }
+        ],
+        "version": 1,
+        "title": "Portion Quest"
+      },
+      "entitySchema": {
+        "name": "Calculation",
+        "fields": [
+          {
+            "id": "ingredient",
+            "label": "Ingredient Name",
+            "public": true,
+            "type": "text",
+            "required": true
+          },
+          {
+            "type": "number",
+            "id": "amount",
+            "public": true,
+            "required": true,
+            "label": "Original Amount"
+          },
+          {
+            "required": true,
+            "label": "Original Servings",
+            "id": "originalServings",
+            "public": true,
+            "type": "number"
+          },
+          {
+            "id": "targetServings",
+            "required": true,
+            "label": "Target Servings",
+            "type": "number",
+            "public": true
+          },
+          {
+            "label": "Scaled Amount",
+            "public": true,
+            "id": "scaledAmount",
+            "type": "number",
+            "required": true
+          }
+        ],
+        "schemaVersion": 1
+      },
+      "capabilityGaps": [],
+      "actions": [
+        {
+          "id": "calculate",
+          "label": "Calculate scale",
+          "type": "tool.invoke"
+        },
+        {
+          "id": "save_calculation",
+          "type": "record.create",
+          "label": "Save calculation"
+        },
+        {
+          "label": "Delete calculation",
+          "id": "delete_calculation",
+          "type": "record.delete"
+        }
+      ]
+    }
+  ],
+  "evidence": {
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "requests": 1,
+    "toolCalls": [
+      "submit_site"
+    ],
+    "tokens": {
+      "input": 8362,
+      "output": 3984
+    },
+    "elapsedMs": 8923
+  }
+}

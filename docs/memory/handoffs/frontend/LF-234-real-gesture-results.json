@@ -1,0 +1,196 @@
+{
+  "at": "2026-10-04T08:23:53.593Z",
+  "auth": "Explicit normal /auth/local Owner test session; not a new Google OAuth claim.",
+  "candidate": "Existing real-Pi PhotoDrift published by coordinator; this test performs no source generation or provider calls.",
+  "steps": [
+    {
+      "id": "rec_f702e59e-69a8-4b19-99cd-e245a38fe5b2",
+      "direction": "left",
+      "expected": "pass",
+      "input": "Native Playwright Chrome mouse pointer gesture; no handler/lf/API mutation injection.",
+      "coordinates": {
+        "x": 682.5,
+        "y": 680.96875,
+        "endX": 502.5
+      },
+      "snapshot": {
+        "definitionVersion": 2,
+        "stateVersion": 5,
+        "eventCursor": 7,
+        "records": [
+          {
+            "id": "rec_a8ed2e6a-fcd7-4974-bc3c-90e8ff28b8eb",
+            "values": {
+              "assetId": "asset_d11da574-4bec-4ac5-8927-e921b4200032",
+              "caption": "Untitled",
+              "decision": "favorite"
+            },
+            "version": 2
+          },
+          {
+            "id": "rec_f702e59e-69a8-4b19-99cd-e245a38fe5b2",
+            "values": {
+              "assetId": "asset_b1a21045-ee03-4aa2-a4a9-f690679aa9fb",
+              "caption": "Untitled",
+              "decision": "pass"
+            },
+            "version": 2
+          },
+          {
+            "id": "rec_7680bdff-a9e1-45cc-9787-19e99fcc44ab",
+            "values": {
+              "assetId": "asset_ae135755-0257-4190-bf07-cecd30396b81",
+              "caption": "Synthetic sunset",
+              "decision": ""
+            },
+            "version": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "rec_7680bdff-a9e1-45cc-9787-19e99fcc44ab",
+      "direction": "right",
+      "expected": "favorite",
+      "input": "Native Playwright Chrome mouse pointer gesture; no handler/lf/API mutation injection.",
+      "coordinates": {
+        "x": 682.5,
+        "y": 680.96875,
+        "endX": 862.5
+      },
+      "snapshot": {
+        "definitionVersion": 2,
+        "stateVersion": 6,
+        "eventCursor": 8,
+        "records": [
+          {
+            "id": "rec_a8ed2e6a-fcd7-4974-bc3c-90e8ff28b8eb",
+            "values": {
+              "assetId": "asset_d11da574-4bec-4ac5-8927-e921b4200032",
+              "caption": "Untitled",
+              "decision": "favorite"
+            },
+            "version": 2
+          },
+          {
+            "id": "rec_f702e59e-69a8-4b19-99cd-e245a38fe5b2",
+            "values": {
+              "assetId": "asset_b1a21045-ee03-4aa2-a4a9-f690679aa9fb",
+              "caption": "Untitled",
+              "decision": "pass"
+            },
+            "version": 2
+          },
+          {
+            "id": "rec_7680bdff-a9e1-45cc-9787-19e99fcc44ab",
+            "values": {
+              "assetId": "asset_ae135755-0257-4190-bf07-cecd30396b81",
+              "caption": "Synthetic sunset",
+              "decision": "favorite"
+            },
+            "version": 2
+          }
+        ]
+      }
+    }
+  ],
+  "pageErrors": [],
+  "before": {
+    "definitionVersion": 2,
+    "stateVersion": 4,
+    "eventCursor": 6,
+    "records": [
+      {
+        "id": "rec_a8ed2e6a-fcd7-4974-bc3c-90e8ff28b8eb",
+        "values": {
+          "assetId": "asset_d11da574-4bec-4ac5-8927-e921b4200032",
+          "caption": "Untitled",
+          "decision": "favorite"
+        },
+        "version": 2
+      },
+      {
+        "id": "rec_f702e59e-69a8-4b19-99cd-e245a38fe5b2",
+        "values": {
+          "assetId": "asset_b1a21045-ee03-4aa2-a4a9-f690679aa9fb",
+          "caption": "Untitled",
+          "decision": ""
+        },
+        "version": 1
+      },
+      {
+        "id": "rec_7680bdff-a9e1-45cc-9787-19e99fcc44ab",
+        "values": {
+          "assetId": "asset_ae135755-0257-4190-bf07-cecd30396b81",
+          "caption": "Synthetic sunset",
+          "decision": ""
+        },
+        "version": 1
+      }
+    ]
+  },
+  "after": {
+    "definitionVersion": 2,
+    "stateVersion": 6,
+    "eventCursor": 8,
+    "records": [
+      {
+        "id": "rec_a8ed2e6a-fcd7-4974-bc3c-90e8ff28b8eb",
+        "values": {
+          "assetId": "asset_d11da574-4bec-4ac5-8927-e921b4200032",
+          "caption": "Untitled",
+          "decision": "favorite"
+        },
+        "version": 2
+      },
+      {
+        "id": "rec_f702e59e-69a8-4b19-99cd-e245a38fe5b2",
+        "values": {
+          "assetId": "asset_b1a21045-ee03-4aa2-a4a9-f690679aa9fb",
+          "caption": "Untitled",
+          "decision": "pass"
+        },
+        "version": 2
+      },
+      {
+        "id": "rec_7680bdff-a9e1-45cc-9787-19e99fcc44ab",
+        "values": {
+          "assetId": "asset_ae135755-0257-4190-bf07-cecd30396b81",
+          "caption": "Synthetic sunset",
+          "decision": "favorite"
+        },
+        "version": 2
+      }
+    ]
+  },
+  "writes": [
+    {
+      "url": "/api/spaces/space-cef5f3a3/actions",
+      "body": {
+        "actionId": "update_photo",
+        "recordId": "rec_f702e59e-69a8-4b19-99cd-e245a38fe5b2",
+        "recordVersion": 1,
+        "values": {
+          "decision": "pass"
+        },
+        "requestId": "fed491bf-71dc-44d9-b399-5c103a83cc53",
+        "definitionVersion": 2
+      }
+    },
+    {
+      "url": "/api/spaces/space-cef5f3a3/actions",
+      "body": {
+        "actionId": "update_photo",
+        "recordId": "rec_7680bdff-a9e1-45cc-9787-19e99fcc44ab",
+        "recordVersion": 1,
+        "values": {
+          "decision": "favorite"
+        },
+        "requestId": "70764087-e7cb-4135-b8c9-ac32dc80a302",
+        "definitionVersion": 2
+      }
+    }
+  ],
+  "passed": true,
+  "resourcesClosed": true
+}

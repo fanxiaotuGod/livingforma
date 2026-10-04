@@ -1,0 +1,35 @@
+{
+  "space": {
+    "id": "sp_2fb8a213-fe69-49c4-94d7-b05d3b1466dd",
+    "slug": "space-6d41668b",
+    "title": "Portion Quest",
+    "timezone": "America/Vancouver",
+    "visibility": "public",
+    "participation": "authenticated"
+  },
+  "records": [
+    {
+      "id": "rec_c227b021-f376-4d00-a9d8-7d96b9445633",
+      "values": {
+        "amount": 150,
+        "ingredient": "Flour",
+        "scaledAmount": 225,
+        "targetServings": 6,
+        "originalServings": 4
+      },
+      "version": 1,
+      "createdAt": "2026-10-04T08:32:53.068Z",
+      "updatedAt": "2026-10-04T08:32:53.068Z"
+    }
+  ],
+  "role": "visitor",
+  "permissions": {
+    "canEdit": false,
+    "canWrite": false,
+    "canUseTools": false,
+    "actionIds": []
+  },
+  "stateVersion": 1,
+  "eventCursor": 3,
+  "definitionVersion": 2
+}

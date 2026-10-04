@@ -45,6 +45,23 @@ beforeEach(()=>{
 afterEach(()=>{vi.unstubAllEnvs();configureBudgetStore(undefined as never)});
 
 describe('general website generation through real Pi with an offline provider stream',()=>{
+ it('sends identifier and separate tool-action guidance with the actual request and retains exact valid bindings',async()=>{
+  const candidate={...payload(),actions:[{id:'save_record',type:'record.create',label:'Save record'},{id:'run_tool',type:'tool.invoke',label:'Run tool'}],toolBindings:[{actionId:'run_tool',toolId:'summarize',toolVersion:1,kind:'generated'}]};
+  provider.stream.mockImplementation((model:Model<Api>,context:TranscriptContext)=>{contexts.push(context);return emitCandidate(model,candidate)});
+  const result=await generateSite({prompt:'Summarize my saved items with a reusable tool',current:null,registeredTools:[{kind:'code-js-v1',toolId:'summarize',toolVersion:1,name:'Summarize',description:'Count selected items.',inputSchema:{type:'object',properties:{},additionalProperties:false},outputSchema:{type:'object',properties:{count:{type:'number'}},required:['count'],additionalProperties:false},sideEffects:'none',capabilities:{publicRecordFields:[],connectors:[]}}]});
+  const instructions=JSON.stringify(contexts[0]);
+  expect(instructions).toContain('start with an ASCII letter');expect(instructions).toContain('at most 64 characters total');expect(instructions).toContain('record.create and record.delete are action TYPES, never action IDs');
+  expect(instructions).toContain('SEPARATE action whose type is tool.invoke');expect(instructions).toContain('actions.find(action=>action.id===binding.actionId).type');
+  expect(result.appSpec.actions).toEqual(candidate.actions);expect(result.appSpec.components[0].toolBindings).toEqual(candidate.toolBindings);validateEvolution(null,asDefinition(result));
+  expect(provider.stream).toHaveBeenCalledTimes(1);expect(reservations).toHaveLength(1);expect(result.codeToolProposals).toBeUndefined();
+ });
+ it.each(['record.create','record.delete','1save','save record','a'.repeat(65)])('still rejects invalid action ID %s without rewriting it or retrying',async id=>{
+  const candidate=payload();candidate.actions[0].id=id;
+  provider.stream.mockImplementation((model:Model<Api>)=>emitCandidate(model,candidate));
+  await expect(generateSite({prompt:'Save and remove my items',current:null})).rejects.toMatchObject({code:'PROVIDER_OUTPUT_INVALID'});
+  expect(getLastRunEvidence()?.candidateFailures?.[0].issues).toEqual(expect.arrayContaining([expect.objectContaining({path:'actions.0.id'})]));
+  expect(candidate.actions[0].id).toBe(id);expect(provider.stream).toHaveBeenCalledTimes(1);expect(reservations).toHaveLength(1);
+ });
  it.each([
   ['Create swipeable photo decisions with user uploads','photos'],
   ['制作可以揭示答案的学习页面','study'],

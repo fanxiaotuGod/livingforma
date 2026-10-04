@@ -1,0 +1,46 @@
+{
+  "space": {
+    "id": "sp_7a065592-ad88-47da-8b5c-e12edc9a5a9e",
+    "slug": "space-cef5f3a3",
+    "title": "Photo Drift",
+    "timezone": "America/Vancouver",
+    "visibility": "public",
+    "participation": "authenticated"
+  },
+  "records": [
+    {
+      "id": "rec_a8ed2e6a-fcd7-4974-bc3c-90e8ff28b8eb",
+      "values": {
+        "assetId": "asset_d11da574-4bec-4ac5-8927-e921b4200032",
+        "caption": "Untitled",
+        "decision": "favorite"
+      },
+      "version": 2,
+      "createdAt": "2026-10-04T08:12:22.208Z",
+      "updatedAt": "2026-10-04T08:12:32.993Z"
+    },
+    {
+      "id": "rec_f702e59e-69a8-4b19-99cd-e245a38fe5b2",
+      "values": {
+        "assetId": "asset_b1a21045-ee03-4aa2-a4a9-f690679aa9fb",
+        "caption": "Untitled",
+        "decision": ""
+      },
+      "version": 1,
+      "createdAt": "2026-10-04T08:12:59.474Z",
+      "updatedAt": "2026-10-04T08:12:59.474Z"
+    }
+  ],
+  "role": "visitor",
+  "permissions": {
+    "canEdit": false,
+    "canWrite": false,
+    "canUseTools": false,
+    "actionIds": []
+  },
+  "stateVersion": 3,
+  "eventCursor": 5,
+  "definitionVersion": 2,
+  "sameRecordsAndAssets": true,
+  "sameUrl": true
+}

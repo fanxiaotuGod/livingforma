@@ -1,0 +1,140 @@
+{
+  "at": "2026-10-04T08:20:33.041Z",
+  "auth": "Explicit /auth/local Owner test session; not a new Google OAuth claim.",
+  "definitionVersion": 2,
+  "records": [
+    {
+      "id": "rec_a8ed2e6a-fcd7-4974-bc3c-90e8ff28b8eb",
+      "values": {
+        "assetId": "asset_d11da574-4bec-4ac5-8927-e921b4200032",
+        "caption": "Untitled",
+        "decision": "favorite"
+      },
+      "version": 2
+    },
+    {
+      "id": "rec_f702e59e-69a8-4b19-99cd-e245a38fe5b2",
+      "values": {
+        "assetId": "asset_b1a21045-ee03-4aa2-a4a9-f690679aa9fb",
+        "caption": "Untitled",
+        "decision": ""
+      },
+      "version": 1
+    },
+    {
+      "id": "rec_7680bdff-a9e1-45cc-9787-19e99fcc44ab",
+      "values": {
+        "assetId": "asset_ae135755-0257-4190-bf07-cecd30396b81",
+        "caption": "Synthetic sunset",
+        "decision": ""
+      },
+      "version": 1
+    }
+  ],
+  "frameText": "PD\nPhoto Drift\nDiscover\nFavorites\n+ Add Photo\nUntitled\n✕\n♥",
+  "nodes": [
+    {
+      "tag": "BUTTON",
+      "id": "tab-discover",
+      "class": "tab-btn active",
+      "text": "Discover",
+      "draggable": null,
+      "rect": {
+        "x": 846.0625,
+        "y": 29,
+        "width": 92.84375,
+        "height": 32,
+        "top": 29,
+        "right": 938.90625,
+        "bottom": 61,
+        "left": 846.0625
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "id": "tab-favorites",
+      "class": "tab-btn",
+      "text": "Favorites",
+      "draggable": null,
+      "rect": {
+        "x": 942.90625,
+        "y": 29,
+        "width": 96.03125,
+        "height": 32,
+        "top": 29,
+        "right": 1038.9375,
+        "bottom": 61,
+        "left": 942.90625
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "id": "btn-open-add",
+      "class": "btn",
+      "text": "+ Add Photo",
+      "draggable": null,
+      "rect": {
+        "x": 1058.9375,
+        "y": 24,
+        "width": 142.0625,
+        "height": 42,
+        "top": 24,
+        "right": 1201,
+        "bottom": 66,
+        "left": 1058.9375
+      }
+    },
+    {
+      "tag": "IMG",
+      "id": "",
+      "class": "",
+      "text": "",
+      "draggable": "false",
+      "rect": {
+        "x": 333.5,
+        "y": 124,
+        "width": 566,
+        "height": 360,
+        "top": 124,
+        "right": 899.5,
+        "bottom": 484,
+        "left": 333.5
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "class": "circle-btn pass",
+      "text": "✕",
+      "draggable": null,
+      "rect": {
+        "x": 540.5,
+        "y": 627,
+        "width": 60,
+        "height": 60,
+        "top": 627,
+        "right": 600.5,
+        "bottom": 687,
+        "left": 540.5
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "class": "circle-btn fav",
+      "text": "♥",
+      "draggable": null,
+      "rect": {
+        "x": 632.5,
+        "y": 627,
+        "width": 60,
+        "height": 60,
+        "top": 627,
+        "right": 692.5,
+        "bottom": 687,
+        "left": 632.5
+      }
+    }
+  ],
+  "script": "(async () => {\n  let state = await lf.ready;\n  const appEl = document.getElementById('main-content');\n  const previewNotice = document.getElementById('preview-notice');\n  const tabDiscover = document.getElementById('tab-discover');\n  const tabFavorites = document.getElementById('tab-favorites');\n  const btnOpenAdd = document.getElementById('btn-open-add');\n\n  if (state.preview) {\n    previewNotice.style.display = 'block';\n  }\n\n  let currentTab = 'discover';\n  let activeAsset = null;\n  let captionText = '';\n\n  tabDiscover.addEventListener('click', () => { currentTab = 'discover'; render(); });\n  tabFavorites.addEventListener('click', () => { currentTab = 'favorites'; render(); });\n  btnOpenAdd.addEventListener('click', () => { currentTab = 'add'; activeAsset = null; captionText = ''; render(); });\n\n  lf.subscribe(next => {\n    state = next;\n    if (state.preview) previewNotice.style.display = 'block';\n    render();\n  });\n\n  async function render() {\n    tabDiscover.classList.toggle('active', currentTab === 'discover');\n    tabFavorites.classList.toggle('active', currentTab === 'favorites');\n\n    appEl.innerHTML = '';\n\n    if (currentTab === 'add') {\n      renderAddView(appEl);\n      return;\n    }\n\n    const records = state.records || [];\n    const pendingPhotos = records.filter(r => !r.values.decision);\n    const favoritePhotos = records.filter(r => r.values.decision === 'favorite');\n\n    if (currentTab === 'favorites') {\n      renderFavoritesView(appEl, favoritePhotos);\n      return;\n    }\n\n    if (pendingPhotos.length === 0) {\n      renderEmptyState(appEl);\n      return;\n    }\n\n    renderDiscoverView(appEl, pendingPhotos);\n  }\n\n  function renderAddView(container) {\n    const wrapper = document.createElement('div');\n    wrapper.className = 'add-card';\n\n    const title = document.createElement('h2');\n    title.textContent = 'Add a New Photo';\n    wrapper.appendChild(title);\n\n    const group = document.createElement('div');\n    group.className = 'form-group';\n    \n    const label = document.createElement('label');\n    label.textContent = 'Caption';\n    label.setAttribute('for', 'caption-input');\n\n    const input = document.createElement('input');\n    input.id = 'caption-input';\n    input.type = 'text';\n    input.placeholder = 'A wonderful memory...';\n    input.value = captionText;\n    input.addEventListener('input', e => { captionText = e.target.value; });\n\n    group.appendChild(label);\n    group.appendChild(input);\n    wrapper.appendChild(group);\n\n    const pickBtn = document.createElement('button');\n    pickBtn.className = 'btn btn-secondary';\n    pickBtn.textContent = activeAsset ? 'Photo Selected ✓' : 'Pick Photo from Device';\n    pickBtn.addEventListener('click', async () => {\n      try {\n        const res = await lf.pickImage();\n        if (res && res.assetId) {\n          activeAsset = res.assetId;\n          pickBtn.textContent = 'Photo Selected ✓';\n        }\n      } catch (err) {\n        console.error(err);\n      }\n    });\n    wrapper.appendChild(pickBtn);\n\n    const submitBtn = document.createElement('button');\n    submitBtn.className = 'btn';\n    submitBtn.textContent = 'Save Photo';\n    submitBtn.addEventListener('click', async () => {\n      if (!activeAsset) {\n        alert('Please pick a photo first.');\n        return;\n      }\n      try {\n        state = await lf.create({\n          caption: captionText || 'Untitled',\n          assetId: activeAsset,\n          decision: ''\n        });\n        currentTab = 'discover';\n        render();\n      } catch (err) {\n        alert('Failed to save photo: ' + err.message);\n      }\n    });\n    wrapper.appendChild(submitBtn);\n\n    container.appendChild(wrapper);\n  }\n\n  function renderEmptyState(container) {\n    const empty = document.createElement('div');\n    empty.className = 'empty-state';\n\n    const h3 = document.createElement('h3');\n    h3.textContent = 'Add your first photo';\n    const p = document.createElement('p');\n    p.textContent = 'Discover and curate your personal photo collection by adding memories today.';\n    \n    const btn = document.createElement('button');\n    btn.className = 'btn';\n    btn.textContent = 'Add Photo';\n    btn.addEventListener('click', () => { currentTab = 'add'; activeAsset = null; captionText = ''; render(); });\n\n    empty.appendChild(h3);\n    empty.appendChild(p);\n    empty.appendChild(btn);\n    container.appendChild(empty);\n  }\n\n  function renderFavoritesView(container, favs) {\n    if (favs.length === 0) {\n      const empty = document.createElement('div');\n      empty.className = 'empty-state';\n      const h3 = document.createElement('h3');\n      h3.textContent = 'No favorites yet';\n      const p = document.createElement('p');\n      p.textContent = 'Swipe right on photos in Discover to save them here.';\n      empty.appendChild(h3);\n      empty.appendChild(p);\n      container.appendChild(empty);\n      return;\n    }\n\n    const grid = document.createElement('div');\n    grid.className = 'favorites-grid';\n\n    for (const rec of favs) {\n      const card = document.createElement('div');\n      card.className = 'fav-card';\n\n      const img = document.createElement('img');\n      img.alt = rec.values.caption || 'Favorite photo';\n      lf.image(rec.values.assetId).then(res => {\n        if (res && res.dataUrl) img.src = res.dataUrl;\n      }).catch(() => {});\n\n      const p = document.createElement('p');\n      p.textContent = rec.values.caption;\n\n      card.appendChild(img);\n      card.appendChild(p);\n      grid.appendChild(card);\n    }\n    container.appendChild(grid);\n  }\n\n  function renderDiscoverView(container, pending) {\n    const deck = document.createElement('div');\n    deck.className = 'deck-container';\n\n    const currentRec = pending[0];\n    const card = document.createElement('div');\n    card.className = 'photo-card';\n\n    const img = document.createElement('img');\n    img.alt = currentRec.values.caption || 'Photo';\n    img.draggable = false;\n    lf.image(currentRec.values.assetId).then(res => {\n      if (res && res.dataUrl) img.src = res.dataUrl;\n    }).catch(() => {});\n\n    const info = document.createElement('div');\n    info.className = 'photo-info';\n    const cap = document.createElement('div');\n    cap.className = 'photo-caption';\n    cap.textContent = currentRec.values.caption;\n    info.appendChild(cap);\n\n    card.appendChild(img);\n    card.appendChild(info);\n    deck.appendChild(card);\n\n    const actionBar = document.createElement('div');\n    actionBar.className = 'action-bar';\n\n    const passBtn = document.createElement('button');\n    passBtn.className = 'circle-btn pass';\n    passBtn.textContent = '✕';\n    passBtn.setAttribute('aria-label', 'Pass');\n    passBtn.addEventListener('click', () => handleDecision(currentRec.id, 'pass', card));\n\n    const favBtn = document.createElement('button');\n    favBtn.className, favBtn.className = 'circle-btn fav';\n    favBtn.textContent = '♥';\n    favBtn.setAttribute('aria-label', 'Favorite');\n    favBtn.addEventListener('click', () => handleDecision(currentRec.id, 'favorite', card));\n\n    actionBar.appendChild(passBtn);\n    actionBar.appendChild(favBtn);\n\n    const wrapper = document.createElement('div');\n    wrapper.style.display = 'flex';\n    wrapper.style.flexDirection = 'column';\n    wrapper.style.width = '100%';\n    wrapper.appendChild(deck);\n    wrapper.appendChild(actionBar);\n\n    container.appendChild(wrapper);\n\n    let startX = 0;\n    let currentX = 0;\n    let isDragging = false;\n\n    card.addEventListener('pointerdown', e => {\n      isDragging = true;\n      startX = e.clientX;\n      try {\n        card.setPointerCapture(e.pointerId);\n      } catch (err) {}\n    });\n\n    card.addEventListener('pointermove', e => {\n      if (!isDragging) return;\n      currentX = e.clientX - startX;\n      card.style.transform = `translateX(${currentX}px) rotate(${currentX * 0.05}deg)`;\n    });\n\n    card.addEventListener('pointerup', e => {\n      if (!isDragging) return;\n      isDragging = false;\n      try {\n        card.releasePointerCapture(e.pointerId);\n      } catch (err) {}\n      if (currentX > 100) {\n        handleDecision(currentRec.id, 'favorite', card);\n      } else if (currentX < -100) {\n        handleDecision(currentRec.id, 'pass', card);\n      } else {\n        card.style.transform = 'translateX(0px) rotate(0deg)';\n      }\n      currentX = 0;\n    });\n  }\n\n  async function handleDecision(id, decision, cardEl) {\n    if (cardEl) {\n      cardEl.style.transform = decision === 'favorite' ? 'translateX(400px) rotate(20deg)' : 'translateX(-400px) rotate(-20deg)';\n      cardEl.style.opacity = '0';\n    }\n    try {\n      state = await lf.update(id, { decision });\n      setTimeout(render, 200);\n    } catch (err) {\n      alert('Failed to update decision: ' + err.message);\n      render();\n    }\n  }\n\n  render();\n  await lf.reportReady();\n})();\n"
+}

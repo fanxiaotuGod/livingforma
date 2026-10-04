@@ -133,7 +133,7 @@ export function validateDefinition(input:unknown):Definition {
     if(c.toolBindings){
       if(c.type!=='generated-site')throw new Error('Only generated sites can bind multiple tools');
       if(new Set(c.toolBindings.map(b=>b.actionId)).size!==c.toolBindings.length||new Set(c.toolBindings.map(b=>`${b.toolId}:${b.toolVersion}`)).size!==c.toolBindings.length)throw new Error('Tool bindings must be unique');
-      for(const binding of c.toolBindings)if(!c.actionIds.includes(binding.actionId)||actions.get(binding.actionId)?.type!=='tool.invoke')throw new Error('Each tool binding requires a bound tool invocation action');
+      for(const binding of c.toolBindings){const bound=actions.get(binding.actionId);if(!c.actionIds.includes(binding.actionId)||bound?.type!=='tool.invoke')throw new Error(`Each tool binding requires a bound tool invocation action. actionId ${JSON.stringify(binding.actionId)} requires an included action with type tool.invoke; found ${bound?.type??'no matching action'}. Add a separate tool.invoke action for the tool and keep record.create for saving records.`);}
     }
     if(c.type==='generated-site')for(const actionId of c.actionIds)if(actions.get(actionId)?.type==='tool.invoke'&&!c.toolBindings?.some(b=>b.actionId===actionId))throw new Error('Generated tool actions require exact version bindings');
   }
@@ -211,3 +211,5 @@ export interface MediaBudgetStore {
     period: string; units: number; limit: number; minuteRequestLimit: number; now: number;
   }): Promise<void>;
 }
+
+export {GENERATED_BRIDGE_LIMITS} from './generated';

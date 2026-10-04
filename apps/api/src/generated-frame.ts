@@ -1,4 +1,4 @@
-import type { GeneratedArtifact } from '@livingforma/contracts';
+import { GENERATED_BRIDGE_LIMITS, type GeneratedArtifact } from '@livingforma/contracts';
 
 export const GENERATED_FRAME_CSP="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'self'; sandbox allow-scripts; require-trusted-types-for 'script'; trusted-types lf-parser lf-source default";
 export const GENERATED_FRAME_PERMISSIONS='camera=(), microphone=(), geolocation=(), display-capture=(), payment=(), usb=(), serial=(), bluetooth=(), hid=(), midi=(), clipboard-read=(), clipboard-write=(), publickey-credentials-get=(), screen-wake-lock=(), accelerometer=(), gyroscope=(), magnetometer=()';
@@ -18,7 +18,8 @@ const request=(method,params={})=>new Promise((resolve,reject)=>{
   if(pending.size>=32){reject(new Error('Too many pending requests.'));return;}
   const id=String(++serial),payload={id,method,params};
   if(JSON.stringify(payload).length>65536){reject(new Error('This request is too large.'));return;}
-  const timer=setTimeout(()=>{pending.delete(id);reject(new Error('The host did not respond.'));},30000);
+  const timeout=method==='pickImage'||method==='remove'?${GENERATED_BRIDGE_LIMITS.humanRequestMs}:${GENERATED_BRIDGE_LIMITS.requestMs};
+  const timer=setTimeout(()=>{pending.delete(id);reject(new Error('The host did not respond.'));},timeout);
   pending.set(id,{resolve,reject,timer});port.postMessage(payload);
 });
 port.onmessage=event=>{const message=event.data;if(!message||typeof message!=='object')return;

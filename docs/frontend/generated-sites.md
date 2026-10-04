@@ -50,3 +50,23 @@ The original prompt and published app remain intact. Feedback is account/job/rev
 Verification: full TypeScript and Vite build passed (`index-DIgLXu9Q.js`, 791.91 kB / 240.58 kB gzip, existing size warning). Three feedback-boundary tests, five progress tests and twelve session tests passed. [Five real Chrome/local host scenarios](../memory/handoffs/frontend/LF-232-browser-results.json) use PGlite and an explicitly offline generator, proving actual host repair stage/sourceRevision progression, one-attempt guidance, preserved prompt/data/URL, rejected-report recovery, reordered responses, changed-account zero POST and late navigation discard. Rejection/delayed-delivery routes are labeled transport fixtures. No provider, cloud or actual PhotoDrift repair claim is made here.
 
 Replay with `pnpm exec tsx docs/memory/handoffs/frontend/LF-232-browser.mts` after web build; it owns temporary port 4348 and closes its resources. [Desktop feedback](../memory/handoffs/frontend/LF-232-feedback-desktop.png) and [phone guidance](../memory/handoffs/frontend/LF-232-feedback-mobile.png) were visually inspected; 390px has no horizontal overflow. The UI uses existing English typography, keyboard controls and reduced-motion feedback, without paid assets.
+
+
+## LF-234 · Bounded choices and an explicit preview-check retry
+
+Image selection and record deletion now have one cancellable two-minute host deadline. The dialog explains the limit and closes on cancellation/expiry, page exit, account change or channel replacement. Late native file selections and old confirmation buttons cannot settle the choice again or upload/delete anything. A selection after 30 seconds remains valid; the child bootstrap's matching human-request timeout is 180 seconds (LF-235), while ordinary bridge calls remain at 30 seconds.
+
+If sending a preview startup report fails, Studio removes its failed deduplication key and shows **Retry preview check**. The Owner must click it: returning from a source tab or receiving another ready event never automatically resends the rejected write. Retry remounts and checks the same job/source revision, preserves the prompt and live app, and blocks publishing until confirmed. Identity/page/job/revision guards discard obsolete results. This recovery itself does not start a generation; a genuinely broken runtime still follows the existing bounded repair rules. LF-232 interaction feedback remains available.
+
+Verification: full TypeScript and 24 targeted tests passed. [Seven Chrome/local host scenarios](../memory/handoffs/frontend/LF-234-browser-results.json) passed using actual MessageChannel, current bootstrap, PGlite, a virtual clock and an offline generator. [Five LF-232 feedback regressions](../memory/handoffs/frontend/LF-234-feedback-regression-browser-results.json) also passed; both suites reported zero page errors. The 503 startup-report rejection is an explicit transport fixture. Build output was isolated to `/tmp/livingforma-lf234-web` (`index-Da_q2tBw.js`, 794.29 kB / 241.31 kB gzip, size warning) to preserve the coordinator's running web build. Retry/expiry screenshots were visually inspected.
+
+Replay from the repository:
+
+```sh
+pnpm exec vitest run apps/web/src/generated/human-input.test.ts apps/web/src/generated/GenerationStudio.test.tsx apps/web/src/generated/progress.test.ts apps/web/src/lib/session-client.test.ts
+pnpm --filter @livingforma/web exec vite build --outDir /tmp/livingforma-lf234-web --emptyOutDir
+pnpm exec tsx docs/memory/handoffs/frontend/LF-234-browser.mts
+pnpm exec tsx docs/memory/handoffs/frontend/LF-234-feedback-regression.mts
+```
+
+These two scripts own local ports 4349/4350 and close their browser/server resources. They call no external provider. Separately, with coordinator authorization, [the existing real-Pi PhotoDrift candidate](../memory/handoffs/frontend/LF-234-real-gesture-results.json) on local port 4347 passed native Chrome left/right pointer gestures: blue photo → Pass and Synthetic sunset → Favorite, exactly two action POSTs, original favorite unchanged. Definition v2, three assets/records and URL remained fixed; stateVersion 4→5→6 and eventCursor 6→7→8. This used normal explicit local Owner login, not new Google OAuth evidence, and invoked no model. Its script is a one-time, state-sensitive acceptance record and must not be rerun against the changed records without authorization.

@@ -6,13 +6,17 @@ permalink: livingforma/shared/project-context
 
 # 当前项目背景
 
-## 最新状态 · 2026-10-04 01:00 America/Vancouver
+## 最新状态 · 2026-10-04 01:45 America/Vancouver
 
-初版 https://livingforma.tech 和403补丁eedd1d4 已上线并完成真实Google/Neon/页面变化/访客SSE/合成相机播放验收。Render Free、AutoDeployOFF；push仅触发GitHub检查构建。
+初版 https://livingforma.tech /403补丁eedd1d4 已上线。新模块和通用生成已通过本地真实验收，等待精确提交CI及免费部署。Render Free/无卡/$0，AutoDeployOFF；push只触发CI。
 
-当前goal：AI原创前端页面、原创后端工具、生成中的真实UI变化。LF220/221/222/224/225/226完成；独立LF223普通QA完成8/8浏览器、11/11真实QuickJS/HTTP/重启、28/28回归，生成器明确为fixture。LF229在0.1CPU/512MiB完成6/6独立Docker验证，单Worker、启动8s/执行4s/总计12s；旧失败证据保留。LF230真实Gemini请求兼容已修复，Root完整候选和IAB启动通过；真实照片上传交互发现双选择问题，LF232提供显式功能反馈并使用原单次修复。LF233随后整合远程403热修复历史，LF227负责三类真实页面/工具/复用/数据保留/CI，LF228再免费部署。60模块与新生成仍本地，不宣称新版上线。
+LF233有意合并热修复历史84e90bf并保留224文件与双方角色日志。LF234/235/236全部完成：人类选择120s截止/相关RPC180s、同预览显式重试、通用ID语法和独立tool.invoke绑定；严格校验、原预算和一次修复不变。最终pnpm check308/308、typecheck和两端构建通过。
 
-高级绕过研究暂停；正常功能、身份、隐私和版本检查继续。原Neon免费额度不重置；收费前确认。
+真实Pi/Gemini生成了三个不同体验：Photo Drift三张合成照片/上传/收藏/实际左右手势；Kitchen Math生成scale_recipe v1并通过两项QuickJS测试，150份原料4→6人份返回225后保存；Portion Quest复用同一工具，225答对、200答错、Next question和History运行。计算器→测验的原记录逐字段、ID、版本、时间及URL完全保留，定义v1→2；手机390px实际工具操作和匿名历史读取通过。照片进化也保留数据/资源/URL，匿名SSE收到发布事件。
+
+证据来自隔离4347/PGlite和明确本地身份，模型用真实Pi/Gemini、工具用真实QuickJS，不充当Google线上证据。此前无效候选保留；测验一次自动修复后成功，不能保证任意请求首轮有效。原Neon Gemini账本29/30，余1次留正式生成验收，不重置、不付费fallback。高级绕过研究已暂停；继续正常功能/会话/隐私/版本验证。
+
+详见[LF227交接](../handoffs/coordinator/LF-227-27d9cbd8-ed2b-4f98-874c-e81f6a6fd28f.md)。LF228部署必须匹配reviewed CI-green SHA，并保留现有Neon数据与Google配置；旧binary不能作为新定义的恢复目标，使用兼容版本重新部署或向前修复。
 
 
 ## Relations
