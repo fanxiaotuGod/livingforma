@@ -10,6 +10,8 @@
 
 > 按 AGENTS.md 开始下一个 MVP 里程碑。先读任务板，拆分独立任务，安排 frontend、backend、agent 角色并行工作，必要时让 devops 和 qa 接续。完成后整合并验证，更新各自日志和公共记忆。
 
+已安装 `frontend-dev` 与 `animations` 的完整本机 skill 包；前端按 [适配约定](frontend/skills-guide.md) 使用。可直接复制 [新窗口启动指令](product/start-development.md) 开始开发，先由 coordinator 完成 LF-100 骨架，再按依赖分派角色。
+
 ## 一个主对话，还是多个角色对话？
 
 **日常推荐一个主对话。** 在 Codex 中打开 `livingforma` 仓库并新建主对话，把上面的开发请求发给 coordinator。主 agent 负责启动需要的子 agent、分配文件、等待结果、整合与验证。你继续在主对话提出需求和调整方向即可；可打开子 agent 的活动查看进度，不需要手动创建五个窗口。这个工作方式也符合 [OpenAI 官方子 agent 文档](https://learn.chatgpt.com/docs/agent-configuration/subagents)。
@@ -40,9 +42,9 @@ python3 scripts/coordination.py close --session SESSION_ID
 
 依赖未完成时不会自动越过它。可先做只读检查，等待上游证据。任务未完成就退出时，先写交接，再 `release --session SESSION_ID --task LF-110 --reason "原因与剩余工作"`，最后关闭 session。需要指定任务时用 `claim --session SESSION_ID --task TASK_ID`，仍检查角色、依赖和冲突。
 
-coordinator 先领取 LF-100 建立应用骨架和接口；完成后领取 LF-145 保持公共任务板和依赖协调，再启动或等待其他角色。frontend/backend/agent/devops 的首个实现任务都依赖 LF-100；整合、QA 和正式部署继续按依赖推进。当前不会因为目录里列了任务就自行运行应用开发。
+coordinator 先领取 LF-100 建立应用骨架和接口，验证 Vite SPA 建议并锁定框架/会话/扩展组件契约；完成后领取 LF-145 保持公共任务板和依赖协调，再启动或等待其他角色。frontend/backend/agent/devops 的首个实现任务都依赖 LF-100。LF-150 完成文字生成、持久化与公开/Owner 视图整合；随后 frontend LF-180、agent LF-181、backend LF-182 并行接入语音与相机，coordinator LF-185 整合，之后 LF-160 QA、LF-170 正式部署。当前不会因为目录里列了任务就自行运行应用开发。
 
-coordinator 通常在完成 LF-150 后领取 LF-155，在 QA/上线期间维护目录和安排返工。LF-155 刻意不依赖产品任务，避免修改上游验收时连带使负责发布目录的认领失效；正常领取顺序仍优先骨架、并行协调与整合。这个持续维护任务在会话结束时写交接并 `release`，不永久 `finish`，供后续主对话继续领取。QA/生产发现缺陷时先释放受影响任务，coordinator 新增有范围的修复任务并调整下游依赖，修复后重新验收。
+coordinator 可在完成 LF-150 后领取 LF-155，在多模态并行工作、QA/上线期间维护目录和安排返工；进入 LF-185 整合前先释放 LF-155，避免同角色重叠认领。LF-155 刻意不依赖产品任务，避免修改上游验收时连带使负责发布目录的认领失效；正常领取顺序仍优先骨架、并行协调与整合。这个持续维护任务在会话结束时写交接并 `release`，不永久 `finish`，供后续主对话继续领取。QA/生产发现缺陷时先释放受影响任务，coordinator 新增有范围的修复任务并调整下游依赖，修复后重新验收。
 
 任务目录使用共享的已接受版本。`status.catalog.digest` 是当前版本，`local_catalog_digest` 是当前 checkout 的版本；旧 worktree 不会自动覆盖新状态。目录变动须由持有目录范围的 coordinator 显式发布：
 
@@ -77,7 +79,7 @@ bash scripts/memory-smoke.sh
 
 ## 日常流程
 
-1. **理解**：coordinator 对照 PRD 确定用户意图、当前状态和本次边界。
+1. **理解**：coordinator 对照 PRD 与 `docs/product/jarvis-vision.md` 确定用户意图、当前状态和本次边界。Frontend 必读体验方向与 skills-guide；先用短分镜验证 Owner 圆圈、形态变化和访客视图，不把固定一天设计当硬性日程。
 2. **分工**：coordinator 维护任务目录；各角色自动原子领取依赖已满足的任务，获取 ID、文件范围、验收标准；每批编辑前检查归属。
 3. **并行**：没有依赖的任务并行；公共接口先讨论，确认后再实现。
 4. **验证**：每个角色检查自己负责部分，qa 独立验证关键用户路径，coordinator 检查跨层联通。
@@ -131,4 +133,4 @@ Basic Memory 的 project 固定为 `livingforma`，索引范围只有 `docs/memo
 
 ## 当前边界
 
-应用功能仍在开发前期，基础工作流安装不等于产品已经实现。首要方向是通用 App 生成和持续编辑。Google 登录已确定且由 DevOps 主责，目标部署域名 livingforma.tech；Tiger Data 优先核查免费方案。预算为免费额度优先，任何收费行为须先得到用户确认。集成状态见 [服务职责](integrations.md)，待定细节见 [产品问题](product/open-questions.md)。
+应用功能仍在开发前期，基础工作流安装不等于产品已经实现。方向为通用 App 持续演化，以及语音驱动、获准后观察场景的 Jarvis 体验；文字基础与语音/相机分期验收，3D 仍为 stretch。匿名可浏览，写入再 Google 登录，只有空间 Owner 有左上角编辑圆圈。Google 登录由 DevOps 主责，目标部署域名 livingforma.tech；Tiger Data 优先核查免费方案。预算为免费额度优先，任何收费行为须先得到用户确认。集成状态见 [服务职责](integrations.md)，待定细节见 [产品问题](product/open-questions.md)。

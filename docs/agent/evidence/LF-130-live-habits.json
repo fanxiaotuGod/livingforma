@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-03T23:09:29.670Z",
+  "mode": "habits",
+  "source": "gemini",
+  "title": "Daily Habits",
+  "fields": [
+    "title",
+    "category",
+    "dates"
+  ],
+  "components": [
+    {
+      "id": "calendar-view",
+      "type": "calendar-grid"
+    },
+    {
+      "id": "streak-view",
+      "type": "streak"
+    },
+    {
+      "id": "habit-list",
+      "type": "list",
+      "sort": {
+        "field": "title",
+        "direction": "asc"
+      }
+    },
+    {
+      "id": "habit-form",
+      "type": "form"
+    }
+  ],
+  "capabilityGaps": [],
+  "run": {
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "requests": 1,
+    "toolCalls": [
+      "submit_proposal"
+    ],
+    "tokens": {
+      "input": 2759,
+      "output": 537
+    },
+    "elapsedMs": 2085
+  }
+}

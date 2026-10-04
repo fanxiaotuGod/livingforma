@@ -1,0 +1,20 @@
+# Shared coordinator handoff for concurrent module expansion
+
+2026-10-03 America/Vancouver. The user explicitly authorized the other chat `01a10435-c119-7430-8238-90e3cf147a1b` (title: 盘点前端可用组件与运行方式) to coordinate and implement50–100 configurable/resizable modules with mobile/PC support. I read the actual user turns and confirmation; this is new local development, not approval to deploy unverified modules. Incoming coordinator session5731fe24-5f50-4d0e-9ff7-e7c58a89d3cf may claimLF155 after my release/close. This deployment chat continues actual public release validation through DevOps; the original goal is not yet complete.
+
+## Frozen release
+
+- Application source `7efaa919361be0165f8bc0bf20852f0c0e2b37b6` is committed/pushed. GitHubCI37163223781 passed100tests/typecheck/build. QA160 finished, complete report/evidence underdocs/qa. LF185 actual voice/camera integration complete; do not overwrite historical failed/quota reports.
+- Render service `srv-db0pi4lg1s2s73f4vnbg`, first successful deploy `dep-db0pi4tg1s2s73f4vp2g`, URL https://livingforma.onrender.com. Public HTTP + independent IAB reading app verified, real Neon data retained. AutoDeployOFF, PublicGit source. GitHub CI currently checks/builds only; it does not build/push a production image or automatically deploy. Render buildsDocker when explicitly deploying.
+- DevOpsLF170 session1b9bcef2-81b0-48d2-95ae-da2572c6e0f1 remains active and ownsinfra/.github/scripts/deploy/.env/.local/deployment/operations/DevOpsmemory. It is validating a same-reviewed-SHA redeploy/rollback, DNS/TLS, productionGoogle and hosted behavior. Do not overlap these paths or changeLF170 acceptance/dependencies during its claim.
+- DNS has been saved byDevOps: apexA216.24.57.1; wwwCNAME livingforma.onrender.com. Nameservers unchanged. Propagation/TLS incomplete at this handoff. Do not claim livingforma.tech fully accepted yet. User created/loggedintoRender and expressly approved existing GoogleOAuth/Neon/Gemini/ElevenLabs configuration in Render privateenv, onlyFree/no paymentmethod. No repeat permission needed within thatscope; newcharges still need confirmation.
+
+## Local development isolation and Git
+
+- Stop this chat's `pnpm dev` (session88235), which used the realNeon/Google/Gemini environment, before newmodules start. Do not let unverified newdefinitions enter the shared liveNeon database; the deployed12-component runtime would not understand them.
+- For module development use a separate localPGlite database and explicit `DATABASE_URL='' ENABLE_LOCAL_DEMO=true AGENT_MODE=local pnpm dev` (Node24/pnpm11). Keep the ignored0600.env credentials intact and underDevOps ownership. Do not change/reset productionprovider ledgers or use newmodel calls merely to repeat validation.
+- At handoff verification the runtime/infra source matches7efaa91 with no changes. A documentation-only checkpoint is being saved/pushed before relinquishingLF155; original documentation edits were preserved. After this handoff the module chat owns futurelocal sourcechanges and must not push/deploy them under the earlier release authorization.
+- Root's pending documentation index is being committed before release; do not reset another agent's index. Afterthehandoff subsequentDevOps release documentation can remain local until reviewed; do not globally commit/push a tree containing unverified newmodules. Any needed emergency release must start from the reviewed7efaa91, or use a reviewed isolatedreleasebranch; never deploy latestmain byassumption.
+- Catalog currentlyrevision12,digestdd37a964b5ea303e824132ed67b425eebf15ecd63994502b482f91441c16ab88. Add independent module tasks through the normalclaim/check/sync-catalog protocol. Existing app milestone completions remain historical evidence, not automatic acceptance of60modules.
+
+Incoming coordinator owns sharedmemory/rolejournal after this release. Read DevOps' finalLF170 handoff and live registry to reconcile public release status while keeping localmodule progress separate. This chat will perform read-only public checks and report its deployment result; it will not edit yourclaimed sharedfiles.

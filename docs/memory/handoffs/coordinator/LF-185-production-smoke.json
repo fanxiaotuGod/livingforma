@@ -1,0 +1,67 @@
+{
+  "at": "2026-10-03T23:44:23.450Z",
+  "scope": "Local production Docker image against real Neon; not public deployment",
+  "health": {
+    "status": 200,
+    "ok": true,
+    "database": "postgres",
+    "stage": "application",
+    "planner": "gemini"
+  },
+  "session": {
+    "status": 200,
+    "mode": "production",
+    "googleConfigured": true,
+    "localDemoAvailable": false,
+    "user": null
+  },
+  "spa": {
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://lh3.googleusercontent.com; connect-src 'self'; font-src 'self'; media-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://accounts.google.com",
+    "permissions": "camera=(self), microphone=(self), geolocation=()"
+  },
+  "localLoginDenied": 404,
+  "snapshot": {
+    "status": 200,
+    "role": "visitor",
+    "version": 2,
+    "recordCount": 1,
+    "hasCamera": true
+  },
+  "anonymousMediaDenied": 401,
+  "unknownApiStatus": 404,
+  "finalImage": {
+    "at": "2026-10-03T23:50:13.972Z",
+    "manifest": "sha256:9889a839aa1bb3b9bb7d8e4c198a96abe794b83ca8b5892c3da4c7b38107ae7b",
+    "includesIdleConnectionErrorHandler": true,
+    "health": {
+      "ok": true,
+      "database": "postgres",
+      "stage": "application",
+      "planner": "gemini"
+    },
+    "snapshotVersion": 2,
+    "recordCount": 1,
+    "localAuthDenied": true
+  },
+  "independentBrowserReview": {
+    "reviewer": "qa",
+    "scope": "Earlier image with identical frontend; read-only anonymous Chrome",
+    "paths": [
+      "/s/space-bb2d7928",
+      "/s/space-3c242042"
+    ],
+    "headings": [
+      "Reading Journal",
+      "Small Rituals"
+    ],
+    "status": "passed",
+    "resourceCspErrors": 0,
+    "pageErrors": 0,
+    "ownerOrbCount": 0,
+    "englishUi": true,
+    "overflow": false,
+    "liveSync": true
+  }
+}

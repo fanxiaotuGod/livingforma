@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-03T23:04:14.178Z",
+  "scope": "Real local API; one empty local test space is retained",
+  "url": "http://localhost:5173/s/space-6107020f",
+  "checks": [
+    "Blank space creation omits empty prompt and succeeds without planner",
+    "Creator gets owner orb on unconfigured space",
+    "Offline retains last valid view; reconnect restores live stream"
+  ],
+  "errors": []
+}

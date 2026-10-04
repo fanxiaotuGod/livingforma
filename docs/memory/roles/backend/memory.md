@@ -7,53 +7,50 @@ timezone: America/Vancouver
 permalink: livingforma/roles/backend/memory
 ---
 
-# Backend 角色记忆
+# Backend role memory
 
-## 已完成
+## Implemented — LF-120
 
-- 阅读 `docs/PRD.md` 的当前通用 App 产品方向和 `README.md`。
-- 编写 `docs/architecture.md`，明确 State、AppSpec、ToolSpec 分工，拟议接口与数据模型。
-- 描述 stable fieldId + JSONB records 的状态保留演化，以及版本冲突、幂等动作和原子发布。
-- 描述持久 stream_events、SSE 游标/重放、snapshot 一致恢复和 PostgreSQL 通知的边界。
-- 给出一个只读 HTTP ToolSpec 的受控能力演示候选，服务待确认。
-- LF-003 对齐复核：为候选 snapshot 增加服务端 effective `role` / `permissions`，说明前端按权限交集呈现控件、服务端重新鉴权和身份相关快照不可跨用户缓存。
+- Fastify application factory, API routes and same-origin production static hosting are in `apps/api/src/`; entrypoint loads root `.env` reliably.
+- `packages/db/src/index.ts`: PGlite disk persistence, PostgreSQL `pg` adapter, two transactional/idempotent migrations, identities/sessions/OAuth state, space aggregates, stream events, idempotency results, registry and tool invocation audit.
+- DevOps auth is mounted through a persistent AuthStore. Verified Google subjects map to stable internal users; local personas use `user-local-owner` and `user-local-participant`, only under explicit nonproduction loopback gates.
+- Server enforces sessions, Origin, CSRF, owner/participant/private-space permissions; public snapshots strip private schema, records and bindings. Only Owner publishes definitions or manages/invokes tools.
+- Atomic schema publication and records/default backfill preserve stable IDs and the same URL; write/version conflicts return 409. Mutations and tool calls use request fingerprints to reject mismatched ID reuse.
+- SSE replays persistent per-space cursors, checks access each poll, and resets on expired/future/interior-gap cursors. No business data, profile, prompt or media payload is sent in events.
+- Explicit local demo seeds reading/habits; production does not seed. Development data directory is ignored `.local/app-data/pglite`.
 
-## 已核实
+## Verification
 
-- 截至 2026-10-03，本轮读取时仓库没有可运行应用；架构内容是提案，不能当作实现或测试结果。
-- PRD 明确优先通用 App 创建和持续编辑；任务、签到、投票、读书记录等仅为可选示例。
-- PRD 要求界面变化保留业务数据和 URL；只有 Owner 发布定义和启用外部有副作用能力。
-- PRD 要求任何收费发生前获得用户确认，不自动升级计划。
-- 本轮仅写分配的 architecture 与 backend 角色 memory/journal 文件；未修改配置、脚本、共享记忆，未 commit/push。
-- 文档已通过本轮静态阅读核对；尚无源代码、数据库或端到端验证。
+- `apps/api/src/api.test.ts`: real embedded PostgreSQL/PGlite and Fastify integration suite, including a disk database close/reopen, sessions and tool registry recovery.
+- API tsup build passed. Repository typecheck passed after frontend's concurrent edit completed.
+- No Tiger Data cloud connection, real browser Google roundtrip, Gemini/ElevenLabs, real tool endpoint or production deployment was verified by LF-120. Fixture tool runs are labeled tests.
 
-## 持续约束
+## Handoff / next integration work
 
-- Node.js / TypeScript / Fastify 与 SSE 是实现候选；主库优先 Tiger Data/PostgreSQL，须先核实 Shared Free 条件，不是已创建的服务。
-- Google OAuth 登录已确定，DevOps 拥有 packages/auth/provider/session，Backend 拥有用户/Google subject 映射、数据迁移、API 挂载和空间授权。Google 登录不等于任何空间的 Owner。
-- 代码归属 apps/api/src/、packages/db/；Snowflake 的脱敏事件分析可选，不做在线第二主库。全部归属见 docs/ROLE-OWNERSHIP.md。
-- 开始实现先用 scripts/coordination.py 为 backend 创建 session 并自动领取 LF-120 等可执行任务；依赖未满足时不越界修改。
-- 业务值绑定稳定字段 ID；改标签/布局不更换字段键。移除展示不物理删除历史值。
-- definitionVersion、schemaVersion、stateVersion 与 eventCursor 分工不同，不混为一个版本。
-- 候选快照中定义嵌套在 `definition`，schemaVersion 位于 `definition.entitySchema`，stateVersion/eventCursor/role/permissions 在顶层；拒绝另起 specVersion/stateRevision 别名。最终共享类型待 coordinator 接受。
-- 模型只返回声明式提案；不得直接执行生成的代码、SQL、shell 或任意 HTTP 目标。
-- 数据写入、版本推进、幂等结果和流事件在同一事务提交；通知只用于唤醒，不替代持久重放。
-- Participant 不能通过共享 URL 获得 Owner 权限；接口权限由后端验证。
-- ToolSpec 只持 credentialRef；真实凭据只由服务端注入，不进入浏览器、spec 或日志。
-- 当前不声称服务集成、数据库或测试已完成。待定项必须保留“拟议/待确认”表述。
+- See `docs/backend/runtime.md` and `docs/memory/handoffs/backend/LF-120-45efaaa2-28c0-4fdc-bc93-195ef15abf1b.md`.
+- Agent must export `planProposal` plus `toolAdapter` or synchronous `createToolAdapter()` matching shared ToolAdapter. Missing adapters return 503; no fabricated execution.
+- DevOps supplies actual `DATABASE_URL` or durable production `DATA_DIR`, HTTPS APP_ORIGIN and Google credentials through the environment. PGlite requires one process per directory; PostgreSQL adapter is intended for multiple instances.
+- Public projection intentionally omits tools; first tool loop is Owner-only. No arbitrary URL/code execution is implemented.
+- Provider/network calls must enforce verified free budgets before activation. No paid resource was created and no secrets were written to memory.
+- Reclaim the next backend task via coordination; do not assume this completed session owns new writes.
 
-## 待办
+## Implemented and verified — LF-122
 
-1. 团队确认前后端接口，尤其完整 FieldSpec、FilterExpression、AllowedActionSpec 与 HTTP 错误契约。
-2. 对齐 Google session/用户映射 adapter、Participant 策略、Tiger Data 免费额度和部署长连接支持。
-3. 实现持久空间、版本化定义、业务记录与安全演化；优先通用生成主链路。
-4. 实现持久 SSE 事件和 snapshot 恢复，验证两个浏览器、并发冲突与幂等重试。
-5. 选择并授权一个免费只读 HTTP 测试/真实服务，再实现工具验证、注册、执行和复用。
-6. 真实运行后把命令、测试结果、失败条件和确认决定记录在本角色 journal；不得以设计推演替代执行证据。
+- Pending ToolSpec bridge: enabled registry context reaches the planner; `requiresToolApproval` preserves definition/data/cursor and does not consume request IDs. Owner-only/CSRF-protected tool proposals, explicit tested enablement, then ordinary retry bind the registered tool.
+- Capability-gap-only no-op changes return an error instead of being presented as publication success. Create-space prompts needing approval require creating the empty space first.
+- Migration 3 and `createProviderBudgetStore` persist provider reservations in `lf_provider_budgets` (`provider`, JSONB `data={day,requests,recent}`), atomic across adapters/replicas and retained across restart. UTC daily limit <=30 and rolling minute <=5; no automatic refunds. Server injects Agent `configureBudgetStore`.
+- Same-key CLI/file usage must be carried forward before real DB-backed Gemini activation. Coordinator is handling the previously consumed real requests; this task made no Gemini/cloud calls.
+- QA zero-public-fields defect fixed, including zero-visible-components: non-Owner gets null definition/empty records/no writable actions or login-to-write prompt. Owner data remains intact; full definition validation is not weakened.
+- Expired session rows are pruned at session creation.
+- Verified 20 tests (API16 + budget4), root typecheck, API build and diff check. Unique handoff: `docs/memory/handoffs/backend/LF-122-aa8173d6-00ec-400b-be8b-4d466d1ca1d4.md`.
 
-## 下次启动先读
 
-- `docs/PRD.md`
-- `docs/architecture.md`
-- 本文件与 `journal.md`
-- 团队共享决定文件如已存在；冲突时先向 coordinator 报告，不自行把提案提升为已确认决定。
+## Implemented and verified — LF-182
+
+- Owner-only ephemeral voice/scene endpoints are in `apps/api/src/media.ts`; server injects Agent MediaAdapter with durable media budget store. Bindings derive from existing auth user+random per-login CSRF token, staying server-only in memory; no second authentication provider.
+- Session limits: five minutes, one voice + one scene per current browser auth, 100 process-wide; same-kind/new-space replacement and shutdown cleanup. DELETE 204. Positive increasing sequence, one in flight, scene 15s spacing and 8 frames; canonical base64/WAV/JPEG bounds and capture freshness.
+- Logout callback, periodic and final auth/space checks, expiry, Stop and HTTP disconnect abort work. Cancellation races provider work and discards late results. Observation speech failure preserves safe text. No raw media, transcript, returned audio or media event enters business persistence/SSE/logs.
+- Migration 4 `lf_media_budgets` and createMediaBudgetStore reserve non-resetting verified allowance units atomically: period verified-2026-10-03, STT60s/TTS1000chars, 3 starts/minute per bucket, no refunds. Server keeps the existing Gemini DB ledger.
+- Verified backend suite37 tests: media13 + media budget4 + existing API16/provider budget4; root typecheck/API build/diff check passed. Fixtures exercise HTTP disconnect and physical budget database restart; no real device/cloud calls by this backend task.
+- Agent reported separate real STT/vision/TTS against the same Neon ledger (Gemini28/30,STT2,TTS153 at handoff; evidence docs/agent/evidence/LF-181-live-media.json). Do not reset ledgers or assume those counts remain current.
+- Handoff: docs/memory/handoffs/backend/LF-182-b797f471-6756-4e85-8242-722e8ac03cb1.md. Final browser/provider/deployment acceptance belongs to coordinator/QA/DevOps.

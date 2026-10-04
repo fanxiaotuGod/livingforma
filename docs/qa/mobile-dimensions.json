@@ -1,0 +1,44 @@
+[
+  {
+    "width": 320,
+    "scroll": 320,
+    "rating": [
+      {
+        "width": 1,
+        "height": 1,
+        "padding": "0px",
+        "left": 21,
+        "right": 22
+      }
+    ],
+    "overflow": []
+  },
+  {
+    "width": 390,
+    "scroll": 390,
+    "rating": [
+      {
+        "width": 1,
+        "height": 1,
+        "padding": "0px",
+        "left": 21,
+        "right": 22
+      }
+    ],
+    "overflow": []
+  },
+  {
+    "width": 430,
+    "scroll": 430,
+    "rating": [
+      {
+        "width": 1,
+        "height": 1,
+        "padding": "0px",
+        "left": 21,
+        "right": 22
+      }
+    ],
+    "overflow": []
+  }
+]

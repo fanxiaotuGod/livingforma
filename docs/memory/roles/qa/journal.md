@@ -66,3 +66,39 @@ timezone: America/Vancouver
 - 查看当前依赖元数据：仍有 fastmcp / fastmcp-slim 4.0.0b1、logfire-sdk 6.0.0b7、opentelemetry-semantic-conventions / opentelemetry-instrumentation 0.65b0；不声称所有依赖为稳定版。14:23 已独立运行的 pip check 为 clean。
 - 无新阻塞发现；按要求未重复 smoke 或其他已通过测试。最后修改仍只有 QA memory/journal，无 commit/push。
 - 交接：coordinator 可按最终证据完成 LF-005。剩余边界是新 Codex chat 工具/角色加载、同文件并发和产品功能，需对应后续任务验证。
+
+
+## 2026-10-03 16:12 · America/Vancouver · LF-146 独立应用基础回归
+
+- Status: verified early-review deliverable, with one open frontend defect; not final product acceptance.
+- Session: 50ae5acd-5331-41d4-8b35-1caa548282c1。保留既有未提交修改；只写tests/e2e、docs/qa、本角色日志/记忆/独立handoff，编辑批次check通过。
+- 新增可重跑 `tests/e2e/foundation.ts`，隔离真实Fastify HTTP + PGlite内存DB + Agent local-rules，Chrome三个独立上下文；当前webdist生产资源实际渲染，无API拦截。未读取秘密、未调用云或收费API。
+- 三轮实际执行：首轮12pass/3fail中一项为QA选择器仅支持cards；修正为稳定record ID后第二轮12pass/2真实fail；Backend修projection并补新建空间/工具prompt边界后第三轮15pass/1fail。报告保留历史，没有把失误算产品缺陷。
+- 通过：英文、local Owner/Participant/Anonymous权限、Origin/CSRF、创建更新删除和刷新、实际SSE、实际local-rules加rating/list/rose同时保留data/draft/URL、习惯checkin日期、offline/reconnect、Participant创建自己空间获得Owner、logout旧session无效、无browser pageerror。
+- QA-146-01：全private字段或零可见components投影违反frontend min1校验，实际Chrome显示Zod。Backend当前LF122修为安全空公开视图；QA已独立验证anonymous/participant无records且Owner定义不变。
+- QA-146-02：mobile 390px document.scrollWidth=411，rating的sr-only input越界。实际截图和DOM尺寸证据已交root；由LF150合规scope修复，QA不改product文件。最新脚本exit1保留此缺陷。
+- `git diff --check`通过。证据docs/qa/foundation-report.md、JSON与PNG；没有commit/push。
+- 后续：重建webdist后复跑mobile；LF160继续真实Google/Gemini/tool/voice/camera/production验收，不把local identity或local-rules称真实Google/Gemini。
+
+
+## 2026-10-03 16:15 · America/Vancouver · LF-147 修复后独立复验
+
+- Status: verified。新session117d3109-4e43-4ca9-b3c1-6536e0050d1b自动next领取LF147；仅QAscope写入，check通过，既有修改保留。
+- 读取当前CSS修复：rating container relative，`.field input.sr-only`明确1×1px/0padding/left0/top0；body min-width320。QA未修改产品代码。
+- 扩展foundation.ts的reduced-motion rating检测至320/390/430px并检查隐藏input实际几何尺寸，保留LF146最后失败报告及before截图。
+- 执行 `pnpm exec tsx tests/e2e/foundation.ts`，18项全部通过、exit0；真实隔离HTTP/PGlite/local-rules和三个Chrome上下文。document.scrollWidth严格等于320/390/430；overflow空；hidden input1×1px/0padding。
+- 视觉检查mobile-rating-320.png；更新docs/qa/foundation-report.md、foundation-results.json、各尺寸截图与mobile-dimensions.json。公开projection及既有权限/CRUD/SSE/实际变形回归继续通过。
+- 结论QA-146-01/02均关闭。本次无未修foundation缺陷；真实OAuth/provider/voice/camera/production仍由LF160/170验证，不能由本地结果替代。
+- 自己服务/浏览器/内存DB已由finally清理，未关闭root开发或integration服务。`git diff --check`通过；未commit/push。
+
+## 2026-10-03 17:06 · America/Vancouver · LF-160 最终独立验收
+
+- Status: verified，范围为上线前 MVP 实现验收；不提前完成 LF-170 生产部署。
+- 恢复 AGENTS/PRD/shared/ownrole/ownership/integrations/catalog 与各角色最终证据；新 session `e0fc0cdc-6791-469f-8976-5af922c6083a` 在 LF185 finish 后原子 next 领取 LF160。此前只读检查未越过依赖写文件。
+- 独立 gh read-only 获取 run37163223781 状态与精选日志：exact current source `7efaa919361be0165f8bc0bf20852f0c0e2b37b6`、success，100/100 tests、11 files、TypeScript、web/API build通过。未重复通过的全套测试或provider请求。
+- 审核LF150真实GoogleOwner/Gemini/Pi/Neon/OpenLibrary、LF181真实STT/vision/TTS、LF185语音/配额停止/相机成功及Docker证据，逐项对照源码harness断言。视觉查看实际camera screenshot，英文caption/control和habit记录仍可见；画面内“delete records”是刻意的不可信测试文字，无应用权限。
+- 14项数据/日志/source一致性检查实际运行通过，包括18项foundation均pass、habit record跨LF150→quota→camera完全相等、schema/v2相等、quota失败ledger不变、成功playing/Stop/visitor隔离、临时session删除、新日Gemini与Eleven固定period分离、CIcommit一致。保存artifact SHA256以便追踪。
+- 记录此前只读独立repro闭环：late proposal logout后由200/v2变401/v1/noOwnerSnapshot；tool lookup并发窗口由external2/audit1变external1/audit1；includeSpeech false的真实hostroute fixtureadapter speechCalls0/noaudio。保留PGlite/deferredfixtures范围，coordinator已将9项revocation与media断言加入正式CI。
+- 记录QA先前实际Docker匿名Chrome两深链：英文JS/CSS/SSE完整，0资源/CSP/pageerror、无orb/overflow。最终image后端idleerror修复由Docker HTTP和CI证据覆盖，不能误称该backend改动后又跑过同一浏览器。
+- 产品门槛全部通过。证据准确区分：真实Google另证；媒体用temporarytestsession+virtualdevices；frontend lifecycle全部APIfixtures；语音旧wait超时仍failed、随后durablev2证明完成，且camera指令是草稿中增加的文字。物理设备/其他浏览器、publicdomain/生产Google仍未证明。
+- 修改 docs/qa/LF-160-acceptance.md、LF-160-evidence.json、自己的memory/journal、唯一handoff；不改产品/shared，不调用provider，不重置额度，不收费，不commit/push。下一步是coordinator更新shared，DevOps领取LF170完成实际发布与域名验收。

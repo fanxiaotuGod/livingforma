@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-03T23:09:35.802Z",
+  "mode": "patch",
+  "source": "gemini",
+  "title": "Between the lines",
+  "fields": [
+    "title",
+    "author",
+    "status",
+    "progress",
+    "notes",
+    "rating"
+  ],
+  "components": [
+    {
+      "id": "books",
+      "type": "cards",
+      "sort": {
+        "field": "rating",
+        "direction": "desc"
+      }
+    },
+    {
+      "id": "total",
+      "type": "counter"
+    },
+    {
+      "id": "reading-progress",
+      "type": "progress"
+    },
+    {
+      "id": "add-book",
+      "type": "form"
+    }
+  ],
+  "capabilityGaps": [],
+  "run": {
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "requests": 1,
+    "toolCalls": [
+      "submit_proposal"
+    ],
+    "tokens": {
+      "input": 3197,
+      "output": 1125
+    },
+    "elapsedMs": 3350
+  }
+}

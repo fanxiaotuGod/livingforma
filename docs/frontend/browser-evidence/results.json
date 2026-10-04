@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-03T23:01:18.350Z",
+  "checks": [
+    "Anonymous reading loads from real API; owner orb absent",
+    "Local test identity explicitly labeled; owner orb becomes visible",
+    "Owner orb opens centrally, receives focus, and preserves draft across close",
+    "Create record persists and second anonymous browser receives real SSE update",
+    "Update progress and delete only the browser-created record",
+    "Habit tracker renders calendar and real check-in toggles without changing the URL",
+    "Mobile layout stays within viewport",
+    "Fixture-only morph preserves existing record IDs, add-form draft and URL with reduced motion",
+    "No browser page errors"
+  ],
+  "scope": "Real local API for auth/CRUD/SSE/habits; explicitly mocked fixture for morph/reduced-motion only",
+  "errors": []
+}

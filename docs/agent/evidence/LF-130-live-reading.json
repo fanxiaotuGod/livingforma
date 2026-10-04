@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-03T23:07:42.043Z",
+  "mode": "reading",
+  "source": "gemini",
+  "title": "Personal Reading App",
+  "fields": [
+    "title",
+    "author",
+    "status",
+    "progress"
+  ],
+  "components": [
+    {
+      "id": "book_form",
+      "type": "form"
+    },
+    {
+      "id": "bookshelf",
+      "type": "cards"
+    },
+    {
+      "id": "reading_progress",
+      "type": "progress"
+    }
+  ],
+  "capabilityGaps": [],
+  "run": {
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "requests": 2,
+    "toolCalls": [
+      "submit_proposal",
+      "submit_proposal"
+    ],
+    "tokens": {
+      "input": 4886,
+      "output": 912
+    },
+    "elapsedMs": 3374
+  }
+}

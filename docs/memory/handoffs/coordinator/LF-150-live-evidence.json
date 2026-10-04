@@ -1,0 +1,84 @@
+{
+  "observedAt": "2026-10-03T23:20:58.725Z",
+  "scope": "Real Google Owner via Chrome; Gemini 3.5 Flash Lite and Neon behind localhost; independent anonymous IAB received SSE",
+  "slug": "space-bb2d7928",
+  "definitionVersion": 3,
+  "skin": "sage",
+  "componentTypes": [
+    "list",
+    "progress",
+    "counter",
+    "form"
+  ],
+  "records": [
+    {
+      "id": "rec_2c05e85b-9db1-4f88-9ced-284fa61b6a59",
+      "values": {
+        "notes": "A record created before the layout changes.",
+        "title": "The Little Prince",
+        "author": "Antoine de Saint-Exupéry",
+        "rating": 0,
+        "status": "Reading",
+        "progress": 35
+      },
+      "version": 2,
+      "createdAt": "2026-10-03T23:16:34.274Z",
+      "updatedAt": "2026-10-03T23:17:30.695Z"
+    }
+  ],
+  "publicPermissions": {
+    "canEdit": false,
+    "canWrite": false,
+    "canUseTools": false,
+    "actionIds": []
+  },
+  "urlPreserved": true,
+  "tools": [
+    {
+      "id": "openlibrary_search",
+      "enabled": true,
+      "invocations": 2
+    }
+  ],
+  "audits": [
+    {
+      "status": "ok",
+      "count": 2
+    }
+  ],
+  "geminiReserved": 27,
+  "checks": {
+    "sameRecordId": true,
+    "progressAndNotesPreserved": true,
+    "explicitToolApproval": true,
+    "repeatToolInvocations": 2,
+    "publicToolIsHidden": true
+  },
+  "habit": {
+    "slug": "space-3c242042",
+    "componentTypes": [
+      "counter",
+      "calendar-grid",
+      "streak",
+      "list",
+      "form"
+    ],
+    "records": [
+      {
+        "id": "rec_b4324180-1d08-4e08-b5e8-337f3820d886",
+        "values": {
+          "dates": [
+            "2026-10-03"
+          ],
+          "title": "Read for 20 minutes",
+          "target": 5,
+          "category": "Learning"
+        },
+        "version": 2,
+        "createdAt": "2026-10-03T23:20:01.837Z",
+        "updatedAt": "2026-10-03T23:20:44.448Z"
+      }
+    ],
+    "checkinPersisted": true
+  }
+}

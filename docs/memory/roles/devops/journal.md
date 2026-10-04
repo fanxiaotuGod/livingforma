@@ -53,3 +53,53 @@ permalink: livingforma/roles/devops/journal
 - 写入 `docs/operations/deployment.md`、新建 `docs/operations/google-oauth.md`，更新自己的 `memory.md` 与本日志。DevOps 拟拥有 `packages/auth/**` 和发布/infra 目录；Backend 拥有 `packages/db/**` 用户映射/迁移与 `apps/api/src/authz/**` 业务授权；Frontend 拥有登录 UI，coordinator 定稿跨目录 adapter/契约。
 - 验证范围为文档审阅与差异检查；没有代码、登录测试、云部署、DNS 修改、费用、提交或推送。coordinator 接收交接后更新共享任务与重新索引。
 - 下一步：实际开发阶段先锁定认证库/会话接口，核对 Tiger Shared Free；再实现 Google 登录、空间授权和双用户验收，最后记录真实域名上线证据。
+
+## 2026-10-03 15:24 America/Vancouver · LF-009 公开浏览 / SPA / 媒体部署文档
+
+- **confirmed requirement / proposed implementation**：coordinator 传达用户确认匿名可浏览公开网站，写入/管理才登录；Orb 仅属于当前空间 Owner。公开投影不开放草稿、私密字段、其他空间或推理额度。Jarvis 语音驱动和显式相机播报为明确后续里程碑，3D 仍 stretch。
+- 新建自己的 DevOps session `8372bf1c-7d6a-4596-b42e-6018c18ecd08`，成功 claim 无依赖 LF-009；五个目标文件编辑前 `check` 均 `allowed=true`、`catalog_current=true`。没有借用其他对话 session 或越过应用任务依赖。
+- Vite React TS SPA + 独立 Node API 是 coordinator 推荐，LF-100 验证锁定，当前未 bootstrap。更新同源 Node 托管 `dist` 与 OAuth/API/SSE、认证优先于 SPA fallback、后端密钥不得进入 `VITE_*`；保留 Google `sub`、token/state/nonce 验证与实际回调待定约定。
+- 更新匿名公开读取/登录写入/Owner 私有控制、登出保留公开网站的会话与验收说明；媒体需本设备显式权限、HTTPS、停止清理，普通 SSE 不传媒体或启动其他设备；推理 session/权限/额度须服务端校验。
+- 记录 LF-100 → workers/145 → LF-150 → LF-180/181/182 → LF-185 → QA LF-160 → 部署 LF-170 的阶段。第一阶段不冒充多模态完成；官方 Vite、Google 和浏览器资料支持部署/身份建议，不是实际功能测试。
+- 修改两份 `docs/operations/` 与自己的 memory/journal，创建唯一 DevOps handoff。本次没有应用、账户/凭据配置、资源、DNS、云费用、技能安装、提交或推送；完成认领只代表文档交付。
+- **verified（文档）**：已阅读差异；本任务目标 `git diff --check` 通过。自包含 Python 检查五个文件、五条本地 Markdown 链接，缺失链接与尾随空白均为零，包含未跟踪的新 handoff。没有运行应用/媒体/登录验收或重复本地 memory smoke；coordinator 收齐交接后统一索引。
+
+
+## 2026-10-03 16:04 America/Vancouver · LF-140 实现与真实服务里程碑
+
+- **implemented**：`packages/auth/src/types.ts` 和 `index.ts`，先交Backend adapter合约再实现provider/session；`auth.test.ts` 17 tests通过（真实RSA签名OIDC fixture，invalid signature/nonce/aud/issuer/expiry、state防回放、CSRF、session轮换/退出、production demo关闭）。全仓typecheck在16:00前已通过；后续其他角色修改独立验证。
+- **verified live**：已创建Google Web client，用户提供下载JSON导入.gitignored `.env`，0600；真实Chrome Google选择/consent回localhost reading成功，Participant无Owner orb。local测试身份不等于Google。
+- **verified / changed plan**：Tiger UI选择Shared Free，清楚显示Always zero cost与1GiB后创建。服务Ready但pgTLS验证失败，自签链；官方说明free不提供可验证cert。没有关闭校验，后续经coordinator授权创建Neon Free仅Postgres，`SELECT 1`在verify-full下成功。Tiger空实例保留，没有破坏资源。
+- **credentials configured, generation not claimed**：Gemini从明确Free项目取已有key；ElevenLabs API而非Creative页确认现有allowance，auto-topup OFF，建立10000 credits上限的专用受限key，认证GET subscription成功。所有private配置只在.env/.local/deployment，公共记忆无任何值。
+- **prepared**：infra Dockerfile/dockerignore、Render Free blueprint、CI、env example、部署验证脚本；生产部署/DNS/HTTPS/手机媒体尚未验收。Render是新账号条款最终动作，coordinator向用户说明并询问，等待期间继续代码。
+- **coordination**：最初LF140 claim后按root请求release，扩展secret操作scope后重新claim；未越权修改Backend、Frontend或共享文件。当前仍进行LF140，不提前finish；独有handoff在任务收尾补充。
+
+- **16:06 补充verified**：真实Google登录reload保持，UI sign out后public reading四条记录仍可读，按钮回到Sign in/Sign in to add。Neon实际Billing随后显示Free Plan $0/month、1GB（onboarding曾显示0.5GB，保留差异而不混同），无upgrade操作。私密截图保存在.local/deployment/。
+- 首轮Docker build成功；运行旧bundle退出（与root同时发现pg动态require的同一问题），root已修runtime externals并独占新一轮Docker验证，DevOps未把旧image启动失败记为成功。
+
+
+## 2026-10-03 16:09 America/Vancouver · LF-140 准备验收收尾
+
+- coordinator评审LF140是OAuth/provider/部署准备，正式新Render账户/service/DNS/production callback归LF170；准备验收完成，不让后置用户Terms回复阻塞已完成代码。
+- coordinator实际验证新production Docker image连接Neon：health200（Postgres）、session production/googleConfigured=true/localDemoAvailable=false、SPA /s/reading200、POST/auth/local404；smoke容器已stop/remove。没有把误探业务路径404当作云库是否seed的证据。
+- Gemini model依Agent/coordinator官方免费Standard核查固定gemini-3.8-flash，env与example已更新，无付费fallback。操作文档补Render无卡超额停服/停build、WebSocket无固定timeout但部署会断连，SSE/HTTPS媒体实际域名验证留LF170。
+- 唯一handoff更新为completed preparation，列出真实与未验证范围、私密截图及Chrome恢复tab。Final scoped git diff --check通过；finish后close，释放多agent槽位。未购买、未推送、未发布应用、未写DNS。
+
+
+## 2026-10-03 16:36 America/Vancouver · LF-148 实际服务配置与发布预检
+
+- **implemented / verified**：新session60aae246-d567-48ba-8809-a5adbfe512e6自动next认领LF148（catalog12），每批编辑check允许。保留全部其他角色/用户未提交修改，不动共享memory。
+- 对齐ignored .env的实际模型gemini-3.5-flash-lite、AGENT_MODE=gemini、GEMINI_DAILY_REQUEST_LIMIT=30与已有两个verified=true，保持credentials原值/0600。公开example安全默认verified=false，Render蓝图明确当前已验证账户live flags、五项server-only secret placeholders、Free plan与quoted autoDeployTrigger off。
+- **verified live read-only**：新增preflight生产配置18检查通过，读取当前Neon既有Gemini30/30、STT5/60秒、TTS153/1000字符，媒体period verified-2026-10-03。SQL BEGIN READ ONLY/SELECT/ROLLBACK，没有provider生成、写库或重置额度；计数变化来自coordinator联测。
+- **clarification**：媒体期/上限是Agent与DB源码常量，不存在可调env；文档按真实实现说明。ElevenAPIincluded pool与PAYG0/AutoTopUpOFF在前次只读复核确认，不虚构includedUSD数值，实际STT/vision/TTS由Agent提供合成fixture证据。
+- **verified preparation only**：YAML解析/secret占位/固定限额/本地links和已知secret泄漏检查通过；node syntax与预检unverified拒绝通过；.env忽略且0600。未重跑应用provider测试或Docker，以免与coordinator重复。原Docker产物由root先前验证，当前runtime最终build由整合/QA负责。
+- **release still pending**：旧Renderhandoff tab已不在；恢复既有GitHub登录至新的tab1369830686 Create Account页面，未提交Terms/未创建service。更新operations为精确LF185→160→170、账号批准、无卡Free、source安全推送、现存Neon+secrets、HTTPS/DNS/OAuth/SSE/media、rollback证据步骤。未推送/部署/修改DNS/充值，用户原待回复不重复提问。
+- 唯一handoff：docs/memory/handoffs/devops/LF-148-60aae246-d567-48ba-8809-a5adbfe512e6.md。准备验收完成后finish/close，实际部署仍LF170。
+
+
+## 2026-10-03 17:13 America/Vancouver · LF-170 真实部署进行中
+
+- QA160已完成；新session `1b9bcef2-81b0-48d2-95ae-da2572c6e0f1` 自动认领LF170，各写入路径check通过。用户自行完成Render账户注册，并对既有Google/Neon/Gemini/ElevenLabs配置存入Render服务器私密env明确回答“允许，继续免费部署”，没有重复索要同一批准。
+- **verified live**：Render Hobby无卡/无待付款，Free $0、0.1CPU/512MB、Virginia。通过public Git URL部署，无GitHub App权限扩张。Dockerfile infra/Dockerfile、context .、health /api/health、auto deploy off。首个deploy `dep-db0pi4tg1s2s73f4vp2g` 在1m10s后Live，source `7efaa919361be0165f8bc0bf20852f0c0e2b37b6`。service `srv-db0pi4lg1s2s73f4vnbg`，平台 https://livingforma.onrender.com 的4项post-deploy smoke全部通过。
+- **DNS published / propagation pending**：添加apex+自动www共2个included域名；Render实际指示A 216.24.57.1与www CNAME livingforma.onrender.com。现有Namify账户已保存这两项，权威NS部分已返回，公共resolver仍有负缓存。www在Render Verified、证书Pending，apex等待传播；未把平台成功当作正式域名验收。
+- 私密.env导入13项配置，保留原verified flags、模型3.5flashlite和30请求上限，复用Neon严格TLS。没有新费用、银行卡、quotareset或provider生成。忽略目录中保存无secret截图及0600只读业务表备份（不含临时session/OAuth），不对业务数据执行恢复。正在以同一reviewed SHA进行redeploy/rollback演练，随后验证域名Google与HTTPS媒体。

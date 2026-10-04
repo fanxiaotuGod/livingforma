@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-03T23:32:24.500Z",
+  "scope": "Explicitly mocked contracts and network; not real external tool integration evidence",
+  "checks": [
+    "All 12 available manifests rendered from one composed fixture",
+    "Registered tool parameters are independent typed inputs; structured results escape markup",
+    "Tool proposals await explicit Enable tool and re-propose after registration",
+    "All six skin palettes have distinct active tokens",
+    "Collection empty state renders",
+    "Initial API error shows actionable recovery"
+  ],
+  "errors": []
+}

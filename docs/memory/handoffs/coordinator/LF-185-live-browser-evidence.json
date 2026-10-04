@@ -1,0 +1,81 @@
+{
+  "at": "2026-10-03T23:32:22.431Z",
+  "scope": "Real localhost UI/API, Neon, Gemini and ElevenLabs. Virtual devices and temporary server test session; Google separately verified in LF150.",
+  "checks": [
+    "Server session maps to existing Google Owner; independent visitor has no orb.",
+    "Actual browser recording converted to WAV, real STT populated editable draft; no auto-publication and microphone released."
+  ],
+  "before": {
+    "gemini": {
+      "day": "2026-10-03",
+      "recent": [
+        1791069980608
+      ],
+      "requests": 28
+    },
+    "media": [
+      {
+        "bucket": "elevenlabs-stt-seconds",
+        "period": "verified-2026-10-03",
+        "data": {
+          "units": 2,
+          "recent": [
+            1791069979948
+          ]
+        }
+      },
+      {
+        "bucket": "elevenlabs-tts-characters",
+        "period": "verified-2026-10-03",
+        "data": {
+          "units": 153,
+          "recent": [
+            1791069983930
+          ]
+        }
+      }
+    ]
+  },
+  "transcription": {
+    "status": 200,
+    "sequence": 1,
+    "text": "Change the skin to sage.",
+    "durationMs": 2294
+  },
+  "transcriptDraft": "Change the skin to sage.",
+  "status": "failed",
+  "failure": "page.waitForResponse: Timeout 15000ms exceeded while waiting for event \"response\"",
+  "after": {
+    "gemini": {
+      "day": "2026-10-03",
+      "recent": [
+        1791070353916,
+        1791070360596
+      ],
+      "requests": 30
+    },
+    "media": [
+      {
+        "bucket": "elevenlabs-stt-seconds",
+        "period": "verified-2026-10-03",
+        "data": {
+          "units": 5,
+          "recent": [
+            1791070352066
+          ]
+        }
+      },
+      {
+        "bucket": "elevenlabs-tts-characters",
+        "period": "verified-2026-10-03",
+        "data": {
+          "units": 153,
+          "recent": [
+            1791069983930
+          ]
+        }
+      }
+    ]
+  },
+  "temporarySessionRemoved": true
+}

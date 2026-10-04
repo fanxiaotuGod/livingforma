@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-03T23:10:24.471Z",
+  "scope": "Independent actual local HTTP/Chrome/PGlite/local-rules. No real Google, Gemini, external tool, media, or production claim. All-private projection state is an explicit adversarial fixture.",
+  "checks": [
+    {
+      "name": "Anonymous English reading UI hides Owner orb and prevents write",
+      "status": "pass"
+    },
+    {
+      "name": "Explicit local test login exposes Owner orb and preserves typed draft",
+      "status": "pass"
+    },
+    {
+      "name": "Create through actual form persists on reload and reaches second anonymous client by SSE",
+      "status": "pass"
+    },
+    {
+      "name": "Local participant has CRUD permission but server rejects definition/tool writes",
+      "status": "pass"
+    },
+    {
+      "name": "Cross-origin and incorrect CSRF writes fail without modifying records",
+      "status": "pass"
+    },
+    {
+      "name": "Actual local-rules morph retains record IDs, values, URL and unsaved form while SSE viewers update",
+      "status": "pass"
+    },
+    {
+      "name": "Reduced-motion mobile client has readable UI and no horizontal overflow after live morph",
+      "status": "fail",
+      "detail": "{\"width\":390,\"scroll\":411,\"overflow\":[{\"tag\":\"INPUT\",\"cls\":\"sr-only\",\"right\":411,\"text\":\"\"}]}\n\nexpect(received).toBeLessThanOrEqual(expected)\n\nExpected: <= 390\nReceived:    411"
+    },
+    {
+      "name": "Update/delete actions persist and propagate to a second client",
+      "status": "pass"
+    },
+    {
+      "name": "Unsupported capability retains last definition, records and URL",
+      "status": "pass"
+    },
+    {
+      "name": "Offline viewer preserves prior view and resumes actual snapshot/SSE after reconnect",
+      "status": "pass"
+    },
+    {
+      "name": "Habit check-in changes real dates, preserves route and restores original state",
+      "status": "pass"
+    },
+    {
+      "name": "Logout removes orb; prior cookie and CSRF cannot mutate",
+      "status": "pass"
+    },
+    {
+      "name": "Public projection of all-private field definition remains renderable without private values",
+      "status": "fail",
+      "detail": "[\n  {\n    \"code\": \"too_small\",\n    \"minimum\": 1,\n    \"type\": \"array\",\n    \"inclusive\": true,\n    \"exact\": false,\n    \"message\": \"Array must contain at least 1 element(s)\",\n    \"path\": [\n      \"entitySchema\",\n      \"fields\"\n    ]\n  }\n]"
+    },
+    {
+      "name": "No browser JavaScript errors in above rendered flows",
+      "status": "pass"
+    }
+  ],
+  "pageErrors": []
+}

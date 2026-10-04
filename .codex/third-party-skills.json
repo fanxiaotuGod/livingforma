@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "scope": "user-local Codex skills; not npm/runtime dependencies",
+  "installer": "Codex system skill-installer/scripts/install-skill-from-github.py",
+  "skills": [
+    {
+      "name": "frontend-dev",
+      "repo": "MiniMax-AI/skills",
+      "ref": "60aaae52bb2af8162732751a4332f62a5fef518b",
+      "path": "skills/frontend-dev",
+      "source_files_verified": 98
+    },
+    {
+      "name": "animations",
+      "repo": "mthines/agent-skills",
+      "ref": "dfd1a495c850678f247dfccdfe761d74164f5be5",
+      "path": "skills/design/animations",
+      "source_files_verified": 23
+    }
+  ],
+  "local_root": "$CODEX_HOME/skills (default ~/.codex/skills)",
+  "project_adaptation": "docs/frontend/skills-guide.md",
+  "notes": [
+    "Install complete subtrees and preserve upstream root MIT LICENSE.",
+    "No upstream script execution or external paid API is required by installation.",
+    "Original source files are unmodified; original SKILL.md is adapted by project instructions."
+  ]
+}

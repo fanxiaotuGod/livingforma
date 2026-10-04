@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-03T23:12:58.236Z",
+  "identity": "explicit local test Owner, not Google OAuth",
+  "plannerSource": "local-rules",
+  "database": "disk PGlite PostgreSQL",
+  "transport": "real HTTPS Open Library fixed public endpoint",
+  "pendingApproval": true,
+  "preEnableStatus": 403,
+  "definitionVersions": [
+    1,
+    2
+  ],
+  "preservedRecords": 1,
+  "enabledToolId": "openlibrary_search",
+  "firstReused": false,
+  "secondReused": true,
+  "bookCount": 5,
+  "audits": 2,
+  "piEvents": [
+    "tool_execution_start",
+    "tool_execution_end",
+    "tool_execution_start",
+    "tool_execution_end"
+  ]
+}

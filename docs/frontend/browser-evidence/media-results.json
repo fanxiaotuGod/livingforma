@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-03T23:30:44.689Z",
+  "scope": "Real Chrome virtual camera/microphone, MediaRecorder, AudioContext resampling, JPEG capture and audio player; every API request intercepted as an explicit fixture; no provider calls",
+  "checks": [
+    "Mount and incoming definition changes never start devices",
+    "Real browser recording resamples to server-accepted WAV and becomes a draft only",
+    "Cancel recording releases tracks and never transcribes",
+    "Closing while transcription is pending aborts and suppresses the late draft",
+    "Camera preview is explicit and sends no image until Describe",
+    "Stop speaking interrupts current audio; Stop camera revokes URLs and releases tracks",
+    "A delayed scene result cannot appear or play after Stop",
+    "Device permission denial keeps text available and camera off",
+    "Unmount, space change and logout all release camera tracks",
+    "Search cards keep text escaped and permit only canonical Open Library links",
+    "Automatic observation respects 15 seconds, one request at a time, eight frames and expiry"
+  ],
+  "wavEvidence": [
+    {
+      "bytes": 38444,
+      "seconds": 1.2,
+      "dataBytes": 38400,
+      "hasClientDuration": false,
+      "sequence": 1
+    },
+    {
+      "bytes": 25004,
+      "seconds": 0.78,
+      "dataBytes": 24960,
+      "hasClientDuration": false,
+      "sequence": 1
+    }
+  ],
+  "frameEvidence": [
+    {
+      "bytes": 8519,
+      "sequence": 1,
+      "capturedAt": "2026-10-03T23:30:43.286Z"
+    },
+    {
+      "bytes": 7941,
+      "sequence": 1,
+      "capturedAt": "2026-10-03T23:30:43.567Z"
+    },
+    {
+      "bytes": 8483,
+      "sequence": 1,
+      "capturedAt": "2026-10-03T23:30:44.530Z"
+    },
+    {
+      "bytes": 9218,
+      "sequence": 2,
+      "capturedAt": "2026-10-03T23:30:59.536Z"
+    },
+    {
+      "bytes": 9218,
+      "sequence": 3,
+      "capturedAt": "2026-10-03T23:31:14.544Z"
+    },
+    {
+      "bytes": 9218,
+      "sequence": 4,
+      "capturedAt": "2026-10-03T23:31:29.552Z"
+    },
+    {
+      "bytes": 9218,
+      "sequence": 5,
+      "capturedAt": "2026-10-03T23:31:44.559Z"
+    },
+    {
+      "bytes": 9689,
+      "sequence": 6,
+      "capturedAt": "2026-10-03T23:31:59.565Z"
+    },
+    {
+      "bytes": 9689,
+      "sequence": 7,
+      "capturedAt": "2026-10-03T23:32:14.573Z"
+    },
+    {
+      "bytes": 9689,
+      "sequence": 8,
+      "capturedAt": "2026-10-03T23:32:29.579Z"
+    }
+  ],
+  "sessionCount": 10,
+  "deletes": 10,
+  "errors": []
+}

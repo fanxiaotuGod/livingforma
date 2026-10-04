@@ -1,0 +1,174 @@
+{
+  "at": "2026-10-03T23:40:59.914Z",
+  "scope": "Real localhost UI/API, Neon, Gemini and ElevenLabs. Virtual devices and temporary server test session; Google separately verified in LF150.",
+  "checks": [
+    "Previously submitted voice draft is durably published as v2; Owner and independent visitor render camera while retaining habit schema/records.",
+    "Exhausted durable quota blocks observation before any new provider request; explicit preview stays controllable.",
+    "Stop ends all local tracks/audio; visitor never starts sensors or receives description; switching spaces and reload preserve business data with camera off."
+  ],
+  "before": {
+    "gemini": {
+      "day": "2026-10-03",
+      "recent": [
+        1791070353916,
+        1791070360596
+      ],
+      "requests": 30
+    },
+    "media": [
+      {
+        "bucket": "elevenlabs-stt-seconds",
+        "period": "verified-2026-10-03",
+        "data": {
+          "units": 5,
+          "recent": [
+            1791070352066
+          ]
+        }
+      },
+      {
+        "bucket": "elevenlabs-tts-characters",
+        "period": "verified-2026-10-03",
+        "data": {
+          "units": 153,
+          "recent": [
+            1791069983930
+          ]
+        }
+      }
+    ]
+  },
+  "published": {
+    "version": 2,
+    "skin": "sage",
+    "componentTypes": [
+      "camera",
+      "counter",
+      "calendar-grid",
+      "streak",
+      "list",
+      "form"
+    ],
+    "schema": {
+      "name": "Habit",
+      "fields": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title",
+          "public": true,
+          "required": true
+        },
+        {
+          "id": "category",
+          "type": "enum",
+          "label": "Category",
+          "public": true,
+          "options": [
+            "Wellbeing",
+            "Learning",
+            "Everyday"
+          ],
+          "required": false,
+          "defaultValue": "Wellbeing"
+        },
+        {
+          "id": "dates",
+          "type": "dates",
+          "label": "Dates",
+          "public": true,
+          "required": false,
+          "defaultValue": []
+        },
+        {
+          "id": "target",
+          "max": 7,
+          "min": 1,
+          "type": "number",
+          "label": "Target",
+          "public": true,
+          "required": false,
+          "defaultValue": 5
+        }
+      ],
+      "schemaVersion": 1
+    },
+    "records": [
+      {
+        "id": "rec_b4324180-1d08-4e08-b5e8-337f3820d886",
+        "values": {
+          "dates": [
+            "2026-10-03"
+          ],
+          "title": "Read for 20 minutes",
+          "target": 5,
+          "category": "Learning"
+        },
+        "version": 2,
+        "createdAt": "2026-10-03T23:20:01.837Z",
+        "updatedAt": "2026-10-03T23:20:44.448Z"
+      }
+    ]
+  },
+  "observation": {
+    "status": 503,
+    "audioBytes": 0,
+    "error": {
+      "code": "FREE_QUOTA_EXHAUSTED",
+      "message": "The verified media allowance has been used. No paid fallback is enabled.",
+      "requestId": "req-o"
+    }
+  },
+  "ownerDevices": {
+    "calls": 1,
+    "tracks": [
+      {
+        "kind": "video",
+        "state": "ended"
+      }
+    ],
+    "plays": 0,
+    "audio": []
+  },
+  "visitorDevices": {
+    "calls": 0,
+    "tracks": [],
+    "plays": 0,
+    "audio": []
+  },
+  "pageErrors": [],
+  "status": "passed",
+  "after": {
+    "gemini": {
+      "day": "2026-10-03",
+      "recent": [
+        1791070353916,
+        1791070360596
+      ],
+      "requests": 30
+    },
+    "media": [
+      {
+        "bucket": "elevenlabs-stt-seconds",
+        "period": "verified-2026-10-03",
+        "data": {
+          "units": 5,
+          "recent": [
+            1791070352066
+          ]
+        }
+      },
+      {
+        "bucket": "elevenlabs-tts-characters",
+        "period": "verified-2026-10-03",
+        "data": {
+          "units": 153,
+          "recent": [
+            1791069983930
+          ]
+        }
+      }
+    ]
+  },
+  "temporarySessionRemoved": true
+}

@@ -2,13 +2,13 @@
 
 状态：待评审设计；尚未实现 · 2026-10-03 · America/Vancouver
 
-依据：[产品需求](PRD.md)。产品优先让用户创建不同类别的轻量 App，并在已有数据后持续修改它；活动、签到和投票只是可选示例。本文件定义后端实现候选与前后端契约，不表示用户已锁定技术栈，也不表示接口、数据库或服务已经存在。
+依据：[产品需求](PRD.md)。产品以 Jarvis 式文字/语音控制、按需视觉观察和网站形态持续变化为方向；用户创建不同类别的 App，并在已有数据后持续修改它；活动、签到和投票只是可选示例。本文件定义后端实现候选与前后端契约，不表示用户已锁定技术栈，也不表示接口、数据库或服务已经存在。
 
 ## 1. 拟议运行方式
 
-候选后端为 Node.js / TypeScript + Fastify；持久层为 PostgreSQL，用户当前优先考虑 Tiger Data。先由 DevOps 核实 Shared Free 条件和连接，再由 Backend 验证迁移与持久化；没有证据时不视为服务已创建。其他 PostgreSQL 托管仅为后备评估，业务数据保留单一事实来源。候选实时方案为 SSE，客户端写操作通过普通 HTTP；若部署条件不支持长连接，再评估其他传输方案。
+coordinator 推荐前端 Vite + React + TypeScript SPA（替代早先 Next.js 默认倾向，LF-100 验证锁定）。候选后端为 Node.js / TypeScript + Fastify；持久层为 PostgreSQL，用户当前优先考虑 Tiger Data。先由 DevOps 核实 Shared Free 条件和连接，再由 Backend 验证迁移与持久化；没有证据时不视为服务已创建。其他 PostgreSQL 托管仅为后备评估，业务数据保留单一事实来源。候选实时方案为 SSE，客户端写操作通过普通 HTTP；若部署条件不支持长连接，再评估其他传输方案。
 
-用户已确定 Google OAuth 登录及 livingforma.tech 部署目标。DevOps 拥有 `packages/auth/` 中 provider、回调校验和 session/退出模块；Backend 在 `apps/api/src/` 挂载模块，在 `packages/db/` 维护 Google subject 到内部用户的映射及空间成员授权；Frontend 仅消费 session 状态并提供登录控件。身份已确定，具体认证库和接口仍待 LF-100 定稿。参见 [角色归属](ROLE-OWNERSHIP.md) 和 [Google 登录](operations/google-oauth.md)。
+用户已确定 Google OAuth 登录及 livingforma.tech 部署目标；公开网站允许匿名浏览，创建/写入/管理才要求登录且仍受空间授权。生产优先同源 Node 提供 SPA 静态文件及认证/API/SSE，配置深链接 fallback 并让 API/auth 路由优先。媒体双向传输与业务 SSE 分离。DevOps 拥有 `packages/auth/` 中 provider、回调校验和 session/退出模块；Backend 在 `apps/api/src/` 挂载模块，在 `packages/db/` 维护 Google subject 到内部用户的映射及空间成员授权；Frontend 仅消费 session 状态并提供登录控件。身份已确定，具体认证库和接口仍待 LF-100 定稿。参见 [角色归属](ROLE-OWNERSHIP.md) 和 [Google 登录](operations/google-oauth.md)。
 
 ```mermaid
 flowchart LR
@@ -24,14 +24,16 @@ flowchart LR
   R --> E[预先允许的测试或真实服务]
 ```
 
-Planner 不能直接修改数据库、安装包或运行生成的代码。它只能返回声明式提案；后端依照已实现的字段、组件、动作和 HTTP 能力目录执行。超出目录的需求返回产品可理解的限制。
+Planner 不能直接修改数据库、安装包或运行生成的代码。它只能返回声明式提案；后端依照已实现的字段、组件、动作和 HTTP 能力目录执行。组件目录是可增长的版本化注册表。超出当前目录的需求返回可理解的能力缺口与扩展请求，经过开发、验证、注册后即可复用，不能把四种组件当永久边界。
+
+Pi 负责组件/工具能力检索与规划、缺口识别、受控工具提案和后续复用；Gemini 是模型适配器。宿主提供 registry、验证器、执行原语与持久化，不能把 Pi 的通用 Agent 工具机制误称为已经实现的自动工具工厂。前端预制组件库与后端可创建工具分别扩展，最终以 AppSpec 数据/动作绑定连通，见 [场景能力地图](product/use-case-capability-map.md)。
 
 ## 2. State、AppSpec 与 ToolSpec 分工
 
 | 层 | 内容 | 所有权与演化规则 |
 | --- | --- | --- |
 | State | 业务实体 schema、业务记录、记录版本与空间状态版本 | schema 决定记录合法性；字段值绑定稳定 ID；布局变化不改记录 |
-| AppSpec | 页面、组件、排序/筛选、字段展示和已允许动作的引用 | 声明式运行时渲染；组件稳定 ID 支持连续动画；不得含任意 HTML/JS 或可执行代码 |
+| AppSpec | 页面、版本化组件、变体/皮肤、强调规则、排序/筛选、字段展示与已允许动作/设备能力引用 | 声明式运行时渲染；组件稳定 ID 支持连续动画；不得含任意 HTML/JS 或可执行代码 |
 | ToolSpec | 输入输出 schema、受限 HTTP 请求映射、凭据引用与副作用分类 | 由服务端校验和执行；真实密钥不进入 spec、客户端或事件 |
 
 业务 schema 与 AppSpec 分开存储，但作为一次发布的同一定义包提交，避免界面引用不存在的字段。ToolSpec 采用独立版本与生命周期；定义包只引用已注册的 `toolId` 与 `toolVersion`。
@@ -66,18 +68,13 @@ type EntitySchema = {
 type AppSpec = {
   specFormatVersion: 1;
   title: string;
+  skinId: RegisteredSkinId; // 精选 4–6 套，确切枚举在 LF-100 定稿
   pages: Array<{
     id: string;
     title: string;
-    components: Array<{
-      id: string;
-      kind: "form" | "list" | "cards" | "counter";
-      entityId: string;
-      fieldIds: string[];
-      actionIds: string[];
-      filter?: FilterExpression; // 受限操作符，非 JS 表达式
-      sort?: Array<{ fieldId: string; direction: "asc" | "desc" }>;
-    }>;
+    // 由已注册 kind + componentVersion 生成的鉴别联合；每种 props 单独校验。
+    // 起步：form/list/cards/counter、calendar-grid；后续 camera 属设备场景。
+    components: RegisteredComponentSpec[];
   }>;
 };
 
@@ -96,31 +93,36 @@ type BusinessRecord = {
   values: Record<string, string | number | boolean | null>;
 };
 
-type SpaceSnapshot = {
+type SnapshotContext = {
   spaceId: string;
-  role: "owner" | "participant"; // 服务端从当前会话解析的有效角色
+  role: "owner" | "participant" | "visitor"; // 服务端解析；匿名 public read 是 visitor
   permissions: {
     canProposeDefinition: boolean;
     canPublishDefinition: boolean;
     canRegisterTools: boolean;
     canEnableTools: boolean;
+    canUseAssistant: boolean; // 匿名浏览不等于可以发起付费推理
+    capabilityIds: string[]; // 服务端允许的能力；设备仍需本地用户启动/浏览器许可
     actionIds: string[]; // 此调用者在当前定义下可执行的业务动作
     toolRefs: Array<{ toolId: string; toolVersion: number }>;
   };
-  definition: DefinitionBundle;
   stateVersion: number;
   eventCursor: string; // 服务端单调序号以字符串传输，避免 JS 数字精度问题
-  records: BusinessRecord[];
 };
+
+type SpaceSnapshot = SnapshotContext & (
+  | { phase: "unconfigured"; definition: null; records: [] }
+  | { phase: "ready"; definition: DefinitionBundle; records: BusinessRecord[] }
+);
 ```
 
-`role` 和 `permissions` 是当前调用者的服务端有效权限，供前端选择入口和可操作控件；不是客户端可以回传以获得授权的凭证。快照只包含该调用者可见的记录，未经授权不能获取快照。默认缺失权限视为不可执行。AppSpec 的动作引用必须与 `permissions.actionIds` 相交后展示；工具同理。
+`role` 和 `permissions` 是当前调用者的服务端有效权限，供前端选择入口和可操作控件；不是客户端可以回传以获得授权的凭证。公开网站的匿名快照仅包含明确公开的字段/记录；Owner 私有快照与公开投影隔离，Visitor 的写入和编辑权限为空。私有数据仍须授权，不能复用 Owner 响应作公共缓存。默认缺失权限视为不可执行。可执行业务控件的动作引用必须与 `permissions.actionIds` 相交；工具同理。匿名界面另可展示服务端明确允许公开的“登录后添加”入口，它只触发认证、保存操作意图，不执行 mutation，也不需要伪造 action 权限。登录后重新获取权限，再由用户提交允许的操作；受限/邀请制空间应清楚显示不可写状态。这个登录提示元数据的具体字段在 LF-100 定稿。
 
-后端仍在每次 mutation、发布、注册、调用与 SSE 访问时重新验证权限；快照的 permissions 只是 UI 提示，不能代替服务端检查。Owner 权限或会话失效时关闭该调用者的流，并让客户端清理 Owner 控件/重新获取访问状态。快照包含身份相关内容，不允许按 spaceId 单独使用跨用户公共缓存。具体身份实现和权限撤销时效仍待确认。
+后端仍在每次 mutation、发布、注册、调用与 SSE 访问时重新验证权限；快照的 permissions 只是 UI 提示，不能代替服务端检查。Owner 权限或会话失效时关闭私有流/媒体会话并清理 Owner 控件；客户端可以重新建立公开只读快照与 SSE，不能继续使用旧权限。快照包含身份相关内容，不允许按 spaceId 单独使用跨用户公共缓存。具体身份实现和权限撤销时效仍待确认。
 
-这个快照形状与版本字段都是**候选契约，尚未实现或 accepted 定稿**。前端依赖的是嵌套的 `definition.definitionVersion`、`definition.entitySchema.schemaVersion` 和 `definition.appSpec`，以及顶层 `stateVersion` / `eventCursor`；不要同时引入 `specVersion` / `stateRevision` 的第二套别名。
+这个快照形状与版本字段都是**候选契约，尚未实现或 accepted 定稿**。Owner 初建空间的 `unconfigured` 分支没有运行定义或业务记录，但允许初始提案；前端先按 phase 分支处理。`ready` 分支依赖嵌套的 `definition.definitionVersion`、`definition.entitySchema.schemaVersion` 和 `definition.appSpec`，以及顶层 `stateVersion` / `eventCursor`；不要同时引入 `specVersion` / `stateRevision` 的第二套别名。未首次发布的空间只向 Owner 开放配置快照；匿名访问显示未发布状态，不泄露草稿。
 
-`FilterExpression` 和 `AllowedActionSpec` 的完整 schema、可用操作符及数值/日期边界是下一阶段接口工作。MVP 必须限制字段数量、记录数量和定义大小；超出限制需清楚提示，不宣称无限通用。
+`RegisteredComponentSpec`、`RegisteredSkinId`、`FilterExpression` 和 `AllowedActionSpec` 在此仅为未实现的候选类型。共享契约需定义 cards cover/compact/hero、list dense/comfortable、emphasis {when, style: highlight/pin/dim}、calendar-grid 的日期/时区/聚合、4–6 套皮肤，以及 camera 的 capability manifest。纯数据组件引用 entity/field/action，设备组件单独验证能力/本地生命周期，不能强行要求相机有 entityId。组件稳定 ID 与记录 ID 保留；layoutId 需包含空间/组件/记录命名空间，防止不同空间相同 ID 意外变形。MVP 必须限制字段数量、记录数量和定义大小；超出限制需清楚提示，不宣称无限通用。
 
 ## 3. 通用生成与持续编辑契约
 
@@ -152,7 +154,7 @@ type SpaceSnapshot = {
 
 Planner 返回后端可验证的语义操作，例如 `addField`、`renameFieldLabel`、`hideField`、`addComponent`、`updateComponent`。不要让模型返回可执行 SQL 或任意 JSON Pointer 数据删除。后端根据操作生成完整候选定义和 migration plan；引用一致性与数据演化通过后才可发布。
 
-发布时重新检查 `baseDefinitionVersion`，事务内锁定空间行并使用比较更新。若另一提案已经发布，返回 `409 VERSION_CONFLICT`；Owner 可基于最新版本重新规划，不强行覆盖。校验失败或事务失败不改变当前有效定义。初次生成的空间可以先处于 `unconfigured`，只有版本 1 发布后才标记为可运行。
+发布时重新检查 `baseDefinitionVersion`，事务内锁定空间行并使用比较更新。若另一提案已经发布，返回 `409 VERSION_CONFLICT`；Owner 可基于最新版本重新规划，不强行覆盖。校验失败或事务失败不改变当前有效定义。初次生成的空间先处于 `unconfigured`，候选初始提案基准版本为 0，只有版本 1 原子发布后才转为 `ready`；首次生成失败仍允许 Owner 重试。LF-100 必须验证并接受这套空态与版本语义，不能让前后端自行猜测空定义。
 
 ### 业务动作
 
@@ -225,7 +227,7 @@ Planner 返回后端可验证的语义操作，例如 `addField`、`renameFieldL
 
 每次状态或定义发布都在一个数据库事务中完成：检查权限和版本、更新相关数据、递增空间事件序号、插入事件、记录幂等结果，然后提交。提交后 SSE 发送器才唤醒。数据库行锁串行化同一空间的事件序号；不能仅用非事务消息广播作为唯一结果。
 
-所有业务查询按服务端解析的 spaceId 和角色做隔离；不信任客户端传来的 ownerId。Google OAuth 为既定登录方式，session 库、Participant 是否允许匿名只读、CSRF 策略和 PostgreSQL RLS 是否启用仍需确定。Google 登录只确认身份，不能自动赋予任意空间的 Owner 权限。共享 URL 不携带可发布定义的 Owner 秘密。
+所有业务查询按服务端解析的 spaceId 和角色做隔离；不信任客户端传来的 ownerId。Google OAuth 为既定登录方式，匿名公开只读已由用户确认；session 库、登录后的参与者写入策略、公开字段投影、CSRF 和 PostgreSQL RLS 仍需定稿。Google 登录只确认身份，不能自动赋予任意空间的 Owner 权限。共享 URL 不携带可发布定义的 Owner 秘密。
 
 ### Tiger Data 的可选价值
 
@@ -239,7 +241,7 @@ Snowflake 由 Backend 负责可选的脱敏变化/工具事件分析；只有确
 
 ## 6. SSE、版本与断线恢复
 
-SSE 是服务端到浏览器的通道；客户端动作仍通过 POST。定义发布、状态改变和工具执行状态共用空间事件序列；每条持久事件有唯一游标。
+SSE 是业务定义/数据的服务端到浏览器通道，支持经过公共投影的匿名订阅；客户端写动作仍通过已认证/授权的 POST。SSE 不承载摄像头帧或音频，也不发布“自动开启所有客户端设备”的命令。定义发布、状态改变和工具执行状态共用空间事件序列；每条持久事件有唯一游标。
 
 ```text
 id: 104
@@ -313,7 +315,7 @@ Owner 才能发布定义、注册/启用工具和修改 endpoint 允许目录。
 2. 实现 schema / AppSpec / 动作目录校验、记录 CRUD 和状态保留演化；再接 Planner 提案生成。
 3. 用定义发布事务、持久事件和 SSE 连接两个浏览器；验证刷新、断线重连和事件重放。
 4. 主链路稳定后，增加上述单个受控 HTTP 工具的验证、注册和复用。
-5. 真实集成与免费额度验证完成后，再决定语音、分析和部署增强项。
+5. LF-180/181/182 接入语音命令、相机视觉和播报，LF-185 整合并验证中断/停止/权限/额度；这是用户最新确认的核心里程碑。Snowflake 分析与 3D 仍可延后；最终 QA 后部署。
 
 未来需要有意义的验证：不同类别 schema 的真实 CRUD；新增字段和改 label 后旧值保留；无效提案不改变当前版本；并发发布/记录更新返回冲突；重复 requestId 不重复创建；snapshot 与订阅窗口不丢更新；过期游标恢复；Participant 直接调用 Owner 接口被拒绝；工具目标/输入/输出被校验；凭据不出现在响应或日志；免费额度耗尽停止调用。
 
@@ -321,10 +323,18 @@ Owner 才能发布定义、注册/启用工具和修改 endpoint 允许目录。
 
 ## 10. 待确认问题
 
-- 前后端框架、同源部署方式和长连接支持；Fastify/SSE 仅为候选。
+- 验证并锁定 Vite SPA 推荐、Node 同源静态/API/OAuth 路由与长连接；Fastify/SSE 的实际版本及部署支持仍需验证。
 - Tiger Data Shared Free 的实际额度和连接限制；是否使用 TimescaleDB 扩展；不满足条件时的 PostgreSQL 后备方案。
-- Google OAuth 认证库、session 契约、Participant 访问策略与可见数据边界。
+- Google OAuth 认证库/session、已登录参与者写入策略、公开数据字段边界；匿名可浏览与 Owner-only 编辑已确认。
 - 最小字段/组件/动作目录，以及字段/记录/定义大小上限。
 - Planner 的 JSON schema、提案自动发布与用户可见确认交互。
 - 受控能力的具体测试/真实服务、endpoint 目录与调用额度。
 - event 保留时间、幂等结果保留时间与后续大规模迁移策略。
+
+## 11. 语音、视觉与本地设备边界
+
+语音转录得到的 Owner 命令复用相同 proposal/baseDefinitionVersion/授权/发布协议；语音供应商不能绕过宿主直接写库。浏览器采样当前设备画面，Gemini 做视觉理解，ElevenLabs 播报；起步采用有限帧与有背压的简短描述，真正 Live 双向会话另行验证。一个会话只选一套对话控制器，避免同时运行两个相互竞争的语音 agent。
+
+媒体 session 与持久业务 state 分开：仅当前客户端显式开启，服务端校验身份/角色/额度；public read 不授予模型调用权限。帧、音频及短期描述不默认写入 Postgres、共享记忆、日志或 SSE；只记录脱敏的耗时/调用量。退出/停止/权限撤销取消处理中请求并丢弃迟到结果。原业务数据与空间链接不受相机场景切换影响。
+
+“以最新快照为准”只允许展示层合并/打断旧动画；服务端已提交的记录、待确认 mutation、幂等结果与事件顺序不能因为动画被丢掉。描述播放使用最新 observation/session 序号，新的语音命令可打断旧播报。API/媒体 session 契约尚待 LF-100 与对应里程碑验证；参考 docs/agent/multimodal-plan.md。

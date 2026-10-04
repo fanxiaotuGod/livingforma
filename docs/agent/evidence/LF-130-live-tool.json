@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-03T23:10:50.448Z",
+  "mode": "tool",
+  "proposal": {
+    "spec": "openlibrary_search",
+    "reused": false,
+    "requiresEnable": true,
+    "summary": "Enable Open Library book search to make read-only title and author lookups.",
+    "source": "gemini"
+  },
+  "proposalRun": {
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "requests": 1,
+    "toolCalls": [
+      "propose_capability"
+    ],
+    "tokens": {
+      "input": 148,
+      "output": 21
+    },
+    "elapsedMs": 1340
+  },
+  "liveTest": {
+    "ok": true,
+    "message": "Live Open Library query passed."
+  },
+  "directPi": {
+    "bookCount": 5,
+    "source": "Open Library"
+  },
+  "registeredGeminiRun": {
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "requests": 1,
+    "toolCalls": [
+      "openlibrary_search"
+    ],
+    "tokens": {
+      "input": 114,
+      "output": 19
+    },
+    "elapsedMs": 608
+  },
+  "registeredGeminiResult": {
+    "bookCount": 5,
+    "source": "Open Library"
+  }
+}

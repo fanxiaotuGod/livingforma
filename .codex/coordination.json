@@ -34,14 +34,19 @@
         "Runnable workspace with reproducible package scripts and shared types",
         "AppSpec/state/actions/auth-session contracts recorded as accepted",
         "Google OAuth/session library chosen and callback contract handed to DevOps",
-        "Reading and habit example schemas and migration rules agreed"
+        "Reading and habit example schemas and migration rules agreed",
+        "Review Vite SPA recommendation and lock framework/build/auth routing contract with evidence",
+        "Accept versioned component registry expansion: variants, emphasis, calendar-grid, curated skins and explicit device capabilities",
+        "Public-read versus signed-in write and owner-only orb permissions agreed",
+        "Accept unconfigured-space snapshot/initial-version semantics and separate visible login CTAs from executable action permissions",
+        "Accept discoverable frontend component manifests and Pi ToolSpec registry/create/validate/register/reuse boundaries from the classified use-case map"
       ],
       "notes": "Future development task; this workflow turn does not implement or complete it. Own shared manifests/lockfile; other roles hand dependency requests to coordinator."
     },
     {
       "id": "LF-110",
       "role": "frontend",
-      "title": "General app UI, renderer and login UI",
+      "title": "Owner orb, extensible renderer and continuous morph experience",
       "paths": [
         "apps/web/src/",
         "apps/web/public/",
@@ -56,9 +61,13 @@
         "Same renderer handles reading and habit fixtures",
         "Google login/logout controls consume agreed session contract",
         "Data binding preserves record and field identity through UI changes",
-        "Loading, unsupported, permission and offline states work"
+        "Loading, unsupported, permission and offline states work",
+        "Owner top-left orb expands centrally; public visitors see only the app and sign in when writing",
+        "Reading cover cards and habit calendar-grid differ meaningfully; supported variants/skins/emphasis validated",
+        "Fixture morph playground labels mocks; latest presentation wins without losing drafts, focus or server writes",
+        "Build reusable component combinations from classified use cases; reading/habit must differ structurally and support cross-scenario reuse instead of fixed whole-app templates"
       ],
-      "notes": "Can use agreed fixtures while Backend/Auth implementations progress; do not fabricate live integration results. Voice UI is optional after text works."
+      "notes": "Read experience-direction.md and skills-guide.md first. Text fixtures unblock early work; voice/camera is the explicit LF-180 milestone, not indefinitely optional. Only registered component versions may render."
     },
     {
       "id": "LF-120",
@@ -79,9 +88,33 @@
         "Postgres migrations and restart persistence verified",
         "Trusted auth-session fixtures map Google subject to stable internal users and enforce space membership; real Google roundtrip is tested after LF-140 in LF-150/160",
         "Atomic version publication and schema evolution preserve old records",
-        "Two clients converge via events/snapshot and unauthorized requests fail"
+        "Two clients converge via events/snapshot and unauthorized requests fail",
+        "Public snapshots/events expose only public projections; anonymous mutations and non-owner definition changes rejected"
       ],
       "notes": "Tiger Data is preferred, subject to verified free terms and DevOps connection provisioning. Local Postgres can validate code first. Auth package is owned by DevOps; backend mounts its interface and applies authorization."
+    },
+    {
+      "id": "LF-122",
+      "role": "backend",
+      "title": "Integrate owner-approved missing-tool proposals with the live planner",
+      "paths": [
+        "apps/api/src/",
+        "packages/db/",
+        "docs/backend/",
+        "docs/memory/roles/backend/",
+        "docs/memory/handoffs/backend/"
+      ],
+      "depends_on": [
+        "LF-100",
+        "LF-120"
+      ],
+      "acceptance": [
+        "Pass enabled registry context to planProposal and accept optional toolProposals without premature publication",
+        "Owner-only POST tool-proposals invokes Agent proposeTool; registration still requires explicit enable",
+        "Pending tool responses retain prior definition/data; approved tools can be bound through a subsequent ordinary proposal",
+        "Test owner/participant boundaries, pending proposal version behavior and no automatic tool enabling"
+      ],
+      "notes": "Integration addition discovered while LF130 implementation began. Consume Agent exports and shared ProposalResponse; coordinate frontend handoff. Existing LF120 completion evidence preserved."
     },
     {
       "id": "LF-130",
@@ -102,9 +135,11 @@
         "Two app categories and one patch produced as validated structured proposals",
         "One approved read-only HTTP ToolSpec can be registered and reused",
         "Invalid output and free-quota exhaustion handled without paid fallback",
-        "Any implemented ElevenLabs path has actual API evidence and text fallback"
+        "Any implemented ElevenLabs path has actual API evidence and text fallback",
+        "Planner uses the actually registered component/version/skin/capability catalog and produces extension requests for missing capabilities",
+        "Integrate Pi tool registration/execution with host-owned creation, validation, persistence and reuse; demonstrate a real missing-tool-to-registered-tool cycle"
       ],
-      "notes": "Prioritize text planning; voice is an enhancement. Never expose keys to frontend or execute generated code. Coordinate dependencies through coordinator."
+      "notes": "Text planning establishes the mutation contract. Voice/camera follows in LF-181 as a committed product milestone. No keys in frontend or arbitrary generated code; server authorizes all tool calls."
     },
     {
       "id": "LF-140",
@@ -118,7 +153,9 @@
         ".env.example",
         "docs/operations/",
         "docs/memory/roles/devops/",
-        "docs/memory/handoffs/devops/"
+        "docs/memory/handoffs/devops/",
+        ".env",
+        ".local/deployment/"
       ],
       "depends_on": [
         "LF-100"
@@ -127,7 +164,9 @@
         "Google provider/client, exact callback and server session/logout module configured and tested",
         "Frontend login and Backend user mapping handoffs documented",
         "Hosting, Tiger Data free plan and API quota boundaries verified",
-        "Deployment and rollback commands prepared for livingforma.tech"
+        "Deployment and rollback commands prepared for livingforma.tech",
+        "Anonymous browse then signed-in write and owner-only edit distinction tested; SPA/API/auth same-origin routing prepared",
+        "HTTPS media permissions and actual long-connection/free-plan limits documented"
       ],
       "notes": "No paid resources, plan changes or overage without user approval. OAuth code belongs here; database tables/migrations belong to Backend. Do not invent callback paths before auth library is fixed."
     },
@@ -157,7 +196,11 @@
         "apps/web/tsconfig.json",
         "apps/web/next-env.d.ts",
         "apps/api/package.json",
-        "apps/api/tsconfig.json"
+        "apps/api/tsconfig.json",
+        "apps/web/vite.config.ts",
+        "apps/web/index.html",
+        "apps/web/tsconfig.app.json",
+        "apps/web/tsconfig.node.json"
       ],
       "depends_on": [
         "LF-100"
@@ -170,9 +213,50 @@
       "notes": "Keep this task active while workers run, maintaining only shared/config paths. Do not edit worker application paths. Finish after LF110/120/130/140 handoffs so LF150 can integrate. Shared contracts and app package configuration can be adjusted here before integration; module-local manifests remain with module owners, with central lockfile updates coordinated."
     },
     {
+      "id": "LF-146",
+      "role": "qa",
+      "title": "Independent local foundation and security regression verification",
+      "paths": [
+        "tests/e2e/",
+        "docs/qa/",
+        "docs/memory/roles/qa/",
+        "docs/memory/handoffs/qa/"
+      ],
+      "depends_on": [
+        "LF-100"
+      ],
+      "acceptance": [
+        "Independently verify implemented local reading/habit flows and English product copy",
+        "Exercise anonymous versus local-test owner/participant authorization and record persistence; do not call local identities Google login",
+        "Test definition morph continuity, URL preservation, two-client SSE and reduced-motion/mobile interaction for available implementation",
+        "Record reproducible defects and external-provider blockers without claiming final MVP or production acceptance"
+      ],
+      "notes": "Early QA task may run as implementations land; final LF-160 real provider/multimodal/production requirements are unchanged. One QA writer; communicate defects to owners, no product code edits."
+    },
+    {
+      "id": "LF-147",
+      "role": "qa",
+      "title": "Verify foundation fixes during text integration",
+      "paths": [
+        "tests/e2e/",
+        "docs/qa/",
+        "docs/memory/roles/qa/",
+        "docs/memory/handoffs/qa/"
+      ],
+      "depends_on": [
+        "LF-146"
+      ],
+      "acceptance": [
+        "Independently rerun foundation regression after public projection and rating CSS fixes",
+        "Verify rating layout at 320, 390 and 430 pixels without horizontal overflow",
+        "Update evidence accurately; report remaining failures to integration owner"
+      ],
+      "notes": "Scoped regression follow-up to real QA146 defects; final LF160 remains unchanged."
+    },
+    {
       "id": "LF-150",
       "role": "coordinator",
-      "title": "Integrate and verify complete MVP",
+      "title": "Integrate phase-one live morph, persistence and public/owner views",
       "paths": [
         "apps/",
         "packages/",
@@ -199,15 +283,119 @@
         "LF-120",
         "LF-130",
         "LF-140",
-        "LF-145"
+        "LF-145",
+        "LF-122"
       ],
       "acceptance": [
-        "Google login to generated app and persistence work end to end",
+        "Owner Google login, anonymous public browsing, login-required authorized writes and generated-app persistence work end to end",
         "Reading app evolves with old data and stable URL",
         "Habit app uses same runtime and clients synchronize",
-        "Optional providers are accurately marked connected or deferred"
+        "Optional providers are accurately marked connected or deferred",
+        "Verify component composition and Pi-created tool output binding plus repeated reuse, not only model chat or prewritten tool buttons"
       ],
-      "notes": "Claim broad integration paths only after role tasks release; remaining dependencies/errors are not silently ignored."
+      "notes": "Phase-one integration; full Jarvis voice/camera acceptance belongs to LF-185 then LF-160. Claim broad paths only after roles release."
+    },
+    {
+      "id": "LF-180",
+      "role": "frontend",
+      "title": "Voice orb and explicit local camera scene UI",
+      "paths": [
+        "apps/web/src/",
+        "apps/web/public/",
+        "docs/frontend/",
+        "docs/memory/roles/frontend/",
+        "docs/memory/handoffs/frontend/"
+      ],
+      "depends_on": [
+        "LF-150"
+      ],
+      "acceptance": [
+        "Owner can speak a website-change command with visible listening/processing/speaking states and text fallback",
+        "Camera scene supports explicit local permission, preview, start/stop and cleanup; another visitor device never starts from SSE",
+        "Interrupted speech and older frame results do not queue stale playback; device sessions stay outside shared snapshots"
+      ],
+      "notes": "Committed Jarvis milestone after phase-one integration. Actual APIs/models/quotas must be verified; no new charges without user confirmation."
+    },
+    {
+      "id": "LF-181",
+      "role": "agent",
+      "title": "Gemini vision/intent plus ElevenLabs voice integration",
+      "paths": [
+        "packages/agent/",
+        "packages/integrations/gemini/",
+        "packages/integrations/elevenlabs/",
+        "docs/agent/",
+        "docs/memory/roles/agent/",
+        "docs/memory/handoffs/agent/"
+      ],
+      "depends_on": [
+        "LF-150"
+      ],
+      "acceptance": [
+        "Actual voice command passes through the same validated proposal/publication boundary as text",
+        "Actual camera observation produces a Gemini description and ElevenLabs speech with measured latency",
+        "Cancellation, frame backpressure, latest-description playback, free-quota stop and no raw-media logging verified"
+      ],
+      "notes": "Committed Jarvis milestone after phase-one integration. Actual APIs/models/quotas must be verified; no new charges without user confirmation."
+    },
+    {
+      "id": "LF-182",
+      "role": "backend",
+      "title": "Authorized ephemeral media sessions and quota enforcement",
+      "paths": [
+        "apps/api/src/",
+        "packages/db/",
+        "docs/backend/",
+        "docs/memory/roles/backend/",
+        "docs/memory/handoffs/backend/",
+        "packages/integrations/snowflake/"
+      ],
+      "depends_on": [
+        "LF-150"
+      ],
+      "acceptance": [
+        "Server mediates inference with session ownership, per-space permissions and checked budgets",
+        "Public browsing does not grant anonymous paid inference or owner tool execution",
+        "Audio/video remain out of business SSE, snapshots and persistent records by default; cancellation and stale-result rejection verified"
+      ],
+      "notes": "Committed Jarvis milestone after phase-one integration. Actual APIs/models/quotas must be verified; no new charges without user confirmation."
+    },
+    {
+      "id": "LF-185",
+      "role": "coordinator",
+      "title": "Integrate Jarvis conversation, camera scene and data-preserving return",
+      "paths": [
+        "apps/",
+        "packages/",
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "tsconfig.json",
+        "tsconfig.base.json",
+        ".codex/",
+        "AGENTS.md",
+        "README.md",
+        "docs/architecture.md",
+        "docs/PRD.md",
+        "docs/product/",
+        "docs/ROLE-OWNERSHIP.md",
+        "docs/WORKFLOW.md",
+        "docs/integrations.md",
+        "docs/memory/shared/",
+        "docs/memory/roles/coordinator/",
+        "docs/memory/handoffs/coordinator/"
+      ],
+      "depends_on": [
+        "LF-180",
+        "LF-181",
+        "LF-182"
+      ],
+      "acceptance": [
+        "Voice changes the live website with owner authorization and viewer updates",
+        "Camera observation is described aloud by real integrations; start/interrupt/stop and failures work",
+        "Switching scenes preserves existing business records; no cross-client sensor activation or media leak"
+      ],
+      "notes": "Final multimodal integration before independent QA; user accepted the Jarvis direction. Text-only foundation is not completion of this milestone."
     },
     {
       "id": "LF-155",
@@ -254,13 +442,14 @@
         "docs/memory/handoffs/qa/"
       ],
       "depends_on": [
-        "LF-150"
+        "LF-185"
       ],
       "acceptance": [
         "Google login/logout and space authorization checked independently",
         "Two app categories, data preservation, two-client sync and failure recovery pass",
         "Only real provider integrations count toward claims",
-        "Publish reproducible evidence and blocking defects"
+        "Publish reproducible evidence and blocking defects",
+        "Verify actual voice-driven website change and camera narration, device consent/stop, interruption, free limits and anonymous visitor isolation"
       ],
       "notes": "Read all relevant code; write only test/evidence files. Return product fixes to owner; do not finish this task while acceptance blockers remain."
     },
@@ -275,7 +464,9 @@
         ".env.example",
         "docs/operations/",
         "docs/memory/roles/devops/",
-        "docs/memory/handoffs/devops/"
+        "docs/memory/handoffs/devops/",
+        ".env",
+        ".local/deployment/"
       ],
       "depends_on": [
         "LF-160"
@@ -287,6 +478,101 @@
         "Actual deployed version and URL recorded"
       ],
       "notes": "User requested this deployment target. Prepare concrete resources and proceed only within verified free allowances; any new charges still require confirmation. No DNS placeholder records."
+    },
+    {
+      "id": "LF-007",
+      "role": "frontend",
+      "title": "Record Jarvis, owner orb, extensible component and frontend skill direction",
+      "paths": [
+        "docs/frontend/",
+        "docs/memory/roles/frontend/",
+        "docs/memory/handoffs/frontend/"
+      ],
+      "depends_on": [],
+      "acceptance": [
+        "Document the latest user vision, explicit decisions and proposed implementation separately",
+        "Preserve prior evidence; update own memory/journal and handoff",
+        "No application implementation, API calls, skill installation or deployment",
+        "Align reviewed public login CTA, owner-only role and synthetic cover fallback with architecture"
+      ],
+      "notes": "Documentation-only task for the current user request; does not complete any application milestone."
+    },
+    {
+      "id": "LF-008",
+      "role": "agent",
+      "title": "Document multimodal conversation and camera narration integration",
+      "paths": [
+        "docs/agent/",
+        "docs/memory/roles/agent/",
+        "docs/memory/handoffs/agent/"
+      ],
+      "depends_on": [],
+      "acceptance": [
+        "Document the latest user vision, explicit decisions and proposed implementation separately",
+        "Preserve prior evidence; update own memory/journal and handoff",
+        "No application implementation, API calls, skill installation or deployment"
+      ],
+      "notes": "Documentation-only task for the current user request; does not complete any application milestone."
+    },
+    {
+      "id": "LF-009",
+      "role": "devops",
+      "title": "Align OAuth/deployment notes with public browsing and SPA/media direction",
+      "paths": [
+        "docs/operations/",
+        "docs/memory/roles/devops/",
+        "docs/memory/handoffs/devops/"
+      ],
+      "depends_on": [],
+      "acceptance": [
+        "Update public-read/login-write/session behavior and Vite same-origin recommendation in docs",
+        "Record HTTPS/media/streaming deployment validation without claiming a live service",
+        "Update role memory, journal and handoff; no implementation or cloud change"
+      ],
+      "notes": "Documentation-only follow-up for the latest user direction."
+    },
+    {
+      "id": "LF-011",
+      "role": "frontend",
+      "title": "Record installed frontend skills and project-specific usage constraints",
+      "paths": [
+        "docs/frontend/",
+        "docs/memory/roles/frontend/",
+        "docs/memory/handoffs/frontend/"
+      ],
+      "depends_on": [],
+      "acceptance": [
+        "Installed skills are recorded with upstream commit, complete bundle verification and actual local names",
+        "Project framework/free-cost/animation and unavailable-tool overrides remain explicit",
+        "Own memory, journal and handoff distinguish installation from application implementation"
+      ],
+      "notes": "Documentation for explicitly authorized third-party skill installation. No app work, model calls or package installation."
+    },
+    {
+      "id": "LF-148",
+      "role": "devops",
+      "title": "Align verified media deployment configuration and release prerequisites",
+      "paths": [
+        "infra/",
+        ".github/",
+        "scripts/deploy/",
+        ".env.example",
+        "docs/operations/",
+        "docs/memory/roles/devops/",
+        "docs/memory/handoffs/devops/",
+        ".env",
+        ".local/deployment/"
+      ],
+      "depends_on": [
+        "LF-140"
+      ],
+      "acceptance": [
+        "Pin the actually verified Gemini model and explicit live planner flags in deployment examples and private environment",
+        "Document and configure server-only verified ElevenLabs allowance and durable database budgets without enabling new charges",
+        "Validate deployment configuration and report the exact remaining hosting approval and release steps without claiming deployment"
+      ],
+      "notes": "Preparation while final media integration proceeds. Render Create Account still awaits the pending user terms confirmation; do not accept terms or create service until authorized. Actual release LF170 remains dependent on LF160."
     }
-  ]
+  ],
+  "revision": 12
 }

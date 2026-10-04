@@ -8,7 +8,7 @@ timezone: America/Vancouver
 
 # QA 角色记忆
 
-负责独立核对事实与验收证据。先读 PRD 和任务板，再验证分配范围。当前应用尚未实现；LF-005 的验证对象仅为开发工作流脚本、配置和本地 MCP 记忆。
+负责独立核对事实与验收证据。先读 PRD 和任务板，再验证分配范围。当前以文末 LF-160 最终更新为准：MVP 实现验收通过，正式域名部署仍待 LF-170。以下早期工作流和应用回归记录保留历史状态。
 
 **当前 LF-005：verified（仅为工作流范围）。** coordinator 调整依赖并为检索增加有界等待后，14:24 独立复核最终报告成功。14:22 初次成功和14:23 暂时失败都作为历史证据保留；产品应用和当前 Codex chat 热加载仍不包含在此结论中。
 
@@ -48,3 +48,34 @@ timezone: America/Vancouver
 1. coordinator 按最终 smoke 及独立检查更新 LF-005 状态，保留已知索引延迟和新 chat 加载限制。
 2. 新项目 chat 确认 named roles 和 `livingforma_memory` 工具实际可用，使用本地 Markdown 回退路径恢复。
 3. 产品实现任务另行分配后，再执行 PRD 的通用生成、非破坏演化、多人同步、权限和受控能力验收。
+
+
+## 2026-10-03 16:12 · LF-146 当前状态
+
+- 早期独立回归 deliverable 已完成；不表示最终 MVP/生产验收通过。隔离 Fastify/PGlite + 实际 local-rules + 三个 Chrome contexts 执行16项，最新 **15 pass / 1 fail**；脚本保留失败 exit1。
+- 实测英文/匿名无orb/本地身份明确、Owner orb焦点草稿、CRUD刷新、两客户端SSE、Participant权限、CSRF/Origin、登出旧cookie、实际local-rules增rating与cards→list变形保留records/draft/URL、习惯日期、断线恢复、新建habit身份映射。未用model fixture证明这一变形。
+- QA-146-01 已复现并由Backend修复：零公开字段或零公开组件不再返回无效Definition；公开空视图不泄漏records，Owner定义保留，独立Chrome复验通过。
+- QA-146-02 尚待coordinator LF150修复：390px mobile加rating后宽411px；`.field input` 覆盖`.sr-only`尺寸，绝对定位hidden input越界。不能把本轮标成全部通过。
+- 可重跑 `pnpm --filter @livingforma/web build` 后 `pnpm exec tsx tests/e2e/foundation.ts`。用4317隔离端口、内存DB，不读.env，不触碰开发/云数据库，不调用收费服务。
+- 证据 [foundation report](../../../qa/foundation-report.md)、[machine results](../../../qa/foundation-results.json)。LF160仍需真实OAuth/provider/media/production证据。
+
+
+## 2026-10-03 16:15 · LF-147 当前状态
+
+- Coordinator修复rating CSS后，QA独立重跑隔离真实HTTP/PGlite/local-rules/Chrome：**18/18通过，exit0**。此结果取代LF146的15/16当前状态，历史失败仍保留。
+- 320/390/430px reduced-motion viewport均无横向溢出，document.scrollWidth分别320/390/430；隐藏rating input实际1×1px、padding0px。视觉检查320px整页截图。
+- 既有英文、Owner/Participant/Anonymous、CSRF、logout旧cookie、CRUD/刷新、SSE/离线、实际变形data/draft/URL保留、habit创建与checkin、空公开投影回归继续通过。
+- QA-146-01/02均独立复验关闭；当前早期foundation无未修缺陷。LF160仍需真实provider和多模态最终验收，未因本地18项而提前完成。
+- 只写tests/docs/ownrole；独立4317服务/内存DB/Chrome已清理，未动root5173或云服务。
+
+## 2026-10-03 17:06 · LF-160 当前状态
+
+- **Verified：predeployment MVP implementation gate passed**。无未关闭的已发现实现阻断；可接 LF-170。不能称 livingforma.tech、公开 HTTPS、生产 Google 回调或托管环境已验收。
+- 新 session `e0fc0cdc-6791-469f-8976-5af922c6083a` 在 LF-185 正式完成后自动 next 领取；每批编辑 check 通过，只写 docs/qa 与自己的 memory/journal/handoff。保留已有修改，不 commit/push/deploy。
+- [最终报告](../../../qa/LF-160-acceptance.md) / [证据 manifest](../../../qa/LF-160-evidence.json)：逐项映射独立 QA 执行、真实服务与明确 fixtures；14 项 artifact/ledger/record/source 一致性检查通过。独立读取 GitHub run37163223781：exact HEAD `7efaa919361be0165f8bc0bf20852f0c0e2b37b6` 的 100 tests / 11 files、typecheck、web/API build 均成功。
+- 继承实际 LF-147 18/18 与 LF-185 只读期间独立重现实证。曾发现 logout 后 late proposal 发布，修复后同一 gated planner 复现为401/v1/无Owner snapshot；工具 registry-read 窗口双调用修复后两响应200/调用1/audit1；includeSpeech=false 实际路由 fixtureadapter 返回description而speechCalls0/noaudio。Coordinator保留9项revocation回归与media断言。
+- QA 独立 Chrome 浏览生产Docker真实Neon两匿名深链：实际资源/SSE/英文UI、无orb、无溢出、无资源/CSP/pageerrors。该容器已由root停止；此证据不等于域名部署。
+- 已审计真实 Google local login/refresh/logout、实际 Owner 创建两个 Gemini/Pi/Neon app、Open Library 明确审批/两次调用证据。真实媒体用合成虚拟设备与临时测试session；Google roundtrip证据另列，不互相替代。
+- 语音真实STT填入sage草稿、无自动发布；之后手工补入camera文字再Apply。原15秒wait超时保留为failed，后续Neon/Owner/visitor证据确认该一次请求已发布habit v2且schema/records保留。camera全UI实调通过：vision14517ms/TTS2351ms/140896B MP3/playing1，Stop trackended/audioempty、visitor设备0/播放0，跨space/reload保留数据。
+- 预算以真实自然UTC日切为准：GeminiOct4 1/30，固定period STT5/60秒/TTS316/1000字符；此前30/30失败前后ledger相同。QA本轮真实provider调用0、budget/clock修改0。
+- 发布限制：待LF170实际host/domain/HTTPS/Google生产及代理SSE/secure-context媒体；物理设备和其他浏览器未由虚拟Chrome替代。仅单实例工具in-flight合并，跨实例完成结果持久replay；不声称跨实例external exactly-once。收费和Render新账户条款遵循用户确认。
