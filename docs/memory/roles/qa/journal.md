@@ -102,3 +102,21 @@ timezone: America/Vancouver
 - 记录QA先前实际Docker匿名Chrome两深链：英文JS/CSS/SSE完整，0资源/CSP/pageerror、无orb/overflow。最终image后端idleerror修复由Docker HTTP和CI证据覆盖，不能误称该backend改动后又跑过同一浏览器。
 - 产品门槛全部通过。证据准确区分：真实Google另证；媒体用temporarytestsession+virtualdevices；frontend lifecycle全部APIfixtures；语音旧wait超时仍failed、随后durablev2证明完成，且camera指令是草稿中增加的文字。物理设备/其他浏览器、publicdomain/生产Google仍未证明。
 - 修改 docs/qa/LF-160-acceptance.md、LF-160-evidence.json、自己的memory/journal、唯一handoff；不改产品/shared，不调用provider，不重置额度，不收费，不commit/push。下一步是coordinator更新shared，DevOps领取LF170完成实际发布与域名验收。
+
+## 2026-10-03 17:52 · America/Vancouver · LF-211 session recovery 独立回归
+
+- Status: verified；session `f71ec8b2-0694-46f8-8686-7cc559e826a1` 自动 next 领取 LF211，保留既有修改，每批 scope check通过。工作仅 release-fix checkout；Frontend LF210独占产品src，QA未写产品文件。
+- 新增 `tests/e2e/session-recovery.ts`，localhost4327真实HTTP/PGlite/Chrome，多独立context/localOwner/Participant。每场景独立API实例保留产品限流，fixture media/tool和实际local-rules planner，选择性延迟真实响应。没有绕过API的auth/CSRF/persistence。
+- 最终00:49:30UTC执行 `pnpm exec tsx tests/e2e/session-recovery.ts` exit0，15/15pass，无JSerror，测试最终bundle `index-DE19SV4l.js`。serverPOST计数验证同owner一次、changedidentity零次、真实CSRF403没有自动replay；显式retry200。覆盖跨页/跨账户迟到proposal/create/tool/identity、private404、camera停止不播音、Participantbook/habit、两类logout及并发session读乱序。
+- 历史首轮7pass后setup/429：测试集中复用一个限流器，改每场景API实例解决，未改产品配置。第二轮13pass+初始OwnerOrb等待超时，未进入stale logout正文；最终frontend refinement及9sec有界setup后15通过。保留旧JSON，不把未归因setup超时当产品缺陷。
+- 最终只读审阅 centralguard所有write入口、force/intent/page revisions、pendingpreflight及旧session读隔离、draftmigration/storage异常、media原token清理。12guard+5media由Frontend执行通过，独立Browser15为QA实际结果；无开放热修阻断。
+- Scoped strict TypeScript发现QA脚本cleanup的api definite-assignment类型问题，补编译期assertion并移除unused import后exit0；不改变已测试runtime。新增report/sourcefingerprint/media结果、role记忆与唯一handoff。最终diff/link/evidence检查后finish/close；不commit/push。
+- 交接：root全pnpmcheck、整合/部署，DevOps线上真实Google跨tab轮换与生产验收。本地测试不替代Google/physicalmedia/hostedprovider；没有provider调用、秘密读取、quota改写或收费。
+
+
+## 2026-10-03 17:55 · America/Vancouver · LF-211 最终补测与缺陷关闭
+
+- Coordinator要求追加同user/同CSRF private membership撤销，LF211保持active未提前finish。真实PGlite member移除→snapshot404，初版 `index-BDe--QL3.js` 清除了private内容，但focus刷新catch留下无限skeleton。QA额外error/Reconnect断言实际失败，保存JSON及PNG，通知Frontend修复。
+- Frontend在current snapshot401/403/404分支补error/loadingfalse/offline，并校验identity revision、page scope、slug三者。QA只读复核后，对最新 `index-Bt_tUXM1.js`完整重跑全部16场景：00:54:55UTC exit0、16/16pass、browserJSerrors0。原15和新会员撤权case均通过。
+- 视觉查看 `membership-revocation.png`，英文A little pause/This space does not exist or is not accessible/ Reconnect均显示，无旧private值。更新最终report/handoff/sourcehash；保留中间15pass、初次404加载失败JSON和截图，不覆盖历史。
+- 独立strict TypeScript testscript检查再次exit0；最终JSON/hash/link/whitespace与端口清理核对后finishclose。无开放的session热修缺陷；线上Google/部署仍由root/DevOps验证。

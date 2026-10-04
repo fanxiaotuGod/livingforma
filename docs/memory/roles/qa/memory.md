@@ -8,7 +8,7 @@ timezone: America/Vancouver
 
 # QA 角色记忆
 
-负责独立核对事实与验收证据。先读 PRD 和任务板，再验证分配范围。当前以文末 LF-160 最终更新为准：MVP 实现验收通过，正式域名部署仍待 LF-170。以下早期工作流和应用回归记录保留历史状态。
+负责独立核对事实与验收证据。先读 PRD 和任务板，再验证分配范围。当前以文末 LF-211 更新为准：独立 session recovery hotfix 验证通过，待 coordinator 整合和线上复验。LF-160 及以下早期工作流和应用回归记录保留历史状态。
 
 **当前 LF-005：verified（仅为工作流范围）。** coordinator 调整依赖并为检索增加有界等待后，14:24 独立复核最终报告成功。14:22 初次成功和14:23 暂时失败都作为历史证据保留；产品应用和当前 Codex chat 热加载仍不包含在此结论中。
 
@@ -79,3 +79,13 @@ timezone: America/Vancouver
 - 语音真实STT填入sage草稿、无自动发布；之后手工补入camera文字再Apply。原15秒wait超时保留为failed，后续Neon/Owner/visitor证据确认该一次请求已发布habit v2且schema/records保留。camera全UI实调通过：vision14517ms/TTS2351ms/140896B MP3/playing1，Stop trackended/audioempty、visitor设备0/播放0，跨space/reload保留数据。
 - 预算以真实自然UTC日切为准：GeminiOct4 1/30，固定period STT5/60秒/TTS316/1000字符；此前30/30失败前后ledger相同。QA本轮真实provider调用0、budget/clock修改0。
 - 发布限制：待LF170实际host/domain/HTTPS/Google生产及代理SSE/secure-context媒体；物理设备和其他浏览器未由虚拟Chrome替代。仅单实例工具in-flight合并，跨实例完成结果持久replay；不声称跨实例external exactly-once。收费和Render新账户条款遵循用户确认。
+
+## 2026-10-03 17:55 · America/Vancouver · LF-211 当前状态
+
+- **Verified：独立 session recovery hotfix regression 16/16 pass，浏览器 JS errors 0。** 最新 `index-Bt_tUXM1.js`，实际 HTTP/PGlite/Chrome；未发现仍阻塞此次热修的缺陷。代码只读核对 force invalidation、乱序 session read、私有 view、account draft、media cleanup 边界。
+- 工作仅隔离 `/Users/fanhaocheng/project/livingforma-release-fix` / `fix/session-recovery`，base `3325718596cca11e794b4525eb98c3ea5efc8405`、runtime base `7efaa91`。原 checkout 的其他 chat module edits 不属于此次测试或发布。
+- 同 Owner 轮换恰好一 POST / 一 planner；Participant/anonymous 零 POST；GET→POST 轮换实际403不自动重放，草稿保留、明确重试成功；迟到 proposal/create/tool/identity 不恢复私有内容或清草稿。私有404清视图、media tracks ended/plays0、Participant书籍和习惯写入、logout账户隔离、并行同账号表单/tool乱序读均通过。
+- [报告](../../../qa/session-recovery/report.md)、[机器证据](../../../qa/session-recovery/results.json)、[源码与bundle SHA256](../../../qa/session-recovery/source-manifest.json)。历史 harness 429 和旧版 setup timeout 原样保留；最终全场景通过。独立 strict TypeScript script check通过；只改自己的tests/docs/role，不改产品代码。
+- 边界：local personas 不是 Google，local rules/fixture adapters 不是 Gemini/Pi provider实调；camera虚拟设备；本轮不读.env、不访问真实provider或云、不改quota、不收费。Coordinator负责全repo检查/上线，DevOps需 hosted Google跨tab轮换复验；已被server接受的旧写入不承诺回滚。
+
+- 最后新增同身份/同CSRF private membership撤销：真实404清private内容。首版404清理留下无限skeleton已由QA复现，Frontend补error/loadingfalse/offline并校验identity/page/slug；最终全16项重新通过，英文error/Reconnect截图视觉核对通过。完整最终run00:54:55UTC，历史15pass和此追加失败均保留。

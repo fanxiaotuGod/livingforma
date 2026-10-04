@@ -7,6 +7,14 @@ permalink: livingforma/roles/frontend/memory
 
 # 前端角色记忆
 
+## Current release hotfix · 2026-10-03 LF-210
+
+- 本次实现位于隔离 `/Users/fanhaocheng/project/livingforma-release-fix` / `fix/session-recovery`，base `3325718`；没有触碰主checkout的后续组件扩展。提交、整合及部署由coordinator负责。
+- `lib/session-client.ts`统一每次protected write的no-store session预检；相同account刷新CSRF后单次发送，变化account/匿名零write；401/403刷新身份但不自动重放。记录、提案、建空间、工具、媒体、退出均覆盖。仅旧媒体session的best-effort原token DELETE和显式local auth入口使用raw传输。
+- identity/page/intent revision防迟到成功清草稿或重现旧权限视图；导航同步改slug，身份变化/强制鉴权失败清snapshot并close SSE，sameaccount tokenrotate保留表单挂载但停media和旧inflight。force/logout淘汰旧session GET；较旧并发GET可消费最新已接受session，不会无故拒同account并行写。
+- 草稿使用account-scoped v2 key，创建title/prompt也持久化；logout保留原account草稿，key变化不复制旧值。legacy Owner command仅当前已确认Owner迁移；storage失败不崩溃。用户需显式重试被拒的意图。
+- 已验证guard12/12 + media5/5、完整tsc与release webbuild，最新bundle `index-DE19SV4l.js`。独立QA LF-211在最终build上真实HTTP/PGlite/Chrome+local fixtures回归15/15通过，真实Google/provider或线上部署不从这些测试推断。行为说明见 [session-recovery](../../../frontend/session-recovery.md)。
+
 ## Current implementation · 2026-10-03 LF-180
 
 本节补充 LF-110 并取代其“媒体未实现”的历史限制；全产品 UI 继续为英文。

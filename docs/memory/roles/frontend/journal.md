@@ -90,3 +90,21 @@ permalink: livingforma/roles/frontend/journal
 - Verified：`vitest run apps/web/src/lib/media.test.ts` 5/5，实际Agent WAV parser接受编码与20秒边界；真实Chrome虚拟设备、MediaRecorder/AudioContext/JPEG/audio API的11项浏览器场景通过，所有/api均显式fixture，10session/10delete/0pageerrors；mount/definition不触发设备、仅显式Apply、取消/关闭/迟到结果/停止播放/权限拒绝/unmount/切space/logout、15秒/8帧/过期均验证。coordinator随后promote camera，全部12manifest组件fixture回归6项通过。完整tsc与webbuild通过；bundle535.59kB提示不是失败。
 - Evidence：`docs/frontend/browser-evidence/media-results.json`、`components-results.json`、`voice-draft.png`、`camera-preview.png`；可重跑脚本同目录。仅合成设备/tone，无真实private media；没有真实provider调用/额度消费、未采集DevToolsframe trace。实际provider链路由LF-185统一验收。
 - Handoff：`docs/memory/handoffs/frontend/LF-180-ea35c50c-42ee-4ef3-b9e6-24b8500e704a.md`；`docs/frontend/media-lifecycle.md`记录使用/清理/验证边界。web源码已冻结供coordinator实测，仅文档收尾。
+
+## 2026-10-03 17:46 America/Vancouver · LF-210 session recovery implementation
+
+- Session `c11bb5c1-4aae-411d-a66d-9e5b65c60f9c`，仅隔离 worktree `/Users/fanhaocheng/project/livingforma-release-fix` / `fix/session-recovery`，base `3325718`；先只读审阅，coordinator开放LF-210并同步catalog后才自动next领取与check编辑。未编辑主checkout或提交/推送/部署。
+- Implemented：新增统一session-client；每次受保护write先no-store读取session，相同user取新CSRF、变user/匿名零write；401/403明确报错并刷新、不自动重放。读写response按identity/page revision拒绝迟到结果。业务action/proposal/create/tool/media/logout均接入口；媒体原token best-effort DELETE保持cleanup例外，local auth入口独立显式处理。
+- State：身份变化或强制鉴权失效立即清privileged snapshot/spaces/close SSE/stop media；same-user tokenrotate保留业务form与orb挂载，更新token并停止旧media/inflight，防当前成功草稿只清storage不清UI。navigate/popstate同步更新slug/revision。logout保留原account草稿，成功与后续读取分开处理。
+- Drafts：v2 account-scoped keys、创建空间title/prompt持久化、同步写入与key切换隔离；legacyOwnercommand仅当前已验证Owner迁移，不自动读取无归属legacy记录草稿。Owner/Renderer key包含account。
+- Checks：定向session guard9/9 + 原media5/5、完整tsc、web build通过（514modules，540.01kB chunk advisory）；diffcheck通过。已通知QA开始LF-211真实HTTP/Chrome/localfixture独立回归，源码暂冻结；此时尚未宣称QA或线上部署完成。
+
+### LF-210 review refinements · 2026-10-03 17:49 America/Vancouver
+
+- coordinator复核后，legacy migration存储访问加try/catch；较旧session GET只能返回已接受的新session，不覆盖身份，也不误拒同account并行writes。force失效/logout推进session读序号和intent revision，旧preflight不能发送，旧GET不能复活Owner；迟到GET错误先判stale，避免旧401清新页面。
+- 最终当前定向guard12/12 + media5/5、完整tsc与webbuild通过；bundle `index-DE19SV4l.js`（540.15kB advisory）。已交QA最终版；其独立实际HTTP/Chrome前13场景通过，最终并发补测仍在进行。
+
+### LF-210 final validation · 2026-10-03 17:50 America/Vancouver
+
+- QA确认最终 `index-DE19SV4l.js` 真实HTTP/PGlite/Chrome回归15/15 PASS、exit0，包括same-account并发预检乱序两个intent各1POST、staleOwnerlogout不能注销新Participant、迟到响应/私有视图/相机停止。原先setup阶段Ownerorb超时在最终版未复现，历史报告保留，未改写失败证据。
+- 最终角色交接：`docs/memory/handoffs/frontend/LF-210-c11bb5c1-4aae-411d-a66d-9e5b65c60f9c.md`。本角色无provider收费、Git提交/推送或部署；发布由coordinator统一处理。

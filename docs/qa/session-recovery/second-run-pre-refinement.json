@@ -1,0 +1,162 @@
+{
+  "at": "2026-10-04T00:47:55.718Z",
+  "scope": "Independent local HTTP/PGlite/Chrome, explicit local identity rotation, local provider fixtures. Selected real HTTP responses delayed for races. No real Google/cloud/provider claims.",
+  "checks": [
+    {
+      "name": "Same-owner cookie rotation refreshes CSRF and publishes exactly once",
+      "status": "pass",
+      "counts": {
+        "planner": 1,
+        "tool": 0,
+        "describe": 0,
+        "transcribe": 0,
+        "speech": 0
+      }
+    },
+    {
+      "name": "Changed identity to participant sends zero proposal POSTs and preserves account-scoped draft",
+      "status": "pass",
+      "counts": {
+        "planner": 0,
+        "tool": 0,
+        "describe": 0,
+        "transcribe": 0,
+        "speech": 0
+      }
+    },
+    {
+      "name": "Changed identity to anonymous sends zero proposal POSTs and preserves account-scoped draft",
+      "status": "pass",
+      "counts": {
+        "planner": 0,
+        "tool": 0,
+        "describe": 0,
+        "transcribe": 0,
+        "speech": 0
+      }
+    },
+    {
+      "name": "A GET-to-POST rotation race returns real CSRF 403 with no automatic replay",
+      "status": "pass",
+      "counts": {
+        "planner": 1,
+        "tool": 0,
+        "describe": 0,
+        "transcribe": 0,
+        "speech": 0
+      }
+    },
+    {
+      "name": "Delayed proposal completion after navigating away cannot clear its original draft",
+      "status": "pass",
+      "counts": {
+        "planner": 1,
+        "tool": 0,
+        "describe": 0,
+        "transcribe": 0,
+        "speech": 0
+      }
+    },
+    {
+      "name": "Delayed tool approval proposal cannot reopen or reveal output to a changed identity",
+      "status": "pass",
+      "counts": {
+        "planner": 1,
+        "tool": 0,
+        "describe": 0,
+        "transcribe": 0,
+        "speech": 0
+      }
+    },
+    {
+      "name": "Delayed create response cannot navigate or clear the previous account create draft",
+      "status": "pass",
+      "counts": {
+        "planner": 1,
+        "tool": 0,
+        "describe": 0,
+        "transcribe": 0,
+        "speech": 0
+      }
+    },
+    {
+      "name": "Older delayed identity GET cannot restore Owner after a newer preflight sees Participant",
+      "status": "pass",
+      "counts": {
+        "planner": 0,
+        "tool": 0,
+        "describe": 0,
+        "transcribe": 0,
+        "speech": 0
+      }
+    },
+    {
+      "name": "Identity change clears a private Owner view even when the new snapshot is 404",
+      "status": "pass",
+      "counts": {
+        "planner": 0,
+        "tool": 0,
+        "describe": 0,
+        "transcribe": 0,
+        "speech": 0
+      }
+    },
+    {
+      "name": "Tool invocation refreshes same-owner CSRF once and suppresses a late cross-account result",
+      "status": "pass",
+      "counts": {
+        "planner": 0,
+        "tool": 1,
+        "describe": 0,
+        "transcribe": 0,
+        "speech": 0
+      }
+    },
+    {
+      "name": "Session rotation stops the camera and ignores a delayed real-host media response",
+      "status": "pass",
+      "counts": {
+        "planner": 0,
+        "tool": 0,
+        "describe": 1,
+        "transcribe": 0,
+        "speech": 1
+      }
+    },
+    {
+      "name": "Participant record creation and habit check-in still work after session rotation",
+      "status": "pass",
+      "counts": {
+        "planner": 0,
+        "tool": 0,
+        "describe": 0,
+        "transcribe": 0,
+        "speech": 0
+      }
+    },
+    {
+      "name": "Logout after same-owner rotation submits once and leaves anonymous public browsing",
+      "status": "pass",
+      "counts": {
+        "planner": 0,
+        "tool": 0,
+        "describe": 0,
+        "transcribe": 0,
+        "speech": 0
+      }
+    },
+    {
+      "name": "A stale Owner logout cannot sign out a newly active Participant account",
+      "status": "fail",
+      "detail": "expect(locator).toBeVisible() failed\n\nLocator: getByRole('button', { name: 'Open the space designer' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('button', { name: 'Open the space designer' }) with timeout 5000ms\n  - waiting for getByRole('button', { name: 'Open the space designer' })\n"
+    }
+  ],
+  "pageErrors": [],
+  "totals": {
+    "planner": 5,
+    "tool": 1,
+    "describe": 1,
+    "transcribe": 0,
+    "speech": 1
+  }
+}

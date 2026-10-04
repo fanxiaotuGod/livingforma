@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { MEDIA_LIMITS, type MediaCapabilities, type MediaSession } from '@livingforma/contracts';
-import { request } from './client';
+import { getIdentity, protectedRequest, rawRequest, request } from './session-client';
 import { MEDIA_STOP_EVENT, stopLocalDevices } from './media-events';
 
 const abortError = () => new DOMException('Media activity was cancelled.', 'AbortError');
@@ -91,13 +91,14 @@ export class DeviceSession {
   private cleanups = new Set<() => void>();
   onStopped: ((reason: string) => void) | null = null;
 
+  private readonly accountId = getIdentity().session?.user?.id ?? null;
   constructor(readonly slug: string, readonly kind: 'voice' | 'scene', private csrf: string | null) {}
   get signal() { if (!this.controller) throw abortError(); return this.controller.signal; }
   get active() { return this.session !== null && !this.controller?.signal.aborted; }
   valid(token: number) { return this.active && this.epoch === token; }
   private endpoint(id: string) { return `/api/spaces/${encodeURIComponent(this.slug)}/media/sessions/${encodeURIComponent(id)}`; }
   private endRemote(session: MediaSession) {
-    void request(this.endpoint(session.id), { method: 'DELETE', keepalive: true }, this.csrf).catch(() => {});
+    void rawRequest(this.endpoint(session.id), { method: 'DELETE', keepalive: true }, this.csrf).catch(() => {});
   }
   addCleanup(fn: () => void) { this.cleanups.add(fn); return () => this.cleanups.delete(fn); }
 
@@ -106,9 +107,9 @@ export class DeviceSession {
     this.stop();
     const token = this.epoch;
     this.controller = new AbortController();
-    const session = await request<MediaSession>(`/api/spaces/${encodeURIComponent(this.slug)}/media/sessions`, {
+    const session = await protectedRequest<MediaSession>(`/api/spaces/${encodeURIComponent(this.slug)}/media/sessions`, {
       method: 'POST', body: JSON.stringify({ kind: this.kind }), signal: this.signal,
-    }, this.csrf);
+    }, this.accountId);
     if (this.epoch !== token || this.signal.aborted) { this.endRemote(session); throw abortError(); }
     this.session = session; this.sequence = 0;
     const remaining = Math.min(MEDIA_LIMITS.maxSessionSeconds * 1000, Date.parse(session.expiresAt) - Date.now());
@@ -129,9 +130,9 @@ export class DeviceSession {
   async send<T extends { sequence: number }>(path: 'transcribe' | 'observe', body: Record<string, unknown>, token: number) {
     if (!this.valid(token) || !this.session) throw abortError();
     const sequence = ++this.sequence;
-    const result = await request<T>(`${this.endpoint(this.session.id)}/${path}`, {
+    const result = await protectedRequest<T>(`${this.endpoint(this.session.id)}/${path}`, {
       method: 'POST', body: JSON.stringify({ ...body, sequence }), signal: this.signal,
-    }, this.csrf);
+    }, this.accountId);
     if (!this.valid(token) || result.sequence !== sequence || this.sequence !== sequence) throw abortError();
     return result;
   }
