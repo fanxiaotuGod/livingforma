@@ -6,7 +6,13 @@ permalink: livingforma/shared/project-context
 
 # 当前项目背景
 
-## 最新状态 · 2026-10-04 01:45 America/Vancouver
+## 最新状态 · 2026-10-04 America/Vancouver
+
+正式修复运行版本57edcc3fdb56a6aa9c232a18ee8432d0293e3f79，精确CI37192436121通过312tests/typecheck/build。Renderdep-db11r6lg1s2s7385q2e0 Live，仍Free/$0/无卡/AutoDeployOFF。DevOps真实普通click84/4/3→63、Enter150/4/6→225并SaveFlour成功；Ownerreload保留记录/URL/source/toolv1，390px真实160/4/6→240且无横溢。Root独立匿名IAB7在一次有意runtime刷新后保持连接，无再刷新收到Flour225/SSE，公开GETrolevisitor且canEdit/canWrite/canUseTools全部false。证据[JSON](../handoffs/coordinator/LF-155-hosted-saved-dc062dbe.json)、[实际截图](../handoffs/coordinator/LF-155-hosted-saved-dc062dbe.jpg)。同精确SHA进程替换dep-db11uck9v7es73di4v8g已Live，12业务表完整摘要均保持一致；再次Googlelogout/login回Owner通过。Root替换后独立匿名GET复核三个space/记录/权限保留。RenderHobby/Free/无卡，实际月计及预计费用$0；全部线上门控已通过，DevOps收尾日志中。
+
+LF237/238完成关闭，原actualcandidate独立localHost/PGlite/QuickJS/MessageChannel/SSE7/7、ordinaryDOM8/8；没有新模型/生成源变更/网络权限扩张。Gemini2026-10-04UTC30/30、ElevenSTT5/TTS695未重置；新生成自然UTC日切后恢复（当天17:00Vancouver），现有工具/记录/手动布局继续。高级绕过研究暂停，普通功能开发验收继续。RootLF155dc062dbe维护，DevOpsfreshLF228f64f0dd0部署验收。
+
+## 前一版本 checkpoint · 2026-10-04 01:45 America/Vancouver
 
 https://livingforma.tech 新版精确22f78d2部署dep-db1176id0e5s73dke66g于01:52:46PDT Live。新模块和通用生成已通过本地真实验收，精确提交22f78d2d977049c0c8193705ca6194fed58c3a25的CI37190026028已通过，正式真实生成成功并发布，但普通form-submit兼容修复尚未验收。Render Free/无卡/$0，AutoDeployOFF；push只触发CI。
 

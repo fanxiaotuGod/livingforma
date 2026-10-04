@@ -6,19 +6,20 @@ permalink: livingforma/shared/task-board
 
 # 任务板
 
-## 当前状态 · 2026-10-04 01:45 America/Vancouver · catalog26
+## 当前状态 · 2026-10-04 02:53 America/Vancouver · catalog26
 
-LF227已完成并关闭。Rootdc062dbe持有LF155协调收尾，DevOps0840cd91已释放未完成LF228，表单修复237/QA238门控。Render精确22f78d2部署dep-db1176id0e5s73dke66g已Live；通用生成本地验收通过，正式真实生成验收进行中。高级绕过研究暂停，继续正常业务验证。
+LF227/237/238/228全部完成并关闭，现场registry已独立核对；Rootdc062dbe持有LF155最终共享交接/文档checkpoint，随后释放ongoingmaintenance而不永久finish。正式运行精确57edcc3fdb56a6aa9c232a18ee8432d0293e3f79，精确CI37192436121通过312tests/typecheck/build。Renderforwarddep-db11r6lg1s2s7385q2e0及同SHAreplacementdep-db11uck9v7es73di4v8g均Live，后者当前。高级绕过研究暂停；普通功能开发/验收已完成。
 
 | Task | State | Evidence / next |
 | --- | --- | --- |
-| LF223/229/230/232/233 | verified / closed | 普通QA8+11+28；LF229 Free Docker6/6取代历史超时阻断；真实Gemini兼容；Owner反馈；Git历史整合84e90bf |
-| LF234/235/236 | verified / closed | 120s人类选择/180s相关RPC；同预览显式重试；真实照片左右手势；严格ID和独立工具action指引 |
-| LF227 | verified / closed | 真实照片/计算器/测验；新scale_recipe测试与225调用、原版本复用；记录/URL/匿名SSE；308tests/typecheck/build。已提交22f78d2d977049c0c8193705ca6194fed58c3a25；CI37190026028通过 |
-| LF237/238 | backend completed / QA7of7 verified, finishing | 正常form兼容8browser；原actualcandidate独立7/7，225/新240/save/SSE/reload；全312tests/typecheck/build通过 |
-| LF228 | released incomplete, gated237/238 | existingFreeRender无卡/$0；CI精确SHA手动发布；保留Neon数据、OAuth与账本；兼容版本恢复 |
+| LF223/229/230/232/233 | verified / closed | 普通QA8+11+28；LF229 Free Docker6/6；真实Gemini兼容；Owner反馈；有意Git历史整合84e90bf/原修改保留 |
+| LF234/235/236 | verified / closed | 120s人类选择/180s相关RPC；同预览显式重试；真实照片左右手势；严格ID和独立toolaction指引 |
+| LF227 | verified / closed | 本地真实Pi/Gemini照片/计算器/测验；新工具225、原版本复用、记录/URL/SSE与手机；source22f78d2/CI37190026028历史基础验收 |
+| LF237/238 | verified / closed | normalform8browser/原actualcandidate独立7/7；225/新240/save/SSE/reload；全312tests/typecheck/build，精确57edcc3/CI37192436121通过 |
+| LF228 | verified / closed09:51:41UTC | 正式真实生成/新工具2tests/publish；normal63/225Save/390px240；Google/Root匿名SSE；同SHAreplacement12tables完整摘要相同；Free/$0/无卡/账本不变 |
+| LF155 | final documentation handoff / release next | [整合交接](../handoffs/coordinator/LF-155-release-close-dc062dbe.md)；角色日志/共享记忆/启动说明已整理，无剩余runtime修改 |
 
-原Neon账本Gemini2026-10-04为30/30；正式一次生成成功/2fixtures/publishedv1。普通form-submit被原生sandbox挡住，225/save未验，修复后复用同一已发布candidate且不需要新模型。不能重置、退款或付费fallback。实际模型仍可能返回无效草稿；测验用了一次修复，失败证据保留。4347使用隔离PGlite/明确本地身份，不能算Google线上证明。详见[LF227验收交接](../handoffs/coordinator/LF-227-27d9cbd8-ed2b-4f98-874c-e81f6a6fd28f.md)。实时锁以registry为准。
+原Neon账本Gemini2026-10-04UTC30/30，mediaSTT5/TTS695原period不变；自然下一UTC日（当天17:00Vancouver）恢复新生成，现有工具/数据/手动布局继续。修复复用了同一实际ServingStudio source/toolv1，没有再生候选/退款/reset/付费fallback。实际模型可能返回无效草稿；本地测验用一次修复，失败证据保留，不保证每次请求首轮成功。4347隔离PGlite和明确本地身份仅证明本地真实模型/工具，不充当Google线上证据；正式Google/Neon/HTTPS/SSE另有LF228证据。详见[DevOps最终验收](../handoffs/devops/LF-228-f64f0dd0-1b04-4040-b275-f0f3fe61c369.md)、[Root现场JSON](../handoffs/coordinator/LF-155-hosted-saved-dc062dbe.json)、[LF227真实本地验收](../handoffs/coordinator/LF-227-27d9cbd8-ed2b-4f98-874c-e81f6a6fd28f.md)。GitHub push仅CI，AutoDeployOFF；最终docs-onlycheckpoint不改当前运行SHA。实时锁仍以registry为准。
 
 
 ## 本轮开发补充任务

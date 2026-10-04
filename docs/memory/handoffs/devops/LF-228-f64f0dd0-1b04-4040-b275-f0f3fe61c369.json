@@ -1,0 +1,288 @@
+{
+  "observedAt": "2026-10-04T09:46:37.109Z",
+  "task": "LF-228",
+  "session": "f64f0dd0-1b04-4040-b275-f0f3fe61c369",
+  "status": "acceptance-passed",
+  "source": "57edcc3fdb56a6aa9c232a18ee8432d0293e3f79",
+  "ci": {
+    "run": 37192436121,
+    "conclusion": "success",
+    "url": "https://github.com/fanxiaotuGod/livingforma/actions/runs/37192436121",
+    "localRootTests": 312,
+    "localTypecheck": true,
+    "localBuild": true
+  },
+  "render": {
+    "service": "srv-db0pi4lg1s2s73f4vnbg",
+    "plan": "Free",
+    "workspace": "Hobby",
+    "autoDeploy": "off",
+    "cardOnFile": false,
+    "firstForward": {
+      "deploy": "dep-db11r6lg1s2s7385q2e0",
+      "started": "2026-10-04 02:34:18 America/Vancouver",
+      "durationSeconds": 64,
+      "status": "Live"
+    },
+    "sameShaReplacement": {
+      "deploy": "dep-db11uck9v7es73di4v8g",
+      "started": "2026-10-04 02:41:06 America/Vancouver",
+      "durationSeconds": 28.6,
+      "status": "Live"
+    },
+    "billing": {
+      "monthToDateUSD": 0,
+      "projectedUSD": 0,
+      "freeHoursUsed": 9.58,
+      "freeHoursIncluded": 750,
+      "bandwidthMB": 58,
+      "bandwidthIncludedGB": 5,
+      "pipelineMinutes": 2,
+      "pipelineIncludedMinutes": 500
+    },
+    "configChanged": false
+  },
+  "generation": {
+    "slug": "space-ee2617ac",
+    "url": "https://livingforma.tech/s/space-ee2617ac",
+    "job": "2b23beb6-8a4d-47e9-a081-ac13a339016c",
+    "sourceRevision": 1,
+    "repairCount": 0,
+    "publishedVersion": 1,
+    "actualHostedPiGeminiRequests": 1,
+    "requestOccurredOnPreviousReviewed22f78Release": true,
+    "newRequestsDuringForwardFix": 0,
+    "progressStages": [
+      "queued",
+      "planning",
+      "writing",
+      "validating",
+      "preview",
+      "checked",
+      "publishing",
+      "published"
+    ],
+    "realUiOutlineEvent": true,
+    "tool": "scale_ingredient@1",
+    "testFixturesPassed": 2,
+    "toolAndWebsiteSourceUnchangedAcrossFix": true
+  },
+  "interactions": [
+    {
+      "activation": "ordinary click",
+      "input": {
+        "quantity": 84,
+        "originalServings": 4,
+        "targetServings": 3
+      },
+      "result": 63,
+      "saved": false,
+      "path": "/api/spaces/space-ee2617ac/code-tools/scale_ingredient/invoke",
+      "status": 200,
+      "elapsedMs": 1209
+    },
+    {
+      "activation": "ordinary Enter",
+      "input": {
+        "quantity": 150,
+        "originalServings": 4,
+        "targetServings": 6
+      },
+      "result": 225,
+      "saved": true,
+      "path": "/api/spaces/space-ee2617ac/code-tools/scale_ingredient/invoke",
+      "status": 200,
+      "elapsedMs": 1127
+    },
+    {
+      "activation": "390px ordinary click",
+      "input": {
+        "quantity": 160,
+        "originalServings": 4,
+        "targetServings": 6
+      },
+      "result": 240,
+      "saved": false,
+      "path": "/api/spaces/space-ee2617ac/code-tools/scale_ingredient/invoke",
+      "status": 200,
+      "elapsedMs": 1089
+    }
+  ],
+  "toolPOSTCount": 3,
+  "savePOSTCount": 1,
+  "save": {
+    "path": "/api/spaces/space-ee2617ac/actions",
+    "status": 200,
+    "elapsedMs": 200
+  },
+  "savedValues": {
+    "ingredient": "Flour",
+    "quantity": 150,
+    "original": 4,
+    "target": 6,
+    "scaled": 225
+  },
+  "ownerReloadPreservesRecordAndGoogle": true,
+  "google": {
+    "realCanonicalLogout200": true,
+    "anonymousNoOrb": true,
+    "realExistingAccountLoginReturnedOwner": true,
+    "sessionSurvivedProcessReplacement": true,
+    "noNewAccessOrCredentials": true
+  },
+  "anonymous": {
+    "originalDefinitionPublicationSSE": true,
+    "oneIntentionalReloadForNewBootstrap": true,
+    "subsequentSavedRecordSSEWithoutReload": true,
+    "independentVerifier": "coordinator dc062dbe IAB7",
+    "calculateAdditionalToolPOSTCount": 0
+  },
+  "phone": {
+    "viewportWidth": 390,
+    "topScrollWidth": 390,
+    "iframeWidth": 342,
+    "iframeScrollWidth": 342,
+    "actualTool240": true,
+    "viewportReset": true,
+    "physicalDevice": false
+  },
+  "persistence": {
+    "sameShaTableComparisons": {
+      "lf_spaces": true,
+      "lf_generations": true,
+      "lf_definition_versions": true,
+      "lf_assets": true,
+      "lf_code_tools": true,
+      "lf_code_tool_requests": true,
+      "lf_events": true,
+      "lf_requests": true,
+      "lf_tools": true,
+      "lf_tool_runs": true,
+      "lf_provider_budgets": true,
+      "lf_media_budgets": true
+    },
+    "allTwelveTablesIdentical": true,
+    "oldReading": {
+      "definitionVersion": 4,
+      "records": 2,
+      "recordDigestPreserved": true
+    },
+    "oldHabit": {
+      "definitionVersion": 6,
+      "records": 1,
+      "recordDigestPreserved": true
+    },
+    "generatedDefinitionVersion": 1,
+    "generatedStateVersion": 1,
+    "savedRecords": 1,
+    "toolInvocationCount": 3,
+    "providerLedgerPreserved": true,
+    "mediaLedgersPreserved": true,
+    "databaseRestore": false
+  },
+  "budgets": {
+    "gemini": {
+      "utcDay": "2026-10-04",
+      "used": 30,
+      "limit": 30,
+      "remaining": 0
+    },
+    "stt": {
+      "period": "verified-2026-10-03",
+      "usedSeconds": 5,
+      "limitSeconds": 60
+    },
+    "tts": {
+      "period": "verified-2026-10-03",
+      "usedCharacters": 695,
+      "limitCharacters": 1000
+    },
+    "resetOrRefund": false,
+    "paidFallback": false
+  },
+  "strictHttpsSmoke": {
+    "canonicalPassed": 4,
+    "canonicalTotal": 4,
+    "platformPassed": 4,
+    "platformTotal": 4
+  },
+  "publicProjection": {
+    "time": "2026-10-04T09:44:06.378Z",
+    "spaces": [
+      {
+        "slug": "space-bb2d7928",
+        "status": 200,
+        "definitionVersion": 4,
+        "stateVersion": 4,
+        "recordCount": 2,
+        "permissions": {
+          "canEdit": false,
+          "canWrite": false,
+          "canUseTools": false,
+          "actionIds": []
+        },
+        "backendToolSourceExposed": false
+      },
+      {
+        "slug": "space-3c242042",
+        "status": 200,
+        "definitionVersion": 6,
+        "stateVersion": 2,
+        "recordCount": 1,
+        "permissions": {
+          "canEdit": false,
+          "canWrite": false,
+          "canUseTools": false,
+          "actionIds": []
+        },
+        "backendToolSourceExposed": false
+      },
+      {
+        "slug": "space-ee2617ac",
+        "status": 200,
+        "definitionVersion": 1,
+        "stateVersion": 1,
+        "recordCount": 1,
+        "permissions": {
+          "canEdit": false,
+          "canWrite": false,
+          "canUseTools": false,
+          "actionIds": []
+        },
+        "backendToolSourceExposed": false,
+        "savedValues": [
+          {
+            "scaled": 225,
+            "target": 6,
+            "original": 4,
+            "quantity": 150,
+            "ingredient": "Flour"
+          }
+        ]
+      }
+    ],
+    "privateEndpoints": [
+      {
+        "path": "/api/spaces/space-ee2617ac/code-tools",
+        "status": 401
+      },
+      {
+        "path": "/api/spaces/space-ee2617ac/generations/2b23beb6-8a4d-47e9-a081-ac13a339016c",
+        "status": 401
+      }
+    ],
+    "frame": {
+      "status": 200,
+      "csp": "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'self'; sandbox allow-scripts; require-trusted-types-for 'script'; trusted-types lf-parser lf-source default",
+      "hostSubmitShim": true,
+      "allowForms": false
+    }
+  },
+  "limits": [
+    "Free idle cold starts remain.",
+    "Generated sample visitor copy says Publish required rather than explaining login/Owner authorization; host sends zero tool requests.",
+    "Generated sample Save re-enables after clearing its last result; handler performs no write without a calculation.",
+    "No new physical camera/microphone or second Google account acceptance in this release.",
+    "Same-SHA recovery does not prove old incompatible binary rollback."
+  ]
+}

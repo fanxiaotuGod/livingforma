@@ -6,7 +6,16 @@ permalink: livingforma/roles/devops/memory
 
 # DevOps 当前记忆
 
-更新：2026-10-04 02:07 America/Vancouver。当前摘要；历史证据保留在journal与唯一handoff。
+更新：2026-10-04 02:46 America/Vancouver。当前摘要；历史证据保留在journal与唯一handoff。
+
+- **LF228 verified / ready to finish**：精确 `57edcc3fdb56a6aa9c232a18ee8432d0293e3f79`，CI37192436121success、Root312tests/typecheck/build、独立QA238普通表单7/7。Render forward `dep-db11r6lg1s2s7385q2e0` Live64s，同SHA替换 `dep-db11uck9v7es73di4v8g` Live28.6s；后者当前正式版本。原Free/privateenv/AutoDeployOff不变。
+- **真实原候选功能通过**：ServingStudio sourceRevision1/tool scale_ingredient@1 源码/spec/tests不变，无新模型。真实普通click84/4/3=63、Enter150/4/6=225，独立SaveFlour225，Ownerreload数据/URL/v1保留；Root匿名同窗口在bootstrap显式reload一次后持续SSE收到记录，无第二次reload。390px实际click160/4/6=240成功且未保存第二条，无横溢。工具共3POST200，Save1POST200。
+- **兼容replacement通过**：12业务表完整rowhash/count前后全部相同；Readingv4/2、Habitv6/1原完整记录digest不变；生成definitionv1/1record、工具3invocations/source/tests、job/version/assets/audits/provider/media持久化。两originstrictHTTPS各4/4；公开toolsource不泄露、registry/privatejob匿名GET401。
+- **Google/cost verified**：会话跨replacement保持；真实logout200→匿名/noorb/Flour225保留，anonymous Calculate发送0toolPOST；现有Google账号正常重新登录返回Owner。Billing Hobby/no card/$0 month-to-date+projected，9.58/750h、58MB/5GB、2/500pipeline min，未操作配置或收费。Gemini仍30/30同UTC日，STT5/TTS695原period不变，没有reset/refund/repair/newmodel。
+- 当前known-good57edcc3，禁止旧7ef/eedd回滚；现有budget不重置。生成样例visitor文案泛称Publishrequired、Saveclear后按钮重新启用但无计算不写入，作为UX限制记录；不保证任意生成首轮有效，不声称物理设备或第二Google账号验证。
+- fresh session `f64f0dd0-1b04-4040-b275-f0f3fe61c369` 收尾后finish/close。实际[LF228最终交接](../../handoffs/devops/LF-228-f64f0dd0-1b04-4040-b275-f0f3fe61c369.md)、[JSON](../../handoffs/devops/LF-228-f64f0dd0-1b04-4040-b275-f0f3fe61c369.json)、[已保存225截图](../../handoffs/devops/LF-228-saved225-f64f0dd0.jpg)。不Gitstage/commit/push/shared写入。
+
+以下LF228首轮阻断已由LF237/238和当前精确发布取代，保留历史：
 
 - **LF228 deployed / acceptance incomplete**：精确 reviewed `22f78d2d977049c0c8193705ca6194fed58c3a25`，CI37190026028 success、Root308tests/typecheck/build，Render `dep-db1176id0e5s73dke66g` Live1m07s。Free/AutoDeployOff/配置和secret不变。两originHTTPS各4/4；真实Google logout200→anon→同账号GoogleOwner成功。
 - Neon只读确认migration1–6；部署前后原Reading v4/2records、Habit v6/1record及完整spaceJSON/provider/media ledgers相等。新增唯一正式测试空间 [Serving Studio](https://livingforma.tech/s/space-ee2617ac)，没有修改原用户记录。

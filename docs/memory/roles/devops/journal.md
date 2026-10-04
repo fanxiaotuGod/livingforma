@@ -143,3 +143,17 @@ permalink: livingforma/roles/devops/journal
 - **blocked ordinary Calculate**：preview及published form有效输入Flour/150/4/6，AX click和普通鼠标click均无结果/无tool POST/Save disabled。DOM实际type=submit，generatedJS form submit listener；iframe与响应CSP sandbox仅allow-scripts。实际工具invocationCount0，非工具失败/新模型失败。Root安排LF237/LF238正常兼容修复，既有candidate/工具/ledger保留，无源码补丁注入、allowforms放宽或高级研究。
 - 只读真实Gemini29→30/30（2026-10-04UTC），media仍STT5/TTS695原period；未reset/refund/repair/第二次model调用。225业务调用、Save/reload/phone/同SHAreplacement尚未通过，LF228必须incomplete release，不能finish。保留ChromeOwner/Renderhandoff与Tools/publishedblocked截图；后续CIgreen compatibleforwardfix重新新session领取。
 - 修改ownmemory/journal/deployment当前状态并写唯一handoffMD/JSON。下一步scoped链接/secret/diff检查后release/close，Root可增加依赖；不发布shared未提交文件。
+
+## 2026-10-04 02:46 America/Vancouver · LF-228 compatible forward fix and complete hosted acceptance
+
+- Fresh session `f64f0dd0-1b04-4040-b275-f0f3fe61c369` 从catalog26 next领取含LF237/238 gates的LF228；读取PRD/shared/ownmemory/journal/原handoff，git初始clean。原session0840已closed，不复用。编辑前check ownhandoff/operations/role/.local全部allowed/current。
+- 精确57edcc3的CI37192436121独立gh completed/success，Root312tests/typecheck/build与QA238实际7/7通过。等待RootCI确认后才点Render specific-commit全SHA；deploy `dep-db11r6lg1s2s7385q2e0` 02:34:18PDT start，64sLive，server502.10KB/worker3.27KB。原Free/privateenv/plan/AutoDeployOff均不变，无新provider请求。
+- 原正式ServingStudio source/tool未改：normalclick84/4/3=63，改150/4/6清旧result/disableSave，normalEnter=225，保存Flour225；前两调用各恰好1POST200（约1209ms/1127ms），Save独立1POST200。Root匿名IAB有且仅有一次reload取得新bootstrap，随后同document/SSE自动0→1record并显示225，无再次刷新/Ownerorb。
+- Ownerreload保留v1/URL/完整记录，390pxnormalclick160/4/6=240（第三次真实QuickJSPOST200），未保存第二条。Top390/scroll390、frame342/scroll342，无横溢；真实手机viewport和225历史/240结果截图已保存并视觉检查，viewportreset。非物理touch/device验收。
+- 同精确57edcc3再次specific-commit部署 `dep-db11uck9v7es73di4v8g` 02:41:06PDT start，28.6sLive；12张业务表完整rowhash/count全部相等，含所有3spaces/旧ReadingHabit records、生成job/version/source/tool/spec/tests/请求/audit/event/provider/media。无DBrestore、oldbinaryrollback或预算reset。StrictHTTPS canonical/platform各4/4。
+- Replacement后GoogleOwner会话reload保持；实际logoutPOST200→anon/noorb且Flour225可读。匿名Calculate无工具请求，样例文案泛称Publishrequired；existingGoogleaccount正常选择回canonical→Owner成功。只保存脱敏Network path/status/timing，未保存OAuth值/headers。公开registry/privatejob401，snapshot不含backendsource；frame CSP/sandbox保持allow-scripts/form-actionnone/connect-srcnone且hostshim真实存在。
+- Actual Render Billing只读：Hobby/No card/月累计与预估$0.00；9.58/750hours、58MB/5GB、2/500pipeline分钟，没有付款/升级/环境/secret/domain/配置操作。Gemini30/30（2026-10-04UTC）、固定media STT5/TTS695保持；没有新model/repair/付费fallback。自然UTC新日预算规则不改。
+- 生成样例Save清空后finally重启按钮但lastCalculation为空不写；visitorcopy泛化，保留为真实UX限制，没有新model美化结果。已有Freecoldstart、无第二Google账号/physicaldevice验证也明确保留。
+- 写ownhandoffMD/JSON及saved225/phone240截图，更新operations与compactmemory；Root其他文件保持。下一步scoped diff/本地链接/已知secret精确匹配/JSON实际gates检查后finish LF228、close新session，不自行Gitstage/commit/push。
+
+- **Final verification**：5个ownscope文档/JSON、18条本地链接无缺失，4项已知private值精确匹配0，scoped diff无空白问题；10项实际releasegates全真，3个private网络/存储fingerprint文件均0600。Root独立review公开JSON与225/240截图通过。Render Billing截图再次超时，未保存/声称截图；费用证据是实际Billing DOM。Network观察已disable、OAuth/原始事件临时buffers清除、viewport已reset，正式Owner网站标记deliverable。首轮公共handoff只有MD，现场generatedJSON在ignored私密目录；本轮最终公共MD/JSON与截图确实存在。执行finish/close，不自行提交Root文件。

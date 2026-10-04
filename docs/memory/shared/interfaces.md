@@ -8,18 +8,18 @@ permalink: livingforma/shared/interfaces
 
 ## Generated form compatibility · 2026-10-04 02:11 America/Vancouver
 
-已接受LF237/238的正常DOM适配：可信bootstrap支持submit按钮、Enter和局部requestSubmit派发可取消submit，保留原生约束校验/submitter，禁止重复派发或原生网络提交。iframe/CSP仍sandbox allow-scripts、form-action none，LFbridge/auth/权限契约和browserartifact/tool版本不变。真实Serving Studio原候选保留，LF237普通浏览器8/8、全库312tests/typecheck/build通过；LF238原候选7/7已实际执行，正式修复发布仍待CI。预算2026-10-04UTC30/30，不能再生页面/模型repair或重置。
+已接受并正常验收LF237/238的DOM适配：可信bootstrap支持submit按钮、Enter和局部requestSubmit派发可取消submit，保留原生约束校验/submitter，禁止重复派发或原生网络提交。iframe/CSP仍sandbox allow-scripts、form-action none，LFbridge/auth/权限契约和browserartifact/tool版本不变。真实Serving Studio原候选保留，LF237普通浏览器8/8、全库312tests/typecheck/build通过；LF238原候选7/7独立local验收通过。精确57edcc3/CI37192436121通过且RenderLive；普通hosted63/225/save/Ownerreload/390px240与Root匿名recordSSE实际通过。预算2026-10-04UTC30/30不变，不能再生页面/模型repair或重置。
 
 ## Accepted generation/tool v1 · 2026-10-03 23:40 America/Vancouver
 
-以 `packages/contracts/src/generated.ts`、`generated-tools.ts` 为精确契约，见 [generated-tools](../../product/generated-tools.md)。以下为实施契约，尚非真实模型/生产验收。
+以 `packages/contracts/src/generated.ts`、`generated-tools.ts` 为精确契约，见 [generated-tools](../../product/generated-tools.md)。LF227已验证真实模型生成/新工具/原版本复用和界面演化；LF228已验证正式真实生成/测试/发布及普通工具调用保存同步，同精确SHA进程替换保留12业务表、原工具版本/记录/预算和GoogleOwner，所有线上门控已通过。以下描述实施契约。
 
 - SiteGenerator 接收 enabled registeredTools元数据及registeredCatalogTools；Proposal可附codeToolProposals≤3。GeneratedToolGenerator产出新spec或exactversion复用；host验证/测试后才能Publish。
 - GeneratedToolSpec=code-js-v1，单一顶层 `run(input,api)`、object input/output schema、sideEffects=none、publicRecordFields/connectors、2–5测试，source≤32KiB。QuickJS Worker guest heap32MiB/stack256KiB/guest execution4s/startup8s/total12s/concurrency1/Broker≤8，JSON≤64KiB；不保证整个Worker RSS硬上限。
 - generated-site.toolBindings={actionId,toolId,toolVersion,kind:generated|catalog}，必须绑定允许tool.invoke，action与toolId/version跨kind唯一。lf.ready仅给metadata；lf.runTool返回ToolResult `{toolId,toolVersion,result,reused}`，仅Owner已发布可调用，preview提示Publish to run tool且仍reportReady。
 - Owner API code-tools/proposals `{prompt}`；POST code-tools `{spec,enable}`；GET code-tools→`{tools}`；POST code-tools/:toolId/invoke `{requestId,definitionVersion,componentId,actionId,toolVersion,input}`。host验身份/Origin/CSRF/space/action/version；source/tests不进公开frame。
 - Progress/Event可附ui={version:1,title?,layout:flow|split|grid,skin?,sections:[{id,kind,label?,columns?,items?}]}、tool={toolId,name,phase:writing|testing|ready|failed,message?}；来自实际模型完整参数快照。GenerationJob可附toolReports。
-- API build输出server.js和generated-tool-worker.js；quickjs-emscripten0.32.0已安装，server.ts已在LF227挂接真实适配器，真实模型/生产验收待完成。
+- API build输出server.js和generated-tool-worker.js；quickjs-emscripten0.32.0在LF227挂接真实适配器，真实模型和正式63/225/240工具调用已验证。
 
 LF-100 已建立 `packages/contracts/src/index.ts` 与 `examples.ts` 的代码契约；以下本轮接受项取代后文历史候选。本文件由 coordinator 单独维护。
 

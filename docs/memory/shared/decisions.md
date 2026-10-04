@@ -8,6 +8,8 @@ permalink: livingforma/shared/decisions
 
 ## D-029 · 2026-10-04 02:11 America/Vancouver · 普通生成表单事件适配
 
+2026-10-04验收补充：LF237/238已完成，312tests/typecheck/build、独立ordinary8/8及原candidate7/7通过；精确57edcc3/CI37192436121成功/Renderdep-db11r6lg1s2s7385q2e0 Live。正式普通点击63、Enter225/SaveFlour、Ownerreload/手机240、Root匿名SSE225均实际通过。原modelcandidate/toolv1、CSP/权限和30/30预算保持不变；同SHA兼容进程替换已通过：12业务表完整摘要一致，再次Google往返成功、匿名权限均false、Render无卡/实际及预计费用$0。以下保留原方案接受时的状态。
+
 正式Serving Studio真实模型候选已checked/published，但宿主sandbox allow-scripts在浏览器派发原生submit前阻止表单提交，正常Calculate无工具POST。这是普通兼容问题。接受LF237由可信frame bootstrap支持用户submit按钮/Enter及局部requestSubmit事件，保留原生约束校验、submitter、取消与一次派发；iframe/CSP仍sandbox allow-scripts、form-action none，不开放原生表单导航、网络或allow-forms。LF238独立普通浏览器验收后，LF228精确CI绿SHA修复发布并验证原候选225/save，无新模型请求。当前只是接受方案/任务，尚未宣称修复验收。
 
 ## D-028 · 2026-10-04 00:35 America/Vancouver · 有界冷启动与工具执行分阶段

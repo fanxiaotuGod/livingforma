@@ -1,0 +1,70 @@
+{
+  "observedAt": "2026-10-04T09:39:36.022862+00:00",
+  "url": "https://livingforma.tech/api/spaces/space-ee2617ac/snapshot",
+  "scope": "Independent anonymous TLS-verified HTTPS GET and same IAB7 record SSE after one intentional runtime reload; no subsequent reload/mutation/provider call",
+  "reviewedRuntimeSource": "57edcc3fdb56a6aa9c232a18ee8432d0293e3f79",
+  "definitionVersion": 1,
+  "stateVersion": 1,
+  "records": 1,
+  "role": "visitor",
+  "permissions": {
+    "canEdit": false,
+    "canWrite": false,
+    "canUseTools": false,
+    "actionIds": []
+  },
+  "liveSSEObserved": {
+    "savedLabel": "Flour",
+    "originalQuantity": 150,
+    "originalServings": 4,
+    "targetServings": 6,
+    "result": 225
+  },
+  "screenshot": "LF-155-hosted-saved-dc062dbe.jpg",
+  "afterCompatibleReplacement": {
+    "observedAt": "2026-10-04T09:46:31.188055+00:00",
+    "deployment": "dep-db11uck9v7es73di4v8g",
+    "scope": "Independent anonymous TLS-verified HTTPS GET after same-reviewed-SHA process replacement, no mutations/providers",
+    "spaces": [
+      {
+        "slug": "space-bb2d7928",
+        "definitionVersion": 4,
+        "stateVersion": 4,
+        "records": 2,
+        "role": "visitor",
+        "permissions": {
+          "canEdit": false,
+          "canWrite": false,
+          "canUseTools": false,
+          "actionIds": []
+        }
+      },
+      {
+        "slug": "space-3c242042",
+        "definitionVersion": 6,
+        "stateVersion": 2,
+        "records": 1,
+        "role": "visitor",
+        "permissions": {
+          "canEdit": false,
+          "canWrite": false,
+          "canUseTools": false,
+          "actionIds": []
+        }
+      },
+      {
+        "slug": "space-ee2617ac",
+        "definitionVersion": 1,
+        "stateVersion": 1,
+        "records": 1,
+        "role": "visitor",
+        "permissions": {
+          "canEdit": false,
+          "canWrite": false,
+          "canUseTools": false,
+          "actionIds": []
+        }
+      }
+    ]
+  }
+}

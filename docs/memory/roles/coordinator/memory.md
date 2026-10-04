@@ -6,7 +6,16 @@ permalink: livingforma/roles/coordinator/memory
 
 # 协调者当前记忆
 
-## Latest state · 2026-10-04 02:11 America/Vancouver
+## Latest state · 2026-10-04 02:50 America/Vancouver
+
+Reviewed runtime57edcc3fdb56a6aa9c232a18ee8432d0293e3f79 committed/pushed, exactCI37192436121 SUCCESS/312tests/typecheck/build. ExistingFreeRender forwarddep-db11r6lg1s2s7385q2e0 and sameSHAreplacementdep-db11uck9v7es73di4v8g bothLive; all12business table hashes identical afterreplacement. RealGooglelogout/login Owner passed again, Readingv4/2records andHabitv6/1 unchanged. ActualPi/Gemini ServingStudio source/toolv1 retained: new84/4/3→63click,150/4/6→225Enter/SaveFlour,390px160/4/6→240 allrealQuickJS; invocationCount3 and onebusinessrecord. RootindependentIAB7saved225recordSSE/no subsequentreload, and postreplacementanonymousGET3space/records/falsewritepermissions verified; screenshot+JSON inLF155hosted-saved evidence.
+
+LF227/237/238/228completed/closed; DevOpsfreshLF228f64f0dd0 finished09:51:41UTC/closed, finalhandoff reviewed and registry independentlychecked. RootLF155dc062dbe finaldocs/handoff thenreleaseongoingmaintenance slot (not permanentlyfinish). Catalog26 digest2e7dca28a00a5695696e969fd744f14641147bdf2053e02a4bf78ce1cd6fc7b0. Advancedbypassresearchpaused; normalformcompatibility preservesCSP/sandbox/permissions. ProviderGemini2026-10-04UTC30/30,STT5,TTS695 untouched; naturalnextUTCday atOct4Vancouver17:00 fornewmodelwork. Existingtool/data/manualmoduleoperationsusable. RenderHobby/Free/noCard/month-to-dateandprojected$0/AutoDeployOFF. No fees/newcredentials/scopeexpansion/modelreset. Docs-onlycheckpoint mustnotbeconfusedwithdeployedruntimeSHA.
+
+[Releaseintegration](../../handoffs/coordinator/LF-155-release-close-dc062dbe.md), [anonymoushostedevidence](../../handoffs/coordinator/LF-155-hosted-saved-dc062dbe.json), [DevOpsmachineacceptance](../../handoffs/devops/LF-228-f64f0dd0-1b04-4040-b275-f0f3fe61c369.json). Knowncandidatecopy/Saveenabled quirks and Freecoldstarts recorded; no guaranteeeveryrequestfirsttry/nohostshell/arbitrarynetwork/newcharges.
+
+
+## Previous release checkpoint · 2026-10-04 02:11 America/Vancouver
 
 LF227completed/closed byRoot27d9cbd8, reviewedsource22f78d2d977049c0c8193705ca6194fed58c3a25 pushed/exactCI37190026028success/308tests/typecheck/build. Renderdep-db1176id0e5s73dke66g Live01:52:46PDT; actualGoogle roundtrip, oldReadingv4/Habitv6data unchanged, migrations1–6, hashidenticalpublicwebbundle794520bytes/60modulegallery verified. No advancedbypassresearch.
 
